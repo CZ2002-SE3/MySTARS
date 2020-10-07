@@ -47,6 +47,7 @@ public class MyStars {
         ui.showWelcome();
 
         boolean isLogin = false;
+        /*
         while (!isLogin) {
             try {
                 LoginCommand loginCommand = new LoginCommand();
@@ -57,7 +58,7 @@ public class MyStars {
             } finally {
                 ui.showLine();
             }
-        }
+        }*/
 
         boolean isExit = false;
         while (!isExit) {
