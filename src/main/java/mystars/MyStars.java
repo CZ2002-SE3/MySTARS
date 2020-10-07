@@ -19,14 +19,12 @@ public class MyStars {
 
     /**
      * Initialises MySTARS.
-     *
-     * @param filePath Path to store and load users.
      */
-    public MyStars(String filePath) {
+    public MyStars() {
         ui = new Ui();
-        storage = new Storage(filePath);
+        storage = new Storage();
         try {
-            users = new UserList(storage.load());
+            users = new UserList(storage.loadUsers());
         } catch (MyStarsException e) {
             ui.showLoadingError();
             users = new UserList();
@@ -39,7 +37,7 @@ public class MyStars {
      * @param args Command line argument.
      */
     public static void main(String[] args) {
-        new MyStars("data/users.txt").run();
+        new MyStars().run();
     }
 
     /**
@@ -49,7 +47,7 @@ public class MyStars {
         ui.showWelcome();
 
         boolean isLogin = false;
-        /*while (!isLogin) {
+        while (!isLogin) {
             try {
                 LoginCommand loginCommand = new LoginCommand();
                 loginCommand.execute(users, ui, storage);
@@ -59,7 +57,7 @@ public class MyStars {
             } finally {
                 ui.showLine();
             }
-        }*/
+        }
 
         boolean isExit = false;
         while (!isExit) {
