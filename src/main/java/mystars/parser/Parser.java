@@ -1,0 +1,44 @@
+package mystars.parser;
+
+import mystars.commands.Command;
+import mystars.commands.ExitCommand;
+import mystars.data.exception.MyStarsException;
+import mystars.data.user.User;
+
+/**
+ * Parses user input and file.
+ */
+public class Parser {
+
+    /**
+     * Parses user input, and returns corresponding command.
+     *
+     * @param fullCommand String of user input to parse.
+     * @return Command to execute.
+     * @throws MyStarsException If command is invalid.
+     */
+    public static Command parse(String fullCommand) throws MyStarsException {
+        Command command;
+        switch(fullCommand.trim().toLowerCase()) {
+        case ExitCommand.COMMAND_WORD:
+            command = new ExitCommand();
+            break;
+        default:
+            throw new MyStarsException(Command.COMMAND_ERROR);
+        }
+
+        return command;
+    }
+
+    /**
+     * Reads users from file.
+     *
+     * @param line Line of user to read.
+     * @return Users of corresponding line.
+     * @throws MyStarsException If user is incomplete or invalid.
+     */
+    public static User readUser(String line) throws MyStarsException {
+        User user = null;
+        return user;
+    }
+}
