@@ -6,5 +6,4 @@
 *.iml
 bin/
 
-/text-ui-test/ACTUAL.txt
-text-ui-test/EXPECTED-UNIX.TXT
+/ui-test/output.txt
