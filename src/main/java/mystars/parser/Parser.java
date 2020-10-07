@@ -19,7 +19,7 @@ public class Parser {
      */
     public static Command parse(String fullCommand) throws MyStarsException {
         Command command;
-        switch(fullCommand.trim().toLowerCase()) {
+        switch (fullCommand.trim().toLowerCase()) {
         case ExitCommand.COMMAND_WORD:
             command = new ExitCommand();
             break;
