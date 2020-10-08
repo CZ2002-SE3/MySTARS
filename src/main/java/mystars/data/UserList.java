@@ -36,9 +36,6 @@ public class UserList {
     public boolean isLoginValid(String[] usernameAndPassword) {
 
         //TODO: Check if username and password is valid.
-        if (usernameAndPassword[1].equals("password")) {
-            return true;
-        }
-        return false;
+        return usernameAndPassword[1].equals("password");
     }
 }
