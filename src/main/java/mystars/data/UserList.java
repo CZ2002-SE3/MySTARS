@@ -32,4 +32,13 @@ public class UserList {
     public int getSize() {
         return users.size();
     }
+
+    public boolean isLoginValid(String[] usernameAndPassword) {
+
+        //TODO: Check if username and password is valid.
+        if (usernameAndPassword[1].equals("password")) {
+            return true;
+        }
+        return false;
+    }
 }

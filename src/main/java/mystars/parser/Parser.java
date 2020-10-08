@@ -17,7 +17,7 @@ public class Parser {
      * @return Command to execute.
      * @throws MyStarsException If command is invalid.
      */
-    public static Command parse(String fullCommand) throws MyStarsException {
+    public Command parse(String fullCommand) throws MyStarsException {
         Command command;
         switch (fullCommand.trim().toLowerCase()) {
         case ExitCommand.COMMAND_WORD:
@@ -37,7 +37,9 @@ public class Parser {
      * @return Users of corresponding line.
      * @throws MyStarsException If user is incomplete or invalid.
      */
-    public static User readUser(String line) throws MyStarsException {
+    public User readUser(String line) throws MyStarsException {
+
+        //TODO: Read users from file.
         User user = null;
         return user;
     }
