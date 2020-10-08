@@ -7,12 +7,11 @@ import mystars.ui.Ui;
 
 public class LoginCommand extends Command {
 
-    public boolean isLogin;
-
     public static final String MESSAGE = "Please enter a username and password:";
     public static final String USERNAME_MESSAGE = "Enter Username: ";
     public static final String PASSWORD_MESSAGE = "Enter Password: ";
     public static final String ERROR_MESSAGE = "Invalid username/password!";
+    public boolean isLogin;
 
     /**
      * Initialises login status.
