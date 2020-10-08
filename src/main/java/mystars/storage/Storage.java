@@ -27,7 +27,7 @@ public class Storage {
      * @return ArrayList of users.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<User> loadUsers() throws MyStarsException {
+    public ArrayList<User> loadUsers(Parser parser) throws MyStarsException {
         Path path = Paths.get(FOLDER, USERS_FILE);
         ArrayList<User> users = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class Storage {
                         break;
                     }
 
-                    User user = Parser.readUser(line);
+                    User user = parser.readUser(line);
                     users.add(user);
                 }
             } catch (IOException e) {

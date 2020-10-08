@@ -1,7 +1,7 @@
 package mystars.ui;
 
-import mystars.commands.Command;
 import mystars.commands.ExitCommand;
+import mystars.commands.LoginCommand;
 import mystars.storage.Storage;
 
 import java.util.Scanner;
@@ -25,23 +25,24 @@ public class Ui {
      * @param message Error message to print.
      */
     public void showError(String message) {
-        printWithFormat(message);
+        printNicely(message);
     }
 
     /**
      * Prints welcome message.
      */
-    public void showWelcome() {
+    public void showLogin() {
         showLine();
-        printWithFormat(Command.MESSAGE);
+        printNicely(LoginCommand.MESSAGE);
         showLine();
+        printNicely("");
     }
 
     /**
      * Prints dotted line.
      */
     public void showLine() {
-        printWithFormat(DOTTED_LINE);
+        printNicely(DOTTED_LINE);
     }
 
     /**
@@ -50,7 +51,7 @@ public class Ui {
      * @return String command from user.
      */
     public String readCommand() {
-        printWithFormat("");
+        printNicely("");
         return in.nextLine();
     }
 
@@ -58,7 +59,7 @@ public class Ui {
      * Prints exit message.
      */
     public void showExit() {
-        printWithFormat(ExitCommand.MESSAGE);
+        printNicely(ExitCommand.MESSAGE);
     }
 
     /**
@@ -66,7 +67,33 @@ public class Ui {
      *
      * @param string String to print.
      */
-    private void printWithFormat(String string) {
-        System.out.println("\t" + string);
+    private void printNicely(String string) {
+        System.out.println(string);
+    }
+
+    public String[] readUsernameAndPassword() {
+        printNicely("");
+        showLine();
+        String username = readUsername();
+        printNicely("");
+        String password = readPassword();
+        printNicely("");
+        return new String[]{username, password};
+    }
+
+    private String readUsername() {
+        printNicely(LoginCommand.USERNAME_MESSAGE);
+        return in.nextLine();
+    }
+
+    private String readPassword() {
+        printNicely(LoginCommand.PASSWORD_MESSAGE);
+
+        if (System.console() == null) {
+            printNicely("Please use console, or else password is not masked.");
+            return in.nextLine();
+        }
+
+        return String.valueOf(System.console().readPassword());
     }
 }

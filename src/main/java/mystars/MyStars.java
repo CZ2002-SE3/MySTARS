@@ -13,6 +13,7 @@ import mystars.ui.Ui;
  */
 public class MyStars {
 
+    private final Parser parser;
     private final Storage storage;
     private final Ui ui;
     private UserList users;
@@ -21,10 +22,11 @@ public class MyStars {
      * Initialises MySTARS.
      */
     public MyStars() {
+        parser = new Parser();
         ui = new Ui();
         storage = new Storage();
         try {
-            users = new UserList(storage.loadUsers());
+            users = new UserList(storage.loadUsers(parser));
         } catch (MyStarsException e) {
             ui.showLoadingError();
             users = new UserList();
@@ -44,13 +46,12 @@ public class MyStars {
      * Runs MySTARS.
      */
     public void run() {
-        ui.showWelcome();
+
+        LoginCommand loginCommand = new LoginCommand();
 
         boolean isLogin = false;
-        /*
         while (!isLogin) {
             try {
-                LoginCommand loginCommand = new LoginCommand();
                 loginCommand.execute(users, ui, storage);
                 isLogin = loginCommand.isLogin;
             } catch (MyStarsException e) {
@@ -58,14 +59,14 @@ public class MyStars {
             } finally {
                 ui.showLine();
             }
-        }*/
+        }
 
         boolean isExit = false;
         while (!isExit) {
             try {
                 String fullCommand = ui.readCommand();
                 ui.showLine();
-                Command c = Parser.parse(fullCommand);
+                Command c = parser.parse(fullCommand);
                 c.execute(users, ui, storage);
                 isExit = c.isExit();
             } catch (MyStarsException e) {
