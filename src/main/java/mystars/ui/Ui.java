@@ -71,29 +71,29 @@ public class Ui {
         System.out.println(string);
     }
 
-    public String[] readUsernameAndPassword() {
+    public char[][] readUsernameAndPassword() {
         printNicely("");
         showLine();
-        String username = readUsername();
+        char[] username = readUsername();
         printNicely("");
-        String password = readPassword();
+        char[] password = readPassword();
         printNicely("");
-        return new String[]{username, password};
+        return new char[][]{username, password};
     }
 
-    private String readUsername() {
+    private char[] readUsername() {
         printNicely(LoginCommand.USERNAME_MESSAGE);
-        return in.nextLine();
+        return in.nextLine().toCharArray();
     }
 
-    private String readPassword() {
+    private char[] readPassword() {
         printNicely(LoginCommand.PASSWORD_MESSAGE);
 
         if (System.console() == null) {
             printNicely("Please use console, or else password is not masked.");
-            return in.nextLine();
+            return in.nextLine().toCharArray();
         }
 
-        return String.valueOf(System.console().readPassword());
+        return System.console().readPassword();
     }
 }

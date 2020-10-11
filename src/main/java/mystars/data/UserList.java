@@ -33,9 +33,9 @@ public class UserList {
         return users.size();
     }
 
-    public boolean isLoginValid(String[] usernameAndPassword) {
+    public boolean isLoginValid(char[][] usernameAndPassword) {
 
         //TODO: Check if username and password is valid.
-        return usernameAndPassword[1].equals("password");
+        return String.valueOf(usernameAndPassword[1]).equals("password");
     }
 }
