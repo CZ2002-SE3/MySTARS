@@ -31,7 +31,7 @@ public class LoginCommand extends Command {
     @Override
     public void execute(UserList users, Ui ui, Storage storage) throws MyStarsException {
         //ui.showLogin();
-        String[] usernameAndPassword = ui.readUsernameAndPassword();
+        char[][] usernameAndPassword = ui.readUsernameAndPassword();
         isLogin = users.isLoginValid(usernameAndPassword);
         if (!isLogin) {
             ui.showError(ERROR_MESSAGE);
