@@ -1,9 +1,5 @@
 package mystars.ui;
 
-import mystars.commands.ExitCommand;
-import mystars.commands.LoginCommand;
-import mystars.storage.Storage;
-
 import java.util.Scanner;
 
 public class Ui {
@@ -20,13 +16,6 @@ public class Ui {
             + "                                                         ";
 
     private final Scanner in = new Scanner(System.in);
-
-    /**
-     * Prints loading error message.
-     */
-    public void showLoadingError() {
-        showError(Storage.LOAD_ERROR);
-    }
 
     /**
      * Prints error message.
@@ -58,8 +47,8 @@ public class Ui {
     /**
      * Prints exit message.
      */
-    public void showExit() {
-        printNicely(ExitCommand.MESSAGE);
+    public void showExit(String message) {
+        printNicely(message);
     }
 
     /**
@@ -71,21 +60,20 @@ public class Ui {
         System.out.println(string);
     }
 
-    public char[][] readUsernameAndPassword() {
-        char[] username = readUsername();
+    public char[][] readUsernameAndPassword(String usernameMessage, String passwordMessage) {
+        char[] username = readUsername(usernameMessage);
         printNicely("");
-        char[] password = readPassword();
+        char[] password = readPassword(passwordMessage);
         return new char[][]{username, password};
     }
 
-    private char[] readUsername() {
-        printNicely(LoginCommand.USERNAME_MESSAGE);
+    private char[] readUsername(String message) {
+        printNicely(message);
         return in.nextLine().toCharArray();
     }
 
-    private char[] readPassword() {
-        printNicely(LoginCommand.WARNING_MESSAGE);
-        printNicely(LoginCommand.PASSWORD_MESSAGE);
+    private char[] readPassword(String message) {
+        printNicely(message);
 
         if (System.console() == null) {
             return in.nextLine().toCharArray();
@@ -108,5 +96,14 @@ public class Ui {
         printNicely("6. Swop Index Number with Another Student");
         printNicely("7. Logout");
         printNicely("Please select an item:");
+    }
+
+    public void showLogout() {
+        printNicely("You have successfully logged out!");
+    }
+
+    public String askExit() {
+        printNicely("Do you want to exit? Press Y to exit, anything else to continue to login.");
+        return in.nextLine();
     }
 }

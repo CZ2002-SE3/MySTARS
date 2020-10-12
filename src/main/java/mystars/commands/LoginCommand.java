@@ -22,7 +22,7 @@ public class LoginCommand extends Command {
      */
     @Override
     public void execute(UserList users, Ui ui, Storage storage) throws MyStarsException {
-        char[][] usernameAndPassword = ui.readUsernameAndPassword();
+        char[][] usernameAndPassword = ui.readUsernameAndPassword(USERNAME_MESSAGE, PASSWORD_MESSAGE);
         setLoginStatus(users.isLoginValid(usernameAndPassword));
         if (!isLogin()) {
             throw new MyStarsException(ERROR_MESSAGE);

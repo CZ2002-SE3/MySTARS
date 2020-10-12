@@ -12,8 +12,8 @@ public abstract class Command {
 
     public static final String COMMAND_ERROR = "I don't understand what you have entered.";
 
-    private boolean isExit;
-    private boolean isLogin;
+    private static boolean isExit;
+    private static boolean isLogin;
 
     /**
      * Initialises command to execute and set exit status to false.
