@@ -2,4 +2,10 @@ Jordan
 notpassword
 Jordan
 password
-bye
+10
+7
+N
+jordan
+password
+7
+y
