@@ -3,6 +3,7 @@ package mystars.data;
 import mystars.data.user.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UserList {
 
@@ -37,5 +38,21 @@ public class UserList {
 
         //TODO: Check if username and password is valid.
         return String.valueOf(usernameAndPassword[1]).equals("password");
+    }
+
+    public String getUserType(char[][] usernameAndPassword) {
+
+        //TODO: Check what kind of user.
+        for(User user: users) {
+            if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
+                if (Arrays.equals(user.getPassword(), usernameAndPassword[1])) {
+                    return user.getType();
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        return null;
     }
 }
