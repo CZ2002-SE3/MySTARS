@@ -48,21 +48,15 @@ public class MyStars {
      * Runs MySTARS.
      */
     public void run() {
-        ui.showWelcome();
-
+        ui.showLine();
         Command command = new LogoutCommand();
         while (!command.isExit()) {
-            while (!command.isLogin()) {
-                try {
+            try {
+                while (!command.isLogin()) {
                     command = new LoginCommand();
                     command.execute(users, ui, storage);
-                } catch (MyStarsException e) {
-                    ui.showError(e.getMessage());
                 }
-            }
-
-
-            try {
+                ui.showWelcome();
                 ui.showMenu();
                 String fullCommand = ui.readCommand();
                 ui.showLine();
@@ -79,8 +73,8 @@ public class MyStars {
                 if (parser.isExit(fullCommand)) {
                     ui.showLine();
                     new ExitCommand().execute(users, ui, storage);
-                    ui.showLine();
                 }
+                ui.showLine();
             }
         }
     }

@@ -6,8 +6,6 @@ import mystars.commands.LogoutCommand;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.User;
 
-import java.util.Locale;
-
 /**
  * Parses user input and file.
  */

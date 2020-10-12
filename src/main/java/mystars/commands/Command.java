@@ -47,10 +47,10 @@ public abstract class Command {
     }
 
     void setExit() {
-        this.isExit = true;
+        isExit = true;
     }
 
     void setLoginStatus(boolean isLogin) {
-        this.isLogin = isLogin;
+        Command.isLogin = isLogin;
     }
 }
