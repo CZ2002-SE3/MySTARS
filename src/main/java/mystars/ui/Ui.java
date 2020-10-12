@@ -106,4 +106,8 @@ public class Ui {
         printNicely("Do you want to exit? Press Y to exit, anything else to continue to login.");
         return in.nextLine();
     }
+
+    public void greetUser() {
+        printNicely("Hello user!");
+    }
 }

@@ -49,6 +49,7 @@ public class MyStars {
      */
     public void run() {
         ui.showLine();
+        ui.showWelcome();
         Command command = new LogoutCommand();
         while (!command.isExit()) {
             try {
@@ -56,7 +57,7 @@ public class MyStars {
                     command = new LoginCommand();
                     command.execute(users, ui, storage);
                 }
-                ui.showWelcome();
+                ui.greetUser();
                 ui.showMenu();
                 String fullCommand = ui.readCommand();
                 ui.showLine();
