@@ -1,7 +1,9 @@
 package mystars;
 
 import mystars.commands.Command;
+import mystars.commands.ExitCommand;
 import mystars.commands.LoginCommand;
+import mystars.commands.LogoutCommand;
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
 import mystars.parser.Parser;
@@ -28,7 +30,7 @@ public class MyStars {
         try {
             users = new UserList(storage.loadUsers(parser));
         } catch (MyStarsException e) {
-            ui.showLoadingError();
+            ui.showError(e.getMessage());
             users = new UserList();
         }
     }
@@ -46,19 +48,20 @@ public class MyStars {
      * Runs MySTARS.
      */
     public void run() {
-
-        Command command = new LoginCommand();
-        while (!command.isLogin()) {
-            try {
-                command.execute(users, ui, storage);
-            } catch (MyStarsException e) {
-                ui.showError(e.getMessage());
-            }
-        }
-
         ui.showWelcome();
 
+        Command command = new LogoutCommand();
         while (!command.isExit()) {
+            while (!command.isLogin()) {
+                try {
+                    command = new LoginCommand();
+                    command.execute(users, ui, storage);
+                } catch (MyStarsException e) {
+                    ui.showError(e.getMessage());
+                }
+            }
+
+
             try {
                 ui.showMenu();
                 String fullCommand = ui.readCommand();
@@ -69,6 +72,15 @@ public class MyStars {
                 ui.showError(e.getMessage());
             } finally {
                 ui.showLine();
+            }
+
+            if (command instanceof LogoutCommand) {
+                String fullCommand = ui.askExit();
+                if (parser.isExit(fullCommand)) {
+                    ui.showLine();
+                    new ExitCommand().execute(users, ui, storage);
+                    ui.showLine();
+                }
             }
         }
     }

@@ -2,8 +2,11 @@ package mystars.parser;
 
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
+import mystars.commands.LogoutCommand;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.User;
+
+import java.util.Locale;
 
 /**
  * Parses user input and file.
@@ -19,9 +22,12 @@ public class Parser {
      */
     public Command parse(String fullCommand) throws MyStarsException {
         Command command;
-        switch (fullCommand.trim().toLowerCase()) {
+        switch (fullCommand.trim()) {
         case ExitCommand.COMMAND_WORD:
             command = new ExitCommand();
+            break;
+        case LogoutCommand.COMMAND_WORD:
+            command = new LogoutCommand();
             break;
         default:
             throw new MyStarsException(Command.COMMAND_ERROR);
@@ -42,5 +48,9 @@ public class Parser {
         //TODO: Read users from file.
         User user = null;
         return user;
+    }
+
+    public boolean isExit(String fullCommand) {
+        return fullCommand.trim().equalsIgnoreCase(ExitCommand.COMMAND_WORD);
     }
 }
