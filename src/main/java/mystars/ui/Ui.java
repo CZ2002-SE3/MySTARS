@@ -8,7 +8,16 @@ import java.util.Scanner;
 
 public class Ui {
 
-    private static final String DOTTED_LINE = "============================================================";
+    private static final String DOTTED_LINE = "------------------------------------------------------------";
+    private static final String LOGO = " _______         _______________________ _______ _______ \n"
+            + "(       )\\     /(  ____ \\__   __(  ___  |  ____ |  ____ \\\n"
+            + "| () () ( \\   / ) (    \\/  ) (  | (   ) | (    )| (    \\/\n"
+            + "| || || |\\ (_) /| (_____   | |  | (___) | (____)| (_____ \n"
+            + "| |(_)| | \\   / (_____  )  | |  |  ___  |     __|_____  )\n"
+            + "| |   | |  ) (        ) |  | |  | (   ) | (\\ (        ) |\n"
+            + "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |\n"
+            + "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)\n"
+            + "                                                         ";
 
     private final Scanner in = new Scanner(System.in);
 
@@ -29,16 +38,6 @@ public class Ui {
     }
 
     /**
-     * Prints welcome message.
-     */
-    public void showLogin() {
-        showLine();
-        printNicely(LoginCommand.MESSAGE);
-        showLine();
-        printNicely("");
-    }
-
-    /**
      * Prints dotted line.
      */
     public void showLine() {
@@ -51,7 +50,6 @@ public class Ui {
      * @return String command from user.
      */
     public String readCommand() {
-        printNicely("");
         return in.nextLine();
     }
 
@@ -72,12 +70,9 @@ public class Ui {
     }
 
     public char[][] readUsernameAndPassword() {
-        printNicely("");
         showLine();
         char[] username = readUsername();
-        printNicely("");
         char[] password = readPassword();
-        printNicely("");
         return new char[][]{username, password};
     }
 
@@ -87,13 +82,36 @@ public class Ui {
     }
 
     private char[] readPassword() {
+        printNicely("");
+        printNicely(LoginCommand.WARNING_MESSAGE);
         printNicely(LoginCommand.PASSWORD_MESSAGE);
 
         if (System.console() == null) {
-            printNicely("Please use console, or else password is not masked.");
             return in.nextLine().toCharArray();
         }
 
         return System.console().readPassword();
+    }
+
+    public void showWelcome() {
+        printNicely(LOGO);
+        printNicely("Welcome!");
+    }
+
+    public void showMenu() {
+        printNicely("1. Add Course");
+        printNicely("2. Drop Course");
+        printNicely("3. Check/Print Courses Registered");
+        printNicely("4. Check Vacancies Available");
+        printNicely("5. Change Index Number of Course");
+        printNicely("6. Swop Index Number with Another Student");
+        printNicely("7. Logout");
+        printNicely("Please select an item:");
+    }
+
+    public String askLoginOrExit() {
+        printNicely("Press Y to Login, N to Exit");
+        printNicely("Please type Y/N:");
+        return in.nextLine();
     }
 }
