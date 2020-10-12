@@ -9,7 +9,7 @@ import mystars.ui.Ui;
  */
 public class ExitCommand extends Command {
 
-    public static final String COMMAND_WORD = "bye";
+    public static final String COMMAND_WORD = "7";
     public static final String MESSAGE = "Bye! See you again soon!";
 
     /**
@@ -21,7 +21,7 @@ public class ExitCommand extends Command {
      */
     @Override
     public void execute(UserList users, Ui ui, Storage storage) {
-        isExit = true;
+        setExit();
         ui.showExit();
     }
 }
