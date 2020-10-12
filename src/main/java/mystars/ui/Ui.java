@@ -41,7 +41,9 @@ public class Ui {
      * Prints dotted line.
      */
     public void showLine() {
+        printNicely("");
         printNicely(DOTTED_LINE);
+        printNicely("");
     }
 
     /**
@@ -70,8 +72,8 @@ public class Ui {
     }
 
     public char[][] readUsernameAndPassword() {
-        showLine();
         char[] username = readUsername();
+        printNicely("");
         char[] password = readPassword();
         return new char[][]{username, password};
     }
@@ -82,7 +84,6 @@ public class Ui {
     }
 
     private char[] readPassword() {
-        printNicely("");
         printNicely(LoginCommand.WARNING_MESSAGE);
         printNicely(LoginCommand.PASSWORD_MESSAGE);
 
@@ -107,11 +108,5 @@ public class Ui {
         printNicely("6. Swop Index Number with Another Student");
         printNicely("7. Logout");
         printNicely("Please select an item:");
-    }
-
-    public String askLoginOrExit() {
-        printNicely("Press Y to Login, N to Exit");
-        printNicely("Please type Y/N:");
-        return in.nextLine();
     }
 }

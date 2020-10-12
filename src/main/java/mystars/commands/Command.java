@@ -10,16 +10,17 @@ import mystars.ui.Ui;
  */
 public abstract class Command {
 
-    public static final String MESSAGE = "Enter bye";
     public static final String COMMAND_ERROR = "I don't understand what you have entered.";
 
-    boolean isExit;
+    private boolean isExit;
+    private boolean isLogin;
 
     /**
      * Initialises command to execute and set exit status to false.
      */
     public Command() {
         isExit = false;
+        isLogin = false;
     }
 
     /**
@@ -39,5 +40,17 @@ public abstract class Command {
      */
     public boolean isExit() {
         return isExit;
+    }
+
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    void setExit() {
+        this.isExit = true;
+    }
+
+    void setLoginStatus(boolean isLogin) {
+        this.isLogin = isLogin;
     }
 }

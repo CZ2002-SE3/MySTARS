@@ -47,28 +47,24 @@ public class MyStars {
      */
     public void run() {
 
-        LoginCommand loginCommand = new LoginCommand();
-
-        boolean isLogin = false;
-        while (!isLogin) {
+        Command command = new LoginCommand();
+        while (!command.isLogin()) {
             try {
-                loginCommand.execute(users, ui, storage);
-                isLogin = loginCommand.isLogin;
+                command.execute(users, ui, storage);
             } catch (MyStarsException e) {
                 ui.showError(e.getMessage());
-            } finally {
-                ui.showLine();
             }
         }
 
-        boolean isExit = false;
-        while (!isExit) {
+        ui.showWelcome();
+
+        while (!command.isExit()) {
             try {
+                ui.showMenu();
                 String fullCommand = ui.readCommand();
                 ui.showLine();
-                Command c = parser.parse(fullCommand);
-                c.execute(users, ui, storage);
-                isExit = c.isExit();
+                command = parser.parse(fullCommand);
+                command.execute(users, ui, storage);
             } catch (MyStarsException e) {
                 ui.showError(e.getMessage());
             } finally {
