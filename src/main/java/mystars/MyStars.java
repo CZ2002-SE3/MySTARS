@@ -11,7 +11,7 @@ import mystars.storage.Storage;
 import mystars.ui.Ui;
 
 /**
- * My STudent Automated Registration System
+ * My STudent Automated Registration System.
  */
 public class MyStars {
 
