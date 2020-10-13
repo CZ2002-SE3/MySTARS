@@ -13,7 +13,7 @@ import mystars.data.user.User;
  */
 public class Parser {
 
-    public static final String SEPARATOR = "|"; //used to separate each attribute of an object
+    public static final String SEPARATOR = "\\|"; //used to separate each attribute of an object
 
     /**
      * Parses user input, and returns corresponding command.
