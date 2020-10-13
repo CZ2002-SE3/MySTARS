@@ -45,6 +45,13 @@ public class Parser {
 
         //TODO: Read users from file.
         User user = null;
+
+        String[] userSplit = line.split("\\|");
+
+        user.setUsername(userSplit[0].toCharArray());
+        user.setPassword(userSplit[1].toCharArray());
+        user.setType(userSplit[2]);
+
         return user;
     }
 
