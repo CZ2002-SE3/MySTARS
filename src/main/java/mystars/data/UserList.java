@@ -4,6 +4,7 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
+import mystars.login.PasswordHandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,16 +38,21 @@ public class UserList {
         return users.size();
     }
 
-    public boolean isLoginValid(char[][] usernameAndPassword) {
+    public boolean isLoginValid(char[][] usernameAndPassword) throws MyStarsException {
 
         //TODO: Check if username and password is valid.
-        return String.valueOf(usernameAndPassword[1]).equals("password");
+        for (User user: users) {
+            if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
+                return new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword());
+            }
+        }
+        return false;
     }
 
     public String getUserType(char[][] usernameAndPassword) {
 
         //TODO: Check what kind of user.
-        for(User user: users) {
+        for (User user: users) {
             if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
                 if (Arrays.equals(user.getPassword(), usernameAndPassword[1])) {
                     if (user instanceof Student) {
