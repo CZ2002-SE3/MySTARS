@@ -4,6 +4,8 @@ import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
 import mystars.data.exception.MyStarsException;
+import mystars.data.user.Admin;
+import mystars.data.user.Student;
 import mystars.data.user.User;
 
 /**
@@ -44,13 +46,25 @@ public class Parser {
     public User readUser(String line) throws MyStarsException {
 
         //TODO: Read users from file.
-        User user = null;
-
+        User user;
         String[] userSplit = line.split("\\|");
+        String username = userSplit[0];
+        String password = userSplit[1];
+        String type = userSplit[2];
+        switch (type) {
+        case "student":
+            user = new Student();
+            break;
+        case "admin":
+            user = new Admin();
+            break;
+        default:
+            throw new MyStarsException("Invalid user type: " + type);
+        }
 
-        user.setUsername(userSplit[0].toCharArray());
-        user.setPassword(userSplit[1].toCharArray());
-        user.setType(userSplit[2]);
+
+        user.setUsername(username.toCharArray());
+        user.setPassword(password.toCharArray());
 
         return user;
     }

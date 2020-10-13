@@ -1,5 +1,8 @@
 package mystars.data;
 
+import mystars.data.exception.MyStarsException;
+import mystars.data.user.Admin;
+import mystars.data.user.Student;
 import mystars.data.user.User;
 
 import java.util.ArrayList;
@@ -46,7 +49,11 @@ public class UserList {
         for(User user: users) {
             if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
                 if (Arrays.equals(user.getPassword(), usernameAndPassword[1])) {
-                    return user.getType();
+                    if (user instanceof Student) {
+                        return "student";
+                    } else if (user instanceof Admin) {
+                        return "admin";
+                    }
                 }
                 else {
                     break;

@@ -34,9 +34,10 @@ public class Storage {
         if (Files.exists(path)) {
             try {
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
+                String line = bufferedReader.readLine();
 
                 while (true) {
-                    String line = bufferedReader.readLine();
+                    line = bufferedReader.readLine();
                     if (line == null) {
                         break;
                     }
