@@ -16,7 +16,7 @@ public class Storage {
     public static final String LOAD_ERROR = "I am unable to load file.";
     private static final String READ_ERROR = "I am unable to read file.";
 
-    private static final String FOLDER = "data";
+    private static final String FOLDER = "db";
     private static final String USERS_FILE = "users.txt";
     private static final String COURSES_FILE = "courses.txt";
     private static final String STUDENTS_FILE = "students.txt";
