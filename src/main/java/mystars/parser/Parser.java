@@ -13,6 +13,8 @@ import mystars.data.user.User;
  */
 public class Parser {
 
+    public static final String SEPARATOR = "|"; //used to separate each attribute of an object
+
     /**
      * Parses user input, and returns corresponding command.
      *
@@ -47,10 +49,10 @@ public class Parser {
 
         //TODO: Read users from file.
         User user;
-        String[] userSplit = line.split("\\|");
-        String username = userSplit[0];
-        String password = userSplit[1];
-        String type = userSplit[2];
+        String[] userSplit = line.split(SEPARATOR);
+        String username = userSplit[0].trim();
+        String password = userSplit[1].trim();
+        String type = userSplit[2].trim();
         switch (type) {
         case "student":
             user = new Student();
