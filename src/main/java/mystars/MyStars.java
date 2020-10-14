@@ -9,6 +9,7 @@ import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
 import mystars.parser.Parser;
 import mystars.storage.Storage;
+import mystars.ui.StudentUi;
 import mystars.ui.Ui;
 
 /**
@@ -18,10 +19,10 @@ public class MyStars {
 
     private final Parser parser;
     private final Storage storage;
-    private final Ui ui;
+    private Ui ui;
     private UserList users;
     private CourseList courses;
-
+    private String userType;
     /**
      * Initialises MySTARS.
      */
@@ -61,11 +62,19 @@ public class MyStars {
                     command = new LoginCommand();
                     command.execute(users, ui, storage);
                 }
+                if (users.getUserType(command.getUser()).equals("student")) {
+                    System.out.println("change ui to student");
+                    ui = new StudentUi();
+                    userType = "student";
+                }
                 ui.greetUser();
                 ui.showMenu();
                 String fullCommand = ui.readCommand();
                 ui.showLine();
-                command = parser.parse(fullCommand);
+                if (userType.equals("student")){
+                    command = parser.parseStudent(fullCommand);
+                }
+                else{command = parser.parse(fullCommand);}
                 command.execute(users, ui, storage);
             } catch (MyStarsException e) {
                 ui.showError(e.getMessage());

@@ -56,7 +56,7 @@ public class Ui {
      *
      * @param string String to print.
      */
-    private void printNicely(String string) {
+    protected void printNicely(String string) {
         System.out.println(string);
     }
 
@@ -88,8 +88,9 @@ public class Ui {
     }
 
     public void showMenu() {
-        printNicely("1. Add Course");
-        printNicely("2. Drop Course");
+        // Change this to admin menu
+        printNicely("1. Register New Course");
+        printNicely("2. Register New Student");
         printNicely("3. Check/Print Courses Registered");
         printNicely("4. Check Vacancies Available");
         printNicely("5. Change Index Number of Course");

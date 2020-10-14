@@ -49,12 +49,12 @@ public class UserList {
         return false;
     }
 
-    public String getUserType(char[][] usernameAndPassword) {
+    public String getUserType(char[][] usernameAndPassword) throws MyStarsException{
 
         //TODO: Check what kind of user.
         for (User user: users) {
             if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
-                if (Arrays.equals(user.getPassword(), usernameAndPassword[1])) {
+                if (new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword())) {
                     if (user instanceof Student) {
                         return "student";
                     } else if (user instanceof Admin) {
@@ -67,5 +67,31 @@ public class UserList {
             }
         }
         return null;
+    }
+
+    public User getUser(char[][] usernameAndPassword) throws MyStarsException{
+
+        //TODO: Check what kind of user.
+        for (User user: users) {
+            if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
+                if (new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword())) {
+                    return user;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        return null;
+    }
+
+    public String getUserType(User user){
+        if (user instanceof Admin){
+            return "admin";
+        }
+        else if (user instanceof Student){
+            return "student";
+        }
+        return "error";
     }
 }
