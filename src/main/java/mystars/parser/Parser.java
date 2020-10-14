@@ -75,9 +75,9 @@ public class Parser {
     /**
      * Reads courses from file.
      *
-     * @param line Line of user to read.
+     * @param line Line of course to read.
      * @return Courses of corresponding line.
-     * @throws MyStarsException If user is incomplete or invalid.
+     * @throws MyStarsException If course vacancy is not an integer.
      */
     public Course readCourse(String line) throws MyStarsException {
 
