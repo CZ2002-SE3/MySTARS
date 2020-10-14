@@ -3,6 +3,7 @@ package mystars.parser;
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
+import mystars.data.course.Course;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
@@ -69,6 +70,38 @@ public class Parser {
         user.setPassword(password.toCharArray());
 
         return user;
+    }
+
+    /**
+     * Reads courses from file.
+     *
+     * @param line Line of user to read.
+     * @return Courses of corresponding line.
+     * @throws MyStarsException If user is incomplete or invalid.
+     */
+    public Course readCourse(String line) throws MyStarsException {
+
+        //TODO: Read courses from file.
+        Course course = null;
+        String[] courseSplit = line.split(SEPARATOR);
+        String courseCode = courseSplit[0].trim();
+        String school = courseSplit[1].trim();
+        String indexNumber = courseSplit[2].trim();
+        int vacancy;
+
+        try {
+            vacancy = Integer.parseInt(courseSplit[3].trim());
+        } catch (NumberFormatException e) {
+            throw new MyStarsException("Vacancy must be an integer.");
+        }
+
+
+        course.setCourseCode(courseCode);
+        course.setSchool(school);
+        course.setIndexNumber(indexNumber);
+        course.setVacancy(vacancy);
+
+        return course;
     }
 
     public boolean isExit(String fullCommand) {
