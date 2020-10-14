@@ -1,5 +1,6 @@
 package mystars.storage;
 
+import mystars.data.course.Course;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.User;
 import mystars.parser.Parser;
@@ -51,6 +52,38 @@ public class Storage {
         }
 
         return users;
+    }
+
+    /**
+     * Loads courses, stores them into ArrayList and returns the ArrayList.
+     *
+     * @return ArrayList of courses.
+     * @throws MyStarsException If there is problem reading file.
+     */
+    public ArrayList<Course> loadCourses(Parser parser) throws MyStarsException {
+        Path path = Paths.get(FOLDER, COURSES_FILE);
+        ArrayList<Course> courses = new ArrayList<>();
+
+        if (Files.exists(path)) {
+            try {
+                BufferedReader bufferedReader = Files.newBufferedReader(path);
+                String line = bufferedReader.readLine();
+
+                while (true) {
+                    line = bufferedReader.readLine();
+                    if (line == null) {
+                        break;
+                    }
+
+                    Course course = parser.readCourse(line);
+                    courses.add(course);
+                }
+            } catch (IOException e) {
+                throw new MyStarsException(READ_ERROR);
+            }
+        }
+
+        return courses;
     }
 
 }

@@ -1,4 +1,4 @@
-format: username|password|type //is not hashed yet
+format: username|password|type
 IRVIN001|44964:k13C7Lhjfmo/R4szp/lTAA==:8W8T3jGTQlT9mtQhKDpMWA==|student
 JUNHONG002|40625:Sg8XH/P4FHPq4GTgBETHQQ==:nXD/qO3KmrOjCStP2m6bIQ==|student
 CHENYI001|49143:Yi+SXYQroAfYxLAnQvUbSA==:EixqD5iv20m7awMyYGwasw==|student
