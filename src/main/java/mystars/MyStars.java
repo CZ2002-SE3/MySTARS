@@ -4,6 +4,7 @@ import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LoginCommand;
 import mystars.commands.LogoutCommand;
+import mystars.data.CourseList;
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
 import mystars.parser.Parser;
@@ -19,6 +20,7 @@ public class MyStars {
     private final Storage storage;
     private final Ui ui;
     private UserList users;
+    private CourseList courses;
 
     /**
      * Initialises MySTARS.
@@ -29,6 +31,8 @@ public class MyStars {
         storage = new Storage();
         try {
             users = new UserList(storage.loadUsers(parser));
+            courses = new CourseList(storage.loadCourses(parser));
+
         } catch (MyStarsException e) {
             ui.showError(e.getMessage());
             users = new UserList();

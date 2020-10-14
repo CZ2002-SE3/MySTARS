@@ -2,10 +2,10 @@ package mystars.data.course;
 
 public class Course {
 
-    private final String courseCode;
-    private final String school;
-    private final String indexNumber;
-    private final int vacancy;
+    private String courseCode;
+    private String school;
+    private String indexNumber;
+    private int vacancy;
 
     public Course(String courseCode, String school, String indexNumber, int vacancy) {
         this.courseCode = courseCode;

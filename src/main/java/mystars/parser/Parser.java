@@ -82,7 +82,6 @@ public class Parser {
     public Course readCourse(String line) throws MyStarsException {
 
         //TODO: Read courses from file.
-        Course course = null;
         String[] courseSplit = line.split(SEPARATOR);
         String courseCode = courseSplit[0].trim();
         String school = courseSplit[1].trim();
@@ -95,13 +94,7 @@ public class Parser {
             throw new MyStarsException("Vacancy must be an integer.");
         }
 
-
-        course.setCourseCode(courseCode);
-        course.setSchool(school);
-        course.setIndexNumber(indexNumber);
-        course.setVacancy(vacancy);
-
-        return course;
+        return new Course(courseCode, school, indexNumber, vacancy);
     }
 
     public boolean isExit(String fullCommand) {
