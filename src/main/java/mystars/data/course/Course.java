@@ -6,12 +6,14 @@ public class Course {
     private String school;
     private String indexNumber;
     private int vacancy;
+    private int numAu;
 
-    public Course(String courseCode, String school, String indexNumber, int vacancy) {
+    public Course(String courseCode, String school, String indexNumber, int vacancy, int numAu) {
         this.courseCode = courseCode;
         this.school = school;
         this.indexNumber = indexNumber;
         this.vacancy = vacancy;
+        this.numAu = numAu;
     }
 
     public String getCourseCode() { return courseCode; }
@@ -36,5 +38,11 @@ public class Course {
 
     public void setVacancy(int vacancy) {
         this.vacancy = vacancy;
+    }
+
+    public int getNumAu() { return numAu; }
+
+    public void setNumAu(int numAu) {
+        this.numAu = numAu;
     }
 }

@@ -1,0 +1,4 @@
+format: name|staff id|gender|nationality|username
+Jessica Tan|S1920200T|F|Singaporean|JESSICA001
+Adrian Wong|S1718000F|M|Malaysian|ADRIAN021
+James Lim|S1920341M|M|Singaporean|JAMES098

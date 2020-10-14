@@ -2,6 +2,8 @@ package mystars.storage;
 
 import mystars.data.course.Course;
 import mystars.data.exception.MyStarsException;
+import mystars.data.user.Admin;
+import mystars.data.user.Student;
 import mystars.data.user.User;
 import mystars.parser.Parser;
 
@@ -19,8 +21,9 @@ public class Storage {
 
     private static final String FOLDER = "db";
     private static final String USERS_FILE = "users.txt";
-    private static final String COURSES_FILE = "courses.txt";
     private static final String STUDENTS_FILE = "students.txt";
+    private static final String ADMINS_FILE = "admins.txt";
+    private static final String COURSES_FILE = "courses.txt";
 
     /**
      * Loads users, stores them into ArrayList and returns the ArrayList.
@@ -52,6 +55,70 @@ public class Storage {
         }
 
         return users;
+    }
+
+    /**
+     * Loads students, stores them into ArrayList and returns the ArrayList.
+     *
+     * @return ArrayList of students.
+     * @throws MyStarsException If there is problem reading file.
+     */
+    public ArrayList<Student> loadStudents(Parser parser) throws MyStarsException {
+        Path path = Paths.get(FOLDER, STUDENTS_FILE);
+        ArrayList<Student> students = new ArrayList<>();
+
+        if (Files.exists(path)) {
+            try {
+                BufferedReader bufferedReader = Files.newBufferedReader(path);
+                String line = bufferedReader.readLine();
+
+                while (true) {
+                    line = bufferedReader.readLine();
+                    if (line == null) {
+                        break;
+                    }
+
+                    Student student = parser.readStudent(line);
+                    students.add(student);
+                }
+            } catch (IOException e) {
+                throw new MyStarsException(READ_ERROR);
+            }
+        }
+
+        return students;
+    }
+
+    /**
+     * Loads admins, stores them into ArrayList and returns the ArrayList.
+     *
+     * @return ArrayList of admins.
+     * @throws MyStarsException If there is problem reading file.
+     */
+    public ArrayList<Admin> loadAdmins(Parser parser) throws MyStarsException {
+        Path path = Paths.get(FOLDER, ADMINS_FILE);
+        ArrayList<Admin> admins = new ArrayList<>();
+
+        if (Files.exists(path)) {
+            try {
+                BufferedReader bufferedReader = Files.newBufferedReader(path);
+                String line = bufferedReader.readLine();
+
+                while (true) {
+                    line = bufferedReader.readLine();
+                    if (line == null) {
+                        break;
+                    }
+
+                    Admin admin = parser.readAdmin(line);
+                    admins.add(admin);
+                }
+            } catch (IOException e) {
+                throw new MyStarsException(READ_ERROR);
+            }
+        }
+
+        return admins;
     }
 
     /**
