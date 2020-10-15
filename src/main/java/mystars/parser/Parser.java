@@ -1,5 +1,6 @@
 package mystars.parser;
 
+import mystars.commands.AddCourseCommand;
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
@@ -34,6 +35,25 @@ public class Parser {
             break;
         default:
             throw new MyStarsException(Command.COMMAND_ERROR);
+        }
+
+        return command;
+    }
+
+    public Command parseStudent(String fullCommand) throws MyStarsException {
+        Command command;
+        switch (fullCommand.trim()) {
+            case AddCourseCommand.COMMAND_WORD:
+                command = new AddCourseCommand();
+                break;
+            case ExitCommand.COMMAND_WORD:
+                command = new ExitCommand();
+                break;
+            case LogoutCommand.COMMAND_WORD:
+                command = new LogoutCommand();
+                break;
+            default:
+                throw new MyStarsException(Command.COMMAND_ERROR);
         }
 
         return command;

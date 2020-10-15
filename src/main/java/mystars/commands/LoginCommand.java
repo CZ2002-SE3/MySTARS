@@ -24,6 +24,7 @@ public class LoginCommand extends Command {
     public void execute(UserList users, Ui ui, Storage storage) throws MyStarsException {
         char[][] usernameAndPassword = ui.readUsernameAndPassword(USERNAME_MESSAGE, PASSWORD_MESSAGE);
         setLoginStatus(users.isLoginValid(usernameAndPassword));
+        setUser(users.getUser(usernameAndPassword));
         ui.showLine();
         if (!isLogin()) {
             throw new MyStarsException(ERROR_MESSAGE);
