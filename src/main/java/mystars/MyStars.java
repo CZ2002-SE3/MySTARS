@@ -12,6 +12,9 @@ import mystars.storage.Storage;
 import mystars.ui.StudentUi;
 import mystars.ui.Ui;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * My STudent Automated Registration System.
  */
@@ -23,6 +26,7 @@ public class MyStars {
     private UserList users;
     private CourseList courses;
     private String userType;
+    private static final Logger logger = Logger.getLogger(MyStars.class.getName());
     /**
      * Initialises MySTARS.
      */
@@ -63,7 +67,7 @@ public class MyStars {
                     command.execute(users, ui, storage);
                 }
                 if (users.getUserType(command.getUser()).equals("student")) {
-                    System.out.println("change ui to student");
+                    logger.log(Level.INFO, "change ui to student");
                     ui = new StudentUi();
                     userType = "student";
                 }
