@@ -17,31 +17,41 @@ public class Course {
         this.numOfAUs = numOfAUs;
     }
 
-    public String getCourseCode() { return courseCode; }
+    public String getCourseCode() {
+        return courseCode;
+    }
 
     public void setCourseCode(String courseCode) {
         this.courseCode = courseCode;
     }
 
-    public String getSchool() { return school; }
+    public String getSchool() {
+        return school;
+    }
 
     public void setSchool(String school) {
         this.school = school;
     }
 
-    public String getIndexNumber() { return indexNumber; }
+    public String getIndexNumber() {
+        return indexNumber;
+    }
 
     public void setIndexNumber(String indexNumber) {
         this.indexNumber = indexNumber;
     }
 
-    public int getVacancy() { return vacancy; }
+    public int getVacancy() {
+        return vacancy;
+    }
 
     public void setVacancy(int vacancy) {
         this.vacancy = vacancy;
     }
 
-    public int getNumOfAUs() { return numOfAUs; }
+    public int getNumOfAUs() {
+        return numOfAUs;
+    }
 
     public void setNumOfAUs(int numOfAUs) {
         this.numOfAUs = numOfAUs;

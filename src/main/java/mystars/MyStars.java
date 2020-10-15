@@ -22,13 +22,14 @@ import java.util.logging.Logger;
  */
 public class MyStars {
 
+    private static final Logger logger = Logger.getLogger(MyStars.class.getName());
     private final Parser parser;
     private final Storage storage;
     private Ui ui;
     private UserList users;
     private CourseList courses;
     private UserType userType;
-    private static final Logger logger = Logger.getLogger(MyStars.class.getName());
+
     /**
      * Initialises MySTARS.
      */
@@ -86,10 +87,11 @@ public class MyStars {
                 ui.showMenu();
                 String fullCommand = ui.readCommand();
                 ui.showLine();
-                if (userType == UserType.STUDENT){
+                if (userType == UserType.STUDENT) {
                     command = parser.parseStudent(fullCommand);
+                } else {
+                    command = parser.parse(fullCommand);
                 }
-                else{command = parser.parse(fullCommand);}
                 command.execute(users, ui, storage);
             } catch (MyStarsException e) {
                 ui.showError(e.getMessage());

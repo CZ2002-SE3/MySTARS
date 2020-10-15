@@ -42,7 +42,7 @@ public class UserList {
     public boolean isLoginValid(char[][] usernameAndPassword) throws MyStarsException {
 
         //TODO: Check if username and password is valid.
-        for (User user: users) {
+        for (User user : users) {
             if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
                 return new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword());
             }
@@ -50,35 +50,14 @@ public class UserList {
         return false;
     }
 
-    /*public String getUserType(char[][] usernameAndPassword) throws MyStarsException{
+    public User getUser(char[][] usernameAndPassword) throws MyStarsException {
 
         //TODO: Check what kind of user.
-        for (User user: users) {
-            if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
-                if (new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword())) {
-                    if (user instanceof Student) {
-                        return "student";
-                    } else if (user instanceof Admin) {
-                        return "admin";
-                    }
-                }
-                else {
-                    break;
-                }
-            }
-        }
-        return null;
-    }*/
-
-    public User getUser(char[][] usernameAndPassword) throws MyStarsException{
-
-        //TODO: Check what kind of user.
-        for (User user: users) {
+        for (User user : users) {
             if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
                 if (new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword())) {
                     return user;
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -86,11 +65,10 @@ public class UserList {
         return null;
     }
 
-    public UserType getUserType(User user){
-        if (user instanceof Admin){
+    public UserType getUserType(User user) {
+        if (user instanceof Admin) {
             return UserType.ADMIN;
-        }
-        else if (user instanceof Student){
+        } else if (user instanceof Student) {
             return UserType.STUDENT;
         }
         return null;
@@ -99,8 +77,8 @@ public class UserList {
     public void addDetails(ArrayList<User> students, ArrayList<User> admins) {
         ArrayList<User> userDetails = new ArrayList<>(students);
         userDetails.addAll(admins);
-        for (User user: users) {
-            for (User userDetail: userDetails) {
+        for (User user : users) {
+            for (User userDetail : userDetails) {
                 if (user.equals(userDetail)) {
                     user = userDetail.copyLogin(user);
                 }

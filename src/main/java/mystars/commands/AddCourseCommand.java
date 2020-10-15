@@ -11,7 +11,7 @@ public class AddCourseCommand extends Command {
 
     public static final String COMMAND_WORD = "1";
 
-    public AddCourseCommand(){
+    public AddCourseCommand() {
         this.setLoginStatus(true);
     }
 
@@ -28,7 +28,7 @@ public class AddCourseCommand extends Command {
 
         User user = this.getUser();
 
-        if (users.getUserType(user) == UserType.ADMIN){
+        if (users.getUserType(user) == UserType.ADMIN) {
             return;
         }
 

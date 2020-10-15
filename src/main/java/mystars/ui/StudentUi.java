@@ -1,6 +1,6 @@
 package mystars.ui;
 
-public class StudentUi extends Ui{
+public class StudentUi extends Ui {
 
     @Override
     public void showMenu() {

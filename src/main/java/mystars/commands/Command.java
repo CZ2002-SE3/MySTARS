@@ -56,10 +56,11 @@ public abstract class Command {
         Command.isLogin = isLogin;
     }
 
-    void setUser(User u){
-        Command.user = u;
-    }
-    public User getUser(){
+    public User getUser() {
         return user;
+    }
+
+    void setUser(User u) {
+        Command.user = u;
     }
 }

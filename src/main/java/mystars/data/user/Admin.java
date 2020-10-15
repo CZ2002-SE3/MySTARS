@@ -20,33 +20,36 @@ public class Admin extends User {
 
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getStaffId() { return staffId; }
+    public String getStaffId() {
+        return staffId;
+    }
 
     public void setStaffId(String staffId) {
         this.staffId = staffId;
     }
 
-    public char getGender() { return gender; }
+    public char getGender() {
+        return gender;
+    }
 
     public void setGender(char gender) {
         this.gender = gender;
     }
 
-    public String getNationality() { return nationality; }
+    public String getNationality() {
+        return nationality;
+    }
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 
-    /*public String getUsername() { return username; }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }*/
 }

@@ -19,33 +19,36 @@ public class Student extends User {
 
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getMatricNo() { return matricNo; }
+    public String getMatricNo() {
+        return matricNo;
+    }
 
     public void setMatricNo(String matricNo) {
         this.matricNo = matricNo;
     }
 
-    public char getGender() { return gender; }
+    public char getGender() {
+        return gender;
+    }
 
     public void setGender(char gender) {
         this.gender = gender;
     }
 
-    public String getNationality() { return nationality; }
+    public String getNationality() {
+        return nationality;
+    }
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 
-    /*public String getUsername() { return username; }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }*/
 }

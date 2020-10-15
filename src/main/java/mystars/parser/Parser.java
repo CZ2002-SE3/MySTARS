@@ -43,17 +43,17 @@ public class Parser {
     public Command parseStudent(String fullCommand) throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
-            case AddCourseCommand.COMMAND_WORD:
-                command = new AddCourseCommand();
-                break;
-            case ExitCommand.COMMAND_WORD:
-                command = new ExitCommand();
-                break;
-            case LogoutCommand.COMMAND_WORD:
-                command = new LogoutCommand();
-                break;
-            default:
-                throw new MyStarsException(Command.COMMAND_ERROR);
+        case AddCourseCommand.COMMAND_WORD:
+            command = new AddCourseCommand();
+            break;
+        case ExitCommand.COMMAND_WORD:
+            command = new ExitCommand();
+            break;
+        case LogoutCommand.COMMAND_WORD:
+            command = new LogoutCommand();
+            break;
+        default:
+            throw new MyStarsException(Command.COMMAND_ERROR);
         }
 
         return command;
