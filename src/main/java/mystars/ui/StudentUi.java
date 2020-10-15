@@ -13,4 +13,13 @@ public class StudentUi extends Ui{
         printNicely("7. Logout");
         printNicely("Please select an item:");
     }
+
+    @Override
+    public void greetUser() {
+        printNicely("Hello student!");
+    }
+
+    public void showAddCourse() {
+        printNicely("adding...");
+    }
 }

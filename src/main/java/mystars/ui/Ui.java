@@ -2,7 +2,7 @@ package mystars.ui;
 
 import java.util.Scanner;
 
-public class Ui {
+public abstract class Ui {
 
     private static final String DOTTED_LINE = "------------------------------------------------------------";
     private static final String LOGO = " _______         _______________________ _______ _______ \n"
@@ -87,17 +87,7 @@ public class Ui {
         printNicely("Welcome!");
     }
 
-    public void showMenu() {
-        // Change this to admin menu
-        printNicely("1. Register New Course");
-        printNicely("2. Register New Student");
-        printNicely("3. Check/Print Courses Registered");
-        printNicely("4. Check Vacancies Available");
-        printNicely("5. Change Index Number of Course");
-        printNicely("6. Swop Index Number with Another Student");
-        printNicely("7. Logout");
-        printNicely("Please select an item:");
-    }
+    public abstract void showMenu();
 
     public void showLogout() {
         printNicely("You have successfully logged out!");
@@ -108,11 +98,5 @@ public class Ui {
         return in.nextLine();
     }
 
-    public void greetUser() {
-        printNicely("Hello user!");
-    }
-
-    public void showAddCourse() {
-        printNicely("adding...");
-    }
+    public abstract void greetUser();
 }

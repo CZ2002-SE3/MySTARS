@@ -4,6 +4,7 @@ import mystars.data.UserList;
 import mystars.data.user.User;
 import mystars.data.user.UserType;
 import mystars.storage.Storage;
+import mystars.ui.StudentUi;
 import mystars.ui.Ui;
 
 public class AddCourseCommand extends Command {
@@ -23,6 +24,8 @@ public class AddCourseCommand extends Command {
      */
     @Override
     public void execute(UserList users, Ui ui, Storage storage) {
+        assert ui instanceof StudentUi;
+
         User user = this.getUser();
 
         if (users.getUserType(user) == UserType.ADMIN){
@@ -30,7 +33,7 @@ public class AddCourseCommand extends Command {
         }
 
         //list courses and wait for user's choice
-        ui.showAddCourse();
+        ((StudentUi) ui).showAddCourse();
         //parse user's choice
 
         //try to add into Student courses; may fail if there is clash

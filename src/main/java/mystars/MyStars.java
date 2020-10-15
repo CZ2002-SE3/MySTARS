@@ -10,6 +10,7 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.user.UserType;
 import mystars.parser.Parser;
 import mystars.storage.Storage;
+import mystars.ui.AdminUi;
 import mystars.ui.StudentUi;
 import mystars.ui.Ui;
 
@@ -33,7 +34,7 @@ public class MyStars {
      */
     public MyStars() {
         parser = new Parser();
-        ui = new Ui();
+        ui = new StudentUi();
         storage = new Storage();
         try {
             users = new UserList(storage.loadUsers(parser));
@@ -68,10 +69,18 @@ public class MyStars {
                     command = new LoginCommand();
                     command.execute(users, ui, storage);
                 }
-                if (users.getUserType(command.getUser()) == UserType.STUDENT) {
+
+                switch (users.getUserType(command.getUser())) {
+                case STUDENT:
                     logger.log(Level.INFO, "change ui to student");
                     ui = new StudentUi();
                     userType = UserType.STUDENT;
+                    break;
+                case ADMIN:
+                    logger.log(Level.INFO, "change ui to admin");
+                    ui = new AdminUi();
+                    userType = UserType.STUDENT;
+                    break;
                 }
                 ui.greetUser();
                 ui.showMenu();
