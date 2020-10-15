@@ -11,6 +11,10 @@ public class AddCourseCommand extends Command {
 
     public static final String COMMAND_WORD = "1";
 
+    public AddCourseCommand(){
+        this.setLoginStatus(true);
+    }
+
     /**
      * Add course to student.
      *
@@ -18,10 +22,6 @@ public class AddCourseCommand extends Command {
      * @param ui      Ui object.
      * @param storage Storage object.
      */
-    public AddCourseCommand(){
-        this.setLoginStatus(true);
-    }
-
     @Override
     public void execute(UserList users, Ui ui, Storage storage) {
         User user = this.getUser();
@@ -32,7 +32,7 @@ public class AddCourseCommand extends Command {
         }
 
         //list courses and wait for user's choice
-        System.out.println("adding...");
+        ui.showAddCourse();
         //parse user's choice
 
         //try to add into Student courses; may fail if there is clash

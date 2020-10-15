@@ -111,4 +111,8 @@ public class Ui {
     public void greetUser() {
         printNicely("Hello user!");
     }
+
+    public void showAddCourse() {
+        printNicely("adding...");
+    }
 }
