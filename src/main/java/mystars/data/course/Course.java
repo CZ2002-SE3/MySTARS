@@ -3,17 +3,18 @@ package mystars.data.course;
 public class Course {
 
     private String courseCode;
+    // Might be wise to change school to enum afterwards
     private String school;
     private String indexNumber;
     private int vacancy;
-    private int numAu;
+    private int numOfAUs;
 
-    public Course(String courseCode, String school, String indexNumber, int vacancy, int numAu) {
+    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs) {
         this.courseCode = courseCode;
         this.school = school;
         this.indexNumber = indexNumber;
         this.vacancy = vacancy;
-        this.numAu = numAu;
+        this.numOfAUs = numOfAUs;
     }
 
     public String getCourseCode() { return courseCode; }
@@ -40,9 +41,9 @@ public class Course {
         this.vacancy = vacancy;
     }
 
-    public int getNumAu() { return numAu; }
+    public int getNumOfAUs() { return numOfAUs; }
 
-    public void setNumAu(int numAu) {
-        this.numAu = numAu;
+    public void setNumOfAUs(int numOfAUs) {
+        this.numOfAUs = numOfAUs;
     }
 }

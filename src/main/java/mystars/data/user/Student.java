@@ -6,14 +6,17 @@ public class Student extends User {
     private String matricNo;
     private char gender;
     private String nationality;
-    private String username;
 
     public Student(String name, String matricNo, char gender, String nationality, String username) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
         this.nationality = nationality;
-        this.username = username;
+        super.setUsername(username.toCharArray());
+    }
+
+    public Student() {
+
     }
 
     public String getName() { return name; }

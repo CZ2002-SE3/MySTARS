@@ -74,7 +74,7 @@ public class Parser {
         String username = userSplit[0].trim();
         String password = userSplit[1].trim();
         String type = userSplit[2].trim();
-        /* switch (type) {
+        switch (type) {
         case "student":
             user = new Student();
             break;
@@ -83,7 +83,7 @@ public class Parser {
             break;
         default:
             throw new MyStarsException("Invalid user type: " + type);
-        }*/
+        }
 
 
         user.setUsername(username.toCharArray());
@@ -106,16 +106,16 @@ public class Parser {
         String courseCode = courseSplit[0].trim();
         String school = courseSplit[1].trim();
         String indexNumber = courseSplit[2].trim();
-        int vacancy, numAu;
+        int vacancy, numOfAUs;
 
         try {
             vacancy = Integer.parseInt(courseSplit[3].trim());
-            numAu = Integer.parseInt(courseSplit[4].trim());
+            numOfAUs = Integer.parseInt(courseSplit[4].trim());
         } catch (NumberFormatException e) {
             throw new MyStarsException("Vacancy must be an integer.");
         }
 
-        return new Course(courseCode, school, indexNumber, vacancy, numAu);
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs);
     }
 
     /**

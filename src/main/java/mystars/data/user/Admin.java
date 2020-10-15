@@ -13,7 +13,11 @@ public class Admin extends User {
         this.staffId = staffId;
         this.gender = gender;
         this.nationality = nationality;
-        this.username = username;
+        super.setUsername(username.toCharArray());
+    }
+
+    public Admin() {
+
     }
 
     public String getName() { return name; }

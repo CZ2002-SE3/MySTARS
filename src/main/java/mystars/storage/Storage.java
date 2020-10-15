@@ -63,9 +63,9 @@ public class Storage {
      * @return ArrayList of students.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<Student> loadStudents(Parser parser) throws MyStarsException {
+    public ArrayList<User> loadStudents(Parser parser) throws MyStarsException {
         Path path = Paths.get(FOLDER, STUDENTS_FILE);
-        ArrayList<Student> students = new ArrayList<>();
+        ArrayList<User> students = new ArrayList<>();
 
         if (Files.exists(path)) {
             try {
@@ -95,9 +95,9 @@ public class Storage {
      * @return ArrayList of admins.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<Admin> loadAdmins(Parser parser) throws MyStarsException {
+    public ArrayList<User> loadAdmins(Parser parser) throws MyStarsException {
         Path path = Paths.get(FOLDER, ADMINS_FILE);
-        ArrayList<Admin> admins = new ArrayList<>();
+        ArrayList<User> admins = new ArrayList<>();
 
         if (Files.exists(path)) {
             try {

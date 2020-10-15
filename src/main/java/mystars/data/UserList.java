@@ -4,6 +4,7 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
+import mystars.data.user.UserType;
 import mystars.login.PasswordHandler;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class UserList {
         return false;
     }
 
-    public String getUserType(char[][] usernameAndPassword) throws MyStarsException{
+    /*public String getUserType(char[][] usernameAndPassword) throws MyStarsException{
 
         //TODO: Check what kind of user.
         for (User user: users) {
@@ -67,7 +68,7 @@ public class UserList {
             }
         }
         return null;
-    }
+    }*/
 
     public User getUser(char[][] usernameAndPassword) throws MyStarsException{
 
@@ -85,13 +86,25 @@ public class UserList {
         return null;
     }
 
-    public String getUserType(User user){
+    public UserType getUserType(User user){
         if (user instanceof Admin){
-            return "admin";
+            return UserType.ADMIN;
         }
         else if (user instanceof Student){
-            return "student";
+            return UserType.STUDENT;
         }
-        return "error";
+        return null;
+    }
+
+    public void addDetails(ArrayList<User> students, ArrayList<User> admins) {
+        ArrayList<User> userDetails = new ArrayList<>(students);
+        userDetails.addAll(admins);
+        for (User user: users) {
+            for (User userDetail: userDetails) {
+                if (user.equals(userDetail)) {
+                    user = userDetail.copyLogin(user);
+                }
+            }
+        }
     }
 }

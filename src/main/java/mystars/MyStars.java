@@ -7,6 +7,7 @@ import mystars.commands.LogoutCommand;
 import mystars.data.CourseList;
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.user.UserType;
 import mystars.parser.Parser;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
@@ -25,7 +26,7 @@ public class MyStars {
     private Ui ui;
     private UserList users;
     private CourseList courses;
-    private String userType;
+    private UserType userType;
     private static final Logger logger = Logger.getLogger(MyStars.class.getName());
     /**
      * Initialises MySTARS.
@@ -36,6 +37,7 @@ public class MyStars {
         storage = new Storage();
         try {
             users = new UserList(storage.loadUsers(parser));
+            users.addDetails(storage.loadStudents(parser), storage.loadAdmins(parser));
             courses = new CourseList(storage.loadCourses(parser));
 
         } catch (MyStarsException e) {
@@ -66,16 +68,16 @@ public class MyStars {
                     command = new LoginCommand();
                     command.execute(users, ui, storage);
                 }
-                if (users.getUserType(command.getUser()).equals("student")) {
+                if (users.getUserType(command.getUser()) == UserType.STUDENT) {
                     logger.log(Level.INFO, "change ui to student");
                     ui = new StudentUi();
-                    userType = "student";
+                    userType = UserType.STUDENT;
                 }
                 ui.greetUser();
                 ui.showMenu();
                 String fullCommand = ui.readCommand();
                 ui.showLine();
-                if (userType.equals("student")){
+                if (userType == UserType.STUDENT){
                     command = parser.parseStudent(fullCommand);
                 }
                 else{command = parser.parse(fullCommand);}

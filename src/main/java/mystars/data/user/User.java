@@ -20,4 +20,28 @@ public abstract class User {
     public void setPassword(char[] password) {
         this.password = password;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        assert obj instanceof User;
+
+        if (((User) obj).getUsername().length != username.length) {
+            return false;
+        }
+
+        for (int i = 0; i < password.length; i++) {
+            if (((User) obj).username[i] == username[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public User copyLogin(User user) {
+        username = user.username;
+        password = user.password;
+
+        return this;
+    }
 }
