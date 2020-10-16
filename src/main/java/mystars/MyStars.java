@@ -38,9 +38,9 @@ public class MyStars {
         ui = new StudentUi();
         storage = new Storage();
         try {
-            users = new UserList(storage.loadUsers(parser));
-            users.addDetails(storage.loadStudents(parser), storage.loadAdmins(parser));
             courses = new CourseList(storage.loadCourses(parser));
+            users = new UserList(storage.loadUsers(parser));
+            users.addDetails(storage.loadStudents(parser, courses), storage.loadAdmins(parser));
 
         } catch (MyStarsException e) {
             ui.showError(e.getMessage());
