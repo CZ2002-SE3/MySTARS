@@ -68,4 +68,12 @@ public class Course {
     public void setNumOfAUs(int numOfAUs) {
         this.numOfAUs = numOfAUs;
     }
+
+    public ArrayList<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(ArrayList<Lesson> lessons) {
+        this.lessons = lessons;
+    }
 }
