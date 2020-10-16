@@ -1,5 +1,7 @@
 package mystars.data.course;
 
+import java.util.ArrayList;
+
 public class Course {
 
     private String courseCode;
@@ -8,6 +10,16 @@ public class Course {
     private String indexNumber;
     private int vacancy;
     private int numOfAUs;
+    private ArrayList<Lesson> lessons;
+
+    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs, ArrayList<Lesson> lessons) {
+        this.courseCode = courseCode;
+        this.school = school;
+        this.indexNumber = indexNumber;
+        this.vacancy = vacancy;
+        this.numOfAUs = numOfAUs;
+        this.lessons = lessons;
+    }
 
     public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs) {
         this.courseCode = courseCode;
