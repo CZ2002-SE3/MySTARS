@@ -16,6 +16,10 @@ public class CourseList {
         this.courses = courses;
     }
 
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
+
     /**
      * Calculates the total number of AUs for a list of courses.
      * Used for CourseList defined in Student objects to check for Total AUs restrictions.

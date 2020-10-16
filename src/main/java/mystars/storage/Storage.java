@@ -1,5 +1,6 @@
 package mystars.storage;
 
+import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
@@ -63,7 +64,7 @@ public class Storage {
      * @return ArrayList of students.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<User> loadStudents(Parser parser) throws MyStarsException {
+    public ArrayList<User> loadStudents(Parser parser, CourseList availableCoursesList) throws MyStarsException {
         Path path = Paths.get(FOLDER, STUDENTS_FILE);
         ArrayList<User> students = new ArrayList<>();
 
@@ -78,7 +79,7 @@ public class Storage {
                         break;
                     }
 
-                    Student student = parser.readStudent(line);
+                    Student student = parser.readStudent(line, availableCoursesList);
                     students.add(student);
                 }
             } catch (IOException e) {

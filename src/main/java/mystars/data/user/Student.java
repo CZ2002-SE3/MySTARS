@@ -11,20 +11,13 @@ public class Student extends User {
     private CourseList registeredCourses;
     private CourseList waitlistedCourses;
 
-    public Student(String name, String matricNo, char gender, String nationality, CourseList registeredCourses, CourseList waitlistedCourses) {
+    public Student(String name, String matricNo, char gender, String nationality, String username, CourseList registeredCourses, CourseList waitlistedCourses) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
         this.nationality = nationality;
         this.registeredCourses = registeredCourses;
         this.waitlistedCourses = waitlistedCourses;
-    }
-
-    public Student(String name, String matricNo, char gender, String nationality, String username) {
-        this.name = name;
-        this.matricNo = matricNo;
-        this.gender = gender;
-        this.nationality = nationality;
         super.setUsername(username.toCharArray());
     }
 

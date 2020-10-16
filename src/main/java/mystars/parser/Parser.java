@@ -4,11 +4,14 @@ import mystars.commands.AddCourseCommand;
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
+import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
+
+import java.util.ArrayList;
 
 /**
  * Parses user input and file.
@@ -124,7 +127,7 @@ public class Parser {
      * @param line Line of student to read.
      * @return Students of corresponding line.
      */
-    public Student readStudent(String line) throws MyStarsException {
+    public Student readStudent(String line, CourseList availableCoursesList) throws MyStarsException {
 
         //TODO: Read courses from file.
         String[] studentSplit = line.split(SEPARATOR);
@@ -134,7 +137,46 @@ public class Parser {
         String nationality = studentSplit[3].trim();
         String username = studentSplit[4].trim();
 
-        return new Student(name, matricNo, gender, nationality, username);
+        CourseList registeredCourses;
+        try {
+            String registeredCoursesString = studentSplit[5];
+            ArrayList<Course> regCourses = new ArrayList<>();
+            regCourses.addAll(loadCourse(registeredCoursesString.split(","), availableCoursesList));
+            registeredCourses = new CourseList(regCourses);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            registeredCourses = new CourseList();
+        }
+
+        CourseList waitlistedCourses;
+        try {
+            String waitlistedCoursesString = studentSplit[6];
+            ArrayList<Course> waitCourses = new ArrayList<>();
+            waitCourses.addAll(loadCourse(waitlistedCoursesString.split(","), availableCoursesList));
+            waitlistedCourses = new CourseList(waitCourses);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            waitlistedCourses = new CourseList();
+        }
+
+        return new Student(name, matricNo, gender, nationality, username, registeredCourses, waitlistedCourses);
+    }
+
+    public ArrayList<Course> loadCourse(String[] registeredCourses, CourseList availableCoursesList) throws MyStarsException {
+        ArrayList<Course> courseArrayList = new ArrayList<>();
+        try {
+            for (String registeredCourse: registeredCourses) {
+                String[] courseSplit = registeredCourse.split(":");
+                String courseCode = courseSplit[0];
+                String courseIndex = courseSplit[1];
+                for (Course availableCourse: availableCoursesList.getCourses()) {
+                    if (courseCode == availableCourse.getCourseCode() && courseIndex == availableCourse.getIndexNumber()) {
+                        courseArrayList.add(availableCourse);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new MyStarsException("Problem loading student's registered/waitlisted courses!");
+        }
+        return courseArrayList;
     }
 
     /**
