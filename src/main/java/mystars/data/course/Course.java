@@ -21,14 +21,6 @@ public class Course {
         this.lessons = lessons;
     }
 
-    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs) {
-        this.courseCode = courseCode;
-        this.school = school;
-        this.indexNumber = indexNumber;
-        this.vacancy = vacancy;
-        this.numOfAUs = numOfAUs;
-    }
-
     public String getCourseCode() {
         return courseCode;
     }

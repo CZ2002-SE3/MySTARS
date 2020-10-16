@@ -1,5 +1,5 @@
 package mystars.data.course;
 
 public enum Day {
-    MON, TUE, WED, THURS, FRI, SAT
+    MON, TUE, WED, THU, FRI
 }

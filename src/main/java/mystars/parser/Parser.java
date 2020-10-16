@@ -6,12 +6,16 @@ import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
 import mystars.data.CourseList;
 import mystars.data.course.Course;
+import mystars.data.course.Day;
+import mystars.data.course.Lesson;
+import mystars.data.course.LessonType;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Parses user input and file.
@@ -118,8 +122,67 @@ public class Parser {
             throw new MyStarsException("Vacancy must be an integer.");
         }
 
-        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs);
+        String lessonString = courseSplit[5];
+        String[] lessonsString = lessonString.split(",");
+        ArrayList<Lesson> lessons = readLessons(lessonsString);
+
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessons);
     }
+
+    private ArrayList<Lesson> readLessons(String[] lessonsString) throws MyStarsException {
+        ArrayList<Lesson> lessonsToAdd = new ArrayList<>();
+        for (String lessonString: lessonsString) {
+            String[] lessonDetailsString = lessonString.split(":");
+
+            LessonType lessonType;
+            switch (lessonDetailsString[0]) {
+            case "LEC":
+                lessonType = LessonType.LEC;
+                break;
+            case "TUT":
+                lessonType = LessonType.TUT;
+                break;
+            case "LAB":
+                lessonType = LessonType.LAB;
+                break;
+            default:
+                throw new MyStarsException("Error when parsing lesson type!");
+            }
+
+            String venue = lessonDetailsString[1];
+
+            String time = lessonDetailsString[2];
+
+            Day day;
+            switch (lessonDetailsString[3]) {
+            case "MON":
+                day = Day.MON;
+                break;
+            case "TUE":
+                day = Day.TUE;
+                break;
+            case "WED":
+                day = Day.WED;
+                break;
+            case "THU":
+                day = Day.THU;
+                break;
+            case "FRI":
+                day = Day.FRI;
+                break;
+            default:
+                throw new MyStarsException("Error when parsing day!");
+            }
+
+            String group = lessonDetailsString[4];
+
+            Lesson lessonToAdd = new Lesson(lessonType, venue, time, day, group);
+            lessonsToAdd.add(lessonToAdd);
+        }
+
+        return lessonsToAdd;
+    }
+
 
     /**
      * Reads students from file.
