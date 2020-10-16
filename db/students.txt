@@ -1,16 +1,16 @@
-format: name|matriculation number|gender|nationality|username
-Leonardo Irvin Pratama|U1920301J|M|Indonesian|LPRATAMA001
-Tan Jun Hong|U1920001N|M|Singaporean|JUNHONG002
-Tey Chin Yi|U1920002P|M|Singaporean|CHENYI001
-Ferlita Halim|U1920003R|F|Indonesian|FERLITA001
-Woon Yoke Min|U1920004N|F|Singaporean|YOKEMIN002
-Sophia Wang|U1819001A|F|Malaysian|SOPHIA021
-Jackson Ho|U1819002B|M|Singaporean|JACKSON032
-Olivia See|U1819003C|F|Singaporean|OLIVIA033
-Lim Wei Jie, Liam|U1819004D|M|Chinese|LIAM003
-Emma Watson|U1819005E|F|French|EMMA041
-Noah Lee|U2021010M|M|Malaysian|NOAH050
-Ava Bhadravati|U2021021K|F|Indian|AVA0023
-Aiden, Chen De Xing|U2021033L|M|Singaporean|AIDEN098
-Aria Jin|U2021042T|F|Chinese|ARIA010
-Jason, Chin Kai Sheng|U2021050P|M|Singaporean|JASON022
+format: name|matriculation number|gender|nationality|username|regcourse1:index1,regcourse2:index2,etc.|waitcourse1:index1,waitcourse2:index2,etc.
+Leonardo Irvin Pratama|U1920301J|M|Indonesian|LPRATAMA001|CZ2001:10001,CZ2002:20710|CZ2007:10813
+Tan Jun Hong|U1920001N|M|Singaporean|JUNHONG002|CZ2001:10002,CZ2002:20712,CZ2007:10813|
+Tey Chin Yi|U1920002P|M|Singaporean|CHENYI001|CZ2001:10002,CZ2002:20712,CZ2007:10815|
+Ferlita Halim|U1920003R|F|Indonesian|FERLITA001|CZ2001:10003,MH2500:90830|CZ2002:20710,CZ2007:10814
+Woon Yoke Min|U1920004N|F|Singaporean|YOKEMIN002|CZ2001:10003,CZ2002:20710,MH2500:90830|CZ2007:10814
+Sophia Wang|U1819001A|F|Malaysian|SOPHIA021||
+Jackson Ho|U1819002B|M|Singaporean|JACKSON032||
+Olivia See|U1819003C|F|Singaporean|OLIVIA033||
+Lim Wei Jie, Liam|U1819004D|M|Chinese|LIAM003||
+Emma Watson|U1819005E|F|French|EMMA041||
+Noah Lee|U2021010M|M|Malaysian|NOAH050||
+Ava Bhadravati|U2021021K|F|Indian|AVA0023||
+Aiden, Chen De Xing|U2021033L|M|Singaporean|AIDEN098||
+Aria Jin|U2021042T|F|Chinese|ARIA010||
+Jason, Chin Kai Sheng|U2021050P|M|Singaporean|JASON022||
