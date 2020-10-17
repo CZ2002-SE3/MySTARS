@@ -8,8 +8,22 @@ public class Student extends User {
     private String matricNo;
     private char gender;
     private String nationality;
+    private String courseOfStudy;
+    private int yearOfStudy;
     private CourseList registeredCourses;
     private CourseList waitlistedCourses;
+
+    public Student(String name, String matricNo, char gender, String nationality, String username, String courseOfStudy, int yearOfStudy, CourseList registeredCourses, CourseList waitlistedCourses) {
+        this.name = name;
+        this.matricNo = matricNo;
+        this.gender = gender;
+        this.nationality = nationality;
+        this.courseOfStudy = courseOfStudy;
+        this.yearOfStudy = yearOfStudy;
+        this.registeredCourses = registeredCourses;
+        this.waitlistedCourses = waitlistedCourses;
+        super.setUsername(username.toCharArray());
+    }
 
     public Student(String name, String matricNo, char gender, String nationality, String username, CourseList registeredCourses, CourseList waitlistedCourses) {
         this.name = name;

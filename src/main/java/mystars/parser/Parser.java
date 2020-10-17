@@ -198,10 +198,14 @@ public class Parser {
         char gender = studentSplit[2].trim().charAt(0);
         String nationality = studentSplit[3].trim();
         String username = studentSplit[4].trim();
+        
+        String courseAndYear[] = studentSplit[5].split(":");
+        String courseOfStudy = courseAndYear[0];
+        int yearOfStudy = Integer.parseInt(courseAndYear[1]);
 
         CourseList registeredCourses;
         try {
-            String registeredCoursesString = studentSplit[5];
+            String registeredCoursesString = studentSplit[6];
             ArrayList<Course> regCourses = new ArrayList<>();
             regCourses.addAll(loadCourse(registeredCoursesString.split(","), availableCoursesList));
             registeredCourses = new CourseList(regCourses);
@@ -211,7 +215,7 @@ public class Parser {
 
         CourseList waitlistedCourses;
         try {
-            String waitlistedCoursesString = studentSplit[6];
+            String waitlistedCoursesString = studentSplit[7];
             ArrayList<Course> waitCourses = new ArrayList<>();
             waitCourses.addAll(loadCourse(waitlistedCoursesString.split(","), availableCoursesList));
             waitlistedCourses = new CourseList(waitCourses);
@@ -219,7 +223,7 @@ public class Parser {
             waitlistedCourses = new CourseList();
         }
 
-        return new Student(name, matricNo, gender, nationality, username, registeredCourses, waitlistedCourses);
+        return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy, registeredCourses, waitlistedCourses);
     }
 
     public ArrayList<Course> loadCourse(String[] registeredCourses, CourseList availableCoursesList) throws MyStarsException {
