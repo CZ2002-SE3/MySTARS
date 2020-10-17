@@ -242,6 +242,8 @@ public class Parser {
                 for (Course availableCourse: availableCoursesList.getCourses()) {
                     if (courseCode == availableCourse.getCourseCode() && courseIndex == availableCourse.getIndexNumber()) {
                         courseArrayList.add(availableCourse);
+                        //update vacancy for the course of a specific index
+                        availableCourse.setVacancy(availableCourse.getVacancy() - 1);
                     }
                 }
             }
