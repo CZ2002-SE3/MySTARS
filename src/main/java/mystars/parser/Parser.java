@@ -240,10 +240,15 @@ public class Parser {
                 String courseCode = courseSplit[0];
                 String courseIndex = courseSplit[1];
                 for (Course availableCourse: availableCoursesList.getCourses()) {
-                    if (courseCode == availableCourse.getCourseCode() && courseIndex == availableCourse.getIndexNumber()) {
+                    if (courseCode.equals(availableCourse.getCourseCode()) && courseIndex.equals(availableCourse.getIndexNumber())) {
                         courseArrayList.add(availableCourse);
                         //update vacancy for the course of a specific index
-                        availableCourse.setVacancy(availableCourse.getVacancy() - 1);
+                        int newVacancy = availableCourse.getVacancy() - 1;
+                        if (newVacancy < 0) {
+                            throw new MyStarsException("More students registered for a course than there are vacancies!");
+                        }
+                        availableCourse.setVacancy(newVacancy);
+                        break;
                     }
                 }
             }
