@@ -28,4 +28,14 @@ public class CourseList {
     public int getTotalNoOfAUs() {
         return courses.stream().mapToInt(Course::getNumOfAUs).sum();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder coursesString = new StringBuilder();
+        for (int i = 1; i <= courses.size(); i++) {
+            coursesString.append("#" + i + "\n" + courses.get(i - 1).toString());
+        }
+        return "Total No. of Courses Registered: " + courses.size() + "\n"
+        + coursesString.toString();
+    }
 }

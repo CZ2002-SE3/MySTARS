@@ -1,5 +1,7 @@
 package mystars.ui;
 
+import mystars.data.user.Student;
+
 public class StudentUi extends Ui {
 
     @Override
@@ -17,6 +19,11 @@ public class StudentUi extends Ui {
     @Override
     public void greetUser() {
         printNicely("Hello student!");
+    }
+
+    public void printRegCourses(Student student) {
+        printNicely("Here are your registered courses:");
+        printNicely(student.getRegisteredCourses().toString());
     }
 
     public void showAddCourse() {

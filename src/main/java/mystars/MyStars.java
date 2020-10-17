@@ -40,7 +40,6 @@ public class MyStars {
         try {
             courses = new CourseList(storage.loadCourses(parser));
             users = new UserList(storage.loadUsers(parser));
-            storage.loadStudents(parser, courses);
             users.addDetails(storage.loadStudents(parser, courses), storage.loadAdmins(parser));
 
         } catch (MyStarsException e) {

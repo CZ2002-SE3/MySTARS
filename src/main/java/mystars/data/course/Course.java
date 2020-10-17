@@ -68,4 +68,12 @@ public class Course {
     public void setLessons(ArrayList<Lesson> lessons) {
         this.lessons = lessons;
     }
+
+    @Override
+    public String toString() {
+        return "Course Code: " + courseCode + '\n' +
+                "School: " + school + '\n' +
+                "Index Number: " + indexNumber + '\n' +
+                "AU: " + numOfAUs + '\n';
+    }
 }

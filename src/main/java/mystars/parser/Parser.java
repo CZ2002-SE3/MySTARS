@@ -1,6 +1,7 @@
 package mystars.parser;
 
 import mystars.commands.AddCourseCommand;
+import mystars.commands.PrintCourseRegCommand;
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
@@ -51,6 +52,9 @@ public class Parser {
         switch (fullCommand.trim()) {
         case AddCourseCommand.COMMAND_WORD:
             command = new AddCourseCommand();
+            break;
+        case PrintCourseRegCommand.COMMAND_WORD:
+            command = new PrintCourseRegCommand();
             break;
         case ExitCommand.COMMAND_WORD:
             command = new ExitCommand();

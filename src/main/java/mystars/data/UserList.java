@@ -79,10 +79,15 @@ public class UserList {
         userDetails.addAll(admins);
         for (User user : users) {
             for (User userDetail : userDetails) {
-                if (user.equals(userDetail)) {
-                    user = userDetail.copyLogin(user);
+                if (String.valueOf(user.getUsername()).equals(String.valueOf(userDetail.getUsername()))) {
+                    user = userDetail.copyDetails(user);
+                    break;
                 }
             }
         }
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
     }
 }
