@@ -6,9 +6,8 @@ public class Admin extends User {
     private String staffId;
     private char gender;
     private String nationality;
-    private String username;
 
-    public Admin(String name, String matricNo, char gender, String nationality, String username) {
+    public Admin(String name, String staffId, char gender, String nationality, String username) {
         this.name = name;
         this.staffId = staffId;
         this.gender = gender;
@@ -52,4 +51,12 @@ public class Admin extends User {
         this.nationality = nationality;
     }
 
+    @Override
+    public Admin copyDetails(User user) {
+        ((Admin) user).setName(this.name);
+        ((Admin) user).setStaffId(this.staffId);
+        ((Admin) user).setGender(this.gender);
+        ((Admin) user).setNationality(this.nationality);
+        return (Admin) user;
+    }
 }

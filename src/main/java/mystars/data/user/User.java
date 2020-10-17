@@ -38,10 +38,5 @@ public abstract class User {
         return true;
     }
 
-    public User copyLogin(User user) {
-        username = user.username;
-        password = user.password;
-
-        return this;
-    }
+    public abstract User copyDetails(User user);
 }
