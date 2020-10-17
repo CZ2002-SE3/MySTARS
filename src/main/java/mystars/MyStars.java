@@ -82,6 +82,8 @@ public class MyStars {
                     ui = new AdminUi();
                     userType = UserType.STUDENT;
                     break;
+                default:
+                    throw new MyStarsException("Unexpected value: " + users.getUserType(command.getUser()));
                 }
                 ui.greetUser();
                 ui.showMenu();
@@ -90,7 +92,7 @@ public class MyStars {
                 if (userType == UserType.STUDENT) {
                     command = parser.parseStudent(fullCommand);
                 } else {
-                    command = parser.parse(fullCommand);
+                    command = parser.parseAdmin(fullCommand);
                 }
                 command.execute(users, ui, storage);
             } catch (MyStarsException e) {

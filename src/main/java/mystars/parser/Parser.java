@@ -15,7 +15,6 @@ import mystars.data.user.Student;
 import mystars.data.user.User;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Parses user input and file.
@@ -31,7 +30,7 @@ public class Parser {
      * @return Command to execute.
      * @throws MyStarsException If command is invalid.
      */
-    public Command parse(String fullCommand) throws MyStarsException {
+    public Command parseAdmin(String fullCommand) throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
         case ExitCommand.COMMAND_WORD:
@@ -76,7 +75,7 @@ public class Parser {
     public User readUser(String line) throws MyStarsException {
 
         //TODO: Read users from file.
-        User user = null;
+        User user;
         String[] userSplit = line.split(SEPARATOR);
         String username = userSplit[0].trim();
         String password = userSplit[1].trim();
