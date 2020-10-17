@@ -225,11 +225,18 @@ public class Parser {
         return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy, registeredCourses, waitlistedCourses);
     }
 
-    public ArrayList<Course> loadCourse(String[] registeredCourses, CourseList availableCoursesList) throws MyStarsException {
+    /**
+     * Loads courses taken by student.
+     * @param courses String to be parsed containing information about students' registered courses.
+     * @param availableCoursesList Loaded from database of courses.
+     * @return Arraylist of course.
+     * @throws MyStarsException
+     */
+    public ArrayList<Course> loadCourse(String[] courses, CourseList availableCoursesList) throws MyStarsException {
         ArrayList<Course> courseArrayList = new ArrayList<>();
         try {
-            for (String registeredCourse: registeredCourses) {
-                String[] courseSplit = registeredCourse.split(":");
+            for (String course: courses) {
+                String[] courseSplit = course.split(":");
                 String courseCode = courseSplit[0];
                 String courseIndex = courseSplit[1];
                 for (Course availableCourse: availableCoursesList.getCourses()) {
