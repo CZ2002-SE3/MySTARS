@@ -1,4 +1,4 @@
-format: name|matriculation number|gender|nationality|username|Course:Year|regcourse1:index1,regcourse2:index2...(optional)|waitcourse1:index1,waitcourse2:index2,...(optional)
+format: name|matriculation number|gender|nationality|username|CourseOfStudy:YearOfStudy|regcourse1:index1,regcourse2:index2...(optional)|waitcourse1:index1,waitcourse2:index2,...(optional)
 Leonardo Irvin Pratama|U1920301J|M|Indonesian|LPRATAMA001|CSC:2|CZ2001:10001,CZ2002:20710|CZ2007:10813
 Tan Jun Hong|U1920001N|M|Singaporean|JUNHONG002|BCG:2|CZ2001:10002,CZ2002:20712,CZ2007:10813|
 Tey Chin Yi|U1920002P|M|Singaporean|CHENYI001|BCG:2|CZ2001:10002,CZ2002:20712,CZ2007:10815|
