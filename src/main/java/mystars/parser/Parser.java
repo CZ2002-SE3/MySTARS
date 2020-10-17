@@ -24,9 +24,9 @@ public class Parser {
     public static final String SEPARATOR = "\\|"; //used to separate each attribute of an object
 
     /**
-     * Parses user input, and returns corresponding command.
+     * Parses admin input, and returns corresponding command.
      *
-     * @param fullCommand String of user input to parse.
+     * @param fullCommand String of admin input to parse.
      * @return Command to execute.
      * @throws MyStarsException If command is invalid.
      */
@@ -191,7 +191,6 @@ public class Parser {
      */
     public Student readStudent(String line, CourseList availableCoursesList) throws MyStarsException {
 
-        //TODO: Read courses from file.
         String[] studentSplit = line.split(SEPARATOR);
         String name = studentSplit[0].trim();
         String matricNo = studentSplit[1].trim();
