@@ -25,16 +25,6 @@ public class Student extends User {
         super.setUsername(username.toCharArray());
     }
 
-    public Student(String name, String matricNo, char gender, String nationality, String username, CourseList registeredCourses, CourseList waitlistedCourses) {
-        this.name = name;
-        this.matricNo = matricNo;
-        this.gender = gender;
-        this.nationality = nationality;
-        this.registeredCourses = registeredCourses;
-        this.waitlistedCourses = waitlistedCourses;
-        super.setUsername(username.toCharArray());
-    }
-
     public Student() {
 
     }
@@ -85,5 +75,21 @@ public class Student extends User {
 
     public void setWaitlistedCourses(CourseList waitlistedCourses) {
         this.waitlistedCourses = waitlistedCourses;
+    }
+
+    public String getCourseOfStudy() {
+        return courseOfStudy;
+    }
+
+    public void setCourseOfStudy(String courseOfStudy) {
+        this.courseOfStudy = courseOfStudy;
+    }
+
+    public int getYearOfStudy() {
+        return yearOfStudy;
+    }
+
+    public void setYearOfStudy(int yearOfStudy) {
+        this.yearOfStudy = yearOfStudy;
     }
 }
