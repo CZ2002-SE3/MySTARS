@@ -6,7 +6,7 @@ public class StudentUi extends Ui {
 
     @Override
     public void showMenu() {
-        printNicely("1. Add Course check");
+        printNicely("1. Add Course");
         printNicely("2. Drop Course");
         printNicely("3. Check/Print Courses Registered");
         printNicely("4. Check Vacancies Available");
