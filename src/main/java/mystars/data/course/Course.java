@@ -8,6 +8,7 @@ public class Course {
     // Might be wise to change school to enum afterwards
     private String school;
     private String indexNumber;
+    private final int initialVacancy;
     private int vacancy;
     private int numOfAUs;
     private ArrayList<Lesson> lessons;
@@ -16,6 +17,7 @@ public class Course {
         this.courseCode = courseCode;
         this.school = school;
         this.indexNumber = indexNumber;
+        this.initialVacancy = vacancy;
         this.vacancy = vacancy;
         this.numOfAUs = numOfAUs;
         this.lessons = lessons;
@@ -75,5 +77,9 @@ public class Course {
                 "School: " + school + '\n' +
                 "Index Number: " + indexNumber + '\n' +
                 "AU: " + numOfAUs + '\n';
+    }
+
+    public int getInitialVacancy() {
+        return initialVacancy;
     }
 }
