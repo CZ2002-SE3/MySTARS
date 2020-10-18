@@ -82,4 +82,8 @@ public class Course {
     public int getInitialVacancy() {
         return initialVacancy;
     }
+
+    public boolean isSameCourseCode(Course course) {
+        return course.getCourseCode().equals(getCourseCode());
+    }
 }

@@ -33,9 +33,22 @@ public class CourseList {
     public String toString() {
         StringBuilder coursesString = new StringBuilder();
         for (int i = 1; i <= courses.size(); i++) {
-            coursesString.append("#" + i + "\n" + courses.get(i - 1).toString());
+            coursesString.append("#").append(i).append("\n").append(courses.get(i - 1).toString());
         }
         return "Total No. of Courses Registered: " + courses.size() + "\n"
         + coursesString.toString();
+    }
+
+    public boolean isCourseInList(Course courseToCheck) {
+        for (Course course: courses) {
+            if (courseToCheck.isSameCourseCode(course)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void addCourse(Course courseToAdd) {
+        courses.add(courseToAdd);
     }
 }

@@ -1,6 +1,8 @@
 package mystars.data.user;
 
 import mystars.data.CourseList;
+import mystars.data.course.Course;
+import mystars.data.exception.MyStarsException;
 
 public class Student extends User {
 
@@ -103,5 +105,24 @@ public class Student extends User {
         setYearOfStudy(((Student) user).getYearOfStudy());
         setRegisteredCourses(((Student) user).getRegisteredCourses());
         setWaitlistedCourses(((Student) user).getWaitlistedCourses());
+    }
+
+    public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
+        checkCoursesInList(courseToAdd);
+        registeredCourses.addCourse(courseToAdd);
+    }
+
+    public void addCourseToWaitlisted(Course courseToAdd) throws MyStarsException {
+        checkCoursesInList(courseToAdd);
+        waitlistedCourses.addCourse(courseToAdd);
+    }
+
+    public void checkCoursesInList(Course courseToAdd) throws MyStarsException {
+        if (registeredCourses.isCourseInList(courseToAdd)) {
+            throw new MyStarsException("Course already present in registered courses.");
+        }
+        if (waitlistedCourses.isCourseInList(courseToAdd)) {
+            throw new MyStarsException("Course already present in waitlisted courses.");
+        }
     }
 }
