@@ -94,15 +94,14 @@ public class Student extends User {
     }
 
     @Override
-    public Student copyDetails(User user) {
-        ((Student) user).setName(this.name);
-        ((Student) user).setMatricNo(this.matricNo);
-        ((Student) user).setGender(this.gender);
-        ((Student) user).setNationality(this.nationality);
-        ((Student) user).setCourseOfStudy(this.courseOfStudy);
-        ((Student) user).setYearOfStudy(this.yearOfStudy);
-        ((Student) user).setRegisteredCourses(this.registeredCourses);
-        ((Student) user).setWaitlistedCourses(this.waitlistedCourses);
-        return (Student) user;
+    public void copyDetails(User user) {
+        setName(((Student) user).getName());
+        setMatricNo(((Student) user).getMatricNo());
+        setGender(((Student) user).getGender());
+        setNationality(((Student) user).getNationality());
+        setCourseOfStudy(((Student) user).getCourseOfStudy());
+        setYearOfStudy(((Student) user).getYearOfStudy());
+        setRegisteredCourses(((Student) user).getRegisteredCourses());
+        setWaitlistedCourses(((Student) user).getWaitlistedCourses());
     }
 }

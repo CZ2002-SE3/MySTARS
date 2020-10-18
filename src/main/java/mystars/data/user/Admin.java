@@ -52,11 +52,10 @@ public class Admin extends User {
     }
 
     @Override
-    public Admin copyDetails(User user) {
-        ((Admin) user).setName(this.name);
-        ((Admin) user).setStaffId(this.staffId);
-        ((Admin) user).setGender(this.gender);
-        ((Admin) user).setNationality(this.nationality);
-        return (Admin) user;
+    public void copyDetails(User user) {
+        setName(((Admin) user).getName());
+        setStaffId(((Admin) user).getStaffId());
+        setGender(((Admin) user).getGender());
+        setNationality(((Admin) user).getNationality());
     }
 }

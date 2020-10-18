@@ -29,7 +29,7 @@ public abstract class User {
             return false;
         }
 
-        for (int i = 0; i < password.length; i++) {
+        for (int i = 0; i < username.length; i++) {
             if (((User) obj).username[i] == username[i]) {
                 return false;
             }
@@ -38,5 +38,5 @@ public abstract class User {
         return true;
     }
 
-    public abstract User copyDetails(User user);
+    public abstract void copyDetails(User user);
 }
