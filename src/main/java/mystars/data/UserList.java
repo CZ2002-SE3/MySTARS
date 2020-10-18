@@ -77,10 +77,10 @@ public class UserList {
     public void addDetails(ArrayList<User> students, ArrayList<User> admins) {
         ArrayList<User> userDetails = new ArrayList<>(students);
         userDetails.addAll(admins);
-        for (User user : users) {
+        for (int i = 0; i < users.size(); i++) {
             for (User userDetail : userDetails) {
-                if (String.valueOf(user.getUsername()).equals(String.valueOf(userDetail.getUsername()))) {
-                    user = userDetail.copyDetails(user);
+                if (users.get(i).equals(userDetail)) {
+                    users.get(i).copyDetails(userDetail);
                     break;
                 }
             }
