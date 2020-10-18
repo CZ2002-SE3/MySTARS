@@ -1,10 +1,10 @@
 package mystars.parser;
 
 import mystars.commands.AddCourseCommand;
-import mystars.commands.PrintCourseRegCommand;
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
+import mystars.commands.PrintCourseRegCommand;
 import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.course.Day;
@@ -15,16 +15,10 @@ import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
 
-import java.text.ParseException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 import java.util.ArrayList;
-
-import static java.time.temporal.ChronoField.*;
-import static java.time.temporal.ChronoField.NANO_OF_SECOND;
 
 /**
  * Parses user input and file.
@@ -143,7 +137,7 @@ public class Parser {
 
     private ArrayList<Lesson> readLessons(String[] lessonsString) throws MyStarsException {
         ArrayList<Lesson> lessonsToAdd = new ArrayList<>();
-        for (String lessonString: lessonsString) {
+        for (String lessonString : lessonsString) {
             String[] lessonDetailsString = lessonString.split(":");
 
             LessonType lessonType;
@@ -226,7 +220,7 @@ public class Parser {
         char gender = studentSplit[2].trim().charAt(0);
         String nationality = studentSplit[3].trim();
         String username = studentSplit[4].trim();
-        
+
         String courseAndYear[] = studentSplit[5].split(":");
         String courseOfStudy = courseAndYear[0];
         int yearOfStudy = Integer.parseInt(courseAndYear[1]);
@@ -256,7 +250,8 @@ public class Parser {
 
     /**
      * Loads courses taken by student.
-     * @param courses String to be parsed containing information about students' registered courses.
+     *
+     * @param courses              String to be parsed containing information about students' registered courses.
      * @param availableCoursesList Loaded from database of courses.
      * @return Arraylist of course.
      * @throws MyStarsException
@@ -264,11 +259,11 @@ public class Parser {
     public ArrayList<Course> loadCourse(String[] courses, CourseList availableCoursesList) throws MyStarsException {
         ArrayList<Course> courseArrayList = new ArrayList<>();
         try {
-            for (String course: courses) {
+            for (String course : courses) {
                 String[] courseSplit = course.split(":");
                 String courseCode = courseSplit[0];
                 String courseIndex = courseSplit[1];
-                for (Course availableCourse: availableCoursesList.getCourses()) {
+                for (Course availableCourse : availableCoursesList.getCourses()) {
                     if (courseCode.equals(availableCourse.getCourseCode()) && courseIndex.equals(availableCourse.getIndexNumber())) {
                         courseArrayList.add(availableCourse);
                         //update vacancy for the course of a specific index

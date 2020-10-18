@@ -23,6 +23,7 @@ public class CourseList {
     /**
      * Calculates the total number of AUs for a list of courses.
      * Used for CourseList defined in Student objects to check for total AUs restrictions.
+     *
      * @return Total number of AUs of a list of courses.
      */
     public int getTotalNoOfAUs() {
@@ -36,11 +37,11 @@ public class CourseList {
             coursesString.append("#").append(i).append("\n").append(courses.get(i - 1).toString());
         }
         return "Total No. of Courses Registered: " + courses.size() + "\n"
-        + coursesString.toString();
+                + coursesString.toString();
     }
 
     public boolean isCourseInList(Course courseToCheck) {
-        for (Course course: courses) {
+        for (Course course : courses) {
             if (courseToCheck.isSameCourseCode(course)) {
                 return false;
             }
