@@ -30,7 +30,7 @@ public abstract class User {
         }
 
         for (int i = 0; i < username.length; i++) {
-            if (((User) obj).username[i] == username[i]) {
+            if (((User) obj).username[i] != username[i]) {
                 return false;
             }
         }
