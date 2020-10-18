@@ -1,16 +1,20 @@
 package mystars.data.course;
 
+import java.time.LocalTime;
+
 public class Lesson {
     private LessonType lessonType;
     private String venue;
-    private String time;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private Day day;
     private String group;
 
-    public Lesson(LessonType lessonType, String venue, String time, Day day, String group) {
+    public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, Day day, String group) {
         this.lessonType = lessonType;
         this.venue = venue;
-        this.time = time;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.day = day;
         this.group = group;
     }
@@ -31,12 +35,20 @@ public class Lesson {
         this.venue = venue;
     }
 
-    public String getTime() {
-        return time;
+    public LocalTime getStartTime() {
+        return startTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
     }
 
     public Day getDay() {

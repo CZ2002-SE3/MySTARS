@@ -15,7 +15,16 @@ import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
 
+import java.text.ParseException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
+
+import static java.time.temporal.ChronoField.*;
+import static java.time.temporal.ChronoField.NANO_OF_SECOND;
 
 /**
  * Parses user input and file.
@@ -154,7 +163,10 @@ public class Parser {
 
             String venue = lessonDetailsString[1];
 
-            String time = lessonDetailsString[2];
+            String timeString = lessonDetailsString[2];
+            LocalTime[] time = parseTime(timeString);
+            LocalTime startTime = time[0];
+            LocalTime endTime = time[1];
 
             Day day;
             switch (lessonDetailsString[3]) {
@@ -179,13 +191,26 @@ public class Parser {
 
             String group = lessonDetailsString[4];
 
-            Lesson lessonToAdd = new Lesson(lessonType, venue, time, day, group);
+            Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, group);
             lessonsToAdd.add(lessonToAdd);
         }
 
         return lessonsToAdd;
     }
 
+    private LocalTime[] parseTime(String timeString) throws MyStarsException {
+        try {
+            String startTimeString = timeString.split("-")[0];
+            String endTimeString = timeString.split("-")[1];
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmm");
+            LocalTime[] time = new LocalTime[2];
+            time[0] = LocalTime.parse(startTimeString, formatter);
+            time[1] = LocalTime.parse(endTimeString, formatter);
+            return time;
+        } catch (DateTimeParseException e) {
+            throw new MyStarsException("Error while parsing time!");
+        }
+    }
 
     /**
      * Reads students from file.
