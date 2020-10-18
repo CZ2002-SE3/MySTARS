@@ -28,11 +28,11 @@ public class LoginCommand extends Command {
         char[][] usernameAndPassword = ui.readUsernameAndPassword(USERNAME_MESSAGE, PASSWORD_MESSAGE);
         setLoginStatus(users.isLoginValid(usernameAndPassword));
         setUser(users.getUser(usernameAndPassword));
-        loadUserInfo(getUser(), users);
-        ui.showLine();
         if (!isLogin()) {
             throw new MyStarsException(ERROR_MESSAGE);
         }
+        loadUserInfo(getUser(), users);
+        ui.showLine();
     }
 
     public void loadUserInfo(User u, UserList users) {

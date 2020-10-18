@@ -64,12 +64,13 @@ public abstract class Ui {
         char[] username = readUsername(usernameMessage);
         printNicely("");
         char[] password = readPassword(passwordMessage);
+        printNicely("");
         return new char[][]{username, password};
     }
 
     private char[] readUsername(String message) {
         printNicely(message);
-        return in.nextLine().toCharArray();
+        return in.nextLine().toUpperCase().toCharArray();
     }
 
     private char[] readPassword(String message) {
