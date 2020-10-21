@@ -119,7 +119,8 @@ public class Parser {
         String courseCode = courseSplit[0].trim();
         String school = courseSplit[1].trim();
         String indexNumber = courseSplit[2].trim();
-        int vacancy, numOfAUs;
+        int vacancy;
+        int numOfAUs;
 
         try {
             vacancy = Integer.parseInt(courseSplit[3].trim());
@@ -221,15 +222,15 @@ public class Parser {
         String nationality = studentSplit[3].trim();
         String username = studentSplit[4].trim();
 
-        String courseAndYear[] = studentSplit[5].split(":");
+        String[] courseAndYear = studentSplit[5].split(":");
         String courseOfStudy = courseAndYear[0];
         int yearOfStudy = Integer.parseInt(courseAndYear[1]);
 
         CourseList registeredCourses;
         try {
             String registeredCoursesString = studentSplit[6];
-            ArrayList<Course> regCourses = new ArrayList<>();
-            regCourses.addAll(loadCourse(registeredCoursesString.split(","), availableCoursesList));
+            ArrayList<Course> regCourses = new ArrayList<>(loadCourse(registeredCoursesString.split(",")
+                    , availableCoursesList));
             registeredCourses = new CourseList(regCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
             registeredCourses = new CourseList();
@@ -238,8 +239,8 @@ public class Parser {
         CourseList waitlistedCourses;
         try {
             String waitlistedCoursesString = studentSplit[7];
-            ArrayList<Course> waitCourses = new ArrayList<>();
-            waitCourses.addAll(loadCourse(waitlistedCoursesString.split(","), availableCoursesList));
+            ArrayList<Course> waitCourses = new ArrayList<>(loadCourse(waitlistedCoursesString.split(",")
+                    , availableCoursesList));
             waitlistedCourses = new CourseList(waitCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
             waitlistedCourses = new CourseList();
@@ -254,7 +255,7 @@ public class Parser {
      * @param courses              String to be parsed containing information about students' registered courses.
      * @param availableCoursesList Loaded from database of courses.
      * @return Arraylist of course.
-     * @throws MyStarsException
+     * @throws MyStarsException IF there are problem loading courses.
      */
     public ArrayList<Course> loadCourse(String[] courses, CourseList availableCoursesList) throws MyStarsException {
         ArrayList<Course> courseArrayList = new ArrayList<>();
@@ -264,7 +265,8 @@ public class Parser {
                 String courseCode = courseSplit[0];
                 String courseIndex = courseSplit[1];
                 for (Course availableCourse : availableCoursesList.getCourses()) {
-                    if (courseCode.equals(availableCourse.getCourseCode()) && courseIndex.equals(availableCourse.getIndexNumber())) {
+                    if (courseCode.equals(availableCourse.getCourseCode())
+                            && courseIndex.equals(availableCourse.getIndexNumber())) {
                         courseArrayList.add(availableCourse);
                         //update vacancy for the course of a specific index
                         int newVacancy = availableCourse.getVacancy() - 1;

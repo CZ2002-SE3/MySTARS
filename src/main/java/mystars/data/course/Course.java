@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Course {
 
+    private final int initialVacancy;
     private String courseCode;
     // Might be wise to change school to enum afterwards
     private String school;
     private String indexNumber;
-    private final int initialVacancy;
     private int vacancy;
     private int numOfAUs;
     private ArrayList<Lesson> lessons;
