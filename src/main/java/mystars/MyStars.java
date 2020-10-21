@@ -14,6 +14,7 @@ import mystars.ui.AdminUi;
 import mystars.ui.StudentUi;
 import mystars.ui.Ui;
 
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +30,7 @@ public class MyStars {
     private UserList users;
     private CourseList courses;
     private UserType userType;
+    private LocalDateTime[] accessDateTime;
 
     /**
      * Initialises MySTARS.
@@ -41,6 +43,7 @@ public class MyStars {
             courses = new CourseList(storage.loadCourses(parser));
             users = new UserList(storage.loadUsers(parser));
             users.addDetails(storage.loadStudents(parser, courses), storage.loadAdmins(parser));
+            accessDateTime = storage.loadAccessPeriod(parser);
 
         } catch (MyStarsException e) {
             ui.showError(e.getMessage());

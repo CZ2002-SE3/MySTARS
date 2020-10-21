@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Storage {
@@ -25,10 +26,12 @@ public class Storage {
     private static final String STUDENTS_FILE = "students.txt";
     private static final String ADMINS_FILE = "admins.txt";
     private static final String COURSES_FILE = "courses.txt";
+    private static final String SETTINGS_FILE = "settings.txt";
 
     /**
      * Loads users, stores them into ArrayList and returns the ArrayList.
      *
+     * @param parser Parser object.
      * @return ArrayList of users.
      * @throws MyStarsException If there is problem reading file.
      */
@@ -61,6 +64,8 @@ public class Storage {
     /**
      * Loads students, stores them into ArrayList and returns the ArrayList.
      *
+     * @param parser Parser object.
+     * @param availableCoursesList Course list.
      * @return ArrayList of students.
      * @throws MyStarsException If there is problem reading file.
      */
@@ -93,6 +98,7 @@ public class Storage {
     /**
      * Loads admins, stores them into ArrayList and returns the ArrayList.
      *
+     * @param parser Parser object.
      * @return ArrayList of admins.
      * @throws MyStarsException If there is problem reading file.
      */
@@ -125,6 +131,7 @@ public class Storage {
     /**
      * Loads courses, stores them into ArrayList and returns the ArrayList.
      *
+     * @param parser Parser object.
      * @return ArrayList of courses.
      * @throws MyStarsException If there is problem reading file.
      */
@@ -152,6 +159,32 @@ public class Storage {
         }
 
         return courses;
+    }
+
+    /**
+     * Loads access period, stores them into an array and return the array.
+     *
+     * @param parser Parser object.
+     * @return Access period, null if file does not exist.
+     * @throws MyStarsException If there is problem reading file.
+     */
+    public LocalDateTime[] loadAccessPeriod(Parser parser) throws MyStarsException {
+        Path path = Paths.get(FOLDER, SETTINGS_FILE);
+        if (Files.exists(path)) {
+            try {
+                BufferedReader bufferedReader = Files.newBufferedReader(path);
+                String line = bufferedReader.readLine();
+
+                line = bufferedReader.readLine();
+
+                return parser.readStudentAccessPeriod(line);
+
+            } catch (IOException e) {
+                throw new MyStarsException(READ_ERROR);
+            }
+        }
+
+        return null;
     }
 
 }

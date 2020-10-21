@@ -15,6 +15,7 @@ import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -303,7 +304,26 @@ public class Parser {
         return new Admin(name, staffId, gender, nationality, username);
     }
 
+    /**
+     * Checks if exit command is called.
+     *
+     * @param fullCommand Command to check.
+     * @return True if exit command is called, false otherwise.
+     */
     public boolean isExit(String fullCommand) {
         return fullCommand.trim().equalsIgnoreCase(ExitCommand.COMMAND_WORD);
+    }
+
+    /**
+     * Reads student's access period.
+     *
+     * @param line Line of DateTime to read.
+     * @return Access period.
+     */
+    public LocalDateTime[] readStudentAccessPeriod(String line) {
+        String[] dateTime = line.split(SEPARATOR);
+        LocalDateTime start = LocalDateTime.parse(dateTime[0].trim());
+        LocalDateTime end = LocalDateTime.parse(dateTime[1].trim());
+        return new LocalDateTime[]{start, end};
     }
 }
