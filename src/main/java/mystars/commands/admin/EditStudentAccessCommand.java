@@ -1,5 +1,6 @@
-package mystars.commands;
+package mystars.commands.admin;
 
+import mystars.commands.Command;
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
 import mystars.storage.Storage;
@@ -7,10 +8,7 @@ import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
 
-public class LogoutCommand extends Command {
-
-    public static final String COMMAND_WORD = "7";
-
+public class EditStudentAccessCommand extends Command {
     /**
      * Executes command.
      *
@@ -23,7 +21,6 @@ public class LogoutCommand extends Command {
      */
     @Override
     public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) throws MyStarsException {
-        setLoginStatus(false);
-        ui.showLogout();
+
     }
 }

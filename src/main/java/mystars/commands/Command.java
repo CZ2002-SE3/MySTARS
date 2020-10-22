@@ -6,6 +6,8 @@ import mystars.data.user.User;
 import mystars.storage.Storage;
 import mystars.ui.Ui;
 
+import java.time.LocalDateTime;
+
 /**
  * Parent Command class.
  */
@@ -28,12 +30,14 @@ public abstract class Command {
     /**
      * Executes command.
      *
+     *
+     * @param accessDateTime Access date/time array.
      * @param users   UserList object.
      * @param ui      Ui object.
      * @param storage Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(UserList users, Ui ui, Storage storage) throws MyStarsException;
+    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) throws MyStarsException;
 
     /**
      * Returns MySTARS's exit status.
@@ -52,7 +56,7 @@ public abstract class Command {
         isExit = true;
     }
 
-    void setLoginStatus(boolean isLogin) {
+    protected void setLoginStatus(boolean isLogin) {
         Command.isLogin = isLogin;
     }
 

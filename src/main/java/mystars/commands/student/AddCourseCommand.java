@@ -1,11 +1,14 @@
-package mystars.commands;
+package mystars.commands.student;
 
+import mystars.commands.Command;
 import mystars.data.UserList;
 import mystars.data.user.User;
 import mystars.data.user.UserType;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
 import mystars.ui.Ui;
+
+import java.time.LocalDateTime;
 
 public class AddCourseCommand extends Command {
 
@@ -18,12 +21,13 @@ public class AddCourseCommand extends Command {
     /**
      * Add course to student.
      *
+     * @param accessDateTime
      * @param users   UserList object.
      * @param ui      Ui object.
      * @param storage Storage object.
      */
     @Override
-    public void execute(UserList users, Ui ui, Storage storage) {
+    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) {
         assert ui instanceof StudentUi;
 
         User user = this.getUser();

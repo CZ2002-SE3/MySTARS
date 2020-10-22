@@ -2,9 +2,11 @@ package mystars.commands;
 
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.user.User;
+import mystars.data.user.Student;
 import mystars.storage.Storage;
 import mystars.ui.Ui;
+
+import java.time.LocalDateTime;
 
 public class LoginCommand extends Command {
 
@@ -16,29 +18,29 @@ public class LoginCommand extends Command {
     /**
      * Executes command.
      *
+     *
+     * @param accessDateTime
      * @param users   UserList object.
      * @param ui      Ui object.
      * @param storage Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(UserList users, Ui ui, Storage storage) throws MyStarsException {
+    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) throws MyStarsException {
         char[][] usernameAndPassword = ui.readUsernameAndPassword(USERNAME_MESSAGE, PASSWORD_MESSAGE);
         setLoginStatus(users.isLoginValid(usernameAndPassword));
         setUser(users.getUser(usernameAndPassword));
+
+        if (users.getUser(usernameAndPassword) instanceof Student) {
+            if (accessDateTime[0].isAfter(LocalDateTime.now()) || accessDateTime[1].isBefore(LocalDateTime.now())) {
+                ui.showClosedMessage();
+                ui.showLine();
+                System.exit(1);
+            }
+        }
         if (!isLogin()) {
             throw new MyStarsException(ERROR_MESSAGE);
         }
-        loadUserInfo(getUser(), users);
         ui.showLine();
-    }
-
-    public void loadUserInfo(User u, UserList users) {
-        for (User user : users.getUsers()) {
-            if (u.getUsername().equals(user.getUsername())) {
-                u = user;
-                break;
-            }
-        }
     }
 }

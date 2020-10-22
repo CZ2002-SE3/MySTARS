@@ -4,6 +4,8 @@ import mystars.data.UserList;
 import mystars.storage.Storage;
 import mystars.ui.Ui;
 
+import java.time.LocalDateTime;
+
 /**
  * Exits MySTARS.
  */
@@ -15,12 +17,13 @@ public class ExitCommand extends Command {
     /**
      * Says goodbye to user and exits MySTARS.
      *
+     * @param accessDateTime
      * @param users   UserList object.
      * @param ui      Ui object.
      * @param storage Storage object.
      */
     @Override
-    public void execute(UserList users, Ui ui, Storage storage) {
+    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) {
         setExit();
         ui.showExit(MESSAGE);
     }

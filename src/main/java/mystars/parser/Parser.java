@@ -1,10 +1,10 @@
 package mystars.parser;
 
-import mystars.commands.AddCourseCommand;
+import mystars.commands.student.AddCourseCommand;
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
-import mystars.commands.PrintCourseRegCommand;
+import mystars.commands.student.PrintCourseRegCommand;
 import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.course.Day;

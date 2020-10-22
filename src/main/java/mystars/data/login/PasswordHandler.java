@@ -1,4 +1,4 @@
-package mystars.login;
+package mystars.data.login;
 
 import mystars.data.exception.MyStarsException;
 

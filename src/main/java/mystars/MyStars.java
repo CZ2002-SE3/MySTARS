@@ -71,16 +71,11 @@ public class MyStars {
             try {
                 while (!command.isLogin()) {
                     command = new LoginCommand();
-                    command.execute(users, ui, storage);
+                    command.execute(accessDateTime, users, ui, storage);
                 }
 
                 switch (users.getUserType(command.getUser())) {
                 case STUDENT:
-                    if (!command.getUser().isAccessGranted(accessDateTime)) {
-                        ui.showClosedMessage();
-                        ui.showLine();
-                        System.exit(1);
-                    }
                     logger.log(Level.INFO, "change ui to student");
                     ui = new StudentUi();
                     userType = UserType.STUDENT;
@@ -102,7 +97,7 @@ public class MyStars {
                 } else {
                     command = parser.parseAdmin(fullCommand);
                 }
-                command.execute(users, ui, storage);
+                command.execute(accessDateTime, users, ui, storage);
             } catch (MyStarsException e) {
                 ui.showError(e.getMessage());
             } finally {
@@ -113,7 +108,7 @@ public class MyStars {
                 String fullCommand = ui.askExit();
                 if (parser.isExit(fullCommand)) {
                     ui.showLine();
-                    new ExitCommand().execute(users, ui, storage);
+                    new ExitCommand().execute(accessDateTime, users, ui, storage);
                 }
                 ui.showLine();
             }
