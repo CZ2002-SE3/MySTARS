@@ -13,7 +13,8 @@ public class Course {
     private int numOfAUs;
     private ArrayList<Lesson> lessons;
 
-    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs, ArrayList<Lesson> lessons) {
+    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs
+            , ArrayList<Lesson> lessons) {
         this.courseCode = courseCode;
         this.school = school;
         this.indexNumber = indexNumber;
@@ -73,10 +74,10 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course Code: " + courseCode + "\n" +
-                "School: " + school + "\n" +
-                "Index Number: " + indexNumber + "\n" +
-                "AU: " + numOfAUs + "\n" + "\n";
+        return "Course Code: " + courseCode + System.lineSeparator() +
+                "School: " + school + System.lineSeparator() +
+                "Index Number: " + indexNumber + System.lineSeparator() +
+                "AU: " + numOfAUs + System.lineSeparator() + System.lineSeparator();
     }
 
     public int getInitialVacancy() {

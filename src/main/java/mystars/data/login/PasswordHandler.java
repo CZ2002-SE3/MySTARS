@@ -21,7 +21,8 @@ public class PasswordHandler {
         byte[] salt = new byte[KEY_LENGTH];
         random.nextBytes(salt);
         byte[] hash = generatePBKDF2(password, salt, pbkdf2Iterations, KEY_LENGTH);
-        return pbkdf2Iterations + ":" + Base64.getEncoder().encodeToString(salt) + ":" + Base64.getEncoder().encodeToString(hash);
+        return pbkdf2Iterations + ":" + Base64.getEncoder().encodeToString(salt) + ":"
+                + Base64.getEncoder().encodeToString(hash);
     }
 
     public byte[] generatePBKDF2(char[] password, byte[] salt, int iterations, int bytes) throws MyStarsException {

@@ -272,7 +272,7 @@ public class Parser {
                         //update vacancy for the course of a specific index
                         int newVacancy = availableCourse.getVacancy() - 1;
                         if (newVacancy < 0) {
-                            throw new MyStarsException("More students registered for a course than there are vacancies!");
+                            throw new MyStarsException("More students registered than vacancies!");
                         }
                         availableCourse.setVacancy(newVacancy);
                         break;

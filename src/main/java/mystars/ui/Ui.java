@@ -15,7 +15,8 @@ public abstract class Ui {
             + "| |   | |  ) (        ) |  | |  | (   ) | (\\ (        ) |\n"
             + "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |\n"
             + "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)\n"
-            + "                                                         ";
+            + "                                                         "
+            .replaceAll("\n", System.lineSeparator());
 
     final Scanner in = new Scanner(System.in);
 

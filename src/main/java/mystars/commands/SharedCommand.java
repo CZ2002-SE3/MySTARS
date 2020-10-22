@@ -21,5 +21,6 @@ public abstract class SharedCommand extends Command {
      * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) throws MyStarsException;
+    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage)
+            throws MyStarsException;
 }

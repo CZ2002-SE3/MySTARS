@@ -15,7 +15,8 @@ public class Student extends User {
     private CourseList registeredCourses;
     private CourseList waitlistedCourses;
 
-    public Student(String name, String matricNo, char gender, String nationality, String username, String courseOfStudy, int yearOfStudy, CourseList registeredCourses, CourseList waitlistedCourses) {
+    public Student(String name, String matricNo, char gender, String nationality, String username, String courseOfStudy
+            , int yearOfStudy, CourseList registeredCourses, CourseList waitlistedCourses) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
