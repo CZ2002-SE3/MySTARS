@@ -1,5 +1,11 @@
 package mystars.ui;
 
+import mystars.data.exception.MyStarsException;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class AdminUi extends Ui {
 
     @Override
@@ -18,5 +24,27 @@ public class AdminUi extends Ui {
     @Override
     public void greetUser() {
         printNicely("Hello admin!");
+    }
+
+    public LocalDateTime[] getNewAccessPeriod() throws MyStarsException {
+        try {
+            printNicely("");
+            printNicely("Enter new start date & time in this format: yyyy-MM-dd HH:mm");
+            LocalDateTime startDateTime = LocalDateTime.parse(in.nextLine().replace(" ", "T"));
+            printNicely("Enter new end date & time in this format: yyyy-MM-dd HH:mm");
+            LocalDateTime endDateTime = LocalDateTime.parse(in.nextLine().replace(" ", "T"));
+            return new LocalDateTime[] {startDateTime, endDateTime};
+        } catch (DateTimeParseException dateTimeParseException) {
+            throw new MyStarsException("Invalid Date/Time!");
+        }
+
+    }
+
+    public void showNewAccessPeriod(LocalDateTime[] accessDateTime) {
+        printNicely("");
+        printNicely("Successfully changed! Access period is as follows: ");
+        printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        printNicely("Please restart program for change to take effect.");
     }
 }

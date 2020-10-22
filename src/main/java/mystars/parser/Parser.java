@@ -27,7 +27,8 @@ import java.util.ArrayList;
  */
 public class Parser {
 
-    public static final String SEPARATOR = "\\|"; //used to separate each attribute of an object
+    // Used to separate each attribute of an object
+    public static final String SEPARATOR = "\\|";
 
     /**
      * Parses admin input, and returns corresponding command.
@@ -318,10 +319,14 @@ public class Parser {
      * @param line Line of DateTime to read.
      * @return Access period.
      */
-    public LocalDateTime[] readStudentAccessPeriod(String line) {
-        String[] dateTime = line.split(SEPARATOR);
-        LocalDateTime start = LocalDateTime.parse(dateTime[0].trim());
-        LocalDateTime end = LocalDateTime.parse(dateTime[1].trim());
-        return new LocalDateTime[]{start, end};
+    public LocalDateTime[] readStudentAccessPeriod(String line) throws MyStarsException {
+        try {
+            String[] dateTime = line.split(SEPARATOR);
+            LocalDateTime start = LocalDateTime.parse(dateTime[0].trim());
+            LocalDateTime end = LocalDateTime.parse(dateTime[1].trim());
+            return new LocalDateTime[]{start, end};
+        } catch (DateTimeParseException dateTimeParseException) {
+            throw new MyStarsException("I am unable to parse date/time.");
+        }
     }
 }

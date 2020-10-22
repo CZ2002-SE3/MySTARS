@@ -9,6 +9,8 @@ import mystars.data.user.User;
 import mystars.parser.Parser;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,8 +20,14 @@ import java.util.ArrayList;
 
 public class Storage {
 
+    public static final String SEPARATOR = Parser.SEPARATOR.replace("\\", "");
+
     public static final String LOAD_ERROR = "I am unable to load file.";
     private static final String READ_ERROR = "I am unable to read file.";
+    private static final String DIRECTORY_ERROR = "I am unable to create directory.";
+    private static final String WRITE_ERROR = "I am unable to write file.";
+
+    private static final String SETTINGS_FORMAT = "format: start datetime|end datetime";
 
     private static final String FOLDER = "db";
     private static final String USERS_FILE = "users.txt";
@@ -187,4 +195,33 @@ public class Storage {
         return new LocalDateTime[]{LocalDateTime.now(), LocalDateTime.now()};
     }
 
+    public void saveAccessPeriod(LocalDateTime[] accessPeriod) throws MyStarsException {
+        StringBuilder accessPeriodFileContent = new StringBuilder();
+        accessPeriodFileContent.append(SETTINGS_FORMAT + System.lineSeparator());
+        accessPeriodFileContent.append(accessPeriod[0] + SEPARATOR + accessPeriod[1] + System.lineSeparator());
+        writeToFile(accessPeriodFileContent, SETTINGS_FILE);
+    }
+
+    /**
+     * Writes content to file.
+     *
+     * @param fileContent String content to write.
+     * @param file        Filename to write to.
+     * @throws MyStarsException If there is problem writing files.
+     */
+    private void writeToFile(StringBuilder fileContent, String file) throws MyStarsException {
+        Path folderPath = Paths.get(FOLDER);
+        if (!Files.exists(folderPath) && !new File(FOLDER).mkdir()) {
+            throw new MyStarsException(DIRECTORY_ERROR);
+        }
+
+        Path filePath = Paths.get(FOLDER, file);
+        try {
+            BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath);
+            bufferedWriter.write(fileContent.toString());
+            bufferedWriter.close();
+        } catch (IOException e) {
+            throw new MyStarsException(WRITE_ERROR);
+        }
+    }
 }

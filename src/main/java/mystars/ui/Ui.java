@@ -1,5 +1,7 @@
 package mystars.ui;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public abstract class Ui {
@@ -15,7 +17,7 @@ public abstract class Ui {
             + "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)\n"
             + "                                                         ";
 
-    private final Scanner in = new Scanner(System.in);
+    final Scanner in = new Scanner(System.in);
 
     /**
      * Prints error message.
@@ -107,5 +109,11 @@ public abstract class Ui {
 
     public void showClosedMessage() {
         printNicely("MyStars is closed for students...");
+    }
+
+    public void showAccessPeriod(LocalDateTime[] accessDateTime) {
+        printNicely("Here is the access period currently:");
+        printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
     }
 }
