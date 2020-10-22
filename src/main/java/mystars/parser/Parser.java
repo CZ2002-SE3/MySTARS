@@ -1,5 +1,6 @@
 package mystars.parser;
 
+import mystars.commands.admin.EditStudentAccessCommand;
 import mystars.commands.student.AddCourseCommand;
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
@@ -38,8 +39,8 @@ public class Parser {
     public Command parseAdmin(String fullCommand) throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
-        case ExitCommand.COMMAND_WORD:
-            command = new ExitCommand();
+        case EditStudentAccessCommand.COMMAND_WORD:
+            command = new EditStudentAccessCommand();
             break;
         case LogoutCommand.COMMAND_WORD:
             command = new LogoutCommand();
@@ -59,9 +60,6 @@ public class Parser {
             break;
         case PrintCourseRegCommand.COMMAND_WORD:
             command = new PrintCourseRegCommand();
-            break;
-        case ExitCommand.COMMAND_WORD:
-            command = new ExitCommand();
             break;
         case LogoutCommand.COMMAND_WORD:
             command = new LogoutCommand();

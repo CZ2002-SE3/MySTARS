@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 /**
  * Exits MySTARS.
  */
-public class ExitCommand extends Command {
+public class ExitCommand extends SharedCommand {
 
     public static final String COMMAND_WORD = "Y";
     public static final String MESSAGE = "Bye! See you again soon!";

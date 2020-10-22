@@ -4,10 +4,14 @@ import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LoginCommand;
 import mystars.commands.LogoutCommand;
+import mystars.commands.SharedCommand;
+import mystars.commands.admin.AdminCommand;
+import mystars.commands.student.StudentCommand;
 import mystars.data.CourseList;
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.user.UserType;
+import mystars.data.user.Admin;
+import mystars.data.user.Student;
 import mystars.parser.Parser;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
@@ -29,7 +33,6 @@ public class MyStars {
     private Ui ui;
     private UserList users;
     private CourseList courses;
-    private UserType userType;
     private LocalDateTime[] accessDateTime;
 
     /**
@@ -71,33 +74,21 @@ public class MyStars {
             try {
                 while (!command.isLogin()) {
                     command = new LoginCommand();
-                    command.execute(accessDateTime, users, ui, storage);
+                    ((LoginCommand) command).execute(accessDateTime, users, ui, storage);
                 }
 
-                switch (users.getUserType(command.getUser())) {
-                case STUDENT:
-                    logger.log(Level.INFO, "change ui to student");
+                if (command.getUser() instanceof Student) {
+                    logger.log(Level.INFO, "show student ui");
                     ui = new StudentUi();
-                    userType = UserType.STUDENT;
-                    break;
-                case ADMIN:
-                    logger.log(Level.INFO, "change ui to admin");
+                    command = parser.parseStudent(ui.readCommand());
+                } else if (command.getUser() instanceof Admin) {
+                    logger.log(Level.INFO, "show admin ui");
                     ui = new AdminUi();
-                    userType = UserType.STUDENT;
-                    break;
-                default:
-                    throw new MyStarsException("Unexpected value: " + users.getUserType(command.getUser()));
+                    command = parser.parseAdmin(ui.readCommand());
                 }
-                ui.greetUser();
-                ui.showMenu();
-                String fullCommand = ui.readCommand();
-                ui.showLine();
-                if (userType == UserType.STUDENT) {
-                    command = parser.parseStudent(fullCommand);
-                } else {
-                    command = parser.parseAdmin(fullCommand);
-                }
-                command.execute(accessDateTime, users, ui, storage);
+
+                execute(command);
+
             } catch (MyStarsException e) {
                 ui.showError(e.getMessage());
             } finally {
@@ -112,6 +103,16 @@ public class MyStars {
                 }
                 ui.showLine();
             }
+        }
+    }
+
+    private void execute(Command command) throws MyStarsException {
+        if (command instanceof StudentCommand) {
+            ((StudentCommand) command).execute(users, (StudentUi) ui, storage);
+        } else if (command instanceof AdminCommand) {
+            ((AdminCommand) command).execute(accessDateTime, users, (AdminUi) ui, storage);
+        } else if (command instanceof LogoutCommand) {
+            ((LogoutCommand) command).execute(accessDateTime, users, ui, storage);
         }
     }
 }

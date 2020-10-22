@@ -10,21 +10,22 @@ import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
 
-public class PrintCourseRegCommand extends Command {
+public class PrintCourseRegCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "3";
 
-    public PrintCourseRegCommand() {
-        this.setLoginStatus(true);
-    }
-
+    /**
+     * Executes command.
+     *
+     * @param users     UserList object.
+     * @param studentUi Ui object.
+     * @param storage   Storage object.
+     * @throws MyStarsException If there is issue executing command.
+     */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) throws MyStarsException {
-        assert ui instanceof StudentUi;
-
+    public void execute(UserList users, StudentUi studentUi, Storage storage) throws MyStarsException {
         Student student = (Student) this.getUser();
 
-        ((StudentUi) ui).printRegCourses(student);
-
+        studentUi.printRegCourses(student);
     }
 }

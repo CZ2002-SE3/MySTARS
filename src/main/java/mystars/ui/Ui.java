@@ -41,7 +41,11 @@ public abstract class Ui {
      * @return String command from user.
      */
     public String readCommand() {
-        return in.nextLine();
+        greetUser();
+        showMenu();
+        String fullCommand = in.nextLine();
+        showLine();
+        return fullCommand;
     }
 
     /**

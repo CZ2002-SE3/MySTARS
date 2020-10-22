@@ -9,10 +9,7 @@ import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
 
-public class EditStudentAccessCommand extends AdminCommand {
-
-    public static final String COMMAND_WORD = "1";
-
+public abstract class AdminCommand extends Command {
     /**
      * Executes command.
      *
@@ -22,8 +19,5 @@ public class EditStudentAccessCommand extends AdminCommand {
      * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    @Override
-    public void execute(LocalDateTime[] accessDateTime, UserList users, AdminUi ui, Storage storage) throws MyStarsException {
-
-    }
+    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, AdminUi ui, Storage storage) throws MyStarsException;
 }

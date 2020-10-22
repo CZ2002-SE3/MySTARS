@@ -8,7 +8,7 @@ import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
 
-public class LoginCommand extends Command {
+public class LoginCommand extends SharedCommand {
 
     public static final String USERNAME_MESSAGE = "Enter Username: ";
     public static final String PASSWORD_MESSAGE = "Enter Password: ";

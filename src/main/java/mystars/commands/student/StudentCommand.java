@@ -9,18 +9,15 @@ import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
 
-public class DropCourseCommand extends StudentCommand {
+public abstract class StudentCommand extends Command {
 
     /**
      * Executes command.
      *
-     * @param users     UserList object.
-     * @param studentUi Ui object.
-     * @param storage   Storage object.
+     * @param users          UserList object.
+     * @param studentUi             Ui object.
+     * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    @Override
-    public void execute(UserList users, StudentUi studentUi, Storage storage) throws MyStarsException {
-
-    }
+    public abstract void execute(UserList users, StudentUi studentUi, Storage storage) throws MyStarsException;
 }

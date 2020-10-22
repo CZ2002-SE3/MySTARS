@@ -4,7 +4,6 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
-import mystars.data.user.UserType;
 import mystars.data.login.PasswordHandler;
 
 import java.util.ArrayList;
@@ -61,15 +60,6 @@ public class UserList {
                     break;
                 }
             }
-        }
-        return null;
-    }
-
-    public UserType getUserType(User user) {
-        if (user instanceof Admin) {
-            return UserType.ADMIN;
-        } else if (user instanceof Student) {
-            return UserType.STUDENT;
         }
         return null;
     }
