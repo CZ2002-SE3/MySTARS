@@ -73,10 +73,10 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course Code: " + courseCode + '\n' +
-                "School: " + school + '\n' +
-                "Index Number: " + indexNumber + '\n' +
-                "AU: " + numOfAUs + '\n' + '\n' ;
+        return "Course Code: " + courseCode + "\n" +
+                "School: " + school + "\n" +
+                "Index Number: " + indexNumber + "\n" +
+                "AU: " + numOfAUs + "\n" + "\n" ;
     }
 
     public int getInitialVacancy() {
