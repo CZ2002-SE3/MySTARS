@@ -100,4 +100,8 @@ public abstract class Ui {
     }
 
     public abstract void greetUser();
+
+    public void showClosedMessage() {
+        printNicely("MyStars is closed for students...");
+    }
 }

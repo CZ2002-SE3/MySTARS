@@ -76,6 +76,11 @@ public class MyStars {
 
                 switch (users.getUserType(command.getUser())) {
                 case STUDENT:
+                    if (!command.getUser().isAccessGranted(accessDateTime)) {
+                        ui.showClosedMessage();
+                        ui.showLine();
+                        System.exit(1);
+                    }
                     logger.log(Level.INFO, "change ui to student");
                     ui = new StudentUi();
                     userType = UserType.STUDENT;

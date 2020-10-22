@@ -184,7 +184,7 @@ public class Storage {
             }
         }
 
-        return null;
+        return new LocalDateTime[] {LocalDateTime.now(), LocalDateTime.now()};
     }
 
 }

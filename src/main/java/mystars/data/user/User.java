@@ -1,5 +1,9 @@
 package mystars.data.user;
 
+import mystars.data.exception.MyStarsException;
+
+import java.time.LocalDateTime;
+
 public abstract class User {
 
     private char[] username;
@@ -39,4 +43,8 @@ public abstract class User {
     }
 
     public abstract void copyDetails(User user);
+
+    public boolean isAccessGranted(LocalDateTime[] accessDateTime) throws MyStarsException {
+        return accessDateTime[0].isBefore(LocalDateTime.now()) && accessDateTime[1].isAfter(LocalDateTime.now());
+    }
 }
