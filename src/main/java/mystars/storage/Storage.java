@@ -64,7 +64,7 @@ public class Storage {
     /**
      * Loads students, stores them into ArrayList and returns the ArrayList.
      *
-     * @param parser Parser object.
+     * @param parser               Parser object.
      * @param availableCoursesList Course list.
      * @return ArrayList of students.
      * @throws MyStarsException If there is problem reading file.
@@ -184,7 +184,7 @@ public class Storage {
             }
         }
 
-        return new LocalDateTime[] {LocalDateTime.now(), LocalDateTime.now()};
+        return new LocalDateTime[]{LocalDateTime.now(), LocalDateTime.now()};
     }
 
 }
