@@ -36,7 +36,8 @@ public class CourseList {
         for (int i = 1; i <= courses.size(); i++) {
             coursesString.append("#").append(i).append("\n").append(courses.get(i - 1).toString());
         }
-        return "Total No. of Courses Registered: " + courses.size() + "\n"
+        return "Total No. of Courses Registered: " + courses.size() + "\n" +
+                "Total No. of AUs Registered: " + getTotalNoOfAUs() + "\n" + "\n"
                 + coursesString.toString();
     }
 

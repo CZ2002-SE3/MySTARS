@@ -76,7 +76,7 @@ public class Course {
         return "Course Code: " + courseCode + '\n' +
                 "School: " + school + '\n' +
                 "Index Number: " + indexNumber + '\n' +
-                "AU: " + numOfAUs + '\n';
+                "AU: " + numOfAUs + '\n' + '\n' ;
     }
 
     public int getInitialVacancy() {
