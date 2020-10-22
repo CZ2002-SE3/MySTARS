@@ -85,7 +85,7 @@ public class MyStars {
                     ui = new AdminUi();
                     command = parser.parseAdmin(ui.readCommand());
                 }
-
+                ui.showLine();
                 execute(command);
 
             } catch (MyStarsException e) {
