@@ -3,7 +3,7 @@ package mystars.commands;
 import mystars.data.user.User;
 
 /**
- * Parent Command class.
+ * Parent command class.
  */
 public abstract class Command {
     public static final String COMMAND_ERROR = "I don't understand what you have entered.";
@@ -37,7 +37,7 @@ public abstract class Command {
         return user;
     }
 
-    void setUser(User u) {
-        Command.user = u;
+    void setUser(User user) {
+        Command.user = user;
     }
 }

@@ -33,7 +33,7 @@ public class AdminUi extends Ui {
             LocalDateTime startDateTime = LocalDateTime.parse(in.nextLine().replace(" ", "T"));
             printNicely("Enter new end date & time in this format: yyyy-MM-dd HH:mm");
             LocalDateTime endDateTime = LocalDateTime.parse(in.nextLine().replace(" ", "T"));
-            return new LocalDateTime[] {startDateTime, endDateTime};
+            return new LocalDateTime[]{startDateTime, endDateTime};
         } catch (DateTimeParseException dateTimeParseException) {
             throw new MyStarsException("Invalid Date/Time!");
         }

@@ -8,14 +8,14 @@ import mystars.ui.Ui;
 import java.time.LocalDateTime;
 
 /**
- * Parent Command class.
+ * Parent shared command class.
  */
 public abstract class SharedCommand extends Command {
 
     /**
      * Executes command.
      *
-     * @param accessDateTime Access date/time array.
+     * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.

@@ -17,7 +17,7 @@ public class ExitCommand extends SharedCommand {
     /**
      * Says goodbye to user and exits MySTARS.
      *
-     * @param accessDateTime
+     * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.

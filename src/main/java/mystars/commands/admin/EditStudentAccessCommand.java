@@ -15,9 +15,9 @@ public class EditStudentAccessCommand extends AdminCommand {
     public static final String COMMAND_WORD = "1";
 
     /**
-     * Edits student access period and saves to file.
+     * Prompts admin for new access period and saves to file.
      *
-     * @param accessDateTime Access date/time array.
+     * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.

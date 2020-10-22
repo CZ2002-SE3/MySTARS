@@ -18,7 +18,7 @@ public class LoginCommand extends SharedCommand {
     /**
      * Executes command.
      *
-     * @param accessDateTime
+     * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.
@@ -31,15 +31,19 @@ public class LoginCommand extends SharedCommand {
         setUser(users.getUser(usernameAndPassword));
 
         if (users.getUser(usernameAndPassword) instanceof Student) {
-            if (accessDateTime[0].isAfter(LocalDateTime.now()) || accessDateTime[1].isBefore(LocalDateTime.now())) {
-                ui.showClosedMessage();
-                ui.showLine();
-                System.exit(1);
-            }
+            checkAccessPeriod(accessDateTime, ui);
         }
         if (!isLogin()) {
             throw new MyStarsException(ERROR_MESSAGE);
         }
         ui.showLine();
+    }
+
+    private void checkAccessPeriod(LocalDateTime[] accessDateTime, Ui ui) {
+        if (accessDateTime[0].isAfter(LocalDateTime.now()) || accessDateTime[1].isBefore(LocalDateTime.now())) {
+            ui.showClosedMessage();
+            ui.showLine();
+            System.exit(1);
+        }
     }
 }

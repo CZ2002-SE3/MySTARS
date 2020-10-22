@@ -170,7 +170,7 @@ public class Storage {
     }
 
     /**
-     * Loads access period, stores them into an array and return the array.
+     * Loads access period, stores them into an array and returns the array.
      *
      * @param parser Parser object.
      * @return Access period, null if file does not exist.
@@ -197,8 +197,8 @@ public class Storage {
 
     public void saveAccessPeriod(LocalDateTime[] accessPeriod) throws MyStarsException {
         StringBuilder accessPeriodFileContent = new StringBuilder();
-        accessPeriodFileContent.append(SETTINGS_FORMAT + System.lineSeparator());
-        accessPeriodFileContent.append(accessPeriod[0] + SEPARATOR + accessPeriod[1] + System.lineSeparator());
+        accessPeriodFileContent.append(SETTINGS_FORMAT).append(System.lineSeparator()).append(accessPeriod[0]);
+        accessPeriodFileContent.append(SEPARATOR).append(accessPeriod[1]).append(System.lineSeparator());
         writeToFile(accessPeriodFileContent, SETTINGS_FILE);
     }
 

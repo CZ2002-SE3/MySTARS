@@ -14,7 +14,7 @@ public class LogoutCommand extends SharedCommand {
     /**
      * Executes command.
      *
-     * @param accessDateTime
+     * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.

@@ -5,10 +5,13 @@ import mystars.data.exception.MyStarsException;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
 
+/**
+ * Drops course for student.
+ */
 public class DropCourseCommand extends StudentCommand {
 
     /**
-     * Executes command.
+     * Prompts student for course to drop, and saves changes to file.
      *
      * @param users     UserList object.
      * @param studentUi Ui object.

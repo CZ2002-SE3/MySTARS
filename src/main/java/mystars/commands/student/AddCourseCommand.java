@@ -5,12 +5,15 @@ import mystars.data.exception.MyStarsException;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
 
+/**
+ * Adds course for student.
+ */
 public class AddCourseCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "1";
 
     /**
-     * Executes command.
+     * Prompts user for course to add and saves to file.
      *
      * @param users     UserList object.
      * @param studentUi Ui object.

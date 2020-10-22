@@ -246,7 +246,8 @@ public class Parser {
             waitlistedCourses = new CourseList();
         }
 
-        return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy, registeredCourses, waitlistedCourses);
+        return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy, registeredCourses
+                , waitlistedCourses);
     }
 
     /**
