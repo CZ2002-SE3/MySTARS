@@ -18,7 +18,7 @@ public abstract class Ui {
             + "                                                         "
             .replaceAll("\n", System.lineSeparator());
 
-    final Scanner in = new Scanner(System.in);
+    static final Scanner in = new Scanner(System.in);
 
     /**
      * Prints error message.

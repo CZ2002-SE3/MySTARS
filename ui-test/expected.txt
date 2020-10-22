@@ -27,7 +27,7 @@ Enter Password:
 
 ------------------------------------------------------------
 
-Hello user!
+Hello student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -43,7 +43,7 @@ Sorry! I don't understand what you have entered.
 
 ------------------------------------------------------------
 
-Hello user!
+Hello student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -69,13 +69,13 @@ Enter Password:
 
 ------------------------------------------------------------
 
-Hello user!
-1. Add Course
-2. Drop Course
-3. Check/Print Courses Registered
-4. Check Vacancies Available
-5. Change Index Number of Course
-6. Swop Index Number with Another Student
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
 7. Logout
 Please select an item:
 
