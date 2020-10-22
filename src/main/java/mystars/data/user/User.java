@@ -1,9 +1,5 @@
 package mystars.data.user;
 
-import mystars.data.exception.MyStarsException;
-
-import java.time.LocalDateTime;
-
 public abstract class User {
 
     private char[] username;

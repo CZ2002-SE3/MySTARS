@@ -1,14 +1,10 @@
 package mystars.commands.student;
 
-import mystars.commands.Command;
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Student;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
-import mystars.ui.Ui;
-
-import java.time.LocalDateTime;
 
 public class PrintCourseRegCommand extends StudentCommand {
 

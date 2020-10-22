@@ -4,7 +4,6 @@ import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LoginCommand;
 import mystars.commands.LogoutCommand;
-import mystars.commands.SharedCommand;
 import mystars.commands.admin.AdminCommand;
 import mystars.commands.student.StudentCommand;
 import mystars.data.CourseList;

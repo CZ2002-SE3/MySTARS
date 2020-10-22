@@ -14,11 +14,10 @@ public class LogoutCommand extends SharedCommand {
     /**
      * Executes command.
      *
-     *
      * @param accessDateTime
-     * @param users   UserList object.
-     * @param ui      Ui object.
-     * @param storage Storage object.
+     * @param users          UserList object.
+     * @param ui             Ui object.
+     * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override

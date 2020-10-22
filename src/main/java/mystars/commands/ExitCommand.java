@@ -18,9 +18,9 @@ public class ExitCommand extends SharedCommand {
      * Says goodbye to user and exits MySTARS.
      *
      * @param accessDateTime
-     * @param users   UserList object.
-     * @param ui      Ui object.
-     * @param storage Storage object.
+     * @param users          UserList object.
+     * @param ui             Ui object.
+     * @param storage        Storage object.
      */
     @Override
     public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) {

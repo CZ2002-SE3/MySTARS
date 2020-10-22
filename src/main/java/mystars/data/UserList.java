@@ -1,10 +1,8 @@
 package mystars.data;
 
 import mystars.data.exception.MyStarsException;
-import mystars.data.user.Admin;
-import mystars.data.user.Student;
-import mystars.data.user.User;
 import mystars.data.login.PasswordHandler;
+import mystars.data.user.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;

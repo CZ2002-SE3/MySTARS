@@ -1,11 +1,9 @@
 package mystars.commands.admin;
 
-import mystars.commands.Command;
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
-import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
 
