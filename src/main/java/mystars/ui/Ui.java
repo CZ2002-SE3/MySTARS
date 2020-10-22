@@ -71,7 +71,6 @@ public abstract class Ui {
         char[] username = readUsername(usernameMessage);
         printNicely("");
         char[] password = readPassword(passwordMessage);
-        printNicely("");
         return new char[][]{username, password};
     }
 

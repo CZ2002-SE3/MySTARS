@@ -35,6 +35,7 @@ public class LoginCommand extends SharedCommand {
             checkAccessPeriod(accessDateTime, ui);
         }
         if (!isLogin()) {
+            ui.showLine();
             throw new MyStarsException(ERROR_MESSAGE);
         }
         ui.showLine();
