@@ -29,6 +29,8 @@ public class Parser {
 
     // Used to separate each attribute of an object
     public static final String SEPARATOR = "\\|";
+    public static final String COLON_SEPARATOR = ":";
+    public static final String COMMA_SEPARATOR = ",";
 
     /**
      * Parses admin input, and returns corresponding command.
@@ -130,7 +132,7 @@ public class Parser {
         }
 
         String lessonString = courseSplit[5];
-        String[] lessonsString = lessonString.split(",");
+        String[] lessonsString = lessonString.split(COMMA_SEPARATOR);
         ArrayList<Lesson> lessons = readLessons(lessonsString);
 
         return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessons);
@@ -139,7 +141,7 @@ public class Parser {
     private ArrayList<Lesson> readLessons(String[] lessonsString) throws MyStarsException {
         ArrayList<Lesson> lessonsToAdd = new ArrayList<>();
         for (String lessonString : lessonsString) {
-            String[] lessonDetailsString = lessonString.split(":");
+            String[] lessonDetailsString = lessonString.split(COLON_SEPARATOR);
 
             LessonType lessonType;
             switch (lessonDetailsString[0]) {
@@ -222,14 +224,14 @@ public class Parser {
         String nationality = studentSplit[3].trim();
         String username = studentSplit[4].trim();
 
-        String[] courseAndYear = studentSplit[5].split(":");
+        String[] courseAndYear = studentSplit[5].split(COLON_SEPARATOR);
         String courseOfStudy = courseAndYear[0];
         int yearOfStudy = Integer.parseInt(courseAndYear[1]);
 
         CourseList registeredCourses;
         try {
             String registeredCoursesString = studentSplit[6];
-            ArrayList<Course> regCourses = new ArrayList<>(loadCourse(registeredCoursesString.split(",")
+            ArrayList<Course> regCourses = new ArrayList<>(loadCourse(registeredCoursesString.split(COMMA_SEPARATOR)
                     , availableCoursesList));
             registeredCourses = new CourseList(regCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -239,7 +241,7 @@ public class Parser {
         CourseList waitlistedCourses;
         try {
             String waitlistedCoursesString = studentSplit[7];
-            ArrayList<Course> waitCourses = new ArrayList<>(loadCourse(waitlistedCoursesString.split(",")
+            ArrayList<Course> waitCourses = new ArrayList<>(loadCourse(waitlistedCoursesString.split(COMMA_SEPARATOR)
                     , availableCoursesList));
             waitlistedCourses = new CourseList(waitCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -262,7 +264,7 @@ public class Parser {
         ArrayList<Course> courseArrayList = new ArrayList<>();
         try {
             for (String course : courses) {
-                String[] courseSplit = course.split(":");
+                String[] courseSplit = course.split(COLON_SEPARATOR);
                 String courseCode = courseSplit[0];
                 String courseIndex = courseSplit[1];
                 for (Course availableCourse : availableCoursesList.getCourses()) {
