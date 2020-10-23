@@ -4,7 +4,6 @@ import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.exception.MyStarsException;
 import mystars.parser.Parser;
-import mystars.storage.Storage;
 
 public class Student extends User {
 

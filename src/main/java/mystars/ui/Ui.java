@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public abstract class Ui {
 
+    static final Scanner in = new Scanner(System.in);
     private static final String DOTTED_LINE = "------------------------------------------------------------";
     private static final String LOGO = " _______         _______________________ _______ _______ \n"
             + "(       )\\     /(  ____ \\__   __(  ___  |  ____ |  ____ \\\n"
@@ -19,8 +20,6 @@ public abstract class Ui {
             + "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)\n"
             + "                                                         "
             .replaceAll("\n", System.lineSeparator());
-
-    static final Scanner in = new Scanner(System.in);
     static Parser parser;
 
     public Ui() {

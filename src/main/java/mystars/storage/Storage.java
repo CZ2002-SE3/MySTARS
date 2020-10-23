@@ -237,8 +237,7 @@ public class Storage {
 
         if (!(Files.exists(folderPath) && Files.exists(filePath))) {
             writeToFile(fileContent, file);
-        }
-        else {
+        } else {
             try {
                 BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath, StandardOpenOption.APPEND);
                 bufferedWriter.write(fileContent + System.lineSeparator());
