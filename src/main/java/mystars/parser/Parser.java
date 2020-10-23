@@ -4,6 +4,7 @@ import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
 import mystars.commands.admin.AddStudentCommand;
+import mystars.commands.admin.CheckVacancyCommand;
 import mystars.commands.admin.EditStudentAccessCommand;
 import mystars.commands.admin.PrintListByCourseCommand;
 import mystars.commands.admin.PrintListByIndexCommand;
@@ -55,6 +56,9 @@ public class Parser {
             break;
         case AddStudentCommand.COMMAND_WORD:
             command = new AddStudentCommand();
+            break;
+        case CheckVacancyCommand.COMMAND_WORD:
+            command = new CheckVacancyCommand();
             break;
         case PrintListByIndexCommand.COMMAND_WORD:
             command = new PrintListByIndexCommand();

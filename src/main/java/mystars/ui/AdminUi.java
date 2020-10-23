@@ -1,6 +1,8 @@
 package mystars.ui;
 
+import mystars.data.CourseList;
 import mystars.data.UserList;
+import mystars.data.course.Course;
 import mystars.data.user.Student;
 
 import java.time.LocalDateTime;
@@ -151,14 +153,14 @@ public class AdminUi extends Ui {
         printNicely("Here are the list of students:");
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isIndexInList(indexNumber))
-                .forEach(System.out::println);
+                .forEach(user -> new StudentUi().printNicely(user.toString()));
     }
 
     public void showStudentListByCourse(UserList users, String courseCode) {
         printNicely("Here are the list of students:");
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
-                .forEach(System.out::println);
+                .forEach(user -> new StudentUi().printNicely(user.toString()));
     }
 
     public String getIndexNumber() {
@@ -185,5 +187,15 @@ public class AdminUi extends Ui {
         }
 
         return line.toUpperCase();
+    }
+
+    public void showVacancy(CourseList courses, String indexNumber) {
+        for (Course course : courses.getCourses()) {
+            if (course.getIndexNumber().equals(indexNumber)) {
+                printNicely("The number of vacancy is " + course.getVacancy() + ".");
+                return;
+            }
+        }
+        printNicely("Index not found!");
     }
 }

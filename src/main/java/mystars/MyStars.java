@@ -108,7 +108,7 @@ public class MyStars {
         if (command instanceof StudentCommand) {
             ((StudentCommand) command).execute(users, (StudentUi) ui, storage);
         } else if (command instanceof AdminCommand) {
-            ((AdminCommand) command).execute(accessDateTime, users, (AdminUi) ui, storage);
+            ((AdminCommand) command).execute(accessDateTime, courses, users, (AdminUi) ui, storage);
         } else if (command instanceof LogoutCommand) {
             ((LogoutCommand) command).execute(accessDateTime, users, ui, storage);
         }

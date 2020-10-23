@@ -3,21 +3,17 @@ package mystars.commands.admin;
 import mystars.data.CourseList;
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.user.Student;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
 
 import java.time.LocalDateTime;
 
-/**
- * Adds new student.
- */
-public class AddStudentCommand extends AdminCommand {
+public class CheckVacancyCommand extends AdminCommand {
 
-    public static final String COMMAND_WORD = "2";
+    public static final String COMMAND_WORD = "4";
 
     /**
-     * Adds a new student, and save to file.
+     * Executes command.
      *
      * @param accessDateTime Access period.
      * @param courses        CourseList object.
@@ -29,10 +25,7 @@ public class AddStudentCommand extends AdminCommand {
     @Override
     public void execute(LocalDateTime[] accessDateTime, CourseList courses, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
-        Student newStudent = ui.getNewStudentFromUser();
-        users.addUser(newStudent);
-
-        storage.saveStudent(newStudent);
-        ui.showAddedStudent(newStudent);
+        String indexNumber = ui.getIndexNumber();
+        ui.showVacancy(courses, indexNumber);
     }
 }
