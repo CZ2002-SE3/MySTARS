@@ -1,5 +1,7 @@
 package mystars.ui;
 
+import mystars.parser.Parser;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -19,6 +21,15 @@ public abstract class Ui {
             .replaceAll("\n", System.lineSeparator());
 
     static final Scanner in = new Scanner(System.in);
+    static Parser parser;
+
+    public Ui() {
+
+    }
+
+    public Ui(Parser parser) {
+        Ui.parser = parser;
+    }
 
     /**
      * Prints error message.

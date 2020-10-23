@@ -39,13 +39,13 @@ public class MyStars {
      */
     public MyStars() {
         parser = new Parser();
-        ui = new StudentUi();
-        storage = new Storage();
+        ui = new StudentUi(parser);
+        storage = new Storage(parser);
         try {
-            courses = new CourseList(storage.loadCourses(parser));
-            users = new UserList(storage.loadUsers(parser));
-            users.addDetails(storage.loadStudents(parser, courses), storage.loadAdmins(parser));
-            accessDateTime = storage.loadAccessPeriod(parser);
+            courses = new CourseList(storage.loadCourses());
+            users = new UserList(storage.loadUsers());
+            users.addDetails(storage.loadStudents(courses), storage.loadAdmins());
+            accessDateTime = storage.loadAccessPeriod();
 
         } catch (MyStarsException e) {
             ui.showError(e.getMessage());

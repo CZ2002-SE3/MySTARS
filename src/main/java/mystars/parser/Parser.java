@@ -34,6 +34,8 @@ public class Parser {
     public static final String COLON_SEPARATOR = ":";
     public static final String COMMA_SEPARATOR = ",";
 
+    private static final int MATRIC_NO_LENGTH = 9;
+
     /**
      * Parses admin input, and returns corresponding command.
      *
@@ -335,6 +337,34 @@ public class Parser {
             return new LocalDateTime[]{start, end};
         } catch (DateTimeParseException dateTimeParseException) {
             throw new MyStarsException("I am unable to parse date/time.");
+        }
+    }
+
+    public boolean isValidInput(String line) {
+        return !line.contains(LINE_SEPARATOR) && !line.equals("");
+    }
+
+    public boolean isValidGender(String line) {
+        return line.equalsIgnoreCase("M") || line.equalsIgnoreCase("F");
+    }
+
+    public boolean isValidMatricNo(String line) {
+        return isValidInput(line) && line.length() == MATRIC_NO_LENGTH
+                && line.substring(1, MATRIC_NO_LENGTH - 1).chars().allMatch(Character::isDigit)
+                && Character.isLetter(line.charAt(0)) && Character.isLetter(line.charAt(MATRIC_NO_LENGTH - 1));
+    }
+
+    public boolean isValidYearOfStudy(String line) {
+        return line.length() == 1 && Character.isDigit(line.charAt(0))
+                && Integer.parseInt(line) >= 1 && Integer.parseInt(line) <= 5;
+    }
+
+    public boolean isValidDateTime(String line) {
+        try {
+            LocalDateTime.parse(line.replace(" ", "T"));
+            return true;
+        } catch (DateTimeParseException dateTimeParseException) {
+            return false;
         }
     }
 }

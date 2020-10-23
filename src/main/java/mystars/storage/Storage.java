@@ -35,14 +35,19 @@ public class Storage {
     private static final String COURSES_FILE = "courses.txt";
     private static final String SETTINGS_FILE = "settings.txt";
 
+    private final Parser parser;
+
+    public Storage(Parser parser) {
+        this.parser = parser;
+    }
+
     /**
      * Loads users, stores them into ArrayList and returns the ArrayList.
      *
-     * @param parser Parser object.
      * @return ArrayList of users.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<User> loadUsers(Parser parser) throws MyStarsException {
+    public ArrayList<User> loadUsers() throws MyStarsException {
         Path path = Paths.get(FOLDER, USERS_FILE);
         ArrayList<User> users = new ArrayList<>();
 
@@ -71,12 +76,11 @@ public class Storage {
     /**
      * Loads students, stores them into ArrayList and returns the ArrayList.
      *
-     * @param parser               Parser object.
      * @param availableCoursesList Course list.
      * @return ArrayList of students.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<User> loadStudents(Parser parser, CourseList availableCoursesList) throws MyStarsException {
+    public ArrayList<User> loadStudents(CourseList availableCoursesList) throws MyStarsException {
         Path path = Paths.get(FOLDER, STUDENTS_FILE);
         ArrayList<User> students = new ArrayList<>();
 
@@ -105,11 +109,10 @@ public class Storage {
     /**
      * Loads admins, stores them into ArrayList and returns the ArrayList.
      *
-     * @param parser Parser object.
      * @return ArrayList of admins.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<User> loadAdmins(Parser parser) throws MyStarsException {
+    public ArrayList<User> loadAdmins() throws MyStarsException {
         Path path = Paths.get(FOLDER, ADMINS_FILE);
         ArrayList<User> admins = new ArrayList<>();
 
@@ -138,11 +141,10 @@ public class Storage {
     /**
      * Loads courses, stores them into ArrayList and returns the ArrayList.
      *
-     * @param parser Parser object.
      * @return ArrayList of courses.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<Course> loadCourses(Parser parser) throws MyStarsException {
+    public ArrayList<Course> loadCourses() throws MyStarsException {
         Path path = Paths.get(FOLDER, COURSES_FILE);
         ArrayList<Course> courses = new ArrayList<>();
 
@@ -171,11 +173,10 @@ public class Storage {
     /**
      * Loads access period, stores them into an array and returns the array.
      *
-     * @param parser Parser object.
      * @return Access period, null if file does not exist.
      * @throws MyStarsException If there is problem reading file.
      */
-    public LocalDateTime[] loadAccessPeriod(Parser parser) throws MyStarsException {
+    public LocalDateTime[] loadAccessPeriod() throws MyStarsException {
         Path path = Paths.get(FOLDER, SETTINGS_FILE);
         if (Files.exists(path)) {
             try {

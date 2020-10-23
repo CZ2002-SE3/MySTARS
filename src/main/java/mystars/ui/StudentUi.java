@@ -1,8 +1,17 @@
 package mystars.ui;
 
 import mystars.data.user.Student;
+import mystars.parser.Parser;
 
 public class StudentUi extends Ui {
+
+    public StudentUi(Parser parser) {
+        super(parser);
+    }
+
+    public StudentUi() {
+
+    }
 
     @Override
     public void showMenu() {
