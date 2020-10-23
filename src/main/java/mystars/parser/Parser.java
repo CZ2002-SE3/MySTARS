@@ -5,6 +5,7 @@ import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
 import mystars.commands.admin.AddStudentCommand;
 import mystars.commands.admin.EditStudentAccessCommand;
+import mystars.commands.admin.PrintListByCourseCommand;
 import mystars.commands.admin.PrintListByIndexCommand;
 import mystars.commands.student.AddCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
@@ -36,6 +37,8 @@ public class Parser {
     public static final String COMMA_SEPARATOR = ",";
 
     private static final int MATRIC_NO_LENGTH = 9;
+    private static final int COURSE_CODE_LENGTH = 6;
+    private static final int INDEX_NO_LENGTH = 5;
 
     /**
      * Parses admin input, and returns corresponding command.
@@ -55,6 +58,9 @@ public class Parser {
             break;
         case PrintListByIndexCommand.COMMAND_WORD:
             command = new PrintListByIndexCommand();
+            break;
+        case PrintListByCourseCommand.COMMAND_WORD:
+            command = new PrintListByCourseCommand();
             break;
         case LogoutCommand.COMMAND_WORD:
             command = new LogoutCommand();
@@ -373,6 +379,11 @@ public class Parser {
     }
 
     public boolean isValidIndexNumber(String line) {
-        return line.chars().allMatch(Character::isDigit);
+        return line.length() == INDEX_NO_LENGTH && line.chars().allMatch(Character::isDigit);
+    }
+
+    public boolean isValidCourseCode(String line) {
+        return line.length() == COURSE_CODE_LENGTH && line.substring(0, 1).chars().allMatch(Character::isLetter)
+                && line.substring(2, COURSE_CODE_LENGTH - 1).chars().allMatch(Character::isDigit);
     }
 }

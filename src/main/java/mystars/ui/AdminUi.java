@@ -154,6 +154,13 @@ public class AdminUi extends Ui {
                 .forEach(System.out::println);
     }
 
+    public void showStudentListByCourse(UserList users, String courseCode) {
+        printNicely("Here are the list of students:");
+        users.getUsers().stream().filter(Student.class::isInstance)
+                .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
+                .forEach(System.out::println);
+    }
+
     public String getIndexNumber() {
         printNicely("Enter index number:");
 
@@ -165,5 +172,18 @@ public class AdminUi extends Ui {
         }
 
         return line;
+    }
+
+    public String getCourseCode() {
+        printNicely("Enter course code:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidCourseCode(line)) {
+            printNicely("Enter valid course code!");
+            printNicely("Enter course code:");
+            line = in.nextLine();
+        }
+
+        return line.toUpperCase();
     }
 }

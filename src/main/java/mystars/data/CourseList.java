@@ -68,4 +68,13 @@ public class CourseList {
     public String getFormattedString() {
         return courses.stream().map(Course::getFormattedString).collect(Collectors.joining(Parser.COMMA_SEPARATOR));
     }
+
+    public boolean isCourseInList(String courseCode) {
+        for (Course course : courses) {
+            if (course.getCourseCode().equalsIgnoreCase(courseCode)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
