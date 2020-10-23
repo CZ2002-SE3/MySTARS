@@ -1,6 +1,7 @@
 package mystars.ui;
 
 import mystars.data.exception.MyStarsException;
+import mystars.data.user.Student;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -46,5 +47,49 @@ public class AdminUi extends Ui {
         printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         printNicely("Please restart program for change to take effect.");
+    }
+
+    public Student getNewStudentFromUser() {
+        String name = getStudentName();
+        String matricNo = getStudentMatricNo();
+        char gender = getStudentGender();
+        String nationality = getStudentNationality();
+        String courseOfStudy = getStudentCourseOfStudy();
+        int yearOfStudy = getStudentYearOfStudy();
+        return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy);
+    }
+
+    private int getStudentYearOfStudy() {
+        printNicely("Enter year of study:");
+        return Integer.parseInt(in.nextLine());
+    }
+
+    private String getStudentCourseOfStudy() {
+        printNicely("Enter course of study:");
+        return in.nextLine();
+    }
+
+    private String getStudentNationality() {
+        printNicely("Enter nationality:");
+        return in.nextLine();
+    }
+
+    private char getStudentGender() {
+        printNicely("Enter gender (M/F):");
+        return in.nextLine().charAt(0);
+    }
+
+    private String getStudentMatricNo() {
+        printNicely("Enter matric number:");
+        return in.nextLine();
+    }
+
+    private String getStudentName() {
+        printNicely("Enter student name:");
+        return in.nextLine();
+    }
+
+    public void showAddedStudent(Student newStudent) {
+        printNicely("Student Added: " + newStudent.toString());
     }
 }

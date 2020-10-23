@@ -15,12 +15,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Storage {
-
-    public static final String SEPARATOR = Parser.SEPARATOR.replace("\\", "");
 
     public static final String LOAD_ERROR = "I am unable to load file.";
     private static final String READ_ERROR = "I am unable to read file.";
@@ -196,10 +195,9 @@ public class Storage {
     }
 
     public void saveAccessPeriod(LocalDateTime[] accessPeriod) throws MyStarsException {
-        StringBuilder accessPeriodFileContent = new StringBuilder();
-        accessPeriodFileContent.append(SETTINGS_FORMAT).append(System.lineSeparator()).append(accessPeriod[0]);
-        accessPeriodFileContent.append(SEPARATOR).append(accessPeriod[1]).append(System.lineSeparator());
-        writeToFile(accessPeriodFileContent, SETTINGS_FILE);
+        String accessPeriodString = SETTINGS_FORMAT + System.lineSeparator() + accessPeriod[0] +
+                Parser.LINE_SEPARATOR + accessPeriod[1] + System.lineSeparator();
+        writeToFile(accessPeriodString, SETTINGS_FILE);
     }
 
     /**
@@ -209,7 +207,7 @@ public class Storage {
      * @param file        Filename to write to.
      * @throws MyStarsException If there is problem writing files.
      */
-    private void writeToFile(StringBuilder fileContent, String file) throws MyStarsException {
+    private void writeToFile(String fileContent, String file) throws MyStarsException {
         Path folderPath = Paths.get(FOLDER);
         if (!Files.exists(folderPath) && !new File(FOLDER).mkdir()) {
             throw new MyStarsException(DIRECTORY_ERROR);
@@ -218,10 +216,39 @@ public class Storage {
         Path filePath = Paths.get(FOLDER, file);
         try {
             BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath);
-            bufferedWriter.write(fileContent.toString());
+            bufferedWriter.write(fileContent);
             bufferedWriter.close();
         } catch (IOException e) {
             throw new MyStarsException(WRITE_ERROR);
         }
+    }
+
+    /**
+     * Appends content to file.
+     *
+     * @param fileContent String content to write.
+     * @param file        Filename to write to.
+     * @throws MyStarsException If there is problem writing files.
+     */
+    private void appendToFile(String fileContent, String file) throws MyStarsException {
+        Path folderPath = Paths.get(FOLDER);
+        Path filePath = Paths.get(FOLDER, file);
+
+        if (!(Files.exists(folderPath) && Files.exists(filePath))) {
+            writeToFile(fileContent, file);
+        }
+        else {
+            try {
+                BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath, StandardOpenOption.APPEND);
+                bufferedWriter.write(fileContent + System.lineSeparator());
+                bufferedWriter.close();
+            } catch (IOException e) {
+                throw new MyStarsException(WRITE_ERROR);
+            }
+        }
+    }
+
+    public void saveStudent(Student newStudent) throws MyStarsException {
+        appendToFile(newStudent.getFormattedString(), STUDENTS_FILE);
     }
 }

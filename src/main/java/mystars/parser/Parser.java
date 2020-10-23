@@ -3,6 +3,7 @@ package mystars.parser;
 import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
+import mystars.commands.admin.AddStudentCommand;
 import mystars.commands.admin.EditStudentAccessCommand;
 import mystars.commands.student.AddCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
@@ -29,6 +30,7 @@ public class Parser {
 
     // Used to separate each attribute of an object
     public static final String SEPARATOR = "\\|";
+    public static final String LINE_SEPARATOR = SEPARATOR.replace("\\", "");
     public static final String COLON_SEPARATOR = ":";
     public static final String COMMA_SEPARATOR = ",";
 
@@ -39,11 +41,14 @@ public class Parser {
      * @return Command to execute.
      * @throws MyStarsException If command is invalid.
      */
-    public Command parseAdmin(String fullCommand) throws MyStarsException {
+    public Command parseAdminInput(String fullCommand) throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
         case EditStudentAccessCommand.COMMAND_WORD:
             command = new EditStudentAccessCommand();
+            break;
+        case AddStudentCommand.COMMAND_WORD:
+            command = new AddStudentCommand();
             break;
         case LogoutCommand.COMMAND_WORD:
             command = new LogoutCommand();
@@ -55,7 +60,7 @@ public class Parser {
         return command;
     }
 
-    public Command parseStudent(String fullCommand) throws MyStarsException {
+    public Command parseStudentInput(String fullCommand) throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
         case AddCourseCommand.COMMAND_WORD:

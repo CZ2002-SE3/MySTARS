@@ -3,6 +3,8 @@ package mystars.data.user;
 import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.exception.MyStarsException;
+import mystars.parser.Parser;
+import mystars.storage.Storage;
 
 public class Student extends User {
 
@@ -26,6 +28,17 @@ public class Student extends User {
         this.registeredCourses = registeredCourses;
         this.waitlistedCourses = waitlistedCourses;
         super.setUsername(username.toCharArray());
+    }
+
+    public Student(String name, String matricNo, char gender, String nationality, String courseOfStudy, int yearOfStudy) {
+        this.name = name;
+        this.matricNo = matricNo;
+        this.gender = gender;
+        this.nationality = nationality;
+        this.courseOfStudy = courseOfStudy;
+        this.yearOfStudy = yearOfStudy;
+        this.registeredCourses = new CourseList();
+        this.waitlistedCourses = new CourseList();
     }
 
     public Student() {
@@ -125,5 +138,19 @@ public class Student extends User {
         if (waitlistedCourses.isCourseInList(courseToAdd)) {
             throw new MyStarsException("Course already present in waitlisted courses.");
         }
+    }
+
+    public String getFormattedString() {
+
+        String username = getUsername() == null ? "null" : String.valueOf(getUsername());
+
+        return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
+                , username, courseOfStudy + ":" + yearOfStudy
+                , registeredCourses.getFormattedString(), waitlistedCourses.getFormattedString());
+    }
+
+    @Override
+    public String toString() {
+        return String.join(Parser.COMMA_SEPARATOR + " ", name, matricNo, String.valueOf(gender), nationality);
     }
 }

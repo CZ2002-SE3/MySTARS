@@ -1,5 +1,7 @@
 package mystars.data.course;
 
+import mystars.parser.Parser;
+
 import java.util.ArrayList;
 
 public class Course {
@@ -86,5 +88,9 @@ public class Course {
 
     public boolean isSameCourseCode(Course course) {
         return course.getCourseCode().equals(getCourseCode());
+    }
+
+    public String getFormattedString() {
+        return courseCode + Parser.COLON_SEPARATOR + indexNumber;
     }
 }

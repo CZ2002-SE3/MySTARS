@@ -79,11 +79,11 @@ public class MyStars {
                 if (command.getUser() instanceof Student) {
                     logger.log(Level.INFO, "show student ui");
                     ui = new StudentUi();
-                    command = parser.parseStudent(ui.readCommand());
+                    command = parser.parseStudentInput(ui.readCommand());
                 } else if (command.getUser() instanceof Admin) {
                     logger.log(Level.INFO, "show admin ui");
                     ui = new AdminUi();
-                    command = parser.parseAdmin(ui.readCommand());
+                    command = parser.parseAdminInput(ui.readCommand());
                 }
                 execute(command);
 

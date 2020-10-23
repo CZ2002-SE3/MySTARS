@@ -2,20 +2,21 @@ package mystars.commands.admin;
 
 import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.user.Student;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
 
 import java.time.LocalDateTime;
 
 /**
- * Edits student access period.
+ * Adds new student.
  */
-public class EditStudentAccessCommand extends AdminCommand {
+public class AddStudentCommand extends AdminCommand {
 
-    public static final String COMMAND_WORD = "1";
+    public static final String COMMAND_WORD = "2";
 
     /**
-     * Prompts admin for new access period and saves to file.
+     * Adds a new student, and save to file.
      *
      * @param accessDateTime Access period.
      * @param users          UserList object.
@@ -26,10 +27,10 @@ public class EditStudentAccessCommand extends AdminCommand {
     @Override
     public void execute(LocalDateTime[] accessDateTime, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
-        ui.showAccessPeriod(accessDateTime);
-        accessDateTime = ui.getNewAccessPeriod();
+        Student newStudent = ui.getNewStudentFromUser();
+        users.addUser(newStudent);
 
-        storage.saveAccessPeriod(accessDateTime);
-        ui.showNewAccessPeriod(accessDateTime);
+        storage.saveStudent(newStudent);
+        ui.showAddedStudent(newStudent);
     }
 }

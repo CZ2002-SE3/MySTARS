@@ -1,8 +1,10 @@
 package mystars.data;
 
 import mystars.data.course.Course;
+import mystars.parser.Parser;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class CourseList {
 
@@ -52,5 +54,9 @@ public class CourseList {
 
     public void addCourse(Course courseToAdd) {
         courses.add(courseToAdd);
+    }
+
+    public String getFormattedString() {
+        return courses.stream().map(Course::getFormattedString).collect(Collectors.joining(Parser.COMMA_SEPARATOR));
     }
 }
