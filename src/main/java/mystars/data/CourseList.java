@@ -46,10 +46,19 @@ public class CourseList {
     public boolean isCourseInList(Course courseToCheck) {
         for (Course course : courses) {
             if (courseToCheck.isSameCourseCode(course)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
+    }
+
+    public boolean isIndexInList(String Index) {
+        for (Course course : courses) {
+            if (course.getIndexNumber().equals(Index)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void addCourse(Course courseToAdd) {

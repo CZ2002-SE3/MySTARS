@@ -5,6 +5,7 @@ import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
 import mystars.commands.admin.AddStudentCommand;
 import mystars.commands.admin.EditStudentAccessCommand;
+import mystars.commands.admin.PrintListByIndexCommand;
 import mystars.commands.student.AddCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
 import mystars.data.CourseList;
@@ -51,6 +52,9 @@ public class Parser {
             break;
         case AddStudentCommand.COMMAND_WORD:
             command = new AddStudentCommand();
+            break;
+        case PrintListByIndexCommand.COMMAND_WORD:
+            command = new PrintListByIndexCommand();
             break;
         case LogoutCommand.COMMAND_WORD:
             command = new LogoutCommand();
@@ -300,7 +304,7 @@ public class Parser {
      * @param line Line of admin to read.
      * @return Admins of corresponding line.
      */
-    public Admin readAdmin(String line) throws MyStarsException {
+    public Admin readAdmin(String line) {
 
         //TODO: Read courses from file.
         String[] adminSplit = line.split(SEPARATOR);
@@ -366,5 +370,9 @@ public class Parser {
         } catch (DateTimeParseException dateTimeParseException) {
             return false;
         }
+    }
+
+    public boolean isValidIndexNumber(String line) {
+        return line.chars().allMatch(Character::isDigit);
     }
 }

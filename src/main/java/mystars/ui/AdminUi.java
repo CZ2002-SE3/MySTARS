@@ -1,5 +1,6 @@
 package mystars.ui;
 
+import mystars.data.UserList;
 import mystars.data.user.Student;
 
 import java.time.LocalDateTime;
@@ -143,6 +144,26 @@ public class AdminUi extends Ui {
     }
 
     public void showAddedStudent(Student newStudent) {
-        printNicely("Student Added: " + newStudent.toString());
+        printNicely("Student added: " + newStudent.toString());
+    }
+
+    public void showStudentListByIndex(UserList users, String indexNumber) {
+        printNicely("Here are the list of students:");
+        users.getUsers().stream().filter(Student.class::isInstance)
+                .filter((student) -> ((Student) student).getRegisteredCourses().isIndexInList(indexNumber))
+                .forEach(System.out::println);
+    }
+
+    public String getIndexNumber() {
+        printNicely("Enter index number:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidIndexNumber(line)) {
+            printNicely("Enter valid index number!");
+            printNicely("Enter index number:");
+            line = in.nextLine();
+        }
+
+        return line;
     }
 }
