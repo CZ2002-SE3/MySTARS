@@ -12,6 +12,7 @@ import mystars.commands.student.AddCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
 import mystars.common.Option;
 import mystars.data.CourseList;
+import mystars.data.LessonList;
 import mystars.data.course.Course;
 import mystars.data.course.Lesson;
 import mystars.data.course.LessonType;
@@ -150,12 +151,10 @@ public class Parser {
         String indexNumber = courseSplit[2].trim();
         String vacancyString = courseSplit[3].trim();
         String numOfAUsString = courseSplit[4].trim();
-        String weekString = courseSplit[5].trim();
-        String lessonString = courseSplit[6].trim();
+        String lessonString = courseSplit[5].trim();
 
         int vacancy;
         int numOfAUs;
-        Week week;
         if (isValidNumber(vacancyString)) {
             vacancy = Integer.parseInt(vacancyString);
         } else {
@@ -168,16 +167,10 @@ public class Parser {
             throw new MyStarsException("Number of AUs is not valid!");
         }
 
-        if (isValidWeek(weekString)) {
-            week = Week.valueOf(weekString);
-        } else {
-            throw new MyStarsException("Week is not valid!");
-        }
-
         String[] lessonsString = lessonString.split(ESCAPED_ASTERISK_SEPERATOR);
-        ArrayList<Lesson> lessons = readLessons(lessonsString);
+        LessonList lessonList = new LessonList(readLessons(lessonsString));
 
-        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, week, lessons);
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
     }
 
     public boolean isValidWeek(String line) {
@@ -197,9 +190,11 @@ public class Parser {
 
             DayOfWeek day = DayOfWeek.valueOf(lessonDetailsString[4].trim());
 
-            String group = lessonDetailsString[5];
+            Week week = Week.valueOf(lessonDetailsString[5].trim());
 
-            Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, group);
+            String group = lessonDetailsString[6];
+
+            Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, week, group);
             lessonsToAdd.add(lessonToAdd);
         }
 

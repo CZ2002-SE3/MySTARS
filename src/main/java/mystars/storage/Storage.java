@@ -28,7 +28,7 @@ public class Storage {
     private static final String WRITE_ERROR = "I am unable to write file.";
 
     private static final String SETTINGS_FORMAT = "format: start datetime|end datetime";
-    private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|week|"
+    private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|"
             + "Lesson1*Lesson2*... (refer to Lesson.java for format)";
 
     private static final String FOLDER = "db";

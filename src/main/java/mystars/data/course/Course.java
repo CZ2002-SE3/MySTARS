@@ -1,5 +1,6 @@
 package mystars.data.course;
 
+import mystars.data.LessonList;
 import mystars.parser.Parser;
 
 import java.util.ArrayList;
@@ -14,19 +15,17 @@ public class Course {
     private String indexNumber;
     private int vacancy;
     private int numOfAUs;
-    private final Week week;
-    private ArrayList<Lesson> lessons;
+    private LessonList lessonList;
 
-    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs, Week week
-            , ArrayList<Lesson> lessons) {
+    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs
+            , LessonList lessonList) {
         this.courseCode = courseCode;
         this.school = school;
         this.indexNumber = indexNumber;
         this.initialVacancy = vacancy;
         this.vacancy = vacancy;
         this.numOfAUs = numOfAUs;
-        this.week = week;
-        this.lessons = lessons;
+        this.lessonList = lessonList;
     }
 
     public String getCourseCode() {
@@ -69,14 +68,6 @@ public class Course {
         this.numOfAUs = numOfAUs;
     }
 
-    public ArrayList<Lesson> getLessons() {
-        return lessons;
-    }
-
-    public void setLessons(ArrayList<Lesson> lessons) {
-        this.lessons = lessons;
-    }
-
     @Override
     public String toString() {
         return "Course Code: " + courseCode + System.lineSeparator() +
@@ -99,7 +90,7 @@ public class Course {
 
     public String getStorageString() {
         return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancy)
-                , Integer.toString(numOfAUs), lessons.stream().map(Lesson::getStorageString)
+                , Integer.toString(numOfAUs), lessonList.getLessons().stream().map(Lesson::getStorageString)
                         .collect(Collectors.joining(Parser.ASTERISK_SEPERATOR)));
     }
 }

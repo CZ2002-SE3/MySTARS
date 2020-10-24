@@ -11,15 +11,17 @@ public class Lesson {
     private LocalTime startTime;
     private LocalTime endTime;
     private DayOfWeek day;
+    private Week week;
     private String group;
 
-    public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek day
+    public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek day, Week week
             , String group) {
         this.lessonType = lessonType;
         this.venue = venue;
         this.startTime = startTime;
         this.endTime = endTime;
         this.day = day;
+        this.week = week;
         this.group = group;
     }
 
@@ -76,5 +78,9 @@ public class Lesson {
                 , startTime.toString()
                 , endTime.toString()
                 , day.toString(), group);
+    }
+
+    public Week getWeek() {
+        return week;
     }
 }

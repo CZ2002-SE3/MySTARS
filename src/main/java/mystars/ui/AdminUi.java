@@ -2,6 +2,7 @@ package mystars.ui;
 
 import mystars.common.Option;
 import mystars.data.CourseList;
+import mystars.data.LessonList;
 import mystars.data.UserList;
 import mystars.data.course.Course;
 import mystars.data.course.Lesson;
@@ -216,10 +217,9 @@ public class AdminUi extends Ui {
         String school = getSchool();
         int vacancy = getVacancy();
         int numOfAUs = getNumOfAUs();
-        Week week = getWeek();
-        ArrayList<Lesson> lessons = getLessons();
+        LessonList lessonList = getLessonList();
 
-        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, week, lessons);
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
     }
 
     private Week getWeek() {
@@ -233,15 +233,15 @@ public class AdminUi extends Ui {
         return Week.valueOf(line.toUpperCase());
     }
 
-    private ArrayList<Lesson> getLessons() {
-        ArrayList<Lesson> lessons = new ArrayList<>();
+    private LessonList getLessonList() {
+        LessonList lessonList = new LessonList();
         String option = Option.Y.name();
         while (parser.isYes(option)) {
-            lessons.add(getLesson());
+            lessonList.addLesson(getLesson());
             option = askOption("Add more lesson?");
         }
 
-        return lessons;
+        return lessonList;
     }
 
     private Lesson getLesson() {
@@ -249,8 +249,9 @@ public class AdminUi extends Ui {
         String venue = getVenue();
         LocalTime[] times = getStartAndEndTime();
         DayOfWeek day = getDayOfWeek();
+        Week week = getWeek();
         String group = getGroup();
-        return new Lesson(lessonType, venue, times[0], times[1], day, group);
+        return new Lesson(lessonType, venue, times[0], times[1], day, week, group);
     }
 
     private LocalTime[] getStartAndEndTime() {
