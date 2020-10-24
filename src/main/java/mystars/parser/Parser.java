@@ -168,7 +168,7 @@ public class Parser {
         }
 
         String[] lessonsString = lessonString.split(ESCAPED_ASTERISK_SEPERATOR);
-        LessonList lessonList = new LessonList(readLessons(lessonsString));
+        LessonList lessonList = readLessons(lessonsString);
 
         return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
     }
@@ -177,8 +177,8 @@ public class Parser {
         return Arrays.stream(Week.values()).map(Week::name).anyMatch(line::equalsIgnoreCase);
     }
 
-    private ArrayList<Lesson> readLessons(String[] lessonsString) {
-        ArrayList<Lesson> lessonsToAdd = new ArrayList<>();
+    private LessonList readLessons(String[] lessonsString) throws MyStarsException {
+        LessonList lessonList = new LessonList();
         for (String lessonString : lessonsString) {
             String[] lessonDetailsString = lessonString.split(TILDE_SEPARATOR);
 
@@ -195,10 +195,13 @@ public class Parser {
             String group = lessonDetailsString[6];
 
             Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, week, group);
-            lessonsToAdd.add(lessonToAdd);
+
+            if(!lessonList.addLesson(lessonToAdd)) {
+                throw new MyStarsException("Lesson Clash!");
+            }
         }
 
-        return lessonsToAdd;
+        return lessonList;
     }
 
     /**

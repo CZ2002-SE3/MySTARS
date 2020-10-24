@@ -11,7 +11,7 @@ public class Lesson {
     private LocalTime startTime;
     private LocalTime endTime;
     private DayOfWeek day;
-    private Week week;
+    private final Week week;
     private String group;
 
     public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek day, Week week
@@ -74,13 +74,17 @@ public class Lesson {
     }
 
     public String getStorageString() {
-        return String.join(Parser.TILDE_SEPARATOR, lessonType.name(), venue
-                , startTime.toString()
-                , endTime.toString()
-                , day.toString(), group);
+        return String.join(Parser.TILDE_SEPARATOR, lessonType.name(), venue, startTime.toString(), endTime.toString()
+                , day.toString(), getWeek().name(), group);
     }
 
     public Week getWeek() {
         return week;
+    }
+
+    public boolean isClash(Lesson newLesson) {
+        return (newLesson.getWeek() == Week.BOTH || getWeek() == Week.BOTH || newLesson.getWeek() == getWeek())
+                && getStartTime().isBefore(newLesson.getEndTime()) && getEndTime().isAfter(newLesson.getStartTime())
+                && newLesson.getDay() == getDay();
     }
 }

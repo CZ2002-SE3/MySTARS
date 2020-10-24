@@ -19,10 +19,12 @@ public class LessonList {
         return lessons;
     }
 
-    public void addLesson(Lesson newLesson) {
-        //TODO: check clash
-        for (Lesson lesson : lessons) {
-            //if newLesson.
+    public boolean addLesson(Lesson newLesson) {
+        boolean isClash = getLessons().stream().anyMatch(newLesson::isClash);
+        if (isClash) {
+            return false;
         }
+        lessons.add(newLesson);
+        return true;
     }
 }
