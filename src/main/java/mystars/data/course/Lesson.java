@@ -6,12 +6,12 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 public class Lesson {
+    private final Week week;
     private LessonType lessonType;
     private String venue;
     private LocalTime startTime;
     private LocalTime endTime;
     private DayOfWeek day;
-    private final Week week;
     private String group;
 
     public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek day, Week week

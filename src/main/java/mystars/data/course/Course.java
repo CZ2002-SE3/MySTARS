@@ -3,19 +3,18 @@ package mystars.data.course;
 import mystars.data.LessonList;
 import mystars.parser.Parser;
 
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Course {
 
     private final int initialVacancy;
+    private final LessonList lessonList;
     private String courseCode;
     // Might be wise to change school to enum afterwards
     private String school;
     private String indexNumber;
     private int vacancy;
     private int numOfAUs;
-    private LessonList lessonList;
 
     public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs
             , LessonList lessonList) {

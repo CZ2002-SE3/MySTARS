@@ -196,7 +196,7 @@ public class Parser {
 
             Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, week, group);
 
-            if(!lessonList.addLesson(lessonToAdd)) {
+            if (!lessonList.addLesson(lessonToAdd)) {
                 throw new MyStarsException("Lesson Clash!");
             }
         }
