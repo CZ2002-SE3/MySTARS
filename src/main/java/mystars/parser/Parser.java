@@ -23,7 +23,6 @@ import mystars.data.user.User;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
@@ -33,13 +32,11 @@ import java.util.ArrayList;
 public class Parser {
 
     // Used to separate each attribute of an object
-    public static final String LINE_SEPARATOR = "|";
-    public static final String ESCAPED_LINE_SEPARATOR = "\\" + LINE_SEPARATOR;
-    public static final String COLON_SEPARATOR = ":";
-    public static final String COMMA_SEPARATOR = ",";
+    public static final String ESCAPED_LINE_SEPARATOR = "\\|";
+    public static final String LINE_SEPARATOR = ESCAPED_LINE_SEPARATOR.replace("\\", "");
     public static final String TILDE_SEPARATOR = "~";
-    public static final String ASTERISK_SEPERATOR = "*";
-    public static final String ESCAPED_ASTERISK_SEPERATOR = "\\" + ASTERISK_SEPERATOR;
+    public static final String ESCAPED_ASTERISK_SEPERATOR = "\\*";
+    public static final String ASTERISK_SEPERATOR = ESCAPED_ASTERISK_SEPERATOR.replace("\\", "");
 
     private static final int MATRIC_NO_LENGTH = 9;
     private static final int COURSE_CODE_LENGTH = 6;
@@ -115,7 +112,7 @@ public class Parser {
 
         //TODO: Read users from file.
         User user;
-        String[] userSplit = line.split(escapeSeparator(LINE_SEPARATOR));
+        String[] userSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String username = userSplit[0].trim();
         String password = userSplit[1].trim();
         String type = userSplit[2].trim();
@@ -135,14 +132,6 @@ public class Parser {
         user.setPassword(password.toCharArray());
 
         return user;
-    }
-
-    private String escapeSeparator(String separator) {
-        String regex = ".[]{}()<>*+-=!?^$|";
-        if (regex.contains(separator)) {
-            return "\\" + separator;
-        }
-        return separator;
     }
 
     /**
@@ -203,13 +192,11 @@ public class Parser {
             }
 
             String venue = lessonDetailsString[1];
-            String timeString = lessonDetailsString[2];
-            LocalTime[] time = parseTime(timeString);
-            LocalTime startTime = time[0];
-            LocalTime endTime = time[1];
+            LocalTime startTime = LocalTime.parse(lessonDetailsString[2]);
+            LocalTime endTime = LocalTime.parse(lessonDetailsString[3]);
 
             Day day;
-            switch (lessonDetailsString[3]) {
+            switch (lessonDetailsString[4].trim()) {
             case "MON":
                 day = Day.MON;
                 break;
@@ -229,27 +216,13 @@ public class Parser {
                 throw new MyStarsException("Error when parsing day!");
             }
 
-            String group = lessonDetailsString[4];
+            String group = lessonDetailsString[5];
 
             Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, group);
             lessonsToAdd.add(lessonToAdd);
         }
 
         return lessonsToAdd;
-    }
-
-    private LocalTime[] parseTime(String timeString) throws MyStarsException {
-        try {
-            String startTimeString = timeString.split("-")[0];
-            String endTimeString = timeString.split("-")[1];
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmm");
-            LocalTime[] time = new LocalTime[2];
-            time[0] = LocalTime.parse(startTimeString, formatter);
-            time[1] = LocalTime.parse(endTimeString, formatter);
-            return time;
-        } catch (DateTimeParseException e) {
-            throw new MyStarsException("Error while parsing time!");
-        }
     }
 
     /**
