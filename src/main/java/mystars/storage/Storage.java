@@ -258,9 +258,9 @@ public class Storage {
 
     public void saveCourses(CourseList courses) throws MyStarsException {
         String coursesString = courses.getCourses().stream().map(Course::getStorageString)
-                .collect(Collectors.joining(Parser.ASTERISK_SEPERATOR));
+                .collect(Collectors.joining(System.lineSeparator()));
 
-        String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString;
+        String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString + System.lineSeparator();
         writeToFile(coursesFileContent, COURSES_FILE);
     }
 }

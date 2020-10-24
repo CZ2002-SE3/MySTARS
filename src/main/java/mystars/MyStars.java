@@ -95,7 +95,7 @@ public class MyStars {
 
             if (command instanceof LogoutCommand) {
                 String fullCommand = ui.askExit();
-                if (parser.isExit(fullCommand)) {
+                if (parser.isYes(fullCommand)) {
                     ui.showLine();
                     new ExitCommand().execute(accessDateTime, users, ui, storage);
                 }

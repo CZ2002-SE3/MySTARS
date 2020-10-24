@@ -11,6 +11,7 @@ import mystars.commands.admin.PrintListByCourseCommand;
 import mystars.commands.admin.PrintListByIndexCommand;
 import mystars.commands.student.AddCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
+import mystars.common.Option;
 import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.course.Lesson;
@@ -291,16 +292,6 @@ public class Parser {
     }
 
     /**
-     * Checks if exit command is called.
-     *
-     * @param fullCommand Command to check.
-     * @return True if exit command is called, false otherwise.
-     */
-    public boolean isExit(String fullCommand) {
-        return fullCommand.trim().equalsIgnoreCase(ExitCommand.COMMAND_WORD);
-    }
-
-    /**
      * Reads student's access period.
      *
      * @param line Line of DateTime to read.
@@ -361,5 +352,45 @@ public class Parser {
 
     public boolean isValidNumber(String line) {
         return line.chars().allMatch(Character::isDigit) && Integer.parseInt(line) >= 0;
+    }
+
+    public boolean isValidLessonType(String line) {
+        for (LessonType lessonType : LessonType.values()) {
+            if (line.equalsIgnoreCase(lessonType.name())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isValidTime(String line) {
+        try {
+            LocalTime.parse(line);
+            return true;
+        } catch (DateTimeParseException dateTimeParseException) {
+            return false;
+        }
+    }
+
+    public boolean isValidDayOfWeek(String line) {
+        for (DayOfWeek dayOfWeek : DayOfWeek.values()) {
+            if (line.equalsIgnoreCase(dayOfWeek.name())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isValidOption(String line) {
+        for (Option option : Option.values()) {
+            if (line.equalsIgnoreCase(option.name())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isYes(String line) {
+        return line.trim().equalsIgnoreCase(Option.Y.name());
     }
 }

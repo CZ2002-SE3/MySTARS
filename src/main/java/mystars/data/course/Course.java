@@ -96,9 +96,8 @@ public class Course {
     }
 
     public String getStorageString() {
-        String lessonsString = lessons == null ? "" : lessons.stream().map(Lesson::getStorageString)
-                .collect(Collectors.joining(Parser.ASTERISK_SEPERATOR));
         return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancy)
-                , Integer.toString(numOfAUs), lessonsString) + System.lineSeparator();
+                , Integer.toString(numOfAUs), lessons.stream().map(Lesson::getStorageString)
+                        .collect(Collectors.joining(Parser.ASTERISK_SEPERATOR)));
     }
 }

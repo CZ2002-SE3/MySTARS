@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
  */
 public class ExitCommand extends SharedCommand {
 
-    public static final String COMMAND_WORD = "Y";
     public static final String MESSAGE = "Bye! See you again soon!";
 
     /**

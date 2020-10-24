@@ -73,9 +73,9 @@ public class Lesson {
     }
 
     public String getStorageString() {
-        return String.join(Parser.TILDE_SEPARATOR, lessonType.toString(), venue
-                , startTime.format(DateTimeFormatter.ofPattern("HHmm")) + "-"
-                        + endTime.format(DateTimeFormatter.ofPattern("HHmm"))
+        return String.join(Parser.TILDE_SEPARATOR, lessonType.name(), venue
+                , startTime.toString()
+                , endTime.toString()
                 , day.toString(), group);
     }
 }

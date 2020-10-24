@@ -1,13 +1,16 @@
 package mystars.ui;
 
+import mystars.common.Option;
 import mystars.data.CourseList;
 import mystars.data.UserList;
 import mystars.data.course.Course;
 import mystars.data.course.Lesson;
+import mystars.data.course.LessonType;
 import mystars.data.user.Student;
 
-import java.lang.reflect.Array;
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -34,20 +37,20 @@ public class AdminUi extends Ui {
     public LocalDateTime[] getNewAccessPeriod() {
         printNicely("");
         printNicely("Enter new start date & time in this format: yyyy-MM-dd HH:mm");
-        String line = in.nextLine();
+        String line = in.nextLine().trim();
         while (!parser.isValidDateTime(line)) {
             printNicely("Enter valid date/time!");
             printNicely("Enter new start date & time in this format: yyyy-MM-dd HH:mm");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
         LocalDateTime startDateTime = LocalDateTime.parse(line.replace(" ", "T"));
 
         printNicely("Enter new end date & time in this format: yyyy-MM-dd HH:mm");
-        line = in.nextLine();
+        line = in.nextLine().trim();
         while (!parser.isValidDateTime(line)) {
             printNicely("Enter valid date/time!");
             printNicely("Enter end start date & time in this format: yyyy-MM-dd HH:mm");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
         LocalDateTime endDateTime = LocalDateTime.parse(line.replace(" ", "T"));
 
@@ -81,7 +84,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidYearOfStudy(line)) {
             printNicely("Enter valid year of study!");
             printNicely("Enter year of study:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return Integer.parseInt(line);
@@ -94,7 +97,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidInput(line)) {
             printNicely("Enter valid course of study!");
             printNicely("Enter course of study:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return line.toUpperCase();
@@ -107,7 +110,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidInput(line)) {
             printNicely("Enter valid nationality!");
             printNicely("Enter nationality:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return line;
@@ -120,7 +123,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidGender(line)) {
             printNicely("Enter valid gender!");
             printNicely("Enter gender (M/F):");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
         return line.charAt(0);
     }
@@ -132,7 +135,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidMatricNo(line)) {
             printNicely("Enter valid matric number!");
             printNicely("Enter matric number:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return line.toUpperCase();
@@ -145,7 +148,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidInput(line)) {
             printNicely("Enter valid name!");
             printNicely("Enter student name:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return line;
@@ -178,7 +181,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidIndexNumber(line)) {
             printNicely("Enter valid index number!");
             printNicely("Enter index number:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return line;
@@ -191,7 +194,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidCourseCode(line)) {
             printNicely("Enter valid course code!");
             printNicely("Enter course code:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return line.toUpperCase();
@@ -214,16 +217,91 @@ public class AdminUi extends Ui {
         int numOfAUs = getNumOfAUs();
         ArrayList<Lesson> lessons = getLessons();
 
-        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, null);
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessons);
     }
 
     private ArrayList<Lesson> getLessons() {
-        // TODO: Add lessons
         ArrayList<Lesson> lessons = new ArrayList<>();
-        printNicely("Enter Lesson type:");
-        printNicely("1.Lecture");
-        //while ()
-        return new ArrayList<>();
+        String option = Option.Y.name();
+        while (parser.isYes(option)) {
+            lessons.add(getLesson());
+            option = askOption("Add more lesson?");
+        }
+
+        return lessons;
+    }
+
+    private Lesson getLesson() {
+        LessonType lessonType = getLessonType();
+        String venue = getVenue();
+        LocalTime startTime = getTime("start");
+        LocalTime endTime = getTime("end");
+        DayOfWeek day = getDayOfWeek();
+        String group = getGroup();
+        return new Lesson(lessonType, venue, startTime, endTime, day, group);
+    }
+
+    private String getGroup() {
+        printNicely("Enter group:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidInput(line)) {
+            printNicely("Enter valid group!");
+            printNicely("Enter group:");
+            line = in.nextLine().trim();
+        }
+
+        return line.toUpperCase();
+    }
+
+    private DayOfWeek getDayOfWeek() {
+        printNicely("Enter day:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidDayOfWeek(line)) {
+            printNicely("Enter valid day!");
+            printNicely("Enter day:");
+            line = in.nextLine().trim();
+        }
+
+        return DayOfWeek.valueOf(line.toUpperCase());
+    }
+
+    private LocalTime getTime(String type) {
+        printNicely("Enter " + type + " time (HH:mm)");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidTime(line)) {
+            printNicely("Enter valid " + type + " time!");
+            printNicely("Enter " + type + " time (HH:mm):");
+            line = in.nextLine().trim();
+        }
+
+        return LocalTime.parse(line);
+    }
+
+    private String getVenue() {
+        printNicely("Enter venue:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidInput(line)) {
+            printNicely("Enter valid venue!");
+            printNicely("Enter venue:");
+            line = in.nextLine().trim();
+        }
+
+        return line.toUpperCase();
+    }
+
+    private LessonType getLessonType() {
+        printNicely("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):");
+        String line = in.nextLine().trim();
+        while (!parser.isValidLessonType(line)) {
+            printNicely("Enter valid lesson type!");
+            printNicely("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):");
+            line = in.nextLine().trim();
+        }
+        return LessonType.valueOf(line.toUpperCase());
     }
 
     private int getNumOfAUs() {
@@ -233,7 +311,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidNumber(line)) {
             printNicely("Enter valid number!");
             printNicely("Enter number of AUs:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return Integer.parseInt(line);
@@ -246,7 +324,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidNumber(line)) {
             printNicely("Enter valid number!");
             printNicely("Enter vacancy:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return Integer.parseInt(line);
@@ -259,7 +337,7 @@ public class AdminUi extends Ui {
         while (!parser.isValidSchool(line)) {
             printNicely("Enter valid school!");
             printNicely("Enter school:");
-            line = in.nextLine();
+            line = in.nextLine().trim();
         }
 
         return line.toUpperCase();
@@ -268,5 +346,9 @@ public class AdminUi extends Ui {
     public void showAddedStudent(Student newStudent) {
         printNicely("");
         printNicely("Student added: " + newStudent.toString());
+    }
+
+    public void showCourseList(CourseList courses) {
+        courses.getCourses().forEach(course -> printNicely(course.toString()));
     }
 }

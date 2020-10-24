@@ -112,8 +112,18 @@ public abstract class Ui {
     }
 
     public String askExit() {
-        printNicely("Do you want to exit? Press Y to exit, anything else to continue to login.");
-        return in.nextLine();
+        return askOption("Do you want to exit?");
+    }
+
+    public String askOption(String question) {
+        printNicely(question + " (Y/N)");
+        String line = in.nextLine().trim();
+        while (!parser.isValidOption(line)) {
+            printNicely("Enter valid option!");
+            printNicely(question + " (Y/N)");
+            line = in.nextLine().trim();
+        }
+        return line;
     }
 
     public abstract void greetUser();
