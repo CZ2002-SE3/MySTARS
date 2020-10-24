@@ -1,7 +1,7 @@
 package mystars.data.user;
 
 import mystars.data.exception.MyStarsException;
-import mystars.data.login.PasswordHandler;
+import mystars.data.password.PasswordHandler;
 import mystars.parser.Parser;
 
 public class Admin extends User {

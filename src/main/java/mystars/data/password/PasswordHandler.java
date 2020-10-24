@@ -1,4 +1,4 @@
-package mystars.data.login;
+package mystars.data.password;
 
 import mystars.data.exception.MyStarsException;
 import mystars.parser.Parser;

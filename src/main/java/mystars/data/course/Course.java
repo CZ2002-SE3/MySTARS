@@ -1,6 +1,6 @@
 package mystars.data.course;
 
-import mystars.data.LessonList;
+import mystars.data.course.lesson.Lesson;
 import mystars.parser.Parser;
 
 import java.util.stream.Collectors;

@@ -1,9 +1,9 @@
 package mystars.commands.admin;
 
 import mystars.commands.Command;
-import mystars.data.CourseList;
-import mystars.data.UserList;
+import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
 

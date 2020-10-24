@@ -1,15 +1,17 @@
-package mystars.commands;
+package mystars.commands.shared;
 
-import mystars.data.UserList;
+import mystars.commands.Command;
 import mystars.data.exception.MyStarsException;
+import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
 
-public class LogoutCommand extends SharedCommand {
-
-    public static final String COMMAND_WORD = "7";
+/**
+ * Parent shared command class.
+ */
+public abstract class SharedCommand extends Command {
 
     /**
      * Executes command.
@@ -20,10 +22,6 @@ public class LogoutCommand extends SharedCommand {
      * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    @Override
-    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage)
-            throws MyStarsException {
-        setLoginStatus(false);
-        ui.showLogout();
-    }
+    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage)
+            throws MyStarsException;
 }

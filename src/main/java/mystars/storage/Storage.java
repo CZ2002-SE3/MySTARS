@@ -1,7 +1,7 @@
 package mystars.storage;
 
-import mystars.data.CourseList;
 import mystars.data.course.Course;
+import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;

@@ -1,14 +1,14 @@
 package mystars.ui;
 
-import mystars.common.Option;
-import mystars.data.CourseList;
-import mystars.data.LessonList;
-import mystars.data.UserList;
 import mystars.data.course.Course;
-import mystars.data.course.Lesson;
-import mystars.data.course.LessonType;
-import mystars.data.course.Week;
+import mystars.data.course.CourseList;
+import mystars.data.course.LessonList;
+import mystars.data.course.lesson.Lesson;
+import mystars.data.course.lesson.LessonType;
+import mystars.data.course.lesson.Week;
+import mystars.data.shared.Option;
 import mystars.data.user.Student;
+import mystars.data.user.UserList;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;

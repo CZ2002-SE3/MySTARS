@@ -1,16 +1,16 @@
 package mystars;
 
 import mystars.commands.Command;
-import mystars.commands.ExitCommand;
-import mystars.commands.LoginCommand;
-import mystars.commands.LogoutCommand;
 import mystars.commands.admin.AdminCommand;
+import mystars.commands.shared.ExitCommand;
+import mystars.commands.shared.LoginCommand;
+import mystars.commands.shared.LogoutCommand;
 import mystars.commands.student.StudentCommand;
-import mystars.data.CourseList;
-import mystars.data.UserList;
+import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
+import mystars.data.user.UserList;
 import mystars.parser.Parser;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;

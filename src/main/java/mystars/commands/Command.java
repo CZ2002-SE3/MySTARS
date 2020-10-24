@@ -25,7 +25,7 @@ public abstract class Command {
         return isLogin;
     }
 
-    void setExit() {
+    protected void setExit() {
         isExit = true;
     }
 
@@ -37,7 +37,7 @@ public abstract class Command {
         return user;
     }
 
-    void setUser(User user) {
+    protected void setUser(User user) {
         Command.user = user;
     }
 }

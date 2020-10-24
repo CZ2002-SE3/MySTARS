@@ -1,4 +1,4 @@
-package mystars.common;
+package mystars.data.shared;
 
 public enum Option {
     Y, N

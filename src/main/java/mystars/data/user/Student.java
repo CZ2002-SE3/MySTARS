@@ -1,9 +1,9 @@
 package mystars.data.user;
 
-import mystars.data.CourseList;
 import mystars.data.course.Course;
+import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.login.PasswordHandler;
+import mystars.data.password.PasswordHandler;
 import mystars.parser.Parser;
 
 public class Student extends User {

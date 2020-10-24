@@ -1,6 +1,4 @@
-package mystars.data;
-
-import mystars.data.course.Course;
+package mystars.data.course;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

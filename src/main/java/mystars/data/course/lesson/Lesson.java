@@ -1,4 +1,4 @@
-package mystars.data.course;
+package mystars.data.course.lesson;
 
 import mystars.parser.Parser;
 

@@ -1,6 +1,6 @@
-package mystars.data;
+package mystars.data.course;
 
-import mystars.data.course.Lesson;
+import mystars.data.course.lesson.Lesson;
 
 import java.util.ArrayList;
 

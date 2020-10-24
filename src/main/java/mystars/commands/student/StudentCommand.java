@@ -1,8 +1,8 @@
 package mystars.commands.student;
 
 import mystars.commands.Command;
-import mystars.data.UserList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
 
