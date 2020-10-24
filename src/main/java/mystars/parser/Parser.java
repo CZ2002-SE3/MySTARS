@@ -15,6 +15,7 @@ import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.course.Lesson;
 import mystars.data.course.LessonType;
+import mystars.data.course.Week;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
@@ -25,6 +26,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Parses user input and file.
@@ -150,28 +152,41 @@ public class Parser {
         String indexNumber = courseSplit[2].trim();
         String vacancyString = courseSplit[3].trim();
         String numOfAUsString = courseSplit[4].trim();
-        String lessonString = courseSplit[5].trim();
+        String weekString = courseSplit[5].trim();
+        String lessonString = courseSplit[6].trim();
 
         int vacancy;
         int numOfAUs;
+        Week week;
         if (isValidNumber(vacancyString)) {
             vacancy = Integer.parseInt(vacancyString);
         } else {
-            throw new MyStarsException("Vacancy is not valid");
+            throw new MyStarsException("Vacancy is not valid!");
         }
+
         if (isValidNumber(numOfAUsString)) {
             numOfAUs = Integer.parseInt(numOfAUsString);
         } else {
-            throw new MyStarsException("Number of AUs is not valid");
+            throw new MyStarsException("Number of AUs is not valid!");
+        }
+
+        if (isValidWeek(weekString)) {
+            week = Week.valueOf(weekString);
+        } else {
+            throw new MyStarsException("Week is not valid!");
         }
 
         String[] lessonsString = lessonString.split(ESCAPED_ASTERISK_SEPERATOR);
         ArrayList<Lesson> lessons = readLessons(lessonsString);
 
-        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessons);
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, week, lessons);
     }
 
-    private ArrayList<Lesson> readLessons(String[] lessonsString) throws MyStarsException {
+    public boolean isValidWeek(String line) {
+        return Arrays.stream(Week.values()).map(Week::name).anyMatch(line::equalsIgnoreCase);
+    }
+
+    private ArrayList<Lesson> readLessons(String[] lessonsString) {
         ArrayList<Lesson> lessonsToAdd = new ArrayList<>();
         for (String lessonString : lessonsString) {
             String[] lessonDetailsString = lessonString.split(TILDE_SEPARATOR);
@@ -354,12 +369,7 @@ public class Parser {
     }
 
     public boolean isValidLessonType(String line) {
-        for (LessonType lessonType : LessonType.values()) {
-            if (line.equalsIgnoreCase(lessonType.name())) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(LessonType.values()).map(LessonType::name).anyMatch(line::equalsIgnoreCase);
     }
 
     public boolean isValidTime(String line) {
@@ -372,21 +382,11 @@ public class Parser {
     }
 
     public boolean isValidDayOfWeek(String line) {
-        for (DayOfWeek dayOfWeek : DayOfWeek.values()) {
-            if (line.equalsIgnoreCase(dayOfWeek.name())) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(DayOfWeek.values()).map(DayOfWeek::name).anyMatch(line::equalsIgnoreCase);
     }
 
     public boolean isValidOption(String line) {
-        for (Option option : Option.values()) {
-            if (line.equalsIgnoreCase(option.name())) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(Option.values()).map(Option::name).anyMatch(line::equalsIgnoreCase);
     }
 
     public boolean isYes(String line) {

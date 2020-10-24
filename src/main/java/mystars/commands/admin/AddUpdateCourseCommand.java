@@ -33,7 +33,7 @@ public class AddUpdateCourseCommand extends AdminCommand {
         }
         Course course = ui.getCourseDetails(indexNumber);
         courses.updateCourse(course);
-        //TODO: save courses
+
         storage.saveCourses(courses);
         ui.showCourseList(courses);
     }

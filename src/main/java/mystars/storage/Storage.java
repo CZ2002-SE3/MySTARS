@@ -28,8 +28,8 @@ public class Storage {
     private static final String WRITE_ERROR = "I am unable to write file.";
 
     private static final String SETTINGS_FORMAT = "format: start datetime|end datetime";
-    private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|Lesson1"
-            + "*Lesson2*... (refer to Lesson.java for format)";
+    private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|week|"
+            + "Lesson1*Lesson2*... (refer to Lesson.java for format)";
 
     private static final String FOLDER = "db";
     private static final String USERS_FILE = "users.txt";
@@ -200,7 +200,7 @@ public class Storage {
 
     public void saveAccessPeriod(LocalDateTime[] accessPeriod) throws MyStarsException {
         String accessPeriodString = SETTINGS_FORMAT + System.lineSeparator() + accessPeriod[0] +
-                Parser.LINE_SEPARATOR + accessPeriod[1] + System.lineSeparator();
+                Parser.LINE_SEPARATOR + accessPeriod[1];
         writeToFile(accessPeriodString, SETTINGS_FILE);
     }
 
@@ -220,7 +220,7 @@ public class Storage {
         Path filePath = Paths.get(FOLDER, file);
         try {
             BufferedWriter bufferedWriter = Files.newBufferedWriter(filePath);
-            bufferedWriter.write(fileContent);
+            bufferedWriter.write(fileContent + System.lineSeparator());
             bufferedWriter.close();
         } catch (IOException e) {
             throw new MyStarsException(WRITE_ERROR);
@@ -260,7 +260,7 @@ public class Storage {
         String coursesString = courses.getCourses().stream().map(Course::getStorageString)
                 .collect(Collectors.joining(System.lineSeparator()));
 
-        String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString + System.lineSeparator();
+        String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString;
         writeToFile(coursesFileContent, COURSES_FILE);
     }
 }

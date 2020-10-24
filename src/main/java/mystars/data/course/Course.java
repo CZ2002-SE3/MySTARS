@@ -14,9 +14,10 @@ public class Course {
     private String indexNumber;
     private int vacancy;
     private int numOfAUs;
+    private Week week;
     private ArrayList<Lesson> lessons;
 
-    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs
+    public Course(String courseCode, String school, String indexNumber, int vacancy, int numOfAUs, Week week
             , ArrayList<Lesson> lessons) {
         this.courseCode = courseCode;
         this.school = school;
@@ -24,6 +25,7 @@ public class Course {
         this.initialVacancy = vacancy;
         this.vacancy = vacancy;
         this.numOfAUs = numOfAUs;
+        this.week = week;
         this.lessons = lessons;
     }
 

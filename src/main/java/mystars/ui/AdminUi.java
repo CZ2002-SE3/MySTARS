@@ -6,6 +6,7 @@ import mystars.data.UserList;
 import mystars.data.course.Course;
 import mystars.data.course.Lesson;
 import mystars.data.course.LessonType;
+import mystars.data.course.Week;
 import mystars.data.user.Student;
 
 import java.time.DayOfWeek;
@@ -215,9 +216,21 @@ public class AdminUi extends Ui {
         String school = getSchool();
         int vacancy = getVacancy();
         int numOfAUs = getNumOfAUs();
+        Week week = getWeek();
         ArrayList<Lesson> lessons = getLessons();
 
-        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessons);
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, week, lessons);
+    }
+
+    private Week getWeek() {
+        printNicely("Enter Week (ODD, EVEN, BOTH):");
+        String line = in.nextLine().trim();
+        while (!parser.isValidWeek(line)) {
+            printNicely("Enter valid week!");
+            printNicely("Enter Week (ODD, EVEN, BOTH):");
+            line = in.nextLine().trim();
+        }
+        return Week.valueOf(line.toUpperCase());
     }
 
     private ArrayList<Lesson> getLessons() {

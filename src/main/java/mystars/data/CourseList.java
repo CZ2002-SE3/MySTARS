@@ -82,6 +82,9 @@ public class CourseList {
     }
 
     public void updateCourse(Course newCourse) {
+
+        //TODO:check clash
+
         for (int i = 0; i < courses.size(); i++) {
             if (courses.get(i).getIndexNumber().equals(newCourse.getIndexNumber())) {
                 courses.set(i, newCourse);
