@@ -2,6 +2,7 @@ package mystars.data;
 
 import mystars.data.exception.MyStarsException;
 import mystars.data.login.PasswordHandler;
+import mystars.data.user.Student;
 import mystars.data.user.User;
 
 import java.util.ArrayList;
@@ -79,7 +80,22 @@ public class UserList {
         return users;
     }
 
-    public void addUser(User user) {
-        users.add(user);
+    public void addStudent(Student student) throws MyStarsException {
+        //TODO: check if username exist already.
+        if (!isDuplicateStudent(student)) {
+            users.add(student);
+        } else {
+            throw new MyStarsException("Duplicate username/matric number!");
+        }
+    }
+
+    private boolean isDuplicateStudent(Student student) {
+        for (User user : users) {
+            if (user.equals(student)
+                    || (user instanceof Student && ((Student) user).getMatricNo().equals(student.getMatricNo()))) {
+                return true;
+            }
+        }
+        return false;
     }
 }

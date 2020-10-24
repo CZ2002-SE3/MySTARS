@@ -30,7 +30,7 @@ public class AddStudentCommand extends AdminCommand {
     public void execute(LocalDateTime[] accessDateTime, CourseList courses, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
         Student newStudent = ui.getNewStudentFromUser();
-        users.addUser(newStudent);
+        users.addStudent(newStudent);
 
         storage.saveStudent(newStudent);
         ui.showAddedStudent(newStudent);
