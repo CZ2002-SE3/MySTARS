@@ -144,12 +144,12 @@ public class Student extends User {
         String username = getUsername() == null ? "null" : String.valueOf(getUsername());
 
         return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
-                , username, courseOfStudy + ":" + yearOfStudy
+                , username, courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy
                 , registeredCourses.getFormattedString(), waitlistedCourses.getFormattedString());
     }
 
     @Override
     public String toString() {
-        return String.join(Parser.ASTERISK_SEPERATOR + " ", name, matricNo, String.valueOf(gender), nationality);
+        return String.join(", ", name, matricNo, String.valueOf(gender), nationality);
     }
 }

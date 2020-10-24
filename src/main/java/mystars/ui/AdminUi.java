@@ -148,22 +148,23 @@ public class AdminUi extends Ui {
         return line;
     }
 
-    public void showAddedStudent(Student newStudent) {
-        printNicely("Student added: " + newStudent.toString());
+    public void showStudentList(UserList users) {
+        printNicely("Here is the student list:");
+        users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
     }
 
     public void showStudentListByIndex(UserList users, String indexNumber) {
         printNicely("Here are the list of students:");
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isIndexNoInList(indexNumber))
-                .forEach(user -> new StudentUi().printNicely(user.toString()));
+                .forEach(user -> printNicely(user.toString()));
     }
 
     public void showStudentListByCourse(UserList users, String courseCode) {
         printNicely("Here are the list of students:");
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
-                .forEach(user -> new StudentUi().printNicely(user.toString()));
+                .forEach(user -> printNicely(user.toString()));
     }
 
     public String getIndexNumber() {
@@ -253,5 +254,9 @@ public class AdminUi extends Ui {
         }
 
         return line.toUpperCase();
+    }
+
+    public void showAddedStudent(Student newStudent) {
+        printNicely("Student added: " + newStudent.toString());
     }
 }

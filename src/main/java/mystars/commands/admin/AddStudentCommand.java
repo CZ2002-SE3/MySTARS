@@ -34,5 +34,6 @@ public class AddStudentCommand extends AdminCommand {
 
         storage.saveStudent(newStudent);
         ui.showAddedStudent(newStudent);
+        ui.showStudentList(users);
     }
 }
