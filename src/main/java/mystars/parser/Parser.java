@@ -112,7 +112,6 @@ public class Parser {
      */
     public User readUser(String line) throws MyStarsException {
 
-        //TODO: Read users from file.
         User user;
         String[] userSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String username = userSplit[0].trim();
@@ -145,7 +144,6 @@ public class Parser {
      */
     public Course readCourse(String line) throws MyStarsException {
 
-        //TODO: Read courses from file.
         String[] courseSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String courseCode = courseSplit[0].trim();
         String school = courseSplit[1].trim();
@@ -294,7 +292,6 @@ public class Parser {
      */
     public Admin readAdmin(String line) {
 
-        //TODO: Read courses from file.
         String[] adminSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String name = adminSplit[0].trim();
         String staffId = adminSplit[1].trim();

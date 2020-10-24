@@ -39,7 +39,6 @@ public class UserList {
 
     public boolean isLoginValid(char[][] usernameAndPassword) throws MyStarsException {
 
-        //TODO: Check if username and password is valid.
         for (User user : users) {
             if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
                 return new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword());
@@ -50,7 +49,6 @@ public class UserList {
 
     public User getUser(char[][] usernameAndPassword) throws MyStarsException {
 
-        //TODO: Check what kind of user.
         for (User user : users) {
             if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
                 if (new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword())) {
