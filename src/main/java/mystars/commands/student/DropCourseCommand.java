@@ -13,9 +13,9 @@ public class DropCourseCommand extends StudentCommand {
     /**
      * Prompts student for course to drop, and saves changes to file.
      *
-     * @param users     UserList object.
-     * @param ui Ui object.
-     * @param storage   Storage object.
+     * @param users   UserList object.
+     * @param ui      Ui object.
+     * @param storage Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override

@@ -94,7 +94,7 @@ public class AdminUi extends Ui {
         printNicely("Enter course of study:");
 
         String line = in.nextLine().trim();
-        while (!parser.isValidInput(line)) {
+        while (!parser.isValidStartEndTime(line)) {
             printNicely("Enter valid course of study!");
             printNicely("Enter course of study:");
             line = in.nextLine().trim();
@@ -107,7 +107,7 @@ public class AdminUi extends Ui {
         printNicely("Enter nationality:");
 
         String line = in.nextLine().trim();
-        while (!parser.isValidInput(line)) {
+        while (!parser.isValidStartEndTime(line)) {
             printNicely("Enter valid nationality!");
             printNicely("Enter nationality:");
             line = in.nextLine().trim();
@@ -145,7 +145,7 @@ public class AdminUi extends Ui {
         printNicely("Enter student name:");
 
         String line = in.nextLine().trim();
-        while (!parser.isValidInput(line)) {
+        while (!parser.isValidStartEndTime(line)) {
             printNicely("Enter valid name!");
             printNicely("Enter student name:");
             line = in.nextLine().trim();
@@ -234,18 +234,28 @@ public class AdminUi extends Ui {
     private Lesson getLesson() {
         LessonType lessonType = getLessonType();
         String venue = getVenue();
-        LocalTime startTime = getTime("start");
-        LocalTime endTime = getTime("end");
+        LocalTime[] times = getStartAndEndTime();
         DayOfWeek day = getDayOfWeek();
         String group = getGroup();
-        return new Lesson(lessonType, venue, startTime, endTime, day, group);
+        return new Lesson(lessonType, venue, times[0], times[1], day, group);
+    }
+
+    private LocalTime[] getStartAndEndTime() {
+        LocalTime startTime = getTime("start");
+        LocalTime endTime = getTime("end");
+        while (!parser.isValidStartEndTime(startTime, endTime)) {
+            printNicely("End time is before start time!");
+            startTime = getTime("start");
+            endTime = getTime("end");
+        }
+        return new LocalTime[]{startTime, endTime};
     }
 
     private String getGroup() {
         printNicely("Enter group:");
 
         String line = in.nextLine().trim();
-        while (!parser.isValidInput(line)) {
+        while (!parser.isValidStartEndTime(line)) {
             printNicely("Enter valid group!");
             printNicely("Enter group:");
             line = in.nextLine().trim();
@@ -284,7 +294,7 @@ public class AdminUi extends Ui {
         printNicely("Enter venue:");
 
         String line = in.nextLine().trim();
-        while (!parser.isValidInput(line)) {
+        while (!parser.isValidStartEndTime(line)) {
             printNicely("Enter valid venue!");
             printNicely("Enter venue:");
             line = in.nextLine().trim();

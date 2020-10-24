@@ -6,8 +6,6 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.login.PasswordHandler;
 import mystars.parser.Parser;
 
-import java.util.Arrays;
-
 public class Student extends User {
 
     private String name;
@@ -152,7 +150,6 @@ public class Student extends User {
     }
 
     public String getFormattedString() {
-
         return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
                 , String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy
                 , registeredCourses.getFormattedString(), waitlistedCourses.getFormattedString());

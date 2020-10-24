@@ -1,7 +1,6 @@
 package mystars.data;
 
 import mystars.data.course.Course;
-import mystars.parser.Parser;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -88,7 +87,7 @@ public class CourseList {
                 courses.set(i, newCourse);
                 return;
             }
-         }
+        }
         addCourse(newCourse);
     }
 }

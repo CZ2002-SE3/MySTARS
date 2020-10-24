@@ -1,7 +1,6 @@
 package mystars.parser;
 
 import mystars.commands.Command;
-import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
 import mystars.commands.admin.AddStudentCommand;
 import mystars.commands.admin.AddUpdateCourseCommand;
@@ -217,7 +216,7 @@ public class Parser {
         try {
             String registeredCoursesString = studentSplit[6];
             ArrayList<Course> regCourses = new ArrayList<>(loadCourse(registeredCoursesString
-                            .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
+                    .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
             registeredCourses = new CourseList(regCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
             registeredCourses = new CourseList();
@@ -227,7 +226,7 @@ public class Parser {
         try {
             String waitlistedCoursesString = studentSplit[7];
             ArrayList<Course> waitCourses = new ArrayList<>(loadCourse(waitlistedCoursesString
-                            .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
+                    .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
             waitlistedCourses = new CourseList(waitCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
             waitlistedCourses = new CourseList();
@@ -308,7 +307,7 @@ public class Parser {
         }
     }
 
-    public boolean isValidInput(String line) {
+    public boolean isValidStartEndTime(String line) {
         return !line.contains(LINE_SEPARATOR) && !line.equals("");
     }
 
@@ -317,7 +316,7 @@ public class Parser {
     }
 
     public boolean isValidMatricNo(String line) {
-        return isValidInput(line) && line.length() == MATRIC_NO_LENGTH
+        return isValidStartEndTime(line) && line.length() == MATRIC_NO_LENGTH
                 && line.substring(1, MATRIC_NO_LENGTH - 1).chars().allMatch(Character::isDigit)
                 && Character.isLetter(line.charAt(0)) && Character.isLetter(line.charAt(MATRIC_NO_LENGTH - 1));
     }
@@ -392,5 +391,9 @@ public class Parser {
 
     public boolean isYes(String line) {
         return line.trim().equalsIgnoreCase(Option.Y.name());
+    }
+
+    public boolean isValidStartEndTime(LocalTime startTime, LocalTime endTime) {
+        return startTime.isBefore(endTime);
     }
 }

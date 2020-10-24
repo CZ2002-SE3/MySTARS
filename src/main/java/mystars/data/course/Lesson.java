@@ -4,7 +4,6 @@ import mystars.parser.Parser;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class Lesson {
     private LessonType lessonType;

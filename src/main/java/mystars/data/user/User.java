@@ -1,9 +1,6 @@
 package mystars.data.user;
 
 import mystars.data.exception.MyStarsException;
-import mystars.parser.Parser;
-
-import java.util.Arrays;
 
 public abstract class User {
 

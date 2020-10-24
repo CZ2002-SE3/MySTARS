@@ -81,7 +81,6 @@ public class UserList {
     }
 
     public void addStudent(Student student) throws MyStarsException {
-        //TODO: check if username exist already.
         if (!isDuplicateStudent(student)) {
             users.add(student);
         } else {

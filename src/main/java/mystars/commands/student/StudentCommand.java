@@ -11,9 +11,9 @@ public abstract class StudentCommand extends Command {
     /**
      * Executes command.
      *
-     * @param users     UserList object.
-     * @param ui Ui object.
-     * @param storage   Storage object.
+     * @param users   UserList object.
+     * @param ui      Ui object.
+     * @param storage Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     public abstract void execute(UserList users, StudentUi ui, Storage storage) throws MyStarsException;

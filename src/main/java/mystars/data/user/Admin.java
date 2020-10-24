@@ -4,8 +4,6 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.login.PasswordHandler;
 import mystars.parser.Parser;
 
-import java.util.Arrays;
-
 public class Admin extends User {
 
     private String name;
