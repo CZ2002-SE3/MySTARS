@@ -1,5 +1,11 @@
 package mystars.data.user;
 
+import mystars.data.exception.MyStarsException;
+import mystars.data.login.PasswordHandler;
+import mystars.parser.Parser;
+
+import java.util.Arrays;
+
 public class Admin extends User {
 
     private String name;
@@ -57,5 +63,11 @@ public class Admin extends User {
         setStaffId(((Admin) user).getStaffId());
         setGender(((Admin) user).getGender());
         setNationality(((Admin) user).getNationality());
+    }
+
+    @Override
+    public String getFormattedUserInfo() throws MyStarsException {
+        return String.join(Parser.LINE_SEPARATOR, String.valueOf(getUsername())
+                , new PasswordHandler().generatePBKDF2String(getPassword()), "admin");
     }
 }

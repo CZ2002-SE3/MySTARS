@@ -27,7 +27,7 @@ public class LoginCommand extends SharedCommand {
     @Override
     public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage)
             throws MyStarsException {
-        char[][] usernameAndPassword = ui.readUsernameAndPassword(USERNAME_MESSAGE, PASSWORD_MESSAGE);
+        char[][] usernameAndPassword = ui.readUsernameAndPassword();
         setLoginStatus(users.isLoginValid(usernameAndPassword));
         setUser(users.getUser(usernameAndPassword));
 

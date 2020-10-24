@@ -78,20 +78,20 @@ public abstract class Ui {
         System.out.println(string);
     }
 
-    public char[][] readUsernameAndPassword(String usernameMessage, String passwordMessage) {
-        char[] username = readUsername(usernameMessage);
+    public char[][] readUsernameAndPassword() {
+        char[] username = readUsername();
         printNicely("");
-        char[] password = readPassword(passwordMessage);
+        char[] password = readPassword();
         return new char[][]{username, password};
     }
 
-    private char[] readUsername(String message) {
-        printNicely(message);
-        return in.nextLine().toUpperCase().toCharArray();
+    private char[] readUsername() {
+        printNicely("Enter Username: ");
+        return in.nextLine().replaceAll(Parser.ESCAPED_LINE_SEPARATOR, "").toUpperCase().toCharArray();
     }
 
-    private char[] readPassword(String message) {
-        printNicely(message);
+    private char[] readPassword() {
+        printNicely("Enter Password: ");
 
         if (System.console() == null) {
             return in.nextLine().toCharArray();

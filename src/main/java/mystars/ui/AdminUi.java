@@ -68,7 +68,9 @@ public class AdminUi extends Ui {
         String nationality = getStudentNationality();
         String courseOfStudy = getStudentCourseOfStudy();
         int yearOfStudy = getStudentYearOfStudy();
-        return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy);
+        char[][] usernameAndPassword = readUsernameAndPassword();
+        return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, usernameAndPassword[0]
+                , usernameAndPassword[1]);
     }
 
     private int getStudentYearOfStudy() {
@@ -149,6 +151,7 @@ public class AdminUi extends Ui {
     }
 
     public void showStudentList(UserList users) {
+        printNicely("");
         printNicely("Here is the student list:");
         users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
     }
@@ -257,6 +260,7 @@ public class AdminUi extends Ui {
     }
 
     public void showAddedStudent(Student newStudent) {
+        printNicely("");
         printNicely("Student added: " + newStudent.toString());
     }
 }

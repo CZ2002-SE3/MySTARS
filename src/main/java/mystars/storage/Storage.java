@@ -253,6 +253,7 @@ public class Storage {
 
     public void saveStudent(Student newStudent) throws MyStarsException {
         appendToFile(newStudent.getFormattedString(), STUDENTS_FILE);
+        appendToFile(newStudent.getFormattedUserInfo(), USERS_FILE);
     }
 
     public void saveCourses(CourseList courses) throws MyStarsException {

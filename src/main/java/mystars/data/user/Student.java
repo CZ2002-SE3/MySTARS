@@ -3,7 +3,10 @@ package mystars.data.user;
 import mystars.data.CourseList;
 import mystars.data.course.Course;
 import mystars.data.exception.MyStarsException;
+import mystars.data.login.PasswordHandler;
 import mystars.parser.Parser;
+
+import java.util.Arrays;
 
 public class Student extends User {
 
@@ -29,7 +32,8 @@ public class Student extends User {
         super.setUsername(username.toCharArray());
     }
 
-    public Student(String name, String matricNo, char gender, String nationality, String courseOfStudy, int yearOfStudy) {
+    public Student(String name, String matricNo, char gender, String nationality, String courseOfStudy, int yearOfStudy
+            , char[] username, char[] password) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
@@ -38,6 +42,8 @@ public class Student extends User {
         this.yearOfStudy = yearOfStudy;
         this.registeredCourses = new CourseList();
         this.waitlistedCourses = new CourseList();
+        super.setUsername(username);
+        super.setPassword(password);
     }
 
     public Student() {
@@ -118,6 +124,12 @@ public class Student extends User {
         setYearOfStudy(((Student) user).getYearOfStudy());
         setRegisteredCourses(((Student) user).getRegisteredCourses());
         setWaitlistedCourses(((Student) user).getWaitlistedCourses());
+    }
+
+    @Override
+    public String getFormattedUserInfo() throws MyStarsException {
+        return String.join(Parser.LINE_SEPARATOR, String.valueOf(getUsername())
+                , new PasswordHandler().generatePBKDF2String(getPassword()), "student");
     }
 
     public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
