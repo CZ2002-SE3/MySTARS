@@ -13,7 +13,6 @@ import mystars.commands.student.AddCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
 import mystars.data.CourseList;
 import mystars.data.course.Course;
-import mystars.data.course.Day;
 import mystars.data.course.Lesson;
 import mystars.data.course.LessonType;
 import mystars.data.exception.MyStarsException;
@@ -21,6 +20,7 @@ import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
@@ -176,45 +176,13 @@ public class Parser {
         for (String lessonString : lessonsString) {
             String[] lessonDetailsString = lessonString.split(TILDE_SEPARATOR);
 
-            LessonType lessonType;
-            switch (lessonDetailsString[0].trim()) {
-            case "LEC":
-                lessonType = LessonType.LEC;
-                break;
-            case "TUT":
-                lessonType = LessonType.TUT;
-                break;
-            case "LAB":
-                lessonType = LessonType.LAB;
-                break;
-            default:
-                throw new MyStarsException("Error when parsing lesson type!");
-            }
+            LessonType lessonType = LessonType.valueOf(lessonDetailsString[0].trim());
 
             String venue = lessonDetailsString[1];
             LocalTime startTime = LocalTime.parse(lessonDetailsString[2]);
             LocalTime endTime = LocalTime.parse(lessonDetailsString[3]);
 
-            Day day;
-            switch (lessonDetailsString[4].trim()) {
-            case "MON":
-                day = Day.MON;
-                break;
-            case "TUE":
-                day = Day.TUE;
-                break;
-            case "WED":
-                day = Day.WED;
-                break;
-            case "THU":
-                day = Day.THU;
-                break;
-            case "FRI":
-                day = Day.FRI;
-                break;
-            default:
-                throw new MyStarsException("Error when parsing day!");
-            }
+            DayOfWeek day = DayOfWeek.valueOf(lessonDetailsString[4].trim());
 
             String group = lessonDetailsString[5];
 

@@ -2,6 +2,7 @@ package mystars.data.course;
 
 import mystars.parser.Parser;
 
+import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,10 +11,11 @@ public class Lesson {
     private String venue;
     private LocalTime startTime;
     private LocalTime endTime;
-    private Day day;
+    private DayOfWeek day;
     private String group;
 
-    public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, Day day, String group) {
+    public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek day
+            , String group) {
         this.lessonType = lessonType;
         this.venue = venue;
         this.startTime = startTime;
@@ -54,11 +56,11 @@ public class Lesson {
         this.endTime = endTime;
     }
 
-    public Day getDay() {
+    public DayOfWeek getDay() {
         return day;
     }
 
-    public void setDay(Day day) {
+    public void setDay(DayOfWeek day) {
         this.day = day;
     }
 

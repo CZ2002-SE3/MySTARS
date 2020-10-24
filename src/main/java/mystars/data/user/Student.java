@@ -153,10 +153,8 @@ public class Student extends User {
 
     public String getFormattedString() {
 
-        String username = getUsername() == null ? "null" : String.valueOf(getUsername());
-
         return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
-                , username, courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy
+                , String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy
                 , registeredCourses.getFormattedString(), waitlistedCourses.getFormattedString());
     }
 

@@ -6,6 +6,7 @@ import mystars.data.course.Course;
 import mystars.data.course.Lesson;
 import mystars.data.user.Student;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -211,12 +212,17 @@ public class AdminUi extends Ui {
         String school = getSchool();
         int vacancy = getVacancy();
         int numOfAUs = getNumOfAUs();
+        ArrayList<Lesson> lessons = getLessons();
 
         return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, null);
     }
 
     private ArrayList<Lesson> getLessons() {
         // TODO: Add lessons
+        ArrayList<Lesson> lessons = new ArrayList<>();
+        printNicely("Enter Lesson type:");
+        printNicely("1.Lecture");
+        //while ()
         return new ArrayList<>();
     }
 
