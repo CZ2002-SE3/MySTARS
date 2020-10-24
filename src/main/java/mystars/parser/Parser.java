@@ -4,6 +4,7 @@ import mystars.commands.Command;
 import mystars.commands.ExitCommand;
 import mystars.commands.LogoutCommand;
 import mystars.commands.admin.AddStudentCommand;
+import mystars.commands.admin.AddUpdateCourseCommand;
 import mystars.commands.admin.CheckVacancyCommand;
 import mystars.commands.admin.EditStudentAccessCommand;
 import mystars.commands.admin.PrintListByCourseCommand;
@@ -32,14 +33,19 @@ import java.util.ArrayList;
 public class Parser {
 
     // Used to separate each attribute of an object
-    public static final String SEPARATOR = "\\|";
-    public static final String LINE_SEPARATOR = SEPARATOR.replace("\\", "");
+    public static final String LINE_SEPARATOR = "|";
+    public static final String ESCAPED_LINE_SEPARATOR = "\\" + LINE_SEPARATOR;
     public static final String COLON_SEPARATOR = ":";
     public static final String COMMA_SEPARATOR = ",";
+    public static final String TILDE_SEPARATOR = "~";
+    public static final String ASTERISK_SEPERATOR = "*";
+    public static final String ESCAPED_ASTERISK_SEPERATOR = "\\" + ASTERISK_SEPERATOR;
 
     private static final int MATRIC_NO_LENGTH = 9;
     private static final int COURSE_CODE_LENGTH = 6;
     private static final int INDEX_NO_LENGTH = 5;
+    private static final int MAX_SCHOOL_LENGTH = 4;
+    private static final int MIN_SCHOOL_LENGTH = 3;
 
     /**
      * Parses admin input, and returns corresponding command.
@@ -56,6 +62,9 @@ public class Parser {
             break;
         case AddStudentCommand.COMMAND_WORD:
             command = new AddStudentCommand();
+            break;
+        case AddUpdateCourseCommand.COMMAND_WORD:
+            command = new AddUpdateCourseCommand();
             break;
         case CheckVacancyCommand.COMMAND_WORD:
             command = new CheckVacancyCommand();
@@ -106,7 +115,7 @@ public class Parser {
 
         //TODO: Read users from file.
         User user;
-        String[] userSplit = line.split(SEPARATOR);
+        String[] userSplit = line.split(escapeSeparator(LINE_SEPARATOR));
         String username = userSplit[0].trim();
         String password = userSplit[1].trim();
         String type = userSplit[2].trim();
@@ -128,6 +137,14 @@ public class Parser {
         return user;
     }
 
+    private String escapeSeparator(String separator) {
+        String regex = ".[]{}()<>*+-=!?^$|";
+        if (regex.contains(separator)) {
+            return "\\" + separator;
+        }
+        return separator;
+    }
+
     /**
      * Reads courses from file.
      *
@@ -138,22 +155,28 @@ public class Parser {
     public Course readCourse(String line) throws MyStarsException {
 
         //TODO: Read courses from file.
-        String[] courseSplit = line.split(SEPARATOR);
+        String[] courseSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String courseCode = courseSplit[0].trim();
         String school = courseSplit[1].trim();
         String indexNumber = courseSplit[2].trim();
+        String vacancyString = courseSplit[3].trim();
+        String numOfAUsString = courseSplit[4].trim();
+        String lessonString = courseSplit[5].trim();
+
         int vacancy;
         int numOfAUs;
-
-        try {
-            vacancy = Integer.parseInt(courseSplit[3].trim());
-            numOfAUs = Integer.parseInt(courseSplit[4].trim());
-        } catch (NumberFormatException e) {
-            throw new MyStarsException("Vacancy must be an integer.");
+        if (isValidNumber(vacancyString)) {
+            vacancy = Integer.parseInt(vacancyString);
+        } else {
+            throw new MyStarsException("Vacancy is not valid");
+        }
+        if (isValidNumber(numOfAUsString)) {
+            numOfAUs = Integer.parseInt(numOfAUsString);
+        } else {
+            throw new MyStarsException("Number of AUs is not valid");
         }
 
-        String lessonString = courseSplit[5];
-        String[] lessonsString = lessonString.split(COMMA_SEPARATOR);
+        String[] lessonsString = lessonString.split(ESCAPED_ASTERISK_SEPERATOR);
         ArrayList<Lesson> lessons = readLessons(lessonsString);
 
         return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessons);
@@ -162,10 +185,10 @@ public class Parser {
     private ArrayList<Lesson> readLessons(String[] lessonsString) throws MyStarsException {
         ArrayList<Lesson> lessonsToAdd = new ArrayList<>();
         for (String lessonString : lessonsString) {
-            String[] lessonDetailsString = lessonString.split(COLON_SEPARATOR);
+            String[] lessonDetailsString = lessonString.split(TILDE_SEPARATOR);
 
             LessonType lessonType;
-            switch (lessonDetailsString[0]) {
+            switch (lessonDetailsString[0].trim()) {
             case "LEC":
                 lessonType = LessonType.LEC;
                 break;
@@ -180,7 +203,6 @@ public class Parser {
             }
 
             String venue = lessonDetailsString[1];
-
             String timeString = lessonDetailsString[2];
             LocalTime[] time = parseTime(timeString);
             LocalTime startTime = time[0];
@@ -238,22 +260,22 @@ public class Parser {
      */
     public Student readStudent(String line, CourseList availableCoursesList) throws MyStarsException {
 
-        String[] studentSplit = line.split(SEPARATOR);
+        String[] studentSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String name = studentSplit[0].trim();
         String matricNo = studentSplit[1].trim();
         char gender = studentSplit[2].trim().charAt(0);
         String nationality = studentSplit[3].trim();
         String username = studentSplit[4].trim();
 
-        String[] courseAndYear = studentSplit[5].split(COLON_SEPARATOR);
+        String[] courseAndYear = studentSplit[5].split(TILDE_SEPARATOR);
         String courseOfStudy = courseAndYear[0];
         int yearOfStudy = Integer.parseInt(courseAndYear[1]);
 
         CourseList registeredCourses;
         try {
             String registeredCoursesString = studentSplit[6];
-            ArrayList<Course> regCourses = new ArrayList<>(loadCourse(registeredCoursesString.split(COMMA_SEPARATOR)
-                    , availableCoursesList));
+            ArrayList<Course> regCourses = new ArrayList<>(loadCourse(registeredCoursesString
+                            .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
             registeredCourses = new CourseList(regCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
             registeredCourses = new CourseList();
@@ -262,8 +284,8 @@ public class Parser {
         CourseList waitlistedCourses;
         try {
             String waitlistedCoursesString = studentSplit[7];
-            ArrayList<Course> waitCourses = new ArrayList<>(loadCourse(waitlistedCoursesString.split(COMMA_SEPARATOR)
-                    , availableCoursesList));
+            ArrayList<Course> waitCourses = new ArrayList<>(loadCourse(waitlistedCoursesString
+                            .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
             waitlistedCourses = new CourseList(waitCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
             waitlistedCourses = new CourseList();
@@ -285,7 +307,7 @@ public class Parser {
         ArrayList<Course> courseArrayList = new ArrayList<>();
         try {
             for (String course : courses) {
-                String[] courseSplit = course.split(COLON_SEPARATOR);
+                String[] courseSplit = course.split(TILDE_SEPARATOR);
                 String courseCode = courseSplit[0];
                 String courseIndex = courseSplit[1];
                 for (Course availableCourse : availableCoursesList.getCourses()) {
@@ -317,7 +339,7 @@ public class Parser {
     public Admin readAdmin(String line) {
 
         //TODO: Read courses from file.
-        String[] adminSplit = line.split(SEPARATOR);
+        String[] adminSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String name = adminSplit[0].trim();
         String staffId = adminSplit[1].trim();
         char gender = adminSplit[2].trim().charAt(0);
@@ -345,7 +367,7 @@ public class Parser {
      */
     public LocalDateTime[] readStudentAccessPeriod(String line) throws MyStarsException {
         try {
-            String[] dateTime = line.split(SEPARATOR);
+            String[] dateTime = line.split(ESCAPED_LINE_SEPARATOR);
             LocalDateTime start = LocalDateTime.parse(dateTime[0].trim());
             LocalDateTime end = LocalDateTime.parse(dateTime[1].trim());
             return new LocalDateTime[]{start, end};
@@ -389,5 +411,14 @@ public class Parser {
     public boolean isValidCourseCode(String line) {
         return line.length() == COURSE_CODE_LENGTH && line.substring(0, 1).chars().allMatch(Character::isLetter)
                 && line.substring(2, COURSE_CODE_LENGTH - 1).chars().allMatch(Character::isDigit);
+    }
+
+    public boolean isValidSchool(String line) {
+        return line.length() >= MIN_SCHOOL_LENGTH && line.length() <= MAX_SCHOOL_LENGTH
+                && line.chars().allMatch(Character::isLetter);
+    }
+
+    public boolean isValidNumber(String line) {
+        return line.chars().allMatch(Character::isDigit) && Integer.parseInt(line) >= 0;
     }
 }

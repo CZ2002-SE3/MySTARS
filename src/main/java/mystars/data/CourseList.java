@@ -52,13 +52,8 @@ public class CourseList {
         return false;
     }
 
-    public boolean isIndexInList(String Index) {
-        for (Course course : courses) {
-            if (course.getIndexNumber().equals(Index)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean isIndexNoInList(String indexNumber) {
+        return getCourseByIndex(indexNumber) != null;
     }
 
     public void addCourse(Course courseToAdd) {
@@ -66,7 +61,7 @@ public class CourseList {
     }
 
     public String getFormattedString() {
-        return courses.stream().map(Course::getFormattedString).collect(Collectors.joining(Parser.COMMA_SEPARATOR));
+        return courses.stream().map(Course::getFormattedString).collect(Collectors.joining(System.lineSeparator()));
     }
 
     public boolean isCourseInList(String courseCode) {
@@ -76,5 +71,24 @@ public class CourseList {
             }
         }
         return false;
+    }
+
+    public Course getCourseByIndex(String indexNumber) {
+        for (Course course : courses) {
+            if (course.getIndexNumber().equals(indexNumber)) {
+                return course;
+            }
+        }
+        return null;
+    }
+
+    public void updateCourse(Course newCourse) {
+        for (int i = 0; i < courses.size(); i++) {
+            if (courses.get(i).getIndexNumber().equals(newCourse.getIndexNumber())) {
+                courses.set(i, newCourse);
+                return;
+            }
+         }
+        addCourse(newCourse);
     }
 }

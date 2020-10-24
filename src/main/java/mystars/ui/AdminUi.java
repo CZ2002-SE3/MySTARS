@@ -3,10 +3,12 @@ package mystars.ui;
 import mystars.data.CourseList;
 import mystars.data.UserList;
 import mystars.data.course.Course;
+import mystars.data.course.Lesson;
 import mystars.data.user.Student;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class AdminUi extends Ui {
 
@@ -110,6 +112,7 @@ public class AdminUi extends Ui {
 
     private char getStudentGender() {
         printNicely("Enter gender (M/F):");
+
         String line = in.nextLine().trim();
         while (!parser.isValidGender(line)) {
             printNicely("Enter valid gender!");
@@ -152,7 +155,7 @@ public class AdminUi extends Ui {
     public void showStudentListByIndex(UserList users, String indexNumber) {
         printNicely("Here are the list of students:");
         users.getUsers().stream().filter(Student.class::isInstance)
-                .filter((student) -> ((Student) student).getRegisteredCourses().isIndexInList(indexNumber))
+                .filter((student) -> ((Student) student).getRegisteredCourses().isIndexNoInList(indexNumber))
                 .forEach(user -> new StudentUi().printNicely(user.toString()));
     }
 
@@ -197,5 +200,58 @@ public class AdminUi extends Ui {
             }
         }
         printNicely("Index not found!");
+    }
+
+    public Course getCourseDetails(String indexNumber) {
+        String courseCode = getCourseCode();
+        String school = getSchool();
+        int vacancy = getVacancy();
+        int numOfAUs = getNumOfAUs();
+
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, null);
+    }
+
+    private ArrayList<Lesson> getLessons() {
+        // TODO: Add lessons
+        return new ArrayList<>();
+    }
+
+    private int getNumOfAUs() {
+        printNicely("Enter number of AUs:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidNumber(line)) {
+            printNicely("Enter valid number!");
+            printNicely("Enter number of AUs:");
+            line = in.nextLine();
+        }
+
+        return Integer.parseInt(line);
+    }
+
+    private int getVacancy() {
+        printNicely("Enter vacancy:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidNumber(line)) {
+            printNicely("Enter valid number!");
+            printNicely("Enter vacancy:");
+            line = in.nextLine();
+        }
+
+        return Integer.parseInt(line);
+    }
+
+    private String getSchool() {
+        printNicely("Enter school:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidSchool(line)) {
+            printNicely("Enter valid school!");
+            printNicely("Enter school:");
+            line = in.nextLine();
+        }
+
+        return line.toUpperCase();
     }
 }

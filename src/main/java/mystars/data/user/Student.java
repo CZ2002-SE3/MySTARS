@@ -150,6 +150,6 @@ public class Student extends User {
 
     @Override
     public String toString() {
-        return String.join(Parser.COMMA_SEPARATOR + " ", name, matricNo, String.valueOf(gender), nationality);
+        return String.join(Parser.ASTERISK_SEPERATOR + " ", name, matricNo, String.valueOf(gender), nationality);
     }
 }

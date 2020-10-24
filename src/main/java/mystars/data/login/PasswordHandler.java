@@ -1,6 +1,7 @@
 package mystars.data.login;
 
 import mystars.data.exception.MyStarsException;
+import mystars.parser.Parser;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -21,23 +22,22 @@ public class PasswordHandler {
         byte[] salt = new byte[KEY_LENGTH];
         random.nextBytes(salt);
         byte[] hash = generatePBKDF2(password, salt, pbkdf2Iterations, KEY_LENGTH);
-        return pbkdf2Iterations + ":" + Base64.getEncoder().encodeToString(salt) + ":"
-                + Base64.getEncoder().encodeToString(hash);
+        return pbkdf2Iterations + Parser.TILDE_SEPARATOR + Base64.getEncoder().encodeToString(salt)
+                + Parser.TILDE_SEPARATOR + Base64.getEncoder().encodeToString(hash);
     }
 
     public byte[] generatePBKDF2(char[] password, byte[] salt, int iterations, int bytes) throws MyStarsException {
         KeySpec spec = new PBEKeySpec(password, salt, iterations, bytes * 8);
         try {
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            byte[] hash = factory.generateSecret(spec).getEncoded();
-            return hash;
+            return factory.generateSecret(spec).getEncoded();
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new MyStarsException("Hashing issue!");
         }
     }
 
     public boolean validatePassword(char[] password, char[] goodHash) throws MyStarsException {
-        String[] params = String.valueOf(goodHash).split(":");
+        String[] params = String.valueOf(goodHash).split(Parser.TILDE_SEPARATOR);
         int iterations = Integer.parseInt(params[0]);
         byte[] salt = Base64.getDecoder().decode(params[1]);
         byte[] hash = Base64.getDecoder().decode(params[2]);

@@ -14,14 +14,14 @@ public class PrintCourseRegCommand extends StudentCommand {
      * Executes command.
      *
      * @param users     UserList object.
-     * @param studentUi Ui object.
+     * @param ui Ui object.
      * @param storage   Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(UserList users, StudentUi studentUi, Storage storage) throws MyStarsException {
+    public void execute(UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) this.getUser();
 
-        studentUi.printRegCourses(student);
+        ui.printRegCourses(student);
     }
 }

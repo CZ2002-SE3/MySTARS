@@ -1,6 +1,9 @@
 package mystars.data.course;
 
+import mystars.parser.Parser;
+
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Lesson {
     private LessonType lessonType;
@@ -65,5 +68,12 @@ public class Lesson {
 
     public void setGroup(String group) {
         this.group = group;
+    }
+
+    public String getStorageString() {
+        return String.join(Parser.TILDE_SEPARATOR, lessonType.toString(), venue
+                , startTime.format(DateTimeFormatter.ofPattern("HHmm")) + "-"
+                        + endTime.format(DateTimeFormatter.ofPattern("HHmm"))
+                , day.toString(), group);
     }
 }

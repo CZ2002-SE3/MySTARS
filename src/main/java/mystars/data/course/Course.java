@@ -3,6 +3,7 @@ package mystars.data.course;
 import mystars.parser.Parser;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Course {
 
@@ -91,6 +92,13 @@ public class Course {
     }
 
     public String getFormattedString() {
-        return courseCode + Parser.COLON_SEPARATOR + indexNumber;
+        return courseCode + Parser.TILDE_SEPARATOR + indexNumber;
+    }
+
+    public String getStorageString() {
+        String lessonsString = lessons == null ? "" : lessons.stream().map(Lesson::getStorageString)
+                .collect(Collectors.joining(Parser.ASTERISK_SEPERATOR));
+        return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancy)
+                , Integer.toString(numOfAUs), lessonsString) + System.lineSeparator();
     }
 }

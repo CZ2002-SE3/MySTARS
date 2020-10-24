@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Storage {
 
@@ -27,6 +28,8 @@ public class Storage {
     private static final String WRITE_ERROR = "I am unable to write file.";
 
     private static final String SETTINGS_FORMAT = "format: start datetime|end datetime";
+    private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|Lesson1"
+            + "*Lesson2*... (refer to Lesson.java for format)";
 
     private static final String FOLDER = "db";
     private static final String USERS_FILE = "users.txt";
@@ -250,5 +253,13 @@ public class Storage {
 
     public void saveStudent(Student newStudent) throws MyStarsException {
         appendToFile(newStudent.getFormattedString(), STUDENTS_FILE);
+    }
+
+    public void saveCourses(CourseList courses) throws MyStarsException {
+        String coursesString = courses.getCourses().stream().map(Course::getStorageString)
+                .collect(Collectors.joining(Parser.ASTERISK_SEPERATOR));
+
+        String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString;
+        writeToFile(coursesFileContent, COURSES_FILE);
     }
 }

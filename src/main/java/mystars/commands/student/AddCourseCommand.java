@@ -16,12 +16,12 @@ public class AddCourseCommand extends StudentCommand {
      * Prompts user for course to add and saves to file.
      *
      * @param users     UserList object.
-     * @param studentUi Ui object.
+     * @param ui Ui object.
      * @param storage   Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(UserList users, StudentUi studentUi, Storage storage) throws MyStarsException {
-        studentUi.showAddCourse();
+    public void execute(UserList users, StudentUi ui, Storage storage) throws MyStarsException {
+        ui.showAddCourse();
     }
 }
