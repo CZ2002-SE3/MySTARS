@@ -226,7 +226,7 @@ public class Parser {
         CourseList registeredCourses;
         try {
             String registeredCoursesString = studentSplit[6];
-            ArrayList<Course> regCourses = new ArrayList<>(loadCourse(registeredCoursesString
+            ArrayList<Course> regCourses = new ArrayList<>(loadRegisteredCourses(registeredCoursesString
                     .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
             registeredCourses = new CourseList(regCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -236,7 +236,7 @@ public class Parser {
         CourseList waitlistedCourses;
         try {
             String waitlistedCoursesString = studentSplit[7];
-            ArrayList<Course> waitCourses = new ArrayList<>(loadCourse(waitlistedCoursesString
+            ArrayList<Course> waitCourses = new ArrayList<>(loadWaitlistedCourses(waitlistedCoursesString
                     .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
             waitlistedCourses = new CourseList(waitCourses);
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -255,7 +255,8 @@ public class Parser {
      * @return Arraylist of course.
      * @throws MyStarsException IF there are problem loading courses.
      */
-    public ArrayList<Course> loadCourse(String[] courses, CourseList availableCoursesList) throws MyStarsException {
+    public ArrayList<Course> loadRegisteredCourses(String[] courses, CourseList availableCoursesList)
+            throws MyStarsException {
         ArrayList<Course> courseArrayList = new ArrayList<>();
         try {
             for (String course : courses) {
@@ -265,13 +266,39 @@ public class Parser {
                 for (Course availableCourse : availableCoursesList.getCourses()) {
                     if (courseCode.equals(availableCourse.getCourseCode())
                             && courseIndex.equals(availableCourse.getIndexNumber())) {
-                        courseArrayList.add(availableCourse);
                         //update vacancy for the course of a specific index
-                        int newVacancy = availableCourse.getVacancy() - 1;
-                        if (newVacancy < 0) {
+                        if (availableCourse.isThereVacancy()) {
+                            courseArrayList.add(availableCourse);
+                            availableCourse.removeVacancy();
+                        } else {
                             throw new MyStarsException("More students registered than vacancies!");
                         }
-                        availableCourse.setVacancy(newVacancy);
+
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new MyStarsException("Problem loading student's registered/waitlisted courses!");
+        }
+        return courseArrayList;
+    }
+
+    public ArrayList<Course> loadWaitlistedCourses(String[] courses, CourseList availableCoursesList)
+            throws MyStarsException {
+        ArrayList<Course> courseArrayList = new ArrayList<>();
+        try {
+            for (String course : courses) {
+                String[] courseSplit = course.split(TILDE_SEPARATOR);
+                String courseCode = courseSplit[0];
+                String courseIndex = courseSplit[1];
+                for (Course availableCourse : availableCoursesList.getCourses()) {
+                    if (courseCode.equals(availableCourse.getCourseCode())
+                            && courseIndex.equals(availableCourse.getIndexNumber())) {
+                        //update vacancy for the course of a specific index
+                        courseArrayList.add(availableCourse);
+                        // TODO: Add to waitlist
+                        //availableCourse.updateWaitlist();
                         break;
                     }
                 }

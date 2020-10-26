@@ -175,19 +175,6 @@ public class AdminUi extends Ui {
                 .forEach(user -> printNicely(user.toString()));
     }
 
-    public String getIndexNumber() {
-        printNicely("Enter index number:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidIndexNumber(line)) {
-            printNicely("Enter valid index number!");
-            printNicely("Enter index number:");
-            line = in.nextLine().trim();
-        }
-
-        return line;
-    }
-
     public String getCourseCode() {
         printNicely("Enter course code:");
 
@@ -204,7 +191,7 @@ public class AdminUi extends Ui {
     public void showVacancy(CourseList courses, String indexNumber) {
         for (Course course : courses.getCourses()) {
             if (course.getIndexNumber().equals(indexNumber)) {
-                printNicely("The number of vacancy is " + course.getVacancy() + ".");
+                printNicely("The number of vacancy is " + course.getVacancies() + ".");
                 return;
             }
         }

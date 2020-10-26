@@ -106,7 +106,7 @@ public class MyStars {
 
     private void execute(Command command) throws MyStarsException {
         if (command instanceof StudentCommand) {
-            ((StudentCommand) command).execute(users, (StudentUi) ui, storage);
+            ((StudentCommand) command).execute(courses, users, (StudentUi) ui, storage);
         } else if (command instanceof AdminCommand) {
             ((AdminCommand) command).execute(accessDateTime, courses, users, (AdminUi) ui, storage);
         } else if (command instanceof LogoutCommand) {

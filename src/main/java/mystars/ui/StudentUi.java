@@ -34,8 +34,4 @@ public class StudentUi extends Ui {
         printNicely("Here are your registered courses:");
         printNicely(student.getRegisteredCourses().toString());
     }
-
-    public void showAddCourse() {
-        printNicely("adding...");
-    }
 }

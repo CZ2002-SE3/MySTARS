@@ -1,5 +1,7 @@
 package mystars.data.course;
 
+import mystars.data.course.lesson.Week;
+
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -90,5 +92,9 @@ public class CourseList {
             }
         }
         addCourse(newCourse);
+    }
+
+    public boolean isClash(Course courseToAdd) {
+        return courses.stream().anyMatch(courseToAdd::isClash);
     }
 }

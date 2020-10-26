@@ -141,4 +141,22 @@ public abstract class Ui {
     public void showCourse(Course course) {
         printNicely(course.toString());
     }
+
+    public void showCourseAdded(Course course) {
+        printNicely("Course Added!");
+        showCourse(course);
+    }
+
+    public String getIndexNumber() {
+        printNicely("Enter index number:");
+
+        String line = in.nextLine().trim();
+        while (!parser.isValidIndexNumber(line)) {
+            printNicely("Enter valid index number!");
+            printNicely("Enter index number:");
+            line = in.nextLine().trim();
+        }
+
+        return line;
+    }
 }

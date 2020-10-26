@@ -130,13 +130,22 @@ public class Student extends User {
                 , new PasswordHandler().generatePBKDF2String(getPassword()), "student");
     }
 
-    public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
+    public void addCourse(Course courseToAdd) throws MyStarsException {
         checkCoursesInList(courseToAdd);
-        registeredCourses.addCourse(courseToAdd);
+        if (courseToAdd.isThereVacancy()) {
+            addCourseToRegistered(courseToAdd);
+        } else {
+            addCourseToWaitlisted(courseToAdd);
+        }
     }
 
-    public void addCourseToWaitlisted(Course courseToAdd) throws MyStarsException {
-        checkCoursesInList(courseToAdd);
+    public void addCourseToRegistered(Course courseToAdd) {
+        registeredCourses.addCourse(courseToAdd);
+        courseToAdd.removeVacancy();
+    }
+
+    public void addCourseToWaitlisted(Course courseToAdd) {
+        //checkCoursesInList(courseToAdd);
         waitlistedCourses.addCourse(courseToAdd);
     }
 
@@ -146,6 +155,12 @@ public class Student extends User {
         }
         if (waitlistedCourses.isCourseInList(courseToAdd)) {
             throw new MyStarsException("Course already present in waitlisted courses.");
+        }
+        if (registeredCourses.isClash(courseToAdd)) {
+            throw new MyStarsException("Course clashes with registered courses.");
+        }
+        if (waitlistedCourses.isClash(courseToAdd)) {
+            throw new MyStarsException("Course clashes with waitlisted courses.");
         }
     }
 
