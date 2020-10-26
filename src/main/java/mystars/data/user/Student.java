@@ -165,8 +165,7 @@ public class Student extends User {
 
     public String getFormattedString() {
         return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
-                , String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy
-                , registeredCourses.getFormattedString(), waitlistedCourses.getFormattedString());
+                , String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy);
     }
 
     @Override

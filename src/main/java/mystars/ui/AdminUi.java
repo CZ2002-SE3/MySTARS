@@ -6,6 +6,7 @@ import mystars.data.course.LessonList;
 import mystars.data.course.lesson.Lesson;
 import mystars.data.course.lesson.LessonType;
 import mystars.data.course.lesson.Week;
+import mystars.data.exception.MyStarsException;
 import mystars.data.shared.Option;
 import mystars.data.user.Student;
 import mystars.data.user.UserList;
@@ -35,7 +36,7 @@ public class AdminUi extends Ui {
         printNicely("Hello admin!");
     }
 
-    public LocalDateTime[] getNewAccessPeriod() {
+    public LocalDateTime[] getNewAccessPeriod() throws MyStarsException {
         printNicely("");
         printNicely("Enter new start date & time in this format: yyyy-MM-dd HH:mm");
         String line = in.nextLine().trim();
@@ -54,6 +55,10 @@ public class AdminUi extends Ui {
             line = in.nextLine().trim();
         }
         LocalDateTime endDateTime = LocalDateTime.parse(line.replace(" ", "T"));
+
+        if (startDateTime.isAfter(endDateTime)) {
+            throw new MyStarsException("End date/time cannot be early than start date/time");
+        }
 
         return new LocalDateTime[]{startDateTime, endDateTime};
     }
