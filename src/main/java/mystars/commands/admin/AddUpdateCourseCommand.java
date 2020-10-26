@@ -17,24 +17,24 @@ public class AddUpdateCourseCommand extends AdminCommand {
      * Executes command.
      *
      * @param accessDateTime Access period.
-     * @param courses        CourseList object.
+     * @param courseList        CourseList object.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, CourseList courses, UserList users, AdminUi ui, Storage storage)
+    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
 
-        if (courses.isIndexNoInList(indexNumber)) {
-            ui.showCourse(courses.getCourseByIndex(indexNumber));
+        if (courseList.isIndexNoInList(indexNumber)) {
+            ui.showCourse(courseList.getCourseByIndex(indexNumber));
         }
         Course course = ui.getCourseDetails(indexNumber);
-        courses.updateCourse(course);
+        courseList.updateCourse(course);
 
-        storage.saveCourses(courses);
-        ui.showCourseList(courses);
+        storage.saveCourses(courseList);
+        ui.showCourseList(courseList);
     }
 }

@@ -19,20 +19,24 @@ public class AddCourseCommand extends StudentCommand {
      * Prompts user for course to add and saves to file.
      *
      *
-     * @param courses CourseList object.
+     * @param courseList CourseList object.
      * @param users   UserList object.
      * @param ui      Ui object.
      * @param storage Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(CourseList courses, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
+    public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
-        Course course = courses.getCourseByIndex(indexNumber);
+        if (!courseList.isIndexNoInList(indexNumber)) {
+            throw new MyStarsException("No such course.");
+        }
+        Course course = courseList.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
         student.addCourse(course);
+
         ui.showCourseAdded(course);
-        //TODO : check if course exist
+        storage.saveCourses(courseList);
         //TODO : Save course added
     }
 }

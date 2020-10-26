@@ -16,14 +16,14 @@ public class PrintListByIndexCommand extends AdminCommand {
      * Executes command.
      *
      * @param accessDateTime Access period.
-     * @param courses        CourseList object.
+     * @param courseList        CourseList object.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, CourseList courses, UserList users, AdminUi ui, Storage storage)
+    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
         ui.showStudentListByIndex(users, indexNumber);

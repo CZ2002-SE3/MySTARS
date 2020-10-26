@@ -18,12 +18,12 @@ public abstract class AdminCommand extends Command {
      * Executes command.
      *
      * @param accessDateTime Access period.
-     * @param courses        CourseList object.
+     * @param courseList     CourseList object.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(LocalDateTime[] accessDateTime, CourseList courses, UserList users, AdminUi ui
+    public abstract void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui
             , Storage storage) throws MyStarsException;
 }

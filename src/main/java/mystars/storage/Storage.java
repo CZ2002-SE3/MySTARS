@@ -31,6 +31,8 @@ public class Storage {
     private static final String SETTINGS_FORMAT = "format: start datetime|end datetime";
     private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|"
             + "Lesson1*Lesson2*... (refer to Lesson.java for format)";
+    private static final String REGISTERED_FORMAT = "format: index number|student1 username|student2...";
+    private static final String WAITLISTED_FORMAT = REGISTERED_FORMAT;
 
     private static final String FOLDER = "db";
     private static final String USERS_FILE = "users.txt";
@@ -39,7 +41,7 @@ public class Storage {
     private static final String COURSES_FILE = "courses.txt";
     private static final String SETTINGS_FILE = "settings.txt";
     private static final String REGISTERED_FILE = "registered.txt";
-    private static final String WAITLIST_FILE = "waitlist.txt";
+    private static final String WAITLISTED_FILE = "waitlist.txt";
 
     private final Parser parser;
 
@@ -171,7 +173,7 @@ public class Storage {
     }
 
     public void loadCourseWaitlistStudents(CourseList courseList, UserList userList) throws MyStarsException {
-        Path path = Paths.get(FOLDER, WAITLIST_FILE);
+        Path path = Paths.get(FOLDER, WAITLISTED_FILE);
 
         if (Files.exists(path)) {
             try {
@@ -317,5 +319,17 @@ public class Storage {
 
         String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString;
         writeToFile(coursesFileContent, COURSES_FILE);
+
+        String registeredString = courses.getCourses().stream().map(Course::getRegisteredFormattedString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        String registeredFileContent = REGISTERED_FORMAT + System.lineSeparator() + registeredString;
+        writeToFile(registeredFileContent, REGISTERED_FILE);
+
+        String waitlistedString = courses.getCourses().stream().map(Course::getWaitlistedFormattedString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        String waitlistedFileContent = WAITLISTED_FORMAT + System.lineSeparator() + waitlistedString;
+        writeToFile(waitlistedFileContent, WAITLISTED_FILE);
     }
 }

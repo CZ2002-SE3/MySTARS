@@ -108,11 +108,29 @@ public class Course {
         return false;*/
     }
 
+    public String getRegisteredFormattedString() {
+        return String.join(Parser.LINE_SEPARATOR, indexNumber, registeredStudents.stream().map(Student::getMatricNo)
+                .collect(Collectors.joining(Parser.LINE_SEPARATOR)));
+    }
+
+    public ArrayList<Student> getRegisteredStudents() {
+        return registeredStudents;
+    }
+
+    public ArrayList<Student> getWaitlistedStudents() {
+        return waitlistedStudents;
+    }
+
     public void addRegisteredStudents(ArrayList<Student> students) {
         registeredStudents = students;
     }
 
     public void addWaitlistedStudents(ArrayList<Student> students) {
         waitlistedStudents = students;
+    }
+
+    public String getWaitlistedFormattedString() {
+        return String.join(Parser.LINE_SEPARATOR, indexNumber, waitlistedStudents.stream().map(Student::getMatricNo)
+                .collect(Collectors.joining(Parser.LINE_SEPARATOR)));
     }
 }
