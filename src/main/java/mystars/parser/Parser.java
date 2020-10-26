@@ -229,67 +229,6 @@ public class Parser {
     }
 
     /**
-     * Loads courses taken by student.
-     *
-     * @param courses              String to be parsed containing information about students' registered courses.
-     * @param availableCoursesList Loaded from database of courses.
-     * @return Arraylist of course.
-     * @throws MyStarsException IF there are problem loading courses.
-     */
-    public ArrayList<Course> loadRegisteredCourses(String[] courses, CourseList availableCoursesList)
-            throws MyStarsException {
-        ArrayList<Course> courseArrayList = new ArrayList<>();
-        try {
-            for (String course : courses) {
-                String[] courseSplit = course.split(TILDE_SEPARATOR);
-                String courseCode = courseSplit[0];
-                String courseIndex = courseSplit[1];
-                for (Course availableCourse : availableCoursesList.getCourses()) {
-                    if (courseCode.equals(availableCourse.getCourseCode())
-                            && courseIndex.equals(availableCourse.getIndexNumber())) {
-                        //update vacancy for the course of a specific index
-                        if (availableCourse.isThereVacancy()) {
-                            courseArrayList.add(availableCourse);
-                        } else {
-                            throw new MyStarsException("More students registered than vacancies!");
-                        }
-
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            throw new MyStarsException("Problem loading student's registered/waitlisted courses!");
-        }
-        return courseArrayList;
-    }
-
-    public ArrayList<Course> loadWaitlistedCourses(String[] courses, CourseList availableCoursesList)
-            throws MyStarsException {
-        ArrayList<Course> courseArrayList = new ArrayList<>();
-        try {
-            for (String course : courses) {
-                String[] courseSplit = course.split(TILDE_SEPARATOR);
-                String courseCode = courseSplit[0];
-                String courseIndex = courseSplit[1];
-                for (Course availableCourse : availableCoursesList.getCourses()) {
-                    if (courseCode.equals(availableCourse.getCourseCode())
-                            && courseIndex.equals(availableCourse.getIndexNumber())) {
-                        //update vacancy for the course of a specific index
-                        courseArrayList.add(availableCourse);
-                        // TODO: Add to waitlist
-                        //availableCourse.updateWaitlist();
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            throw new MyStarsException("Problem loading student's registered/waitlisted courses!");
-        }
-        return courseArrayList;
-    }
-
-    /**
      * Reads admins from file.
      *
      * @param line Line of admin to read.

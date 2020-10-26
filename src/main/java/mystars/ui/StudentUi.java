@@ -1,5 +1,6 @@
 package mystars.ui;
 
+import mystars.data.course.Course;
 import mystars.data.user.Student;
 import mystars.parser.Parser;
 
@@ -33,5 +34,15 @@ public class StudentUi extends Ui {
     public void printRegCourses(Student student) {
         printNicely("Here are your registered courses:");
         printNicely(student.getRegisteredCourses().toString());
+    }
+
+    public void showCourseRegistered(Course course) {
+        printNicely("Course Registered!");
+        showCourse(course);
+    }
+
+    public void showCourseWaitlisted(Course course) {
+        printNicely("Course Waitlisted!");
+        showCourse(course);
     }
 }

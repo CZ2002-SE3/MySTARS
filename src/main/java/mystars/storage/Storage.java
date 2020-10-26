@@ -163,8 +163,15 @@ public class Storage {
                     Course course = courseList.getCourseByIndex(courseIndex);
                     ArrayList<Student> students = parser.readStudentList(line, userList);
 
-                    course.addRegisteredStudents(students);
-                    students.forEach((x) -> x.addCourseToRegistered(course));
+                    if (course.isVacancy()) {
+                        for (Student student : students) {
+                            student.addCourseToRegistered(course);
+                        }
+                        course.addRegisteredStudents(students);
+
+                    } else {
+                        throw new MyStarsException("No more vacancy to put student!");
+                    }
                 }
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
@@ -189,8 +196,10 @@ public class Storage {
                     Course course = courseList.getCourseByIndex(courseIndex);
                     ArrayList<Student> students = parser.readStudentList(line, userList);
 
+                    for (Student student : students) {
+                        student.addCourseToWaitlisted(course);
+                    }
                     course.addWaitlistedStudents(students);
-                    students.forEach((x) -> x.addCourseToWaitlisted(course));
                 }
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
@@ -320,14 +329,14 @@ public class Storage {
         String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString;
         writeToFile(coursesFileContent, COURSES_FILE);
 
-        String registeredString = courses.getCourses().stream().map(Course::getRegisteredFormattedString)
-                .collect(Collectors.joining(System.lineSeparator()));
+        String registeredString = courses.getCourses().stream().filter(Course::isThereRegisteredStudents)
+                .map(Course::getRegisteredFormattedString).collect(Collectors.joining(System.lineSeparator()));
 
         String registeredFileContent = REGISTERED_FORMAT + System.lineSeparator() + registeredString;
         writeToFile(registeredFileContent, REGISTERED_FILE);
 
-        String waitlistedString = courses.getCourses().stream().map(Course::getWaitlistedFormattedString)
-                .collect(Collectors.joining(System.lineSeparator()));
+        String waitlistedString = courses.getCourses().stream().filter(Course::isThereWaitlistedStudents)
+                .map(Course::getWaitlistedFormattedString).collect(Collectors.joining(System.lineSeparator()));
 
         String waitlistedFileContent = WAITLISTED_FORMAT + System.lineSeparator() + waitlistedString;
         writeToFile(waitlistedFileContent, WAITLISTED_FILE);

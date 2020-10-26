@@ -130,21 +130,13 @@ public class Student extends User {
                 , new PasswordHandler().generatePBKDF2String(getPassword()), "student");
     }
 
-    public void addCourse(Course courseToAdd) throws MyStarsException {
+    public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
         checkCoursesInList(courseToAdd);
-        if (courseToAdd.isThereVacancy()) {
-            addCourseToRegistered(courseToAdd);
-        } else {
-            addCourseToWaitlisted(courseToAdd);
-        }
-    }
-
-    public void addCourseToRegistered(Course courseToAdd) {
         registeredCourses.addCourse(courseToAdd);
     }
 
-    public void addCourseToWaitlisted(Course courseToAdd) {
-        //checkCoursesInList(courseToAdd);
+    public void addCourseToWaitlisted(Course courseToAdd) throws MyStarsException {
+        checkCoursesInList(courseToAdd);
         waitlistedCourses.addCourse(courseToAdd);
     }
 

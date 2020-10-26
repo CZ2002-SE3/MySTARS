@@ -27,6 +27,8 @@ public class Course {
         this.initialVacancy = initialVacancies;
         this.numOfAUs = numOfAUs;
         this.lessonList = lessonList;
+        registeredStudents = new ArrayList<>();
+        waitlistedStudents = new ArrayList<>();
     }
 
     public String getCourseCode() {
@@ -57,8 +59,16 @@ public class Course {
         return initialVacancy - registeredStudents.size();
     }
 
-    public boolean isThereVacancy() {
+    public boolean isVacancy() {
         return getVacancies() > 0;
+    }
+
+    public boolean isThereRegisteredStudents() {
+        return !getRegisteredStudents().isEmpty();
+    }
+
+    public boolean isThereWaitlistedStudents() {
+        return !getWaitlistedStudents().isEmpty();
     }
 
     public int getNumOfAUs() {
@@ -132,5 +142,13 @@ public class Course {
     public String getWaitlistedFormattedString() {
         return String.join(Parser.LINE_SEPARATOR, indexNumber, waitlistedStudents.stream().map(Student::getMatricNo)
                 .collect(Collectors.joining(Parser.LINE_SEPARATOR)));
+    }
+
+    public void addRegisteredStudent(Student student) {
+        registeredStudents.add(student);
+    }
+
+    public void addWaitlistedStudent(Student student) {
+        waitlistedStudents.add(student);
     }
 }

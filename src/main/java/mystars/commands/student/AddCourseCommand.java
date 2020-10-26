@@ -33,9 +33,19 @@ public class AddCourseCommand extends StudentCommand {
         }
         Course course = courseList.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
-        student.addCourse(course);
 
-        ui.showCourseAdded(course);
+        //student.addCourse(course);
+
+        if (course.isVacancy()) {
+            student.addCourseToRegistered(course);
+            course.addRegisteredStudent(student);
+            ui.showCourseRegistered(course);
+        } else {
+            student.addCourseToWaitlisted(course);
+            course.addWaitlistedStudent(student);
+            ui.showCourseWaitlisted(course);
+        }
+
         storage.saveCourses(courseList);
         //TODO : Save course added
     }
