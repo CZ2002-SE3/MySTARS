@@ -1,0 +1,4 @@
+format: index number|student1 username|student2...
+10813|U1920301J
+20710|U1920003R
+10814|U1920003R|U1920004N
