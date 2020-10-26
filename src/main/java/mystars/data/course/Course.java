@@ -15,18 +15,16 @@ public class Course {
     // Might be wise to change school to enum afterwards
     private String school;
     private String indexNumber;
-    private int vacancies;
     private int numOfAUs;
     private ArrayList<Student> registeredStudents;
     private ArrayList<Student> waitlistedStudents;
 
-    public Course(String courseCode, String school, String indexNumber, int vacancies, int numOfAUs
+    public Course(String courseCode, String school, String indexNumber, int initialVacancies, int numOfAUs
             , LessonList lessonList) {
         this.courseCode = courseCode;
         this.school = school;
         this.indexNumber = indexNumber;
-        this.initialVacancy = vacancies;
-        this.vacancies = vacancies;
+        this.initialVacancy = initialVacancies;
         this.numOfAUs = numOfAUs;
         this.lessonList = lessonList;
     }
@@ -56,15 +54,11 @@ public class Course {
     }
 
     public int getVacancies() {
-        return vacancies;
-    }
-
-    public void removeVacancy() {
-        vacancies--;
+        return initialVacancy - registeredStudents.size();
     }
 
     public boolean isThereVacancy() {
-        return vacancies > 0;
+        return getVacancies() > 0;
     }
 
     public int getNumOfAUs() {

@@ -141,7 +141,6 @@ public class Student extends User {
 
     public void addCourseToRegistered(Course courseToAdd) {
         registeredCourses.addCourse(courseToAdd);
-        courseToAdd.removeVacancy();
     }
 
     public void addCourseToWaitlisted(Course courseToAdd) {

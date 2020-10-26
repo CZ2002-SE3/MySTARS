@@ -250,7 +250,6 @@ public class Parser {
                         //update vacancy for the course of a specific index
                         if (availableCourse.isThereVacancy()) {
                             courseArrayList.add(availableCourse);
-                            availableCourse.removeVacancy();
                         } else {
                             throw new MyStarsException("More students registered than vacancies!");
                         }
