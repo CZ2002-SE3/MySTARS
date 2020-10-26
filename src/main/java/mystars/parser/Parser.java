@@ -21,6 +21,7 @@ import mystars.data.shared.Option;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
+import mystars.data.user.UserList;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -28,6 +29,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * Parses user input and file.
@@ -210,7 +212,7 @@ public class Parser {
      * @param line Line of student to read.
      * @return Students of corresponding line.
      */
-    public Student readStudent(String line, CourseList availableCoursesList) throws MyStarsException {
+    public Student readStudent(String line) {
 
         String[] studentSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String name = studentSplit[0].trim();
@@ -223,28 +225,7 @@ public class Parser {
         String courseOfStudy = courseAndYear[0];
         int yearOfStudy = Integer.parseInt(courseAndYear[1]);
 
-        CourseList registeredCourses;
-        try {
-            String registeredCoursesString = studentSplit[6];
-            ArrayList<Course> regCourses = new ArrayList<>(loadRegisteredCourses(registeredCoursesString
-                    .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
-            registeredCourses = new CourseList(regCourses);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            registeredCourses = new CourseList();
-        }
-
-        CourseList waitlistedCourses;
-        try {
-            String waitlistedCoursesString = studentSplit[7];
-            ArrayList<Course> waitCourses = new ArrayList<>(loadWaitlistedCourses(waitlistedCoursesString
-                    .split(ESCAPED_ASTERISK_SEPERATOR), availableCoursesList));
-            waitlistedCourses = new CourseList(waitCourses);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            waitlistedCourses = new CourseList();
-        }
-
-        return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy, registeredCourses
-                , waitlistedCourses);
+        return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy);
     }
 
     /**
@@ -417,5 +398,22 @@ public class Parser {
 
     public boolean isValidStartEndTime(LocalTime startTime, LocalTime endTime) {
         return startTime.isBefore(endTime);
+    }
+
+    public ArrayList<Student> readStudentList(String line, UserList userList) {
+        String[] matricNos = line.split(ESCAPED_LINE_SEPARATOR);
+        ArrayList<Student> registeredStudents = new ArrayList<>();
+        for (int i = 1; i < matricNos.length; i++) {
+            for (Student student: userList.getUsers().stream().filter(Student.class::isInstance).map(Student.class::cast).collect(Collectors.toList())) {
+                if (student.getMatricNo().equalsIgnoreCase(matricNos[i])) {
+                    registeredStudents.add(student);
+                }
+            }
+        }
+        return registeredStudents;
+    }
+
+    public String readCourseIndex(String line) {
+        return line.split(ESCAPED_LINE_SEPARATOR)[0];
     }
 }

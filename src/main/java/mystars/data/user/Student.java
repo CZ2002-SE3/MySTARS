@@ -18,15 +18,15 @@ public class Student extends User {
     private CourseList waitlistedCourses;
 
     public Student(String name, String matricNo, char gender, String nationality, String username, String courseOfStudy
-            , int yearOfStudy, CourseList registeredCourses, CourseList waitlistedCourses) {
+            , int yearOfStudy) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
         this.nationality = nationality;
         this.courseOfStudy = courseOfStudy;
         this.yearOfStudy = yearOfStudy;
-        this.registeredCourses = registeredCourses;
-        this.waitlistedCourses = waitlistedCourses;
+        this.registeredCourses = new CourseList();
+        this.waitlistedCourses = new CourseList();
         super.setUsername(username.toCharArray());
     }
 

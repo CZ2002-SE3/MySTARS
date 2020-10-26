@@ -6,6 +6,7 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
+import mystars.data.user.UserList;
 import mystars.parser.Parser;
 
 import java.io.BufferedReader;
@@ -37,6 +38,8 @@ public class Storage {
     private static final String ADMINS_FILE = "admins.txt";
     private static final String COURSES_FILE = "courses.txt";
     private static final String SETTINGS_FILE = "settings.txt";
+    private static final String REGISTERED_FILE = "registered.txt";
+    private static final String WAITLIST_FILE = "waitlist.txt";
 
     private final Parser parser;
 
@@ -98,7 +101,7 @@ public class Storage {
                         break;
                     }
 
-                    Student student = parser.readStudent(line, availableCoursesList);
+                    Student student = parser.readStudent(line);
                     students.add(student);
                 }
             } catch (IOException e) {
@@ -139,6 +142,58 @@ public class Storage {
         }
 
         return admins;
+    }
+
+    public void loadCourseRegisteredStudents(CourseList courseList, UserList userList) throws MyStarsException {
+        Path path = Paths.get(FOLDER, REGISTERED_FILE);
+
+        if (Files.exists(path)) {
+            try {
+                BufferedReader bufferedReader = Files.newBufferedReader(path);
+                String line = bufferedReader.readLine();
+
+                while (true) {
+                    line = bufferedReader.readLine();
+                    if (line == null) {
+                        break;
+                    }
+                    String courseIndex = parser.readCourseIndex(line);
+                    Course course = courseList.getCourseByIndex(courseIndex);
+                    ArrayList<Student> students = parser.readStudentList(line, userList);
+
+                    course.addRegisteredStudents(students);
+                    students.forEach((x) -> x.addCourseToRegistered(course));
+                }
+            } catch (IOException e) {
+                throw new MyStarsException(READ_ERROR);
+            }
+        }
+    }
+
+    public void loadCourseWaitlistStudents(CourseList courseList, UserList userList) throws MyStarsException {
+        Path path = Paths.get(FOLDER, WAITLIST_FILE);
+
+        if (Files.exists(path)) {
+            try {
+                BufferedReader bufferedReader = Files.newBufferedReader(path);
+                String line = bufferedReader.readLine();
+
+                while (true) {
+                    line = bufferedReader.readLine();
+                    if (line == null) {
+                        break;
+                    }
+                    String courseIndex = parser.readCourseIndex(line);
+                    Course course = courseList.getCourseByIndex(courseIndex);
+                    ArrayList<Student> students = parser.readStudentList(line, userList);
+
+                    course.addWaitlistedStudents(students);
+                    students.forEach((x) -> x.addCourseToWaitlisted(course));
+                }
+            } catch (IOException e) {
+                throw new MyStarsException(READ_ERROR);
+            }
+        }
     }
 
     /**

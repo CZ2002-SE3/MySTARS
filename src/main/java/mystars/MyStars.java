@@ -46,6 +46,8 @@ public class MyStars {
             users = new UserList(storage.loadUsers());
             users.addDetails(storage.loadStudents(courses), storage.loadAdmins());
             accessDateTime = storage.loadAccessPeriod();
+            storage.loadCourseRegisteredStudents(courses, users);
+            storage.loadCourseWaitlistStudents(courses, users);
 
         } catch (MyStarsException e) {
             ui.showError(e.getMessage());

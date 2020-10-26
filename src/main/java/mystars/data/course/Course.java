@@ -1,8 +1,10 @@
 package mystars.data.course;
 
 import mystars.data.course.lesson.Lesson;
+import mystars.data.user.Student;
 import mystars.parser.Parser;
 
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Course {
@@ -15,6 +17,8 @@ public class Course {
     private String indexNumber;
     private int vacancies;
     private int numOfAUs;
+    private ArrayList<Student> registeredStudents;
+    private ArrayList<Student> waitlistedStudents;
 
     public Course(String courseCode, String school, String indexNumber, int vacancies, int numOfAUs
             , LessonList lessonList) {
@@ -108,5 +112,13 @@ public class Course {
             }
         }
         return false;*/
+    }
+
+    public void addRegisteredStudents(ArrayList<Student> students) {
+        registeredStudents = students;
+    }
+
+    public void addWaitlistedStudents(ArrayList<Student> students) {
+        waitlistedStudents = students;
     }
 }
