@@ -80,7 +80,6 @@ public abstract class Ui {
 
     public char[][] readUsernameAndPassword() {
         char[] username = readUsername();
-        printNicely("");
         char[] password = readPassword();
         return new char[][]{username, password};
     }
