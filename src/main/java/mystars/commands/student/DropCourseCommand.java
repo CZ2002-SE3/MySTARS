@@ -38,7 +38,6 @@ public class DropCourseCommand extends StudentCommand {
         course.dropRegisteredStudent(student);
         ui.showCourseDropped(course);
 
-
         storage.saveCourses(courseList);
     }
 }

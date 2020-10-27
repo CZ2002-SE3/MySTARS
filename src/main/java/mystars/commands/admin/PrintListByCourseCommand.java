@@ -26,6 +26,9 @@ public class PrintListByCourseCommand extends AdminCommand {
     public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
         String courseCode = ui.getCourseCode();
+        if (!courseList.isCourseInList(courseCode)) {
+            throw new MyStarsException("No such course.");
+        }
         ui.showStudentListByCourse(users, courseCode);
     }
 }
