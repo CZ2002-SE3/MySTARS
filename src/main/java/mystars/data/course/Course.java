@@ -148,6 +148,10 @@ public class Course {
         registeredStudents.add(student);
     }
 
+    public void dropRegisteredStudent(Student student) {
+        registeredStudents.remove(student);
+    }
+
     public void addWaitlistedStudent(Student student) {
         waitlistedStudents.add(student);
     }

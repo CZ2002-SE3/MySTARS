@@ -59,6 +59,10 @@ public class CourseList {
         courses.add(courseToAdd);
     }
 
+    public void dropCourse(Course courseToDrop) {
+        courses.remove(courseToDrop);
+    }
+
     public String getFormattedString() {
         return courses.stream().map(Course::getFormattedString).collect(Collectors.joining(System.lineSeparator()));
     }

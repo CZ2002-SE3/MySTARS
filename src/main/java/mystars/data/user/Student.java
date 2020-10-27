@@ -155,6 +155,17 @@ public class Student extends User {
         }
     }
 
+    public void dropCourse(Course courseToDrop) throws MyStarsException {
+        checkCourseRegistered(courseToDrop);
+        registeredCourses.dropCourse(courseToDrop);
+    }
+
+    public void checkCourseRegistered(Course courseToDrop) throws MyStarsException {
+        if (!registeredCourses.isCourseInList(courseToDrop)) {
+            throw new MyStarsException("Course does not exist in registered courses.");
+        }
+    }
+
     public String getFormattedString() {
         return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
                 , String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy);

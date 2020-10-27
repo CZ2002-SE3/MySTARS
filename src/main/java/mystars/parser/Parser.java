@@ -9,6 +9,7 @@ import mystars.commands.admin.PrintListByCourseCommand;
 import mystars.commands.admin.PrintListByIndexCommand;
 import mystars.commands.shared.LogoutCommand;
 import mystars.commands.student.AddCourseCommand;
+import mystars.commands.student.DropCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
@@ -92,6 +93,9 @@ public class Parser {
         switch (fullCommand.trim()) {
         case AddCourseCommand.COMMAND_WORD:
             command = new AddCourseCommand();
+            break;
+        case DropCourseCommand.COMMAND_WORD:
+            command = new DropCourseCommand();
             break;
         case PrintCourseRegCommand.COMMAND_WORD:
             command = new PrintCourseRegCommand();
