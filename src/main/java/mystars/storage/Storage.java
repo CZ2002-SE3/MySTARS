@@ -31,7 +31,7 @@ public class Storage {
     private static final String SETTINGS_FORMAT = "format: start datetime|end datetime";
     private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|"
             + "Lesson1*Lesson2*... (refer to Lesson.java for format)";
-    private static final String REGISTERED_FORMAT = "format: index number|student1 username|student2...";
+    private static final String REGISTERED_FORMAT = "format: index number|student1 matric no.|student2...";
     private static final String WAITLISTED_FORMAT = REGISTERED_FORMAT;
 
     private static final String FOLDER = "db";
