@@ -34,7 +34,7 @@ public class AddUpdateCourseCommand extends AdminCommand {
         Course course = ui.getCourseDetails(indexNumber);
         courseList.updateCourse(course);
 
-        storage.saveCourses(courseList);
+        storage.saveCourses(courseList); //TO-DO: update on students' side also (reload their courses)
         ui.showCourseList(courseList);
     }
 }
