@@ -20,7 +20,7 @@ Prerequisites: JDK 11 (use the exact version), update Intellij to the most recen
    1. Select `+` icon and then `JARs or Directories...`
    1. Locate the `lib` folder and select it.
    1. Click `OK`
-1. After the importing is complete, locate the `src/main/java/mystars/MyStars.java` file, right-click it, and choose `Run MyStars.main()`. If the setup is correct, you should see something like the below:
+1. After the above steps are completed, locate the `src/main/java/mystars/MyStars.java` file, right-click it, and choose `Run MyStars.main()`. If the setup is correct, you should see something like the below:
    ```
    ------------------------------------------------------------
    
