@@ -16,7 +16,7 @@ public class CheckVacancyCommand extends AdminCommand {
      * Executes command.
      *
      * @param accessDateTime Access period.
-     * @param courseList        CourseList object.
+     * @param courseList     CourseList object.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.

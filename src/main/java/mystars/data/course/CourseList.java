@@ -1,7 +1,5 @@
 package mystars.data.course;
 
-import mystars.data.course.lesson.Week;
-import mystars.data.exception.MyStarsException;
 import mystars.data.user.Student;
 
 import java.util.ArrayList;

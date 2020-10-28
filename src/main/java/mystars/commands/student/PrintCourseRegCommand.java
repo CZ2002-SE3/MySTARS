@@ -14,11 +14,10 @@ public class PrintCourseRegCommand extends StudentCommand {
     /**
      * Executes command.
      *
-     *
      * @param courseList CourseList object.
-     * @param users   UserList object.
-     * @param ui      Ui object.
-     * @param storage Storage object.
+     * @param users      UserList object.
+     * @param ui         Ui object.
+     * @param storage    Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override

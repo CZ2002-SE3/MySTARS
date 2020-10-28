@@ -2,7 +2,6 @@ package mystars.data.course;
 
 import mystars.data.course.lesson.Lesson;
 import mystars.data.user.Student;
-import mystars.data.user.User;
 import mystars.parser.Parser;
 
 import java.util.ArrayList;

@@ -12,7 +12,6 @@ import mystars.commands.student.AddCourseCommand;
 import mystars.commands.student.DropCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
 import mystars.data.course.Course;
-import mystars.data.course.CourseList;
 import mystars.data.course.LessonList;
 import mystars.data.course.lesson.Lesson;
 import mystars.data.course.lesson.LessonType;
@@ -346,7 +345,7 @@ public class Parser {
         String[] matricNos = line.split(ESCAPED_LINE_SEPARATOR);
         ArrayList<Student> registeredStudents = new ArrayList<>();
         for (int i = 1; i < matricNos.length; i++) {
-            for (Student student: userList.getUsers().stream().filter(Student.class::isInstance).map(Student.class::cast).collect(Collectors.toList())) {
+            for (Student student : userList.getUsers().stream().filter(Student.class::isInstance).map(Student.class::cast).collect(Collectors.toList())) {
                 if (student.getMatricNo().equalsIgnoreCase(matricNos[i])) {
                     registeredStudents.add(student);
                 }

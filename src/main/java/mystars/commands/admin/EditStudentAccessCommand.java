@@ -19,7 +19,7 @@ public class EditStudentAccessCommand extends AdminCommand {
      * Prompts admin for new access period and saves to file.
      *
      * @param accessDateTime Access period.
-     * @param courseList        CourseList object.
+     * @param courseList     CourseList object.
      * @param users          UserList object.
      * @param ui             Ui object.
      * @param storage        Storage object.
