@@ -34,8 +34,6 @@ public class AddCourseCommand extends StudentCommand {
         Course course = courseList.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
 
-        //student.addCourse(course);
-
         if (course.isVacancy()) {
             student.addCourseToRegistered(course);
             course.addRegisteredStudent(student);

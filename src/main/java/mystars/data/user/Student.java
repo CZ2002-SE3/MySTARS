@@ -8,6 +8,8 @@ import mystars.parser.Parser;
 
 public class Student extends User {
 
+    public static final int MAX_AU_ALLOWED = 21;
+
     private String name;
     private String matricNo;
     private char gender;
@@ -174,5 +176,16 @@ public class Student extends User {
     @Override
     public String toString() {
         return String.join(", ", name, matricNo, String.valueOf(gender), nationality);
+    }
+
+    public void modifyCourse(Course courseToModify) {
+        //TODO: check clash & and if clash drop course?
+        //TODO: check if exceed AU count
+        for (int i = 0; i < registeredCourses.getCourses().size(); i++) {
+            if (registeredCourses.getCourses().get(i).equals(courseToModify)) {
+                registeredCourses.getCourses().set(i, courseToModify);
+                break;
+            }
+        }
     }
 }

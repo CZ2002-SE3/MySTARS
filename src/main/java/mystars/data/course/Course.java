@@ -2,6 +2,7 @@ package mystars.data.course;
 
 import mystars.data.course.lesson.Lesson;
 import mystars.data.user.Student;
+import mystars.data.user.User;
 import mystars.parser.Parser;
 
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class Course {
 
-    private final int initialVacancy;
-    private final LessonList lessonList;
+    private int initialVacancy;
+    private LessonList lessonList;
     private String courseCode;
     // Might be wise to change school to enum afterwards
     private String school;
@@ -154,5 +155,20 @@ public class Course {
 
     public void addWaitlistedStudent(Student student) {
         waitlistedStudents.add(student);
+    }
+
+    public void copyCourseDetails(Course newCourse) {
+        courseCode = newCourse.courseCode;
+        school = newCourse.getSchool();
+        initialVacancy = newCourse.getInitialVacancy();
+        numOfAUs = newCourse.getNumOfAUs();
+        lessonList = newCourse.lessonList;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        assert obj instanceof Course;
+
+        return indexNumber.equals(((Course) obj).getIndexNumber());
     }
 }

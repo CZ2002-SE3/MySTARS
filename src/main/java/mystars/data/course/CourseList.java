@@ -1,6 +1,8 @@
 package mystars.data.course;
 
 import mystars.data.course.lesson.Week;
+import mystars.data.exception.MyStarsException;
+import mystars.data.user.Student;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -87,11 +89,12 @@ public class CourseList {
 
     public void updateCourse(Course newCourse) {
 
-        //TODO:check clash
-
-        for (int i = 0; i < courses.size(); i++) {
-            if (courses.get(i).getIndexNumber().equals(newCourse.getIndexNumber())) {
-                courses.set(i, newCourse);
+        for (Course course : courses) {
+            if (course.getIndexNumber().equals(newCourse.getIndexNumber())) {
+                course.copyCourseDetails(newCourse);
+                for (Student student : course.getRegisteredStudents()) {
+                    student.modifyCourse(course);
+                }
                 return;
             }
         }
