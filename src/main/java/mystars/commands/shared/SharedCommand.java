@@ -19,9 +19,8 @@ public abstract class SharedCommand extends Command {
      * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
-     * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage)
+    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui)
             throws MyStarsException;
 }

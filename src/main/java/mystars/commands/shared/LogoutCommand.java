@@ -17,11 +17,10 @@ public class LogoutCommand extends SharedCommand {
      * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
-     * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage)
+    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui)
             throws MyStarsException {
         setLoginStatus(false);
         ui.showLogout();

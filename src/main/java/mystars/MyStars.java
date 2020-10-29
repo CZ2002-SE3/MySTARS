@@ -75,7 +75,7 @@ public class MyStars {
             try {
                 while (!command.isLogin()) {
                     command = new LoginCommand();
-                    ((LoginCommand) command).execute(accessDateTime, users, ui, storage);
+                    ((LoginCommand) command).execute(accessDateTime, users, ui);
                 }
 
                 if (command.getUser() instanceof Student) {
@@ -99,7 +99,7 @@ public class MyStars {
                 String fullCommand = ui.askExit();
                 if (parser.isYes(fullCommand)) {
                     ui.showLine();
-                    new ExitCommand().execute(accessDateTime, users, ui, storage);
+                    new ExitCommand().execute(accessDateTime, users, ui);
                 }
                 ui.showLine();
             }
@@ -112,7 +112,7 @@ public class MyStars {
         } else if (command instanceof AdminCommand) {
             ((AdminCommand) command).execute(accessDateTime, courses, users, (AdminUi) ui, storage);
         } else if (command instanceof LogoutCommand) {
-            ((LogoutCommand) command).execute(accessDateTime, users, ui, storage);
+            ((LogoutCommand) command).execute(accessDateTime, users, ui);
         }
     }
 }

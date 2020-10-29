@@ -19,10 +19,9 @@ public class ExitCommand extends SharedCommand {
      * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
-     * @param storage        Storage object.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui, Storage storage) {
+    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui) {
         setExit();
         ui.showExit(MESSAGE);
     }
