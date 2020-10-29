@@ -1,9 +1,9 @@
-package mystars.valid;
+package mystars.data.valid;
 
 import java.time.DayOfWeek;
 import java.util.Arrays;
 
-public class isValidDayOfWeek extends isValid {
+public class DayOfWeekValidChecker extends ValidChecker {
 
     /**
      * Check input validity.

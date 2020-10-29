@@ -1,10 +1,10 @@
-package mystars.valid;
+package mystars.data.valid;
 
 import mystars.data.shared.Gender;
 
 import java.util.Arrays;
 
-public class isValidGender extends isValid {
+public class GenderValidChecker extends ValidChecker {
 
     /**
      * Check input validity.

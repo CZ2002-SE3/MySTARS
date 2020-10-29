@@ -1,6 +1,6 @@
-package mystars.valid;
+package mystars.data.valid;
 
-abstract class isValid {
+public abstract class ValidChecker {
 
     /**
      * Check input validity.

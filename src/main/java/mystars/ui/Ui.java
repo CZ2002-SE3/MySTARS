@@ -1,6 +1,9 @@
 package mystars.ui;
 
 import mystars.data.course.Course;
+import mystars.data.valid.IndexNumberValidChecker;
+import mystars.data.valid.OptionValidChecker;
+import mystars.data.valid.ValidChecker;
 import mystars.parser.Parser;
 
 import java.time.LocalDateTime;
@@ -111,15 +114,15 @@ public abstract class Ui {
     }
 
     public String askExit() {
-        return askOption("Do you want to exit?");
+        return getUserInput("Do you want to exit? (Y/N)", new OptionValidChecker());
     }
 
-    public String askOption(String question) {
-        printNicely(question + " (Y/N)");
+    String getUserInput(String message, ValidChecker validChecker) {
+        printNicely(message);
         String line = in.nextLine().trim();
-        while (!parser.isValidOption(line)) {
-            printNicely("Enter valid option!");
-            printNicely(question + " (Y/N)");
+        while (!validChecker.check(line)) {
+            printNicely("Invalid input!");
+            printNicely(message);
             line = in.nextLine().trim();
         }
         return line;
@@ -142,15 +145,6 @@ public abstract class Ui {
     }
 
     public String getIndexNumber() {
-        printNicely("Enter index number:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidIndexNumber(line)) {
-            printNicely("Enter valid index number!");
-            printNicely("Enter index number:");
-            line = in.nextLine().trim();
-        }
-
-        return line;
+        return getUserInput("Enter index number:", new IndexNumberValidChecker());
     }
 }

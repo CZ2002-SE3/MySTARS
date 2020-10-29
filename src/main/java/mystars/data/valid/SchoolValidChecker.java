@@ -1,6 +1,6 @@
-package mystars.valid;
+package mystars.data.valid;
 
-public class isValidSchool extends isValid {
+public class SchoolValidChecker extends ValidChecker {
 
     private static final int MAX_SCHOOL_LENGTH = 4;
     private static final int MIN_SCHOOL_LENGTH = 3;

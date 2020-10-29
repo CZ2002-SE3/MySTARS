@@ -1,6 +1,6 @@
-package mystars.valid;
+package mystars.data.valid;
 
-public class isValidYearOfStudy extends isValid {
+public class YearOfStudyValidChecker extends ValidChecker {
 
     /**
      * Check input validity.

@@ -4,6 +4,7 @@ import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.password.PasswordHandler;
+import mystars.data.shared.Gender;
 import mystars.parser.Parser;
 
 public class Student extends User {
@@ -12,14 +13,14 @@ public class Student extends User {
 
     private String name;
     private String matricNo;
-    private char gender;
+    private Gender gender;
     private String nationality;
     private String courseOfStudy;
     private int yearOfStudy;
     private CourseList registeredCourses;
     private CourseList waitlistedCourses;
 
-    public Student(String name, String matricNo, char gender, String nationality, String username, String courseOfStudy
+    public Student(String name, String matricNo, Gender gender, String nationality, String username, String courseOfStudy
             , int yearOfStudy) {
         this.name = name;
         this.matricNo = matricNo;
@@ -32,7 +33,7 @@ public class Student extends User {
         super.setUsername(username.toCharArray());
     }
 
-    public Student(String name, String matricNo, char gender, String nationality, String courseOfStudy, int yearOfStudy
+    public Student(String name, String matricNo, Gender gender, String nationality, String courseOfStudy, int yearOfStudy
             , char[] username, char[] password) {
         this.name = name;
         this.matricNo = matricNo;
@@ -66,11 +67,11 @@ public class Student extends User {
         this.matricNo = matricNo;
     }
 
-    public char getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

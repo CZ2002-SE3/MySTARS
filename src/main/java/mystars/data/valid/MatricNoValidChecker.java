@@ -1,6 +1,6 @@
-package mystars.valid;
+package mystars.data.valid;
 
-public class isValidMatricNo extends isValid {
+public class MatricNoValidChecker extends ValidChecker {
 
     private static final int MATRIC_NO_LENGTH = 9;
 
@@ -12,7 +12,7 @@ public class isValidMatricNo extends isValid {
      */
     @Override
     public boolean check(String line) {
-        return new isValidInput().check(line) && line.length() == MATRIC_NO_LENGTH
+        return new InputValidChecker().check(line) && line.length() == MATRIC_NO_LENGTH
                 && line.substring(1, MATRIC_NO_LENGTH - 1).chars().allMatch(Character::isDigit)
                 && Character.isLetter(line.charAt(0)) && Character.isLetter(line.charAt(MATRIC_NO_LENGTH - 1));
     }

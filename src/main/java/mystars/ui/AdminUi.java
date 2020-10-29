@@ -7,9 +7,22 @@ import mystars.data.course.lesson.Lesson;
 import mystars.data.course.lesson.LessonType;
 import mystars.data.course.lesson.Week;
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.Gender;
 import mystars.data.shared.Option;
 import mystars.data.user.Student;
 import mystars.data.user.UserList;
+import mystars.data.valid.CourseCodeValidChecker;
+import mystars.data.valid.DateTimeValidChecker;
+import mystars.data.valid.DayOfWeekValidChecker;
+import mystars.data.valid.GenderValidChecker;
+import mystars.data.valid.InputValidChecker;
+import mystars.data.valid.LessonTypeValidChecker;
+import mystars.data.valid.MatricNoValidChecker;
+import mystars.data.valid.NumberValidChecker;
+import mystars.data.valid.OptionValidChecker;
+import mystars.data.valid.SchoolValidChecker;
+import mystars.data.valid.TimeValidChecker;
+import mystars.data.valid.YearOfStudyValidChecker;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -37,24 +50,11 @@ public class AdminUi extends Ui {
     }
 
     public LocalDateTime[] getNewAccessPeriod() throws MyStarsException {
-        printNicely("");
-        printNicely("Enter new start date & time in this format: yyyy-MM-dd HH:mm");
-        String line = in.nextLine().trim();
-        while (!parser.isValidDateTime(line)) {
-            printNicely("Enter valid date/time!");
-            printNicely("Enter new start date & time in this format: yyyy-MM-dd HH:mm");
-            line = in.nextLine().trim();
-        }
-        LocalDateTime startDateTime = LocalDateTime.parse(line.replace(" ", "T"));
+        String startDateTimeString = getUserInput("Enter new start date & time in this format: yyyy-MM-dd HH:mm", new DateTimeValidChecker());
+        LocalDateTime startDateTime = LocalDateTime.parse(startDateTimeString.replace(" ", "T"));
 
-        printNicely("Enter new end date & time in this format: yyyy-MM-dd HH:mm");
-        line = in.nextLine().trim();
-        while (!parser.isValidDateTime(line)) {
-            printNicely("Enter valid date/time!");
-            printNicely("Enter end start date & time in this format: yyyy-MM-dd HH:mm");
-            line = in.nextLine().trim();
-        }
-        LocalDateTime endDateTime = LocalDateTime.parse(line.replace(" ", "T"));
+        String endDateTimeString = getUserInput("Enter new end date & time in this format: yyyy-MM-dd HH:mm", new DateTimeValidChecker());
+        LocalDateTime endDateTime = LocalDateTime.parse(endDateTimeString.replace(" ", "T"));
 
         if (startDateTime.isAfter(endDateTime)) {
             throw new MyStarsException("End date/time cannot be early than start date/time");
@@ -72,92 +72,15 @@ public class AdminUi extends Ui {
     }
 
     public Student getNewStudentFromUser() {
-        String name = getStudentName();
-        String matricNo = getStudentMatricNo();
-        char gender = getStudentGender();
-        String nationality = getStudentNationality();
-        String courseOfStudy = getStudentCourseOfStudy();
-        int yearOfStudy = getStudentYearOfStudy();
+        String name = getUserInput("Enter student name:", new InputValidChecker());
+        String matricNo = getUserInput("Enter matric number:", new MatricNoValidChecker()).toUpperCase();
+        Gender gender = Gender.valueOf(getUserInput("Enter gender (M/F):", new GenderValidChecker()).toUpperCase());
+        String nationality = getUserInput("Enter nationality:", new InputValidChecker());
+        String courseOfStudy = getUserInput("Enter course of study:", new InputValidChecker()).toUpperCase();
+        int yearOfStudy = Integer.parseInt(getUserInput("Enter year of study:", new YearOfStudyValidChecker()));
         char[][] usernameAndPassword = readUsernameAndPassword();
         return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, usernameAndPassword[0]
                 , usernameAndPassword[1]);
-    }
-
-    private int getStudentYearOfStudy() {
-        printNicely("Enter year of study:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidYearOfStudy(line)) {
-            printNicely("Enter valid year of study!");
-            printNicely("Enter year of study:");
-            line = in.nextLine().trim();
-        }
-
-        return Integer.parseInt(line);
-    }
-
-    private String getStudentCourseOfStudy() {
-        printNicely("Enter course of study:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidStartEndTime(line)) {
-            printNicely("Enter valid course of study!");
-            printNicely("Enter course of study:");
-            line = in.nextLine().trim();
-        }
-
-        return line.toUpperCase();
-    }
-
-    private String getStudentNationality() {
-        printNicely("Enter nationality:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidStartEndTime(line)) {
-            printNicely("Enter valid nationality!");
-            printNicely("Enter nationality:");
-            line = in.nextLine().trim();
-        }
-
-        return line;
-    }
-
-    private char getStudentGender() {
-        printNicely("Enter gender (M/F):");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidGender(line)) {
-            printNicely("Enter valid gender!");
-            printNicely("Enter gender (M/F):");
-            line = in.nextLine().trim();
-        }
-        return line.charAt(0);
-    }
-
-    private String getStudentMatricNo() {
-        printNicely("Enter matric number:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidMatricNo(line)) {
-            printNicely("Enter valid matric number!");
-            printNicely("Enter matric number:");
-            line = in.nextLine().trim();
-        }
-
-        return line.toUpperCase();
-    }
-
-    private String getStudentName() {
-        printNicely("Enter student name:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidStartEndTime(line)) {
-            printNicely("Enter valid name!");
-            printNicely("Enter student name:");
-            line = in.nextLine().trim();
-        }
-
-        return line;
     }
 
     public void showStudentList(UserList users) {
@@ -181,16 +104,7 @@ public class AdminUi extends Ui {
     }
 
     public String getCourseCode() {
-        printNicely("Enter course code:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidCourseCode(line)) {
-            printNicely("Enter valid course code!");
-            printNicely("Enter course code:");
-            line = in.nextLine().trim();
-        }
-
-        return line.toUpperCase();
+        return getUserInput("Enter course code:", new CourseCodeValidChecker()).toUpperCase();
     }
 
     public void showVacancy(CourseList courses, String indexNumber) {
@@ -204,10 +118,10 @@ public class AdminUi extends Ui {
     }
 
     public Course getCourseDetails(String indexNumber) {
-        String courseCode = getCourseCode();
-        String school = getSchool();
-        int vacancy = getVacancy();
-        int numOfAUs = getNumOfAUs();
+        String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
+        String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
+        int vacancy = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
+        int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
         LessonList lessonList = getLessonList();
 
         return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
@@ -231,134 +145,33 @@ public class AdminUi extends Ui {
             if (!lessonList.addLesson(getLesson())) {
                 printNicely("Not added as timing clash!");
             }
-            option = askOption("Add more lesson?");
+            option = getUserInput("Add more lesson? (Y/N)", new OptionValidChecker());
         }
 
         return lessonList;
     }
 
     private Lesson getLesson() {
-        LessonType lessonType = getLessonType();
-        String venue = getVenue();
+        LessonType lessonType = LessonType.valueOf(getUserInput("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):", new LessonTypeValidChecker()).toUpperCase());
+        String venue = getUserInput("Enter venue:", new InputValidChecker()).toUpperCase();
         LocalTime[] times = getStartAndEndTime();
-        DayOfWeek day = getDayOfWeek();
+        DayOfWeek day = DayOfWeek.valueOf(getUserInput("Enter day", new DayOfWeekValidChecker()).toUpperCase());
         Week week = getWeek();
-        String group = getGroup();
+        String group = getUserInput("Enter group:", new InputValidChecker()).toUpperCase();
         return new Lesson(lessonType, venue, times[0], times[1], day, week, group);
     }
 
     private LocalTime[] getStartAndEndTime() {
-        LocalTime startTime = getTime("start");
-        LocalTime endTime = getTime("end");
+        LocalTime startTime = LocalTime.parse(getUserInput("Enter start time (HH:mm)", new TimeValidChecker()));
+        LocalTime endTime = LocalTime.parse(getUserInput("Enter end time (HH:mm)", new TimeValidChecker()));
         while (!parser.isValidStartEndTime(startTime, endTime)) {
             printNicely("End time is before start time!");
-            startTime = getTime("start");
-            endTime = getTime("end");
+            startTime = LocalTime.parse(getUserInput("Enter start time (HH:mm)", new TimeValidChecker()));
+            endTime = LocalTime.parse(getUserInput("Enter end time (HH:mm)", new TimeValidChecker()));
         }
         return new LocalTime[]{startTime, endTime};
     }
 
-    private String getGroup() {
-        printNicely("Enter group:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidStartEndTime(line)) {
-            printNicely("Enter valid group!");
-            printNicely("Enter group:");
-            line = in.nextLine().trim();
-        }
-
-        return line.toUpperCase();
-    }
-
-    private DayOfWeek getDayOfWeek() {
-        printNicely("Enter day:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidDayOfWeek(line)) {
-            printNicely("Enter valid day!");
-            printNicely("Enter day:");
-            line = in.nextLine().trim();
-        }
-
-        return DayOfWeek.valueOf(line.toUpperCase());
-    }
-
-    private LocalTime getTime(String type) {
-        printNicely("Enter " + type + " time (HH:mm)");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidTime(line)) {
-            printNicely("Enter valid " + type + " time!");
-            printNicely("Enter " + type + " time (HH:mm):");
-            line = in.nextLine().trim();
-        }
-
-        return LocalTime.parse(line);
-    }
-
-    private String getVenue() {
-        printNicely("Enter venue:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidStartEndTime(line)) {
-            printNicely("Enter valid venue!");
-            printNicely("Enter venue:");
-            line = in.nextLine().trim();
-        }
-
-        return line.toUpperCase();
-    }
-
-    private LessonType getLessonType() {
-        printNicely("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):");
-        String line = in.nextLine().trim();
-        while (!parser.isValidLessonType(line)) {
-            printNicely("Enter valid lesson type!");
-            printNicely("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):");
-            line = in.nextLine().trim();
-        }
-        return LessonType.valueOf(line.toUpperCase());
-    }
-
-    private int getNumOfAUs() {
-        printNicely("Enter number of AUs:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidNumber(line)) {
-            printNicely("Enter valid number!");
-            printNicely("Enter number of AUs:");
-            line = in.nextLine().trim();
-        }
-
-        return Integer.parseInt(line);
-    }
-
-    private int getVacancy() {
-        printNicely("Enter vacancy:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidNumber(line)) {
-            printNicely("Enter valid number!");
-            printNicely("Enter vacancy:");
-            line = in.nextLine().trim();
-        }
-
-        return Integer.parseInt(line);
-    }
-
-    private String getSchool() {
-        printNicely("Enter school:");
-
-        String line = in.nextLine().trim();
-        while (!parser.isValidSchool(line)) {
-            printNicely("Enter valid school!");
-            printNicely("Enter school:");
-            line = in.nextLine().trim();
-        }
-
-        return line.toUpperCase();
-    }
 
     public void showAddedStudent(Student newStudent) {
         printNicely("");

@@ -1,6 +1,6 @@
-package mystars.valid;
+package mystars.data.valid;
 
-public class isValidIndexNumber extends isValid {
+public class IndexNumberValidChecker extends ValidChecker {
 
     private static final int INDEX_NO_LENGTH = 5;
 

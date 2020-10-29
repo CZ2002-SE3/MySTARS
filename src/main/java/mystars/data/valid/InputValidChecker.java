@@ -1,8 +1,8 @@
-package mystars.valid;
+package mystars.data.valid;
 
 import mystars.parser.Parser;
 
-public class isValidInput extends isValid {
+public class InputValidChecker extends ValidChecker {
     private static final String EMPTY_STRING = "";
 
     /**

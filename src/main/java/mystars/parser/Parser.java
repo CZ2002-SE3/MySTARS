@@ -17,11 +17,13 @@ import mystars.data.course.lesson.Lesson;
 import mystars.data.course.lesson.LessonType;
 import mystars.data.course.lesson.Week;
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.Gender;
 import mystars.data.shared.Option;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
 import mystars.data.user.UserList;
+import mystars.data.valid.NumberValidChecker;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -160,13 +162,13 @@ public class Parser {
 
         int vacancy;
         int numOfAUs;
-        if (isValidNumber(vacancyString)) {
+        if (new NumberValidChecker().check(vacancyString)) {
             vacancy = Integer.parseInt(vacancyString);
         } else {
             throw new MyStarsException("Vacancy is not valid!");
         }
 
-        if (isValidNumber(numOfAUsString)) {
+        if (new NumberValidChecker().check(numOfAUsString)) {
             numOfAUs = Integer.parseInt(numOfAUsString);
         } else {
             throw new MyStarsException("Number of AUs is not valid!");
@@ -220,7 +222,7 @@ public class Parser {
         String[] studentSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String name = studentSplit[0].trim();
         String matricNo = studentSplit[1].trim();
-        char gender = studentSplit[2].trim().charAt(0);
+        Gender gender = Gender.valueOf(studentSplit[2].trim());
         String nationality = studentSplit[3].trim();
         String username = studentSplit[4].trim();
 
@@ -264,73 +266,6 @@ public class Parser {
         } catch (DateTimeParseException dateTimeParseException) {
             throw new MyStarsException("I am unable to parse date/time.");
         }
-    }
-
-    public boolean isValidStartEndTime(String line) {
-        return !line.contains(LINE_SEPARATOR) && !line.equals("");
-    }
-
-    public boolean isValidGender(String line) {
-        return line.equalsIgnoreCase("M") || line.equalsIgnoreCase("F");
-    }
-
-    public boolean isValidMatricNo(String line) {
-        return isValidStartEndTime(line) && line.length() == MATRIC_NO_LENGTH
-                && line.substring(1, MATRIC_NO_LENGTH - 1).chars().allMatch(Character::isDigit)
-                && Character.isLetter(line.charAt(0)) && Character.isLetter(line.charAt(MATRIC_NO_LENGTH - 1));
-    }
-
-    public boolean isValidYearOfStudy(String line) {
-        return line.length() == 1 && Character.isDigit(line.charAt(0))
-                && Integer.parseInt(line) >= 1 && Integer.parseInt(line) <= 5;
-    }
-
-    public boolean isValidDateTime(String line) {
-        try {
-            LocalDateTime.parse(line.replace(" ", "T"));
-            return true;
-        } catch (DateTimeParseException dateTimeParseException) {
-            return false;
-        }
-    }
-
-    public boolean isValidIndexNumber(String line) {
-        return line.length() == INDEX_NO_LENGTH && line.chars().allMatch(Character::isDigit);
-    }
-
-    public boolean isValidCourseCode(String line) {
-        return line.length() == COURSE_CODE_LENGTH && line.substring(0, 1).chars().allMatch(Character::isLetter)
-                && line.substring(2, COURSE_CODE_LENGTH - 1).chars().allMatch(Character::isDigit);
-    }
-
-    public boolean isValidSchool(String line) {
-        return line.length() >= MIN_SCHOOL_LENGTH && line.length() <= MAX_SCHOOL_LENGTH
-                && line.chars().allMatch(Character::isLetter);
-    }
-
-    public boolean isValidNumber(String line) {
-        return line.chars().allMatch(Character::isDigit) && Integer.parseInt(line) >= 0;
-    }
-
-    public boolean isValidLessonType(String line) {
-        return Arrays.stream(LessonType.values()).map(LessonType::name).anyMatch(line::equalsIgnoreCase);
-    }
-
-    public boolean isValidTime(String line) {
-        try {
-            LocalTime.parse(line);
-            return true;
-        } catch (DateTimeParseException dateTimeParseException) {
-            return false;
-        }
-    }
-
-    public boolean isValidDayOfWeek(String line) {
-        return Arrays.stream(DayOfWeek.values()).map(DayOfWeek::name).anyMatch(line::equalsIgnoreCase);
-    }
-
-    public boolean isValidOption(String line) {
-        return Arrays.stream(Option.values()).map(Option::name).anyMatch(line::equalsIgnoreCase);
     }
 
     public boolean isYes(String line) {

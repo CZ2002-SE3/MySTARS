@@ -1,9 +1,11 @@
-package mystars.valid;
+package mystars.data.valid;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-public class isValidTime extends isValid {
+public class DateTimeValidChecker extends ValidChecker {
+    private static final String SPACE = " ";
+    private static final String DATE_TIME_SEPARATOR = "T";
 
     /**
      * Check input validity.
@@ -14,7 +16,7 @@ public class isValidTime extends isValid {
     @Override
     public boolean check(String line) {
         try {
-            LocalTime.parse(line);
+            LocalDateTime.parse(line.replace(SPACE, DATE_TIME_SEPARATOR));
             return true;
         } catch (DateTimeParseException dateTimeParseException) {
             return false;

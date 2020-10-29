@@ -1,10 +1,10 @@
-package mystars.valid;
+package mystars.data.valid;
 
 import mystars.data.shared.Option;
 
 import java.util.Arrays;
 
-public class isValidOption extends isValid {
+public class OptionValidChecker extends ValidChecker {
 
     /**
      * Check input validity.

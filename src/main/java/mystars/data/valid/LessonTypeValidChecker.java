@@ -1,10 +1,10 @@
-package mystars.valid;
+package mystars.data.valid;
 
 import mystars.data.course.lesson.LessonType;
 
 import java.util.Arrays;
 
-public class isValidLessonType extends isValid {
+public class LessonTypeValidChecker extends ValidChecker {
 
     /**
      * Check input validity.
