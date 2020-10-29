@@ -134,6 +134,9 @@ public class Student extends User {
     }
 
     public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
+        if (courseToAdd.getNumOfAUs() + registeredCourses.getTotalNoOfAUs() > MAX_AU_ALLOWED) {
+            throw new MyStarsException("Exceed maximum AU allowed!");
+        }
         checkCoursesInList(courseToAdd);
         registeredCourses.addCourse(courseToAdd);
     }

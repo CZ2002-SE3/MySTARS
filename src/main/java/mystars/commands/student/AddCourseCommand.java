@@ -44,6 +44,5 @@ public class AddCourseCommand extends StudentCommand {
         }
 
         storage.saveCourses(courseList);
-        //TODO : Save course added
     }
 }
