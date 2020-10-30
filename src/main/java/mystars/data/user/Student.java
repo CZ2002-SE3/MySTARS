@@ -182,12 +182,19 @@ public class Student extends User {
         return String.join(", ", name, matricNo, String.valueOf(gender), nationality);
     }
 
-    public void modifyCourse(Course courseToModify) {
-        //TODO: check clash & and if clash drop course?
-        //TODO: check if exceed AU count
+    public void modifyCourse(Course courseToModify) throws MyStarsException {
         for (int i = 0; i < registeredCourses.getCourses().size(); i++) {
             if (registeredCourses.getCourses().get(i).equals(courseToModify)) {
-                registeredCourses.getCourses().set(i, courseToModify);
+                registeredCourses.getCourses().remove(i);
+                if (courseToModify.getNumOfAUs() - registeredCourses.getCourses().get(i).getNumOfAUs() + registeredCourses.getTotalNoOfAUs() > MAX_AU_ALLOWED) {
+                    throw new MyStarsException("Exceed max AU allowed!");
+                }
+                for (Course registered : registeredCourses.getCourses()) {
+                    if (registered.isClash(courseToModify)) {
+                        throw new MyStarsException("Timings clash!");
+                    }
+                }
+                registeredCourses.getCourses().add(courseToModify);
                 break;
             }
         }

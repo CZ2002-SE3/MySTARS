@@ -13,7 +13,7 @@ public class InputValidChecker extends ValidChecker {
      */
     @Override
     public boolean check(String line) {
-        return !line.contains(Parser.LINE_SEPARATOR) && !line.equals(EMPTY_STRING);
-        // TODO: put line seperator somewhere else
+        return !line.contains(Parser.LINE_SEPARATOR) && !line.contains(Parser.ASTERISK_SEPERATOR)
+                && !line.contains(Parser.TILDE_SEPARATOR) && !line.equals(EMPTY_STRING);
     }
 }
