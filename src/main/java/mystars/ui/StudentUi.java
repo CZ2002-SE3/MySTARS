@@ -5,9 +5,6 @@ import mystars.data.course.CourseList;
 import mystars.data.user.Student;
 import mystars.parser.Parser;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 public class StudentUi extends Ui {
 
     public StudentUi(Parser parser) {

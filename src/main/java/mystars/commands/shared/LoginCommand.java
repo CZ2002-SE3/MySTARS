@@ -3,7 +3,6 @@ package mystars.commands.shared;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Student;
 import mystars.data.user.UserList;
-import mystars.storage.Storage;
 import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
