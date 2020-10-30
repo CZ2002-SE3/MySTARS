@@ -42,8 +42,8 @@ public class AddUpdateCourseCommand extends AdminCommand {
             course = ui.getCourseDetails(indexNumber);
         }
 
-        checkWaitlist(course);
-        courseList.updateCourse(course);
+        Course modifiedCourse = courseList.updateCourse(course);
+        checkWaitlist(modifiedCourse);
 
 
         storage.saveCourses(courseList);

@@ -202,7 +202,7 @@ public class Student extends User {
         for (int i = 0; i < registeredCourses.getCourses().size(); i++) {
             if (registeredCourses.getCourses().get(i).equals(courseToModify)) {
                 Course removedCourse = registeredCourses.getCourses().remove(i);
-                if (courseToModify.getNumOfAUs() - registeredCourses.getCourses().get(i).getNumOfAUs() + registeredCourses.getTotalNoOfAUs() > MAX_AU_ALLOWED) {
+                if (courseToModify.getNumOfAUs() + registeredCourses.getTotalNoOfAUs() > MAX_AU_ALLOWED) {
                     registeredCourses.getCourses().add(removedCourse);
                     throw new MyStarsException("Exceed max AU allowed!");
                 }

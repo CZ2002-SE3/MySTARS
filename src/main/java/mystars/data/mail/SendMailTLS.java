@@ -35,12 +35,14 @@ public class SendMailTLS {
             message.setFrom(new InternetAddress("from-email@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(targetEmailAddress)); // to be added an email addr
-            message.setSubject("Testing Subject");
+            message.setSubject("New Course Registered Notification");
             message.setText(emailContent);
 
             Transport.send(message);
 
-            System.out.println("Done");
+            System.out.println("------------------------------------------------------------");
+            System.out.println("Added waitlisted student to course and email sent to inform student.");
+            System.out.println("------------------------------------------------------------");
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
@@ -48,9 +50,10 @@ public class SendMailTLS {
     }
 
     public static String getEmailContent (String courseCode, String indexNumber, String name) {
-        return "Dear " + name + "," + System.lineSeparator() +
-                "We are pleased to inform you that there is an available slot in " + courseCode + ", " + indexNumber
-                + " and you have been successfully registered for the course.";
+        return "Dear " + name + "," + System.lineSeparator() + System.lineSeparator() +
+                "We are pleased to inform you that there is an available slot in " + courseCode + ", of index number " + indexNumber +
+                " and you have been successfully registered for the course." + System.lineSeparator() + System.lineSeparator() +
+                "Regards, \nSTARS Administrators";
     }
 
 }

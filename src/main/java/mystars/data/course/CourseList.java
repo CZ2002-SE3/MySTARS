@@ -86,7 +86,7 @@ public class CourseList {
         return null;
     }
 
-    public void updateCourse(Course newCourse) throws MyStarsException {
+    public Course updateCourse(Course newCourse) throws MyStarsException {
 
         for (Course course : courses) {
             if (course.getIndexNumber().equals(newCourse.getIndexNumber())) {
@@ -94,10 +94,11 @@ public class CourseList {
                 for (Student student : course.getRegisteredStudents()) {
                     student.modifyCourse(course);
                 }
-                return;
+                return course;
             }
         }
         addCourse(newCourse);
+        return newCourse;
     }
 
     public boolean isClash(Course courseToAdd) {
