@@ -13,17 +13,16 @@ import java.util.Base64;
 
 public class PasswordHandler {
 
-    private static final int BASE_PBKDF2_ITERATIONS = 32768;
+    private static final int PBKDF2_ITERATIONS = 32768;
     private static final int KEY_LENGTH = 16;
 
     public String generatePBKDF2String(char[] password) throws MyStarsException {
         SecureRandom random = new SecureRandom();
-        int pbkdf2Iterations = BASE_PBKDF2_ITERATIONS + random.nextInt(BASE_PBKDF2_ITERATIONS) + 1;
         byte[] salt = new byte[KEY_LENGTH];
         random.nextBytes(salt);
-        byte[] hash = generatePBKDF2(password, salt, pbkdf2Iterations, KEY_LENGTH);
-        return pbkdf2Iterations + Parser.TILDE_SEPARATOR + Base64.getEncoder().encodeToString(salt)
-                + Parser.TILDE_SEPARATOR + Base64.getEncoder().encodeToString(hash);
+        byte[] hash = generatePBKDF2(password, salt, PBKDF2_ITERATIONS, KEY_LENGTH);
+        return Base64.getEncoder().encodeToString(salt) + Parser.TILDE_SEPARATOR
+                + Base64.getEncoder().encodeToString(hash);
     }
 
     public byte[] generatePBKDF2(char[] password, byte[] salt, int iterations, int bytes) throws MyStarsException {
@@ -38,10 +37,9 @@ public class PasswordHandler {
 
     public boolean validatePassword(char[] password, char[] goodHash) throws MyStarsException {
         String[] params = String.valueOf(goodHash).split(Parser.TILDE_SEPARATOR);
-        int iterations = Integer.parseInt(params[0]);
-        byte[] salt = Base64.getDecoder().decode(params[1]);
-        byte[] hash = Base64.getDecoder().decode(params[2]);
-        byte[] testHash = generatePBKDF2(password, salt, iterations, hash.length);
+        byte[] salt = Base64.getDecoder().decode(params[0]);
+        byte[] hash = Base64.getDecoder().decode(params[1]);
+        byte[] testHash = generatePBKDF2(password, salt, PBKDF2_ITERATIONS, hash.length);
         return slowEquals(hash, testHash);
     }
 
