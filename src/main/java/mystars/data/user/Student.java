@@ -3,7 +3,6 @@ package mystars.data.user;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.password.PasswordHandler;
 import mystars.data.shared.Gender;
 import mystars.parser.Parser;
 
@@ -128,9 +127,9 @@ public class Student extends User {
     }
 
     @Override
-    public String getFormattedUserInfo() throws MyStarsException {
+    public String getFormattedUserInfo() {
         return String.join(Parser.LINE_SEPARATOR, String.valueOf(getUsername())
-                , new PasswordHandler().generatePBKDF2String(getPassword()), "student");
+                , String.valueOf(getPassword()), "student");
     }
 
     public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
