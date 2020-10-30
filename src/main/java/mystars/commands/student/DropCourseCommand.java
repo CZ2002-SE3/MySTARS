@@ -33,9 +33,11 @@ public class DropCourseCommand extends StudentCommand {
         Course course = courseList.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
 
-        student.dropCourse(course);
+        student.dropRegisteredCourse(course);
         course.dropRegisteredStudent(student);
         ui.showCourseDropped(course);
+
+        //TODO: allow student to drop waitlisted course
 
         storage.saveCourses(courseList);
     }
