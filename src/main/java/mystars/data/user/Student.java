@@ -193,12 +193,14 @@ public class Student extends User {
     public void modifyCourse(Course courseToModify) throws MyStarsException {
         for (int i = 0; i < registeredCourses.getCourses().size(); i++) {
             if (registeredCourses.getCourses().get(i).equals(courseToModify)) {
-                registeredCourses.getCourses().remove(i);
+                Course removedCourse = registeredCourses.getCourses().remove(i);
                 if (courseToModify.getNumOfAUs() - registeredCourses.getCourses().get(i).getNumOfAUs() + registeredCourses.getTotalNoOfAUs() > MAX_AU_ALLOWED) {
+                    registeredCourses.getCourses().add(removedCourse);
                     throw new MyStarsException("Exceed max AU allowed!");
                 }
                 for (Course registered : registeredCourses.getCourses()) {
                     if (registered.isClash(courseToModify)) {
+                        registeredCourses.getCourses().add(removedCourse);
                         throw new MyStarsException("Timings clash!");
                     }
                 }
