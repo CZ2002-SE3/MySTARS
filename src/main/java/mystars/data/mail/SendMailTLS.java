@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class SendMailTLS {
 
-    public static void main(String[] args) {
+    public static void sendMail (String targetEmailAddress, String emailContent) {
 
         final String username = "cz2002.se3.group1@gmail.com"; // to be added
         final String password = "ilovestars"; // to be added
@@ -34,10 +34,9 @@ public class SendMailTLS {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("from-email@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("cz2002.se3.group1@gmail.com")); // to be added an email addr
+                    InternetAddress.parse(targetEmailAddress)); // to be added an email addr
             message.setSubject("Testing Subject");
-            message.setText("Dear Mail Crawler,"
-                    + "\n\n No spam to my email, please!");
+            message.setText(emailContent);
 
             Transport.send(message);
 
@@ -47,4 +46,11 @@ public class SendMailTLS {
             throw new RuntimeException(e);
         }
     }
+
+    public static String getEmailContent (String courseCode, String indexNumber, String name) {
+        return "Dear " + name + "," + System.lineSeparator() +
+                "We are pleased to inform you that there is an available slot in " + courseCode + ", " + indexNumber
+                + " and you have been successfully registered for the course.";
+    }
+
 }
