@@ -33,8 +33,8 @@ public abstract class SharedCommand extends Command {
             while (course.isThereWaitlistedStudents()) {
                 studentToNotify = course.getWaitlistedStudents().get(i);
                 try {
-                    studentToNotify.addCourseToRegistered(course);
                     studentToNotify.dropWaitlistedCourse(course);
+                    studentToNotify.addCourseToRegistered(course);
                 } catch (MyStarsException e) {
                     i++;
                     continue;
