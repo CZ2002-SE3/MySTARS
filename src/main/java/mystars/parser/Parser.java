@@ -228,7 +228,9 @@ public class Parser {
         String courseOfStudy = courseAndYear[0];
         int yearOfStudy = Integer.parseInt(courseAndYear[1]);
 
-        return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy);
+        String email = studentSplit[6];
+
+        return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy, email);
     }
 
     /**

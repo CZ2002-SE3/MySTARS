@@ -1,16 +1,16 @@
-format: name|matriculation number|gender|nationality|username|CourseOfStudy~YearOfStudy
-Leonardo Irvin Pratama|U1920301J|M|Indonesian|IRVIN001|CSC~2
-Tan Jun Hong|U1920001N|M|Singaporean|JUNHONG002|BCG~2
-Tey Chin Yi|U1920002P|M|Singaporean|CHENYI001|BCG~2
-Ferlita Halim|U1920003R|F|Indonesian|FERLITA001|CSC~2
-Woon Yoke Min|U1920004N|F|Singaporean|YOKEMIN002|BCG~2
-Sophia Wang|U1819001A|F|Malaysian|SOPHIA021|ECONS~3
-Jackson Ho|U1819002B|M|Singaporean|JACKSON032|CE~1
-Olivia See|U1819003C|F|Singaporean|OLIVIA033|CE~2
-Lim Wei Jie, Liam|U1819004D|M|Chinese|LIAM003|BUS~2
-Emma Watson|U1819005E|F|French|EMMA041|ACC~2
-Noah Lee|U2021010M|M|Malaysian|NOAH050|ACBS~3
-Ava Bhadravati|U2021021K|F|Indian|AVA0023|BCG~1
-Aiden, Chen De Xing|U2021033L|M|Singaporean|AIDEN098|CS~2
-Aria Jin|U2021042T|F|Chinese|ARIA010|MAE~1
-Jason, Chin Kai Sheng|U2021050P|M|Singaporean|JASON022|MACS~3
+format: name|matriculation number|gender|nationality|username|CourseOfStudy~YearOfStudy|email
+Leonardo Irvin Pratama|U1920301J|M|Indonesian|IRVIN001|CSC~2|cz2002.se3.group1@gmail.com
+Tan Jun Hong|U1920001N|M|Singaporean|JUNHONG002|BCG~2|cz2002.se3.group1@gmail.com
+Tey Chin Yi|U1920002P|M|Singaporean|CHENYI001|BCG~2|cz2002.se3.group1@gmail.com
+Ferlita Halim|U1920003R|F|Indonesian|FERLITA001|CSC~2|cz2002.se3.group1@gmail.com
+Woon Yoke Min|U1920004N|F|Singaporean|YOKEMIN002|BCG~2|cz2002.se3.group1@gmail.com
+Sophia Wang|U1819001A|F|Malaysian|SOPHIA021|ECONS~3|cz2002.se3.group1@gmail.com
+Jackson Ho|U1819002B|M|Singaporean|JACKSON032|CE~1|cz2002.se3.group1@gmail.com
+Olivia See|U1819003C|F|Singaporean|OLIVIA033|CE~2|cz2002.se3.group1@gmail.com
+Lim Wei Jie, Liam|U1819004D|M|Chinese|LIAM003|BUS~2|cz2002.se3.group1@gmail.com
+Emma Watson|U1819005E|F|French|EMMA041|ACC~2|cz2002.se3.group1@gmail.com
+Noah Lee|U2021010M|M|Malaysian|NOAH050|ACBS~3|cz2002.se3.group1@gmail.com
+Ava Bhadravati|U2021021K|F|Indian|AVA0023|BCG~1|cz2002.se3.group1@gmail.com
+Aiden, Chen De Xing|U2021033L|M|Singaporean|AIDEN098|CS~2|cz2002.se3.group1@gmail.com
+Aria Jin|U2021042T|F|Chinese|ARIA010|MAE~1|cz2002.se3.group1@gmail.com
+Jason, Chin Kai Sheng|U2021050P|M|Singaporean|JASON022|MACS~3|cz2002.se3.group1@gmail.com

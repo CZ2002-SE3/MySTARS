@@ -28,6 +28,7 @@ public class AddUpdateCourseCommand extends AdminCommand {
             throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
 
+        // TODO: Check vacancy before updating course
         if (courseList.isIndexNoInList(indexNumber)) {
             ui.showCourse(courseList.getCourseByIndex(indexNumber));
         }

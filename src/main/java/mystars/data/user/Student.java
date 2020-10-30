@@ -18,9 +18,10 @@ public class Student extends User {
     private int yearOfStudy;
     private CourseList registeredCourses;
     private CourseList waitlistedCourses;
+    private String email;
 
     public Student(String name, String matricNo, Gender gender, String nationality, String username, String courseOfStudy
-            , int yearOfStudy) {
+            , int yearOfStudy, String email) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
@@ -29,11 +30,12 @@ public class Student extends User {
         this.yearOfStudy = yearOfStudy;
         this.registeredCourses = new CourseList();
         this.waitlistedCourses = new CourseList();
+        this.email = email;
         super.setUsername(username.toCharArray());
     }
 
     public Student(String name, String matricNo, Gender gender, String nationality, String courseOfStudy, int yearOfStudy
-            , char[] username, char[] password) {
+            , String email, char[] username, char[] password) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
@@ -42,6 +44,7 @@ public class Student extends User {
         this.yearOfStudy = yearOfStudy;
         this.registeredCourses = new CourseList();
         this.waitlistedCourses = new CourseList();
+        this.email = email;
         super.setUsername(username);
         super.setPassword(password);
     }
@@ -114,6 +117,14 @@ public class Student extends User {
         this.yearOfStudy = yearOfStudy;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public void copyDetails(User user) {
         setName(((Student) user).getName());
@@ -122,6 +133,7 @@ public class Student extends User {
         setNationality(((Student) user).getNationality());
         setCourseOfStudy(((Student) user).getCourseOfStudy());
         setYearOfStudy(((Student) user).getYearOfStudy());
+        setEmail(((Student) user).getEmail());
         setRegisteredCourses(((Student) user).getRegisteredCourses());
         setWaitlistedCourses(((Student) user).getWaitlistedCourses());
     }

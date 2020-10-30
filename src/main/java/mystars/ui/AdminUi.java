@@ -15,6 +15,7 @@ import mystars.data.user.UserList;
 import mystars.data.valid.CourseCodeValidChecker;
 import mystars.data.valid.DateTimeValidChecker;
 import mystars.data.valid.DayOfWeekValidChecker;
+import mystars.data.valid.EmailValidChecker;
 import mystars.data.valid.GenderValidChecker;
 import mystars.data.valid.InputValidChecker;
 import mystars.data.valid.LessonTypeValidChecker;
@@ -79,9 +80,10 @@ public class AdminUi extends Ui {
         String nationality = getUserInput("Enter nationality:", new InputValidChecker());
         String courseOfStudy = getUserInput("Enter course of study:", new InputValidChecker()).toUpperCase();
         int yearOfStudy = Integer.parseInt(getUserInput("Enter year of study:", new YearOfStudyValidChecker()));
+        String email = getUserInput("Enter email:", new EmailValidChecker());
         char[][] usernameAndPassword = readUsernameAndPassword();
         usernameAndPassword[1] = new PasswordHandler().generatePBKDF2String(usernameAndPassword[1]).toCharArray();
-        return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, usernameAndPassword[0]
+        return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, email, usernameAndPassword[0]
                 , usernameAndPassword[1]);
     }
 
