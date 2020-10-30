@@ -27,12 +27,16 @@ public class AddUpdateCourseCommand extends AdminCommand {
     public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
+        Course course;
 
         // TODO: Check vacancy before updating course
         if (courseList.isIndexNoInList(indexNumber)) {
             ui.showCourse(courseList.getCourseByIndex(indexNumber));
+            course = ui.updateCourseDetails(indexNumber, courseList.getCourseByIndex(indexNumber));
+        } else {
+            course = ui.getCourseDetails(indexNumber);
         }
-        Course course = ui.getCourseDetails(indexNumber);
+
         courseList.updateCourse(course);
 
 

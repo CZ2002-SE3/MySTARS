@@ -107,6 +107,19 @@ public class AdminUi extends Ui {
                 .forEach(user -> printNicely(user.toString()));
     }
 
+    public Course updateCourseDetails(String indexNumber, Course course) throws MyStarsException {
+        String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
+        String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
+        int vacancy = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
+        if (course.getRegisteredStudents().size() > vacancy) {
+            throw new MyStarsException("There are more than " + vacancy + " students currently registered in the course!");
+        }
+        int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
+        LessonList lessonList = getLessonList();
+
+        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
+    }
+
     public Course getCourseDetails(String indexNumber) {
         String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
         String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
