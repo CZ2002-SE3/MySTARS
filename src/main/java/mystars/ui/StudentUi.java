@@ -1,8 +1,12 @@
 package mystars.ui;
 
 import mystars.data.course.Course;
+import mystars.data.course.CourseList;
 import mystars.data.user.Student;
 import mystars.parser.Parser;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class StudentUi extends Ui {
 
@@ -49,5 +53,9 @@ public class StudentUi extends Ui {
     public void showCourseWaitlisted(Course course) {
         printNicely("Course Waitlisted!");
         showCourse(course);
+    }
+
+    public void showCourseVacancy(CourseList courseList, String courseCode) {
+        courseList.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode)).map(Course::getVacancyString).forEach(this::printNicely);
     }
 }

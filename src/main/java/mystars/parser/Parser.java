@@ -9,6 +9,7 @@ import mystars.commands.admin.PrintListByCourseCommand;
 import mystars.commands.admin.PrintListByIndexCommand;
 import mystars.commands.shared.LogoutCommand;
 import mystars.commands.student.AddCourseCommand;
+import mystars.commands.student.CheckCourseVacancyCommand;
 import mystars.commands.student.DropCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
 import mystars.data.course.Course;
@@ -44,12 +45,6 @@ public class Parser {
     public static final String TILDE_SEPARATOR = "~";
     public static final String ESCAPED_ASTERISK_SEPERATOR = "\\*";
     public static final String ASTERISK_SEPERATOR = ESCAPED_ASTERISK_SEPERATOR.replace("\\", "");
-
-    private static final int MATRIC_NO_LENGTH = 9;
-    private static final int COURSE_CODE_LENGTH = 6;
-    private static final int INDEX_NO_LENGTH = 5;
-    private static final int MAX_SCHOOL_LENGTH = 4;
-    private static final int MIN_SCHOOL_LENGTH = 3;
 
     /**
      * Parses admin input, and returns corresponding command.
@@ -100,6 +95,9 @@ public class Parser {
             break;
         case PrintCourseRegCommand.COMMAND_WORD:
             command = new PrintCourseRegCommand();
+            break;
+        case CheckCourseVacancyCommand.COMMAND_WORD:
+            command = new CheckCourseVacancyCommand();
             break;
         case LogoutCommand.COMMAND_WORD:
             command = new LogoutCommand();

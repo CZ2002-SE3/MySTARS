@@ -170,4 +170,8 @@ public class Course {
 
         return indexNumber.equals(((Course) obj).getIndexNumber());
     }
+
+    public String getVacancyString() {
+        return "Index: " + getIndexNumber() + " Vacancies available: " + getVacancies();
+    }
 }

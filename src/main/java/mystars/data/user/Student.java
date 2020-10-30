@@ -162,12 +162,9 @@ public class Student extends User {
     }
 
     public void dropCourse(Course courseToDrop) throws MyStarsException {
-        checkCourseRegistered(courseToDrop);
-        registeredCourses.dropCourse(courseToDrop);
-    }
-
-    public void checkCourseRegistered(Course courseToDrop) throws MyStarsException {
-        if (!registeredCourses.isCourseInList(courseToDrop)) {
+        if (registeredCourses.isCourseInList(courseToDrop)) {
+            registeredCourses.dropCourse(courseToDrop);
+        } else {
             throw new MyStarsException("Course does not exist in registered courses.");
         }
     }

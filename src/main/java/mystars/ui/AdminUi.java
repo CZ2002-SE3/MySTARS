@@ -103,20 +103,6 @@ public class AdminUi extends Ui {
                 .forEach(user -> printNicely(user.toString()));
     }
 
-    public String getCourseCode() {
-        return getUserInput("Enter course code:", new CourseCodeValidChecker()).toUpperCase();
-    }
-
-    public void showVacancy(CourseList courses, String indexNumber) {
-        for (Course course : courses.getCourses()) {
-            if (course.getIndexNumber().equals(indexNumber)) {
-                printNicely("The number of vacancy is " + course.getVacancies() + ".");
-                return;
-            }
-        }
-        printNicely("Index not found!");
-    }
-
     public Course getCourseDetails(String indexNumber) {
         String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
         String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();

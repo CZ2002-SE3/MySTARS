@@ -1,5 +1,6 @@
 package mystars.data.course;
 
+import mystars.data.exception.MyStarsException;
 import mystars.data.user.Student;
 
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public class CourseList {
         return null;
     }
 
-    public void updateCourse(Course newCourse) {
+    public void updateCourse(Course newCourse) throws MyStarsException {
 
         for (Course course : courses) {
             if (course.getIndexNumber().equals(newCourse.getIndexNumber())) {

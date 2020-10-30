@@ -1,6 +1,8 @@
 package mystars.ui;
 
 import mystars.data.course.Course;
+import mystars.data.course.CourseList;
+import mystars.data.valid.CourseCodeValidChecker;
 import mystars.data.valid.IndexNumberValidChecker;
 import mystars.data.valid.OptionValidChecker;
 import mystars.data.valid.ValidChecker;
@@ -142,6 +144,20 @@ public abstract class Ui {
 
     public void showCourse(Course course) {
         printNicely(course.toString());
+    }
+
+    public String getCourseCode() {
+        return getUserInput("Enter course code:", new CourseCodeValidChecker()).toUpperCase();
+    }
+
+    public void showVacancy(CourseList courses, String indexNumber) {
+        for (Course course : courses.getCourses()) {
+            if (course.getIndexNumber().equals(indexNumber)) {
+                printNicely("The number of vacancy is " + course.getVacancies() + ".");
+                return;
+            }
+        }
+        printNicely("Index not found!");
     }
 
     public String getIndexNumber() {
