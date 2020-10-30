@@ -172,11 +172,19 @@ public class Student extends User {
         }
     }
 
-    public void dropCourse(Course courseToDrop) throws MyStarsException {
+    public void dropRegisteredCourse(Course courseToDrop) throws MyStarsException {
         if (registeredCourses.isCourseInList(courseToDrop)) {
             registeredCourses.dropCourse(courseToDrop);
         } else {
             throw new MyStarsException("Course does not exist in registered courses.");
+        }
+    }
+
+    public void dropWaitlistedCourse(Course courseToDrop) throws MyStarsException {
+        if (waitlistedCourses.isCourseInList(courseToDrop)) {
+            waitlistedCourses.dropCourse(courseToDrop);
+        } else {
+            throw new MyStarsException("Course does not exist in waitlisted courses.");
         }
     }
 

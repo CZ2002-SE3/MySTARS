@@ -156,6 +156,10 @@ public class Course {
         waitlistedStudents.add(student);
     }
 
+    public void dropWaitlistedStudent(Student student) {
+        waitlistedStudents.remove(student);
+    }
+
     public void copyCourseDetails(Course newCourse) {
         courseCode = newCourse.courseCode;
         school = newCourse.getSchool();

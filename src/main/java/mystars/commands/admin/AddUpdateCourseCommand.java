@@ -3,6 +3,8 @@ package mystars.commands.admin;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.mail.SendMailTLS;
+import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
@@ -37,10 +39,38 @@ public class AddUpdateCourseCommand extends AdminCommand {
             course = ui.getCourseDetails(indexNumber);
         }
 
+        checkWaitlist(course);
         courseList.updateCourse(course);
 
 
         storage.saveCourses(courseList);
         ui.showCourseList(courseList);
+    }
+
+    private void checkWaitlist(Course course) {
+        if (course.isThereWaitlistedStudents() && (course.isVacancy())) {
+            Student studentToNotify;
+            int i = 0;
+            while (course.isThereWaitlistedStudents()) {
+                studentToNotify = course.getWaitlistedStudents().get(i);
+                try {
+                    studentToNotify.addCourseToRegistered(course);
+                    studentToNotify.dropWaitlistedCourse(course);
+                } catch (MyStarsException e) {
+                    i++;
+                    continue;
+                }
+                course.addRegisteredStudent(studentToNotify);
+                course.dropWaitlistedStudent(studentToNotify);
+
+                sendEmailToStudent(course, studentToNotify);
+                break;
+            }
+        }
+    }
+
+    private void sendEmailToStudent(Course course, Student studentToNotify) {
+        SendMailTLS.sendMail(studentToNotify.getEmail(), SendMailTLS.getEmailContent(course.getCourseCode()
+        , course.getIndexNumber(), studentToNotify.getName()));
     }
 }
