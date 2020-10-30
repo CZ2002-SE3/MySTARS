@@ -1,5 +1,6 @@
 package mystars.commands.admin;
 
+import mystars.commands.shared.SharedCommand;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
@@ -10,6 +11,8 @@ import mystars.storage.Storage;
 import mystars.ui.AdminUi;
 
 import java.time.LocalDateTime;
+
+import static mystars.commands.shared.SharedCommand.checkWaitlist;
 
 public class AddUpdateCourseCommand extends AdminCommand {
 
@@ -47,30 +50,4 @@ public class AddUpdateCourseCommand extends AdminCommand {
         ui.showCourseList(courseList);
     }
 
-    private void checkWaitlist(Course course) {
-        if (course.isThereWaitlistedStudents() && (course.isVacancy())) {
-            Student studentToNotify;
-            int i = 0;
-            while (course.isThereWaitlistedStudents()) {
-                studentToNotify = course.getWaitlistedStudents().get(i);
-                try {
-                    studentToNotify.addCourseToRegistered(course);
-                    studentToNotify.dropWaitlistedCourse(course);
-                } catch (MyStarsException e) {
-                    i++;
-                    continue;
-                }
-                course.addRegisteredStudent(studentToNotify);
-                course.dropWaitlistedStudent(studentToNotify);
-
-                sendEmailToStudent(course, studentToNotify);
-                break;
-            }
-        }
-    }
-
-    private void sendEmailToStudent(Course course, Student studentToNotify) {
-        SendMailTLS.sendMail(studentToNotify.getEmail(), SendMailTLS.getEmailContent(course.getCourseCode()
-        , course.getIndexNumber(), studentToNotify.getName()));
-    }
 }
