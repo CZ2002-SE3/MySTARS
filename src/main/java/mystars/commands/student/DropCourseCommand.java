@@ -8,6 +8,8 @@ import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
 
+import static mystars.commands.shared.SharedCommand.checkWaitlist;
+
 /**
  * Drops course for student.
  */
@@ -38,6 +40,8 @@ public class DropCourseCommand extends StudentCommand {
         ui.showCourseDropped(course);
 
         //TODO: allow student to drop waitlisted course
+
+        checkWaitlist(course);
 
         storage.saveCourses(courseList);
     }
