@@ -45,7 +45,7 @@ public class CourseList {
 
     public boolean isCourseInList(Course courseToCheck) {
         for (Course course : courses) {
-            if (courseToCheck.isSameCourseCode(course)) {
+            if (courseToCheck.isSameCourseCode(course) && courseToCheck.isSameIndexNo(course)) {
                 return true;
             }
         }
