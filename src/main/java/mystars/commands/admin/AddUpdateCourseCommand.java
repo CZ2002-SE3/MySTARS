@@ -33,6 +33,8 @@ public class AddUpdateCourseCommand extends AdminCommand {
         String indexNumber = ui.getIndexNumber();
         Course course;
 
+        //TODO : ask user to confirm if they wanna update course if course alr exist
+
         if (courseList.isIndexNoInList(indexNumber)) {
             ui.showCourse(courseList.getCourseByIndex(indexNumber));
             course = ui.updateCourseDetails(indexNumber, courseList.getCourseByIndex(indexNumber));
