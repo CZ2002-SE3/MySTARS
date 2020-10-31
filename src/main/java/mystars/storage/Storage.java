@@ -1,5 +1,6 @@
 package mystars.storage;
 
+import mystars.commands.shared.SharedCommand;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
@@ -200,6 +201,8 @@ public class Storage {
                         student.addCourseToWaitlisted(course);
                     }
                     course.addWaitlistedStudents(students);
+                    SharedCommand.checkWaitlist(course);
+                    saveCourses(courseList);
                 }
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
