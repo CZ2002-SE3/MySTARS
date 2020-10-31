@@ -163,4 +163,12 @@ public abstract class Ui {
     public String getIndexNumber() {
         return getUserInput("Enter index number:", new IndexNumberValidChecker());
     }
+
+    public String getOriginalIndexNumber() {
+        return getUserInput("Enter current index number:", new IndexNumberValidChecker());
+    }
+
+    public String getDesiredIndexNumber() {
+        return getUserInput("Enter index number you wish to change to:", new IndexNumberValidChecker());
+    }
 }

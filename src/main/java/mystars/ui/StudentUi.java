@@ -57,6 +57,12 @@ public class StudentUi extends Ui {
         showCourse(course);
     }
 
+    public void showIndexNoChanged(Course desiredCourse, Course currentCourse) {
+        printNicely("Index No changed from: " + currentCourse.getIndexNumber() + " to " +
+                desiredCourse.getIndexNumber());
+        showCourse(desiredCourse);
+    }
+
     public void showCourseVacancy(CourseList courseList, String courseCode) {
         courseList.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode)).map(Course::getVacancyString).forEach(this::printNicely);
     }
