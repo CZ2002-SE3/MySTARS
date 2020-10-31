@@ -42,8 +42,13 @@ public class StudentUi extends Ui {
         showCourse(course);
     }
 
-    public void showCourseDropped(Course course) {
-        printNicely("Course Dropped!");
+    public void showRegisteredCourseDropped(Course course) {
+        printNicely("Registered Course Dropped!");
+        showCourse(course);
+    }
+
+    public void showWaitlistedCourseDropped(Course course) {
+        printNicely("Waitlisted Course Dropped!");
         showCourse(course);
     }
 
