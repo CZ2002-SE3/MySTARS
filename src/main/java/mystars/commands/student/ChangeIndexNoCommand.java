@@ -44,6 +44,10 @@ public class ChangeIndexNoCommand extends StudentCommand {
             throw new MyStarsException("These indexes are not from the same course!");
         }
 
+        if (originalIndexNumber.equals(desiredIndexNumber)) {
+            throw new MyStarsException("You cannot change to the same index!");
+        }
+
         if (desiredCourse.isVacancy()) {
             student.dropRegisteredCourse(currentCourse);
             currentCourse.dropRegisteredStudent(student);
