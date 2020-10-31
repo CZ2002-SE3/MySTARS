@@ -24,6 +24,7 @@ public class PrintCourseRegCommand extends StudentCommand {
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) this.getUser();
 
+        //TODO: print waitlisted courses as well
         ui.printRegCourses(student);
     }
 }

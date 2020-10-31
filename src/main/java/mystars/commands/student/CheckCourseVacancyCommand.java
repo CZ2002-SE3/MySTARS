@@ -25,6 +25,7 @@ public class CheckCourseVacancyCommand extends StudentCommand {
         if (!courseList.isCourseInList(courseCode)) {
             throw new MyStarsException("No such course.");
         }
+        //TODO: show length of waitlist as well
         ui.showCourseVacancy(courseList, courseCode);
     }
 }
