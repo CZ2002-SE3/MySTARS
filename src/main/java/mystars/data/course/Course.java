@@ -1,6 +1,8 @@
 package mystars.data.course;
 
 import mystars.data.course.lesson.Lesson;
+import mystars.data.exception.MyStarsException;
+import mystars.data.mail.SendMailTLS;
 import mystars.data.user.Student;
 import mystars.parser.Parser;
 
@@ -181,5 +183,32 @@ public class Course {
 
     public String getVacancyString() {
         return "Index: " + getIndexNumber() + " Vacancies available: " + getVacancies();
+    }
+
+    public void checkWaitlist() {
+        if (isThereWaitlistedStudents() && (isVacancy())) {
+            Student studentToNotify;
+            int i = 0;
+            while (isThereWaitlistedStudents()) {
+                studentToNotify = getWaitlistedStudents().get(i);
+                try {
+                    studentToNotify.dropWaitlistedCourse(this);
+                    studentToNotify.addCourseToRegistered(this);
+                } catch (MyStarsException e) {
+                    i++;
+                    continue;
+                }
+                addRegisteredStudent(studentToNotify);
+                dropWaitlistedStudent(studentToNotify);
+
+                sendEmailToStudent(studentToNotify);
+                break;
+            }
+        }
+    }
+
+    private void sendEmailToStudent(Student studentToNotify) {
+        SendMailTLS.sendMail(studentToNotify.getEmail(), SendMailTLS.getEmailContent(getCourseCode()
+                , getIndexNumber(), studentToNotify.getName()));
     }
 }

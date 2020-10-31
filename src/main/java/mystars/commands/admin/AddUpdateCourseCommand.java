@@ -12,7 +12,6 @@ import mystars.ui.AdminUi;
 
 import java.time.LocalDateTime;
 
-import static mystars.commands.shared.SharedCommand.checkWaitlist;
 
 public class AddUpdateCourseCommand extends AdminCommand {
 
@@ -34,7 +33,6 @@ public class AddUpdateCourseCommand extends AdminCommand {
         String indexNumber = ui.getIndexNumber();
         Course course;
 
-        // TODO: Check vacancy before updating course
         if (courseList.isIndexNoInList(indexNumber)) {
             ui.showCourse(courseList.getCourseByIndex(indexNumber));
             course = ui.updateCourseDetails(indexNumber, courseList.getCourseByIndex(indexNumber));
@@ -43,7 +41,7 @@ public class AddUpdateCourseCommand extends AdminCommand {
         }
 
         Course modifiedCourse = courseList.updateCourse(course);
-        checkWaitlist(modifiedCourse);
+        modifiedCourse.checkWaitlist();
 
 
         storage.saveCourses(courseList);

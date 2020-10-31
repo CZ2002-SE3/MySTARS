@@ -201,7 +201,7 @@ public class Storage {
                         student.addCourseToWaitlisted(course);
                     }
                     course.addWaitlistedStudents(students);
-                    SharedCommand.checkWaitlist(course);
+                    course.checkWaitlist();
                     saveCourses(courseList);
                 }
             } catch (IOException e) {

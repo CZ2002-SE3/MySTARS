@@ -40,6 +40,7 @@ public class SendMailTLS {
 
             Transport.send(message);
 
+            //TODO: make ui do the printing
             System.out.println("------------------------------------------------------------");
             System.out.println("Added waitlisted student to course and email sent to inform student.");
             System.out.println("------------------------------------------------------------");

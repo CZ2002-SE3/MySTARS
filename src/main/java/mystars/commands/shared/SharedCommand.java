@@ -26,30 +26,4 @@ public abstract class SharedCommand extends Command {
     public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui)
             throws MyStarsException;
 
-    public static void checkWaitlist(Course course) {
-        if (course.isThereWaitlistedStudents() && (course.isVacancy())) {
-            Student studentToNotify;
-            int i = 0;
-            while (course.isThereWaitlistedStudents()) {
-                studentToNotify = course.getWaitlistedStudents().get(i);
-                try {
-                    studentToNotify.dropWaitlistedCourse(course);
-                    studentToNotify.addCourseToRegistered(course);
-                } catch (MyStarsException e) {
-                    i++;
-                    continue;
-                }
-                course.addRegisteredStudent(studentToNotify);
-                course.dropWaitlistedStudent(studentToNotify);
-
-                sendEmailToStudent(course, studentToNotify);
-                break;
-            }
-        }
-    }
-
-    private static void sendEmailToStudent(Course course, Student studentToNotify) {
-        SendMailTLS.sendMail(studentToNotify.getEmail(), SendMailTLS.getEmailContent(course.getCourseCode()
-                , course.getIndexNumber(), studentToNotify.getName()));
-    }
 }
