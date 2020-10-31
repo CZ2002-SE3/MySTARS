@@ -171,4 +171,8 @@ public abstract class Ui {
     public String getDesiredIndexNumber() {
         return getUserInput("Enter index number you wish to change to:", new IndexNumberValidChecker());
     }
+
+    public String getPeerIndexNumber() {
+        return getUserInput("Enter Peer's index number you wish to swop with:", new IndexNumberValidChecker());
+    }
 }

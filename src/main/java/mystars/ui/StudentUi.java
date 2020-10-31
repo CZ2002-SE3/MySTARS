@@ -63,6 +63,13 @@ public class StudentUi extends Ui {
         showCourse(desiredCourse);
     }
 
+    public void showIndexSwop(Course currentCourse, Course peerCourse, Student student, Student peer) {
+        printNicely(student.getMatricNo() + "-Index No changed from: " + currentCourse.getIndexNumber() + " to " +
+                peerCourse.getIndexNumber());
+        printNicely(peer.getMatricNo() + "-Index No changed from: " + peerCourse.getIndexNumber() + " to " +
+                currentCourse.getIndexNumber());
+    }
+
     public void showCourseVacancy(CourseList courseList, String courseCode) {
         courseList.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode)).map(Course::getVacancyString).forEach(this::printNicely);
     }

@@ -13,6 +13,7 @@ import mystars.commands.student.ChangeIndexNoCommand;
 import mystars.commands.student.CheckCourseVacancyCommand;
 import mystars.commands.student.DropCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
+import mystars.commands.student.SwopIndexCommand;
 import mystars.data.course.Course;
 import mystars.data.course.LessonList;
 import mystars.data.course.lesson.Lesson;
@@ -102,6 +103,9 @@ public class Parser {
             break;
         case ChangeIndexNoCommand.COMMAND_WORD:
             command = new ChangeIndexNoCommand();
+            break;
+        case SwopIndexCommand.COMMAND_WORD:
+            command = new SwopIndexCommand();
             break;
         case LogoutCommand.COMMAND_WORD:
             command = new LogoutCommand();

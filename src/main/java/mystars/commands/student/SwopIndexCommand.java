@@ -27,31 +27,53 @@ public class SwopIndexCommand extends StudentCommand {
     @Override
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) getUser();
-
         String originalIndexNumber = ui.getOriginalIndexNumber();
         if (!courseList.isIndexNoInList(originalIndexNumber)) {
             throw new MyStarsException("No such course.");
         }
         Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
 
-
-        String desiredIndexNumber = ui.getDesiredIndexNumber();
-        if (!courseList.isIndexNoInList(desiredIndexNumber)) {
+        // Get peer's info
+        char[][] usernameAndPassword = ui.readUsernameAndPassword();
+        Student peer;
+        if (users.getUser(usernameAndPassword) instanceof Student) {
+            peer = (Student) users.getUser(usernameAndPassword);
+        } else {
+            throw new MyStarsException("User not valid!");
+        }
+        String peerIndexNumber = ui.getPeerIndexNumber();
+        if (!courseList.isIndexNoInList(peerIndexNumber)) {
             throw new MyStarsException("No such course.");
         }
-        Course desiredCourse = courseList.getCourseByIndex(desiredIndexNumber);
-        if (!desiredCourse.isSameCourseCode(currentCourse)) {
+        Course peerCourse = courseList.getCourseByIndex(peerIndexNumber);
+
+        if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber)
+                .isSameCourseCode(peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber))) {
+            // Drop courses
+            student.dropRegisteredCourse(currentCourse);
+            peer.dropRegisteredCourse(peerCourse);
+            currentCourse.dropRegisteredStudent(student);
+            peerCourse.dropRegisteredStudent(peer);
+
+            try {
+                // Add courses
+                student.addCourseToRegistered(peerCourse);
+                peer.addCourseToRegistered(currentCourse);
+                peerCourse.addRegisteredStudent(student);
+                currentCourse.addRegisteredStudent(peer);
+            } catch (MyStarsException e) {
+                // undo dropping of course
+                student.addCourseToRegistered(currentCourse);
+                currentCourse.addRegisteredStudent(student);
+                peer.addCourseToRegistered(peerCourse);
+                peerCourse.addRegisteredStudent(peer);
+                ui.showError(e.getMessage());
+            }
+        } else {
             throw new MyStarsException("These indexes are not from the same course!");
         }
 
-        if (desiredCourse.isVacancy()) {
-            student.dropRegisteredCourse(currentCourse);
-            currentCourse.dropRegisteredStudent(student);
-            student.addCourseToRegistered(desiredCourse);
-            desiredCourse.addRegisteredStudent(student);
-        }
-
-        ui.showIndexNoChanged(desiredCourse, currentCourse);
+        ui.showIndexSwop(currentCourse, peerCourse, student, peer);
 
         storage.saveCourses(courseList);
     }
