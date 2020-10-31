@@ -16,16 +16,16 @@ public abstract class Ui {
 
     static final Scanner in = new Scanner(System.in);
     private static final String DOTTED_LINE = "------------------------------------------------------------";
-    private static final String LOGO = " _______         _______________________ _______ _______ \n"
-            + "(       )\\     /(  ____ \\__   __(  ___  |  ____ |  ____ \\\n"
-            + "| () () ( \\   / ) (    \\/  ) (  | (   ) | (    )| (    \\/\n"
-            + "| || || |\\ (_) /| (_____   | |  | (___) | (____)| (_____ \n"
-            + "| |(_)| | \\   / (_____  )  | |  |  ___  |     __|_____  )\n"
-            + "| |   | |  ) (        ) |  | |  | (   ) | (\\ (        ) |\n"
-            + "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |\n"
-            + "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)\n"
-            + "                                                         "
-            .replaceAll("\n", System.lineSeparator());
+    private static final String LOGO = " _______         _______________________ _______ _______ " + System.lineSeparator()
+            + "(       )\\     /(  ____ \\__   __(  ___  |  ____ |  ____ \\" + System.lineSeparator()
+            + "| () () ( \\   / ) (    \\/  ) (  | (   ) | (    )| (    \\/" + System.lineSeparator()
+            + "| || || |\\ (_) /| (_____   | |  | (___) | (____)| (_____ " + System.lineSeparator()
+            + "| |(_)| | \\   / (_____  )  | |  |  ___  |     __|_____  )" + System.lineSeparator()
+            + "| |   | |  ) (        ) |  | |  | (   ) | (\\ (        ) |" + System.lineSeparator()
+            + "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |" + System.lineSeparator()
+            + "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)" + System.lineSeparator()
+            + "                                                         ";
+
     static Parser parser;
 
     public Ui() {

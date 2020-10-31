@@ -208,7 +208,7 @@ public class Course {
     }
 
     private void sendEmailToStudent(Student studentToNotify) {
-        SendMailTLS.sendMail(studentToNotify.getEmail(), SendMailTLS.getEmailContent(getCourseCode()
+        new SendMailTLS().sendMail(studentToNotify.getEmail(), new SendMailTLS().getEmailContent(getCourseCode()
                 , getIndexNumber(), studentToNotify.getName()));
     }
 }
