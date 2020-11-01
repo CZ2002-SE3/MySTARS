@@ -77,13 +77,13 @@ public class CourseList {
         return false;
     }
 
-    public Course getCourseByIndex(String indexNumber) throws MyStarsException {
+    public Course getCourseByIndex(String indexNumber) {
         for (Course course : courses) {
             if (course.getIndexNumber().equals(indexNumber)) {
                 return course;
             }
         }
-        return throw new MyStarsException("Error with index no, unable to retrieve course!");
+        return null;
     }
 
     public Course updateCourse(Course newCourse) throws MyStarsException {
