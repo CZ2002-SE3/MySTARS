@@ -34,6 +34,12 @@ public class SwopIndexCommand extends StudentCommand {
         Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
 
         // Get peer's info
+        String peerIndexNumber = ui.getPeerIndexNumber();
+        if (!courseList.isIndexNoInList(peerIndexNumber)) {
+            throw new MyStarsException("No such course.");
+        }
+        Course peerCourse = courseList.getCourseByIndex(peerIndexNumber);
+
         char[][] usernameAndPassword = ui.readUsernameAndPassword();
         Student peer;
         if (users.getUser(usernameAndPassword) instanceof Student) {
@@ -41,14 +47,15 @@ public class SwopIndexCommand extends StudentCommand {
         } else {
             throw new MyStarsException("User not valid!");
         }
-        String peerIndexNumber = ui.getPeerIndexNumber();
-        if (!courseList.isIndexNoInList(peerIndexNumber)) {
-            throw new MyStarsException("No such course.");
-        }
-        Course peerCourse = courseList.getCourseByIndex(peerIndexNumber);
 
-        if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber)
-                .isSameCourseCode(peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber))) {
+        if (peer.equals(student)) {
+            throw new MyStarsException("You cannot swop index with yourself!");
+        }
+
+        if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber) != null &&
+                peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber) != null &&
+                student.getRegisteredCourses().getCourseByIndex(originalIndexNumber)
+                        .isSameCourseCode(peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber))) {
             // Drop courses
             student.dropRegisteredCourse(currentCourse);
             peer.dropRegisteredCourse(peerCourse);
@@ -70,7 +77,8 @@ public class SwopIndexCommand extends StudentCommand {
                 ui.showError(e.getMessage());
             }
         } else {
-            throw new MyStarsException("These indexes are not from the same course!");
+            throw new MyStarsException("These indexes are not from the same course or is not or " +
+                    "either of you are not registered for the specified index!");
         }
 
         ui.showIndexSwop(currentCourse, peerCourse, student, peer);
