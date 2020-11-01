@@ -93,11 +93,11 @@ public class Course {
         return initialVacancy;
     }
 
-    public boolean isSameCourseCode (Course course) {
+    public boolean isSameCourseCode(Course course) {
         return course.getCourseCode().equals(getCourseCode());
     }
 
-    public boolean isSameIndexNo (Course course) {
+    public boolean isSameIndexNo(Course course) {
         return course.getIndexNumber().equals(getIndexNumber());
     }
 

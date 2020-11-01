@@ -1,11 +1,8 @@
 package mystars.commands.admin;
 
-import mystars.commands.shared.SharedCommand;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.mail.SendMailTLS;
-import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;

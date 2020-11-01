@@ -1,6 +1,5 @@
 package mystars.storage;
 
-import mystars.commands.shared.SharedCommand;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;

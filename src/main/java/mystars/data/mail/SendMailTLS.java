@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class SendMailTLS {
 
-    public void sendMail (String targetEmailAddress, String emailContent) {
+    public void sendMail(String targetEmailAddress, String emailContent) {
 
         final String username = "cz2002.se3.group1@gmail.com"; // to be added
         final String password = "ilovestars"; // to be added
@@ -50,11 +50,11 @@ public class SendMailTLS {
         }
     }
 
-    public String getEmailContent (String courseCode, String indexNumber, String name) {
+    public String getEmailContent(String courseCode, String indexNumber, String name) {
         return "Dear " + name + "," + System.lineSeparator() + System.lineSeparator() +
                 "We are pleased to inform you that there is an available slot in " + courseCode + ", of index number " + indexNumber +
                 " and you have been successfully registered for the course." + System.lineSeparator() + System.lineSeparator() +
-                "Regards," + System.lineSeparator() +"STARS Administrators";
+                "Regards," + System.lineSeparator() + "STARS Administrators";
     }
 
 }
