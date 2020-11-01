@@ -53,8 +53,11 @@ public class SwopIndexCommand extends StudentCommand {
         }
 
         if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber) != null &&
-                peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber) != null &&
-                student.getRegisteredCourses().getCourseByIndex(originalIndexNumber)
+                peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber) != null) {
+            throw new MyStarsException("Either of you are not registered for the specified index!");
+        }
+
+        if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber)
                         .isSameCourseCode(peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber))) {
             // Drop courses
             student.dropRegisteredCourse(currentCourse);
@@ -77,8 +80,7 @@ public class SwopIndexCommand extends StudentCommand {
                 ui.showError(e.getMessage());
             }
         } else {
-            throw new MyStarsException("These indexes are not from the same course or is not or " +
-                    "either of you are not registered for the specified index!");
+            throw new MyStarsException("These indexes are not from the same course!");
         }
 
         ui.showIndexSwop(currentCourse, peerCourse, student, peer);
