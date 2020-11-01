@@ -52,7 +52,7 @@ public class SwopIndexCommand extends StudentCommand {
             throw new MyStarsException("You cannot swop index with yourself!");
         }
 
-        if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber) == null &&
+        if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber) == null ||
                 peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber) == null) {
             throw new MyStarsException("Either of you are not registered for the specified index!");
         }
