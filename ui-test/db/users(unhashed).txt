@@ -1,0 +1,19 @@
+format: username|password|type //is not hashed yet
+IRVIN001|pass0001|student
+JUNHONG002|pass0002|student
+CHENYI001|pass0003|student
+FERLITA001|pass0004|student
+YOKEMIN002|pass0005|student
+SOPHIA021|pass0006|student
+JACKSON032|pass0007|student
+OLIVIA033|pass0008|student
+LIAM003|pass0009|student
+EMMA041|pass0010|student
+NOAH050|pass0011|student
+AVA0023|pass0012|student
+AIDEN098|pass0013|student
+ARIA010|pass0014|student
+JASON022|pass0015|student
+JESSICA001|pass0016|admin
+ADRIAN021|pass0017|admin
+JAMES098|pass0018|admin
