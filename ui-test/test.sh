@@ -5,7 +5,7 @@ then
 fi
 
 # Compile all source files into bin folder
-if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/mystars/MyStars.java
+if ! javac -cp ../lib/*;../src/main/java -Xlint:none -d ../bin ../src/main/java/mystars/MyStars.java
 then
     echo "********** Compilation Error **********"
     exit 1

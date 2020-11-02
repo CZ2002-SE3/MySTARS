@@ -4,7 +4,7 @@ REM Create bin directory if it does not exist
 if not exist ..\bin mkdir ..\bin
 
 REM Compile all source files into bin folder
-javac  -cp ..\src\main\java -Xlint:none -d ..\bin ..\src\main\java\mystars\MyStars.java
+javac -cp ..\lib\*;..\src\main\java -Xlint:none -d ..\bin ..\src\main\java\mystars\MyStars.java
 IF ERRORLEVEL 1 (
     echo ********** Compilation Error **********
     exit /b 1

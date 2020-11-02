@@ -12,60 +12,274 @@
                                                          
 Welcome!
 Enter Username: 
-
 Enter Password: 
 
 ------------------------------------------------------------
 
-Sorry! Invalid username/password!
-
-------------------------------------------------------------
-
-Enter Username: 
-
-Enter Password: 
-
-------------------------------------------------------------
-
-Hello student!
-1. Add Course
-2. Drop Course
-3. Check/Print Courses Registered
-4. Check Vacancies Available
-5. Change Index Number of Course
-6. Swop Index Number with Another Student
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
 7. Logout
 Please select an item:
 
 ------------------------------------------------------------
 
-Sorry! I don't understand what you have entered.
+Enter student name:
+Enter matric number:
+Invalid input!
+Enter matric number:
+Enter gender (M/F):
+Invalid input!
+Enter gender (M/F):
+Enter nationality:
+Enter course of study:
+Enter year of study:
+Enter email:
+Enter Username: 
+Enter Password: 
+Sorry! Duplicate username/matric number!
 
 ------------------------------------------------------------
 
-Hello student!
-1. Add Course
-2. Drop Course
-3. Check/Print Courses Registered
-4. Check Vacancies Available
-5. Change Index Number of Course
-6. Swop Index Number with Another Student
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
 7. Logout
 Please select an item:
 
 ------------------------------------------------------------
 
-You have successfully logged out!
-
-------------------------------------------------------------
-
-Do you want to exit? Press Y to exit, anything else to continue to login.
-
-------------------------------------------------------------
-
+Enter student name:
+Enter matric number:
+Enter gender (M/F):
+Enter nationality:
+Enter course of study:
+Enter year of study:
+Enter email:
 Enter Username: 
-
 Enter Password: 
+
+Student added: Test User, U1920000L, M, Singaporean
+
+Here is the student list:
+Leonardo Irvin Pratama, U1920301J, M, Indonesian
+Tan Jun Hong, U1920001N, M, Singaporean
+Tey Chin Yi, U1920002P, M, Singaporean
+Ferlita Halim, U1920003R, F, Indonesian
+Woon Yoke Min, U1920004N, F, Singaporean
+Sophia Wang, U1819001A, F, Malaysian
+Jackson Ho, U1819002B, M, Singaporean
+Olivia See, U1819003C, F, Singaporean
+Lim Wei Jie, Liam, U1819004D, M, Chinese
+Emma Watson, U1819005E, F, French
+Noah Lee, U2021010M, M, Malaysian
+Ava Bhadravati, U2021021K, F, Indian
+Aiden, Chen De Xing, U2021033L, M, Singaporean
+Aria Jin, U2021042T, F, Chinese
+Jason, Chin Kai Sheng, U2021050P, M, Singaporean
+Test User, U1920000L, M, Singaporean
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Enter course code:
+Invalid input!
+Enter course code:
+Enter school:
+Enter vacancy:
+Enter number of AUs:
+Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):
+Enter venue:
+Enter start time (HH:mm)
+Invalid input!
+Enter start time (HH:mm)
+Enter end time (HH:mm)
+Enter day
+Enter Week (ODD, EVEN, BOTH):
+Enter group:
+Add more lesson? (Y/N)
+Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):
+Enter venue:
+Enter start time (HH:mm)
+Enter end time (HH:mm)
+Enter day
+Enter Week (ODD, EVEN, BOTH):
+Enter group:
+Add more lesson? (Y/N)
+Course Code: CZ2001
+School: SCSE
+Index Number: 10001
+AU: 3
+
+
+Course Code: CZ2001
+School: SCSE
+Index Number: 10002
+AU: 3
+
+
+Course Code: CZ2001
+School: SCSE
+Index Number: 10003
+AU: 3
+
+
+Course Code: CZ2001
+School: SCSE
+Index Number: 10004
+AU: 3
+
+
+Course Code: CZ2001
+School: SCSE
+Index Number: 10005
+AU: 3
+
+
+Course Code: CZ2002
+School: SCSE
+Index Number: 20710
+AU: 3
+
+
+Course Code: CZ2002
+School: SCSE
+Index Number: 20711
+AU: 3
+
+
+Course Code: CZ2002
+School: SCSE
+Index Number: 20712
+AU: 3
+
+
+Course Code: CZ2002
+School: SCSE
+Index Number: 20713
+AU: 3
+
+
+Course Code: CZ2005
+School: SCSE
+Index Number: 10230
+AU: 3
+
+
+Course Code: CZ2005
+School: SCSE
+Index Number: 10231
+AU: 3
+
+
+Course Code: CZ2005
+School: SCSE
+Index Number: 10232
+AU: 3
+
+
+Course Code: CZ2007
+School: SCSE
+Index Number: 10813
+AU: 3
+
+
+Course Code: CZ2007
+School: SCSE
+Index Number: 10814
+AU: 3
+
+
+Course Code: CZ2007
+School: SCSE
+Index Number: 10815
+AU: 3
+
+
+Course Code: MH2500
+School: SPMS
+Index Number: 90830
+AU: 4
+
+
+Course Code: MH2500
+School: SPMS
+Index Number: 90831
+AU: 4
+
+
+Course Code: MH2500
+School: SPMS
+Index Number: 90832
+AU: 4
+
+
+Course Code: MH2500
+School: SPMS
+Index Number: 90833
+AU: 4
+
+
+Course Code: CZ2008
+School: SCSE
+Index Number: 12800
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Sorry! No such course!
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+The number of vacancy is 10.
 
 ------------------------------------------------------------
 
@@ -85,11 +299,616 @@ You have successfully logged out!
 
 ------------------------------------------------------------
 
-Do you want to exit? Press Y to exit, anything else to continue to login.
+Do you want to exit? (Y/N)
 
 ------------------------------------------------------------
 
-Bye! See you again soon!
+Enter Username: 
+Enter Password: 
+
+------------------------------------------------------------
+
+Sorry! Invalid username/password!
+
+------------------------------------------------------------
+
+Enter Username: 
+Enter Password: 
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+You have successfully logged out!
+
+------------------------------------------------------------
+
+Do you want to exit? (Y/N)
+
+------------------------------------------------------------
+
+Enter Username: 
+Enter Password: 
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Here is the access period currently:
+2020-07-07 09:00
+2020-12-12 17:00
+Enter new start date & time in this format: yyyy-MM-dd HH:mm
+Enter new end date & time in this format: yyyy-MM-dd HH:mm
+
+Successfully changed! Access period is as follows: 
+2020-07-07 10:00
+2020-12-12 17:00
+Please restart program for change to take effect.
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+You have successfully logged out!
+
+------------------------------------------------------------
+
+Do you want to exit? (Y/N)
+
+------------------------------------------------------------
+
+Enter Username: 
+Enter Password: 
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Course Registered!
+Course Code: CZ2007
+School: SCSE
+Index Number: 10813
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Course Registered!
+Course Code: CZ2002
+School: SCSE
+Index Number: 20710
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Course Registered!
+Course Code: CZ2008
+School: SCSE
+Index Number: 12800
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Sorry! No such course.
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Sorry! Course clashes with registered courses.
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Course Registered!
+Course Code: CZ2001
+School: SCSE
+Index Number: 10003
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Course Waitlisted!
+Course Code: CZ2005
+School: SCSE
+Index Number: 10230
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Sorry! Course clashes with waitlisted courses.
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Here are your registered courses:
+Total No. of Courses Registered: 4
+Total No. of AUs Registered: 12
+
+#1
+Course Code: CZ2007
+School: SCSE
+Index Number: 10813
+AU: 3
+
+#2
+Course Code: CZ2002
+School: SCSE
+Index Number: 20710
+AU: 3
+
+#3
+Course Code: CZ2008
+School: SCSE
+Index Number: 12800
+AU: 3
+
+#4
+Course Code: CZ2001
+School: SCSE
+Index Number: 10003
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+You have successfully logged out!
+
+------------------------------------------------------------
+
+Do you want to exit? (Y/N)
+
+------------------------------------------------------------
+
+Enter Username: 
+Enter Password: 
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter course code:
+Index: 10001 Vacancies available: 0
+Index: 10002 Vacancies available: 0
+Index: 10003 Vacancies available: 3
+Index: 10004 Vacancies available: 5
+Index: 10005 Vacancies available: 5
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter current index number:
+Enter index number you wish to change to:
+Sorry! These indexes are not from the same course!
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter current index number:
+Enter index number you wish to change to:
+Index No changed from: 10001 to 10003
+Course Code: CZ2001
+School: SCSE
+Index Number: 10003
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter course code:
+Index: 20710 Vacancies available: 0
+Index: 20711 Vacancies available: 7
+Index: 20712 Vacancies available: 10
+Index: 20713 Vacancies available: 10
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter current index number:
+Enter Peer's index number you wish to swop with:
+Enter Username: 
+Enter Password: 
+U1920301J-Index No changed from: 20711 to 20710
+U1920001N-Index No changed from: 20710 to 20711
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Here are your registered courses:
+Total No. of Courses Registered: 5
+Total No. of AUs Registered: 16
+
+#1
+Course Code: CZ2005
+School: SCSE
+Index Number: 10230
+AU: 3
+
+#2
+Course Code: CZ2007
+School: SCSE
+Index Number: 10813
+AU: 3
+
+#3
+Course Code: MH2500
+School: SPMS
+Index Number: 90830
+AU: 4
+
+#4
+Course Code: CZ2001
+School: SCSE
+Index Number: 10003
+AU: 3
+
+#5
+Course Code: CZ2002
+School: SCSE
+Index Number: 20710
+AU: 3
+
+
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+You have successfully logged out!
+
+------------------------------------------------------------
+
+Do you want to exit? (Y/N)
+
+------------------------------------------------------------
+
+Enter Username: 
+Enter Password: 
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter course code:
+Sorry! No such course.
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter course code:
+Here are the list of students:
+Leonardo Irvin Pratama, U1920301J, M, Indonesian
+Tan Jun Hong, U1920001N, M, Singaporean
+Tey Chin Yi, U1920002P, M, Singaporean
+Ferlita Halim, U1920003R, F, Indonesian
+Woon Yoke Min, U1920004N, F, Singaporean
+Test User, U1920000L, M, Singaporean
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Sorry! No such course.
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+Here are the list of students:
+Leonardo Irvin Pratama, U1920301J, M, Indonesian
+Woon Yoke Min, U1920004N, F, Singaporean
+Test User, U1920000L, M, Singaporean
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter index number:
+The number of vacancy is 0.
+
+------------------------------------------------------------
+
+Hello admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
 
 ------------------------------------------------------------
 
