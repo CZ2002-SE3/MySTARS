@@ -61,6 +61,10 @@ public class Course {
         return initialVacancy - registeredStudents.size();
     }
 
+    public int getWaitlists() {
+        return waitlistedStudents.size();
+    }
+
     public boolean isVacancy() {
         return getVacancies() > 0;
     }
@@ -182,7 +186,7 @@ public class Course {
     }
 
     public String getVacancyString() {
-        return "Index: " + getIndexNumber() + " Vacancies available: " + getVacancies();
+        return "Index: " + getIndexNumber() + " Vacancies/Waitlists: " + getVacancies() + "/" + getWaitlists();
     }
 
     public void checkWaitlist() {
