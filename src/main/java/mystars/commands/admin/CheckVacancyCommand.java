@@ -26,9 +26,7 @@ public class CheckVacancyCommand extends AdminCommand {
     public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
-        if (!courseList.isIndexNoInList(indexNumber)) {
-            throw new MyStarsException("No such course!");
-        }
+        courseList.checkIndexNoInList(indexNumber);
         ui.showVacancy(courseList, indexNumber);
     }
 }

@@ -28,9 +28,8 @@ public class DropCourseCommand extends StudentCommand {
     @Override
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
-        if (!courseList.isIndexNoInList(indexNumber)) {
-            throw new MyStarsException("No such course.");
-        }
+        courseList.isIndexNoInList(indexNumber);
+
         Course course = courseList.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
 

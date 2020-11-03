@@ -22,9 +22,7 @@ public class CheckCourseVacancyCommand extends StudentCommand {
     @Override
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         String courseCode = ui.getCourseCode();
-        if (!courseList.isCourseInList(courseCode)) {
-            throw new MyStarsException("No such course.");
-        }
+        courseList.checkCourseInList(courseCode);
 
         ui.showCourseVacancy(courseList, courseCode);
     }

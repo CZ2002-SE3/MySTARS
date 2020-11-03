@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 public class CourseList {
 
+    private static final String NO_INDEX_ERROR = "No such index.";
+    private static final String NO_COURSE_ERROR = "No such course.";
+
     private final ArrayList<Course> courses;
 
     public CourseList() {
@@ -56,6 +59,12 @@ public class CourseList {
         return getCourseByIndex(indexNumber) != null;
     }
 
+    public void checkIndexNoInList(String indexNumber) throws MyStarsException {
+        if (!isIndexNoInList(indexNumber)) {
+            throw new MyStarsException(NO_INDEX_ERROR);
+        }
+    }
+
     public void addCourse(Course courseToAdd) {
         courses.add(courseToAdd);
     }
@@ -75,6 +84,12 @@ public class CourseList {
             }
         }
         return false;
+    }
+
+    public void checkCourseInList(String courseCode) throws MyStarsException {
+        if (!isCourseInList(courseCode)) {
+            throw new MyStarsException(NO_COURSE_ERROR);
+        }
     }
 
     public Course getCourseByIndex(String indexNumber) {

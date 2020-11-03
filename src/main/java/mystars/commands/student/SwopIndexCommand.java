@@ -26,19 +26,13 @@ public class SwopIndexCommand extends StudentCommand {
      */
     @Override
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
-        // TODO : rewrite code
         Student student = (Student) getUser();
         String originalIndexNumber = ui.getOriginalIndexNumber();
-        if (!courseList.isIndexNoInList(originalIndexNumber)) {
-            throw new MyStarsException("No such course.");
-        }
+        courseList.checkIndexNoInList(originalIndexNumber);
         Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
 
-        // Get peer's info
         String peerIndexNumber = ui.getPeerIndexNumber();
-        if (!courseList.isIndexNoInList(peerIndexNumber)) {
-            throw new MyStarsException("No such course.");
-        }
+        courseList.checkIndexNoInList(peerIndexNumber);
         Course peerCourse = courseList.getCourseByIndex(peerIndexNumber);
 
         char[][] usernameAndPassword = ui.readUsernameAndPassword();

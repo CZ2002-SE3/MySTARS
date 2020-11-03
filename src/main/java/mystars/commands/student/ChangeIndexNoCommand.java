@@ -14,6 +14,8 @@ import mystars.ui.StudentUi;
 public class ChangeIndexNoCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "5";
+    private static final String DIFFERENT_COURSE_ERROR = "These indexes are not from the same course.";
+    private static final String SAME_INDEX_ERROR = "Unable to change to the same index.";
 
     /**
      * Executes command.
@@ -28,25 +30,21 @@ public class ChangeIndexNoCommand extends StudentCommand {
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) getUser();
 
-        //TODO: rewrite code
         String originalIndexNumber = ui.getOriginalIndexNumber();
-        if (!courseList.isIndexNoInList(originalIndexNumber)) {
-            throw new MyStarsException("No such course.");
-        }
+        courseList.checkIndexNoInList(originalIndexNumber);
+
         Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
 
-
         String desiredIndexNumber = ui.getDesiredIndexNumber();
-        if (!courseList.isIndexNoInList(desiredIndexNumber)) {
-            throw new MyStarsException("No such course.");
-        }
-        Course desiredCourse = courseList.getCourseByIndex(desiredIndexNumber);
-        if (!desiredCourse.isSameCourseCode(currentCourse)) {
-            throw new MyStarsException("These indexes are not from the same course!");
+        courseList.checkIndexNoInList(desiredIndexNumber);
+        if (originalIndexNumber.equals(desiredIndexNumber)) {
+            throw new MyStarsException(SAME_INDEX_ERROR);
         }
 
-        if (originalIndexNumber.equals(desiredIndexNumber)) {
-            throw new MyStarsException("You cannot change to the same index!");
+        Course desiredCourse = courseList.getCourseByIndex(desiredIndexNumber);
+
+        if (!desiredCourse.isSameCourseCode(currentCourse)) {
+            throw new MyStarsException(DIFFERENT_COURSE_ERROR);
         }
 
         if (desiredCourse.isVacancy()) {
