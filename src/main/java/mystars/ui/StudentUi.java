@@ -5,8 +5,6 @@ import mystars.data.course.CourseList;
 import mystars.data.user.Student;
 import mystars.parser.Parser;
 
-import java.util.Arrays;
-
 public class StudentUi extends Ui {
 
     private static final String MENU = String.join(System.lineSeparator(), "1. Add Course", "2. Drop Course"

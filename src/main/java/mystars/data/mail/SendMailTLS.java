@@ -28,10 +28,10 @@ public class SendMailTLS {
         props.put(PORT[0], PORT[1]);
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
 
         try {
             Message message = new MimeMessage(session);

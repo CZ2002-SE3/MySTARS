@@ -35,10 +35,10 @@ public class PasswordHandler {
     /**
      * Generates hash as byte array.
      *
-     * @param password Password to hash.
-     * @param salt Salt to use.
+     * @param password   Password to hash.
+     * @param salt       Salt to use.
      * @param iterations Iteration used for hashing.
-     * @param bytes Number of bytes to be used.
+     * @param bytes      Number of bytes to be used.
      * @return Hashed password.
      * @throws MyStarsException If there is issue hashing password.
      */

@@ -1,5 +1,8 @@
 package mystars.data.valid;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 public class EmailValidChecker extends ValidChecker {
 
     /**
@@ -10,8 +13,13 @@ public class EmailValidChecker extends ValidChecker {
      */
     @Override
     public boolean check(String line) {
-        // TODO: improve email checker
-        return new InputValidChecker().check(line) && line.contains("@");
+        try {
+            InternetAddress internetAddress = new InternetAddress(line);
+            internetAddress.validate();
+        } catch (AddressException e) {
+            return false;
+        }
+        return new InputValidChecker().check(line);
     }
 }
 

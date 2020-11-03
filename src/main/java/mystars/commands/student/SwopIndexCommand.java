@@ -51,7 +51,7 @@ public class SwopIndexCommand extends StudentCommand {
         }
 
         if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber)
-                        .isSameCourseCode(peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber))) {
+                .isSameCourseCode(peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber))) {
             // Drop courses
             student.dropRegisteredCourse(currentCourse);
             peer.dropRegisteredCourse(peerCourse);
