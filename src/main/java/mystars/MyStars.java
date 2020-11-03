@@ -50,7 +50,7 @@ public class MyStars {
             storage.loadCourseWaitlistStudents(courses, users);
 
         } catch (MyStarsException e) {
-            ui.showError(e.getMessage());
+            ui.showToUser(e.getMessage());
             users = new UserList();
         }
     }
@@ -90,7 +90,7 @@ public class MyStars {
                 execute(command);
 
             } catch (MyStarsException e) {
-                ui.showError(e.getMessage());
+                ui.showToUser(e.getMessage());
             } finally {
                 ui.showLine();
             }

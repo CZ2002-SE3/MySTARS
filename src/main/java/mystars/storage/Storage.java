@@ -200,7 +200,12 @@ public class Storage {
                         student.addCourseToWaitlisted(course);
                     }
                     course.addWaitlistedStudents(students);
-                    course.checkWaitlist();
+
+                    // TODO : inform waitlist
+                    if (course.checkWaitlist()) {
+                        //ui.showEmailSent();
+                    }
+
                     saveCourses(courseList);
                 }
             } catch (IOException e) {

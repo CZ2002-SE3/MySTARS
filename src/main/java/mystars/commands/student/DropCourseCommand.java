@@ -36,16 +36,18 @@ public class DropCourseCommand extends StudentCommand {
         if (student.isCourseInRegistered(course)) {
             student.dropRegisteredCourse(course);
             course.dropRegisteredStudent(student);
-            ui.showRegisteredCourseDropped(course);
+            ui.showDroppedCourse(course, REGISTERED);
         } else if (student.isCourseInWaitlisted(course)) {
             student.dropWaitlistedCourse(course);
             course.dropWaitlistedStudent(student);
-            ui.showWaitlistedCourseDropped(course);
+            ui.showDroppedCourse(course, WAITLISTED);
         } else {
             throw new MyStarsException(COURSE_NOT_FOUND_ERROR);
         }
 
-        course.checkWaitlist();
+        if (course.checkWaitlist()) {
+            ui.showEmailSent();
+        }
 
         storage.saveCourses(courseList);
     }

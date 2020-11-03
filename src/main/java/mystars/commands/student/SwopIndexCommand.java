@@ -28,26 +28,25 @@ public class SwopIndexCommand extends StudentCommand {
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) getUser();
 
-        String originalIndexNumber = ui.getOriginalIndexNumber();
+        String originalIndexNumber = ui.getIndexNumber(ORIGINAL);
         courseList.checkIndexNoInList(originalIndexNumber);
         Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
 
-        String peerIndexNumber = ui.getPeerIndexNumber();
+        String peerIndexNumber = ui.getIndexNumber(PEER);
         courseList.checkIndexNoInList(peerIndexNumber);
         Course peerCourse = courseList.getCourseByIndex(peerIndexNumber);
 
         char[][] usernameAndPassword = ui.readUsernameAndPassword();
-        Student peer;
-        if (users.getUser(usernameAndPassword) instanceof Student) {
-            peer = (Student) users.getUser(usernameAndPassword);
-        } else {
+        if (!(users.getUser(usernameAndPassword) instanceof Student)) {
             throw new MyStarsException(INVALID_USER_ERROR);
         }
 
+        Student peer = (Student) users.getUser(usernameAndPassword);
+
         if (peer.equals(student)) {
             throw new MyStarsException(SAME_USER_ERROR);
-        } else if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber) == null ||
-                peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber) == null) {
+        } else if (!student.getRegisteredCourses().isIndexNoInList(originalIndexNumber) ||
+                !peer.getRegisteredCourses().isIndexNoInList(peerIndexNumber)) {
             throw new MyStarsException(NOT_REGISTERED_ERROR);
         }
 
@@ -71,7 +70,7 @@ public class SwopIndexCommand extends StudentCommand {
                 currentCourse.addRegisteredStudent(student);
                 peer.addCourseToRegistered(peerCourse);
                 peerCourse.addRegisteredStudent(peer);
-                ui.showError(e.getMessage());
+                ui.showToUser(e.getMessage());
             }
         } else {
             throw new MyStarsException(DIFFERENT_COURSE_ERROR);

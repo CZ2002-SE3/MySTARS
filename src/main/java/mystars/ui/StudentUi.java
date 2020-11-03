@@ -43,13 +43,8 @@ public class StudentUi extends Ui {
         showCourse(course);
     }
 
-    public void showRegisteredCourseDropped(Course course) {
-        printNicely("Registered Course Dropped!");
-        showCourse(course);
-    }
-
-    public void showWaitlistedCourseDropped(Course course) {
-        printNicely("Waitlisted Course Dropped!");
+    public void showDroppedCourse(Course course, String type) {
+        printNicely(type + " Course Dropped!");
         showCourse(course);
     }
 
@@ -72,6 +67,7 @@ public class StudentUi extends Ui {
     }
 
     public void showCourseVacancy(CourseList courseList, String courseCode) {
-        courseList.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode)).map(Course::getVacancyString).forEach(this::printNicely);
+        courseList.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode))
+                .map(Course::getVacancyString).forEach(this::printNicely);
     }
 }

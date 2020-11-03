@@ -81,10 +81,6 @@ public class Course {
         return numOfAUs;
     }
 
-    public void setNumOfAUs(int numOfAUs) {
-        this.numOfAUs = numOfAUs;
-    }
-
     @Override
     public String toString() {
         return "Course Code: " + courseCode + System.lineSeparator() +
@@ -181,26 +177,26 @@ public class Course {
         return "Index: " + getIndexNumber() + " Vacancies/Waitlists: " + getVacancies() + "/" + getWaitlists();
     }
 
-    public void checkWaitlist() {
-        if (isThereWaitlistedStudents() && (isVacancy())) {
-            Student studentToNotify;
-            int i = 0;
-            while (isThereWaitlistedStudents()) {
-                studentToNotify = getWaitlistedStudents().get(i);
-                try {
-                    studentToNotify.dropWaitlistedCourse(this);
-                    studentToNotify.addCourseToRegistered(this);
-                } catch (MyStarsException e) {
-                    i++;
-                    continue;
-                }
-                addRegisteredStudent(studentToNotify);
-                dropWaitlistedStudent(studentToNotify);
-
-                sendEmailToStudent(studentToNotify);
-                break;
+    public boolean checkWaitlist() {
+        boolean isTransfer = false;
+        int i = 0;
+        while (isThereWaitlistedStudents() && isVacancy()) {
+            Student studentToNotify = getWaitlistedStudents().get(i);
+            try {
+                studentToNotify.dropWaitlistedCourse(this);
+                studentToNotify.addCourseToRegistered(this);
+            } catch (MyStarsException e) {
+                i++;
+                continue;
             }
+
+            dropWaitlistedStudent(studentToNotify);
+            addRegisteredStudent(studentToNotify);
+
+            sendEmailToStudent(studentToNotify);
+            isTransfer = true;
         }
+        return isTransfer;
     }
 
     private void sendEmailToStudent(Student studentToNotify) {

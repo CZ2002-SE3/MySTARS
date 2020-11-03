@@ -17,6 +17,12 @@ public abstract class StudentCommand extends Command {
     static final String NO_VACANCY_ERROR = "No vacancies to change to.";
     static final String COURSE_NOT_FOUND_ERROR = "No such course found.";
 
+    static final String ORIGINAL = "original";
+    static final String DESIRED = "desired";
+    static final String PEER = "peer";
+    static final String REGISTERED = "Registered";
+    static final String WAITLISTED = "Waitlisted";
+
     /**
      * Executes command.
      *

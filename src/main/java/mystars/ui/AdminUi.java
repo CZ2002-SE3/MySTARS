@@ -187,4 +187,8 @@ public class AdminUi extends Ui {
     public void showCourseList(CourseList courses) {
         courses.getCourses().forEach(course -> printNicely(course.toString()));
     }
+
+    public String askUpdate() {
+        return getUserInput("Do you want to update course? (Y/N)", new OptionValidChecker());
+    }
 }

@@ -28,13 +28,13 @@ public class ChangeIndexNoCommand extends StudentCommand {
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) getUser();
 
-        // TODO: extract method
-        String originalIndexNumber = ui.getOriginalIndexNumber();
+        String originalIndexNumber = ui.getIndexNumber(ORIGINAL);
         courseList.checkIndexNoInList(originalIndexNumber);
-        Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
 
-        String desiredIndexNumber = ui.getDesiredIndexNumber();
+        String desiredIndexNumber = ui.getIndexNumber(DESIRED);
         courseList.checkIndexNoInList(desiredIndexNumber);
+
+        Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
         Course desiredCourse = courseList.getCourseByIndex(desiredIndexNumber);
 
         if (originalIndexNumber.equals(desiredIndexNumber)) {

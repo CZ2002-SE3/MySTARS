@@ -27,7 +27,8 @@ public abstract class Ui {
             , "| |   | |  ) (        ) |  | |  | (   ) | (\\ (        ) |"
             , "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |"
             , "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)",
-            "                                                         ");
+            "                                                         ", "Welcome!");
+
 
     static Parser parser;
 
@@ -37,15 +38,6 @@ public abstract class Ui {
 
     public Ui(Parser parser) {
         Ui.parser = parser;
-    }
-
-    /**
-     * Prints error message.
-     *
-     * @param message Error message to print.
-     */
-    public void showError(String message) {
-        printNicely(message);
     }
 
     /**
@@ -105,8 +97,7 @@ public abstract class Ui {
     }
 
     public void showWelcome() {
-        printNicely(LOGO);
-        printNicely("Welcome!");
+        showToUser(LOGO);
     }
 
     public abstract void showMenu();
@@ -153,18 +144,17 @@ public abstract class Ui {
     }
 
     public String getIndexNumber() {
-        return getUserInput("Enter index number:", new IndexNumberValidChecker());
+        return getIndexNumber("");
     }
 
-    public String getOriginalIndexNumber() {
-        return getUserInput("Enter current index number:", new IndexNumberValidChecker());
+    public String getIndexNumber(String description) {
+        return getUserInput(String.join(" ", "Enter", description, "index number:"),
+                new IndexNumberValidChecker());
     }
 
-    public String getDesiredIndexNumber() {
-        return getUserInput("Enter index number you wish to change to:", new IndexNumberValidChecker());
-    }
-
-    public String getPeerIndexNumber() {
-        return getUserInput("Enter Peer's index number you wish to swop with:", new IndexNumberValidChecker());
+    public void showEmailSent() {
+        showLine();
+        printNicely("Added waitlisted student to course and email sent to inform student.");
+        showLine();
     }
 }
