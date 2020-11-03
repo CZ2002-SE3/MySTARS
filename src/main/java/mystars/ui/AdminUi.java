@@ -30,25 +30,28 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 public class AdminUi extends Ui {
 
+    private static final String MENU = String.join(System.lineSeparator(), "1. Edit student access period"
+            , "2. Add a student (name, matric number, gender, nationality, etc)"
+            , "3. Add/Update a course (course code, school, its index numbers and vacancy)"
+            , "4. Check available slot for an index number (vacancy in a class)"
+            , "5. Print student list by index number"
+            , "6. Print student list by course (all students registered for the selected course)."
+            , "7. Logout"
+            , "Please select an item:");
+    private static final String WELCOME_MESSAGE = "Hello Admin!";
+
     @Override
     public void showMenu() {
-        printNicely("1. Edit student access period");
-        printNicely("2. Add a student (name, matric number, gender, nationality, etc)");
-        printNicely("3. Add/Update a course (course code, school, its index numbers and vacancy)");
-        printNicely("4. Check available slot for an index number (vacancy in a class)");
-        printNicely("5. Print student list by index number");
-        printNicely("6. Print student list by course (all students registered for the selected course).");
-        // "[ print only student’s name, gender and nationality ]"
-        printNicely("7. Logout");
-        printNicely("Please select an item:");
+        showToUser(MENU);
     }
 
     @Override
     public void greetUser() {
-        printNicely("Hello admin!");
+        showToUser(WELCOME_MESSAGE);
     }
 
     public LocalDateTime[] getNewAccessPeriod() throws MyStarsException {

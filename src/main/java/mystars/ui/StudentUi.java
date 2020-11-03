@@ -5,7 +5,13 @@ import mystars.data.course.CourseList;
 import mystars.data.user.Student;
 import mystars.parser.Parser;
 
+import java.util.Arrays;
+
 public class StudentUi extends Ui {
+
+    private static final String MENU = String.join(System.lineSeparator(), "1. Add Course", "2. Drop Course"
+            , "3. Check/Print Courses Registered", "4. Check Vacancies Available", "5. Change Index Number of Course"
+            , "6. Swop Index Number with Another Student", "7. Logout", "Please select an item:");
 
     public StudentUi(Parser parser) {
         super(parser);
@@ -17,14 +23,7 @@ public class StudentUi extends Ui {
 
     @Override
     public void showMenu() {
-        printNicely("1. Add Course");
-        printNicely("2. Drop Course");
-        printNicely("3. Check/Print Courses Registered");
-        printNicely("4. Check Vacancies Available");
-        printNicely("5. Change Index Number of Course");
-        printNicely("6. Swop Index Number with Another Student");
-        printNicely("7. Logout");
-        printNicely("Please select an item:");
+        showToUser(MENU);
     }
 
     @Override
