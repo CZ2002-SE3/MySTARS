@@ -33,15 +33,16 @@ public class DropCourseCommand extends StudentCommand {
         Course course = courseList.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
 
-        try {
+        if (student.isCourseInRegistered(course)) {
             student.dropRegisteredCourse(course);
             course.dropRegisteredStudent(student);
             ui.showRegisteredCourseDropped(course);
-        } catch (MyStarsException e) {
-            ui.showError(e.getMessage());
+        } else if (student.isCourseInWaitlisted(course)) {
             student.dropWaitlistedCourse(course);
             course.dropWaitlistedStudent(student);
             ui.showWaitlistedCourseDropped(course);
+        } else {
+            throw new MyStarsException(COURSE_NOT_FOUND_ERROR);
         }
 
         course.checkWaitlist();

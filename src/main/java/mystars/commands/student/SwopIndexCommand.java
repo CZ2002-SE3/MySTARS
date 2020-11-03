@@ -27,6 +27,7 @@ public class SwopIndexCommand extends StudentCommand {
     @Override
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) getUser();
+
         String originalIndexNumber = ui.getOriginalIndexNumber();
         courseList.checkIndexNoInList(originalIndexNumber);
         Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
@@ -40,16 +41,14 @@ public class SwopIndexCommand extends StudentCommand {
         if (users.getUser(usernameAndPassword) instanceof Student) {
             peer = (Student) users.getUser(usernameAndPassword);
         } else {
-            throw new MyStarsException("User not valid!");
+            throw new MyStarsException(INVALID_USER_ERROR);
         }
 
         if (peer.equals(student)) {
-            throw new MyStarsException("You cannot swop index with yourself!");
-        }
-
-        if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber) == null ||
+            throw new MyStarsException(SAME_USER_ERROR);
+        } else if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber) == null ||
                 peer.getRegisteredCourses().getCourseByIndex(peerIndexNumber) == null) {
-            throw new MyStarsException("Either of you are not registered for the specified index!");
+            throw new MyStarsException(NOT_REGISTERED_ERROR);
         }
 
         if (student.getRegisteredCourses().getCourseByIndex(originalIndexNumber)
@@ -75,7 +74,7 @@ public class SwopIndexCommand extends StudentCommand {
                 ui.showError(e.getMessage());
             }
         } else {
-            throw new MyStarsException("These indexes are not from the same course!");
+            throw new MyStarsException(DIFFERENT_COURSE_ERROR);
         }
 
         ui.showIndexSwop(currentCourse, peerCourse, student, peer);

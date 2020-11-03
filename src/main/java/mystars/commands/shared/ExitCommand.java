@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  */
 public class ExitCommand extends SharedCommand {
 
-    public static final String MESSAGE = "Bye! See you again soon!";
+    private static final String MESSAGE = "Bye! See you again soon!";
 
     /**
      * Says goodbye to user and exits MySTARS.

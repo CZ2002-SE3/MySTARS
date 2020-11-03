@@ -118,14 +118,6 @@ public class Course {
     public boolean isClash(Course courseToAdd) {
         return courseToAdd.lessonList.getLessons().stream()
                 .anyMatch(lesson -> lessonList.getLessons().stream().anyMatch(lesson::isClash));
-        /*for (Lesson lesson : lessonList.getLessons()) {
-            for (Lesson lessonToAdd : courseToAdd.lessonList.getLessons()) {
-                if (lesson.isClash(lessonToAdd)) {
-                    return true;
-                }
-            }
-        }
-        return false;*/
     }
 
     public String getRegisteredFormattedString() {

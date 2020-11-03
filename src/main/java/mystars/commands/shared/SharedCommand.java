@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
  */
 public abstract class SharedCommand extends Command {
 
+    static final String ERROR_MESSAGE = "Invalid username/password!";
+
     /**
      * Executes command.
      *

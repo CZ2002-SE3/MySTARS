@@ -157,11 +157,19 @@ public class Student extends User {
         waitlistedCourses.addCourse(courseToAdd);
     }
 
+    public boolean isCourseInRegistered(Course courseToAdd) {
+        return registeredCourses.isCourseInList(courseToAdd);
+    }
+
+    public boolean isCourseInWaitlisted(Course courseToAdd) {
+        return waitlistedCourses.isCourseInList(courseToAdd);
+    }
+
     public void checkCoursesInList(Course courseToAdd) throws MyStarsException {
-        if (registeredCourses.isCourseInList(courseToAdd)) {
+        if (isCourseInRegistered(courseToAdd)) {
             throw new MyStarsException("Course already present in registered courses.");
         }
-        if (waitlistedCourses.isCourseInList(courseToAdd)) {
+        if (isCourseInWaitlisted(courseToAdd)) {
             throw new MyStarsException("Course already present in waitlisted courses.");
         }
         if (registeredCourses.isClash(courseToAdd)) {

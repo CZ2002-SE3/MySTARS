@@ -14,8 +14,6 @@ import mystars.ui.StudentUi;
 public class ChangeIndexNoCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "5";
-    private static final String DIFFERENT_COURSE_ERROR = "These indexes are not from the same course.";
-    private static final String SAME_INDEX_ERROR = "Unable to change to the same index.";
 
     /**
      * Executes command.
@@ -30,29 +28,27 @@ public class ChangeIndexNoCommand extends StudentCommand {
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) getUser();
 
+        // TODO: extract method
         String originalIndexNumber = ui.getOriginalIndexNumber();
         courseList.checkIndexNoInList(originalIndexNumber);
-
         Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
 
         String desiredIndexNumber = ui.getDesiredIndexNumber();
         courseList.checkIndexNoInList(desiredIndexNumber);
-        if (originalIndexNumber.equals(desiredIndexNumber)) {
-            throw new MyStarsException(SAME_INDEX_ERROR);
-        }
-
         Course desiredCourse = courseList.getCourseByIndex(desiredIndexNumber);
 
-        if (!desiredCourse.isSameCourseCode(currentCourse)) {
+        if (originalIndexNumber.equals(desiredIndexNumber)) {
+            throw new MyStarsException(SAME_INDEX_ERROR);
+        } else if (!desiredCourse.isSameCourseCode(currentCourse)) {
             throw new MyStarsException(DIFFERENT_COURSE_ERROR);
+        } else if (!desiredCourse.isVacancy()) {
+            throw new MyStarsException(NO_VACANCY_ERROR);
         }
 
-        if (desiredCourse.isVacancy()) {
-            student.dropRegisteredCourse(currentCourse);
-            currentCourse.dropRegisteredStudent(student);
-            student.addCourseToRegistered(desiredCourse);
-            desiredCourse.addRegisteredStudent(student);
-        }
+        student.dropRegisteredCourse(currentCourse);
+        currentCourse.dropRegisteredStudent(student);
+        student.addCourseToRegistered(desiredCourse);
+        desiredCourse.addRegisteredStudent(student);
 
         ui.showIndexNoChanged(desiredCourse, currentCourse);
 

@@ -9,11 +9,6 @@ import java.time.LocalDateTime;
 
 public class LoginCommand extends SharedCommand {
 
-    public static final String USERNAME_MESSAGE = "Enter Username: ";
-    public static final String PASSWORD_MESSAGE = "Enter Password: ";
-    public static final String ERROR_MESSAGE = "Invalid username/password!";
-    public static final String WARNING_MESSAGE = "Please use console to mask password.";
-
     /**
      * Executes command.
      *
