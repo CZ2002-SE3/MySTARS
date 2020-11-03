@@ -201,9 +201,10 @@ public class Storage {
                     }
                     course.addWaitlistedStudents(students);
 
-                    // TODO : inform waitlist
+                    // TODO : rewrite this line
                     if (course.checkWaitlist()) {
                         //ui.showEmailSent();
+                        System.out.println("Email sent");
                     }
 
                     saveCourses(courseList);
