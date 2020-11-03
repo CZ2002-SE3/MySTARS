@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 
 public class LogoutCommand extends SharedCommand {
 
+    private static final String MESSAGE = "You have successfully logged out!";
+
     public static final String COMMAND_WORD = "7";
 
     /**
@@ -22,6 +24,6 @@ public class LogoutCommand extends SharedCommand {
     public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui)
             throws MyStarsException {
         setLoginStatus(false);
-        ui.showLogout();
+        ui.showToUser(MESSAGE);
     }
 }

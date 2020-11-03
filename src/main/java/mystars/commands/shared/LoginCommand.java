@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 
 public class LoginCommand extends SharedCommand {
 
+    private static final String MESSAGE = "MyStars is closed for students...";
+
     /**
      * Executes command.
      *
@@ -29,14 +31,14 @@ public class LoginCommand extends SharedCommand {
         }
         if (!isLogin()) {
             ui.showLine();
-            throw new MyStarsException(ERROR_MESSAGE);
+            throw new MyStarsException(INVALID_LOGIN_ERROR);
         }
         ui.showLine();
     }
 
     private void checkAccessPeriod(LocalDateTime[] accessDateTime, Ui ui) {
         if (accessDateTime[0].isAfter(LocalDateTime.now()) || accessDateTime[1].isBefore(LocalDateTime.now())) {
-            ui.showClosedMessage();
+            ui.showToUser(MESSAGE);
             ui.showLine();
             System.exit(1);
         }

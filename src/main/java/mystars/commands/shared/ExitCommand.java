@@ -22,6 +22,6 @@ public class ExitCommand extends SharedCommand {
     @Override
     public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui) {
         setExit();
-        ui.showExit(MESSAGE);
+        ui.showToUser(MESSAGE);
     }
 }

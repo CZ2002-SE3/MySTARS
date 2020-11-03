@@ -71,13 +71,6 @@ public abstract class Ui {
     }
 
     /**
-     * Prints exit message.
-     */
-    public void showExit(String message) {
-        printNicely(message);
-    }
-
-    /**
      * Prints string with nice format.
      *
      * @param string String to print.
@@ -86,7 +79,7 @@ public abstract class Ui {
         System.out.println(string);
     }
 
-    void showToUser(String message) {
+    public void showToUser(String message) {
         Arrays.stream(message.split(System.lineSeparator())).forEach(this::printNicely);
     }
 
@@ -118,10 +111,6 @@ public abstract class Ui {
 
     public abstract void showMenu();
 
-    public void showLogout() {
-        printNicely("You have successfully logged out!");
-    }
-
     public String askExit() {
         return getUserInput("Do you want to exit? (Y/N)", new OptionValidChecker());
     }
@@ -138,10 +127,6 @@ public abstract class Ui {
     }
 
     public abstract void greetUser();
-
-    public void showClosedMessage() {
-        printNicely("MyStars is closed for students...");
-    }
 
     public void showAccessPeriod(LocalDateTime[] accessDateTime) {
         printNicely("Here is the access period currently:");
