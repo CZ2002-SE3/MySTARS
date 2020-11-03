@@ -28,6 +28,7 @@ public class ChangeIndexNoCommand extends StudentCommand {
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
         Student student = (Student) getUser();
 
+        //TODO: rewrite code
         String originalIndexNumber = ui.getOriginalIndexNumber();
         if (!courseList.isIndexNoInList(originalIndexNumber)) {
             throw new MyStarsException("No such course.");
