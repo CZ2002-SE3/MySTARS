@@ -14,7 +14,7 @@ IF ERRORLEVEL 1 (
 )
 
 REM Run the program, feed input and write output
-java -classpath ..\bin mystars.MyStars < input.txt > output.txt
+java -classpath ..\lib\*;..\bin mystars.MyStars < input.txt > output.txt
 
 REM Compare output with expected output
 FC output.txt expected.txt

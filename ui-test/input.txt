@@ -23,6 +23,9 @@ cz2002.se3.group1@gmail.com
 TEST025
 pass1000
 3
+10001
+N
+3
 12800
 CZ200
 CZ2008

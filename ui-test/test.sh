@@ -15,7 +15,7 @@ then
 fi
 
 # Run the program, feed input and write output
-java -classpath ../bin mystars.MyStars < input.txt > output.txt
+java -classpath "../lib/*;../bin" mystars.MyStars < input.txt > output.txt
 
 # Compare output with expected output (ignoring trailing line separators)
 if diff --strip-trailing-cr output.txt expected.txt
