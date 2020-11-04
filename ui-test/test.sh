@@ -9,7 +9,7 @@ then
 fi
 
 # Create temporary test database from source database
-cp -R "../db" "../ui-test/db"
+cp -R "../db" "../ui-test/"
 
 # Compile all source files into bin folder
 if ! javac -cp "../lib/*;../src/main/java" -Xlint:none -d ../bin ../src/main/java/mystars/MyStars.java
