@@ -1,7 +1,11 @@
-# Create bin directory if it does not exist
+# Create bin and db directory if it does not exist
 if [ ! -d "../bin" ]
 then
     mkdir ../bin
+fi
+if [ ! -d "../ui-test/db" ]
+then
+    mkdir ../ui-test/db
 fi
 
 # Create temporary test database from source database
