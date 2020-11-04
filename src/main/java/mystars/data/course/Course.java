@@ -2,7 +2,7 @@ package mystars.data.course;
 
 import mystars.data.course.lesson.Lesson;
 import mystars.data.exception.MyStarsException;
-import mystars.data.mail.SendMailTLS;
+import mystars.data.mail.EmailSender;
 import mystars.data.user.Student;
 import mystars.parser.Parser;
 
@@ -183,7 +183,7 @@ public class Course {
     }
 
     private void sendEmailToStudent(Student studentToNotify) {
-        new SendMailTLS().sendMail(studentToNotify.getEmail(), new SendMailTLS().getEmailContent(getCourseCode()
-                , getIndexNumber(), studentToNotify.getName()));
+        new EmailSender().sendMail(studentToNotify.getEmail(), getCourseCode(), getIndexNumber()
+                , studentToNotify.getName());
     }
 }

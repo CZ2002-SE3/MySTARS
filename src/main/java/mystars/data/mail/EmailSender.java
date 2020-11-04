@@ -9,7 +9,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class SendMailTLS {
+public class EmailSender {
 
     private static final String[] AUTH = {"mail.smtp.auth", "true"};
     private static final String[] STARTTLS = {"mail.smtp.starttls.enable", "true"};
@@ -47,10 +47,10 @@ public class SendMailTLS {
         }
     }
 
-    public String getEmailContent(String courseCode, String indexNumber, String name) {
-        return "Dear " + name + "," + System.lineSeparator() + System.lineSeparator() +
-                "We are pleased to inform you that there is an available slot in " + courseCode + ", of index number " + indexNumber +
-                " and you have been successfully registered for the course." + System.lineSeparator() + System.lineSeparator() +
-                "Regards," + System.lineSeparator() + "STARS Administrators";
+    public void sendMail(String email, String courseCode, String indexNumber, String name) {
+        sendMail(email, "Dear " + name + "," + System.lineSeparator() + System.lineSeparator()
+                + "We are pleased to inform you that there is an available slot in " + courseCode + ", of index number "
+                + indexNumber + " and you have been successfully registered for the course." + System.lineSeparator()
+                + System.lineSeparator() + "Regards," + System.lineSeparator() + "STARS Administrators");
     }
 }
