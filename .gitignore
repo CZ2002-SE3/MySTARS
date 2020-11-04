@@ -6,4 +6,5 @@
 *.iml
 bin/
 
+/ui-test/db/
 /ui-test/output.txt
