@@ -11,15 +11,11 @@ public class LessonList {
         lessons = new ArrayList<>();
     }
 
-    public LessonList(ArrayList<Lesson> lessons) {
-        this.lessons = lessons;
-    }
-
     public ArrayList<Lesson> getLessons() {
         return lessons;
     }
 
-    public boolean addLesson(Lesson newLesson) {
+    public boolean tryAddLesson(Lesson newLesson) {
         boolean isClash = getLessons().stream().anyMatch(newLesson::isClash);
         if (isClash) {
             return false;

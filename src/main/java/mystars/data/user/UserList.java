@@ -26,15 +26,6 @@ public class UserList {
         this.users = users;
     }
 
-    /**
-     * Returns size of users.
-     *
-     * @return Length of users.
-     */
-    public int getSize() {
-        return users.size();
-    }
-
     public boolean isLoginValid(char[][] usernameAndPassword) throws MyStarsException {
 
         for (User user : users) {
@@ -62,10 +53,10 @@ public class UserList {
     public void addDetails(ArrayList<User> students, ArrayList<User> admins) {
         ArrayList<User> userDetails = new ArrayList<>(students);
         userDetails.addAll(admins);
-        for (int i = 0; i < users.size(); i++) {
+        for (User user : users) {
             for (User userDetail : userDetails) {
-                if (users.get(i).equals(userDetail)) {
-                    users.get(i).copyDetails(userDetail);
+                if (user.equals(userDetail)) {
+                    user.copyDetails(userDetail);
                     break;
                 }
             }

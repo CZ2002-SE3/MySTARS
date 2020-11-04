@@ -44,7 +44,7 @@ public class MyStars {
         try {
             courses = new CourseList(storage.loadCourses());
             users = new UserList(storage.loadUsers());
-            users.addDetails(storage.loadStudents(courses), storage.loadAdmins());
+            users.addDetails(storage.loadStudents(), storage.loadAdmins());
             accessDateTime = storage.loadAccessPeriod();
             storage.loadCourseRegisteredStudents(courses, users);
             storage.loadCourseWaitlistStudents(courses, users);
@@ -68,6 +68,7 @@ public class MyStars {
      * Runs MySTARS.
      */
     public void run() {
+        logger.setLevel(Level.WARNING);
         ui.showLine();
         ui.showWelcome();
         Command command = new LogoutCommand();

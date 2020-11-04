@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 
 public class Storage {
 
-    public static final String LOAD_ERROR = "I am unable to load file.";
     private static final String READ_ERROR = "I am unable to read file.";
     private static final String DIRECTORY_ERROR = "I am unable to create directory.";
     private static final String WRITE_ERROR = "I am unable to write file.";
@@ -62,10 +61,10 @@ public class Storage {
         if (Files.exists(path)) {
             try {
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
-                String line = bufferedReader.readLine();
+                bufferedReader.readLine();
 
                 while (true) {
-                    line = bufferedReader.readLine();
+                    String line = bufferedReader.readLine();
                     if (line == null) {
                         break;
                     }
@@ -84,21 +83,20 @@ public class Storage {
     /**
      * Loads students, stores them into ArrayList and returns the ArrayList.
      *
-     * @param availableCoursesList Course list.
      * @return ArrayList of students.
      * @throws MyStarsException If there is problem reading file.
      */
-    public ArrayList<User> loadStudents(CourseList availableCoursesList) throws MyStarsException {
+    public ArrayList<User> loadStudents() throws MyStarsException {
         Path path = Paths.get(FOLDER, STUDENTS_FILE);
         ArrayList<User> students = new ArrayList<>();
 
         if (Files.exists(path)) {
             try {
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
-                String line = bufferedReader.readLine();
+                bufferedReader.readLine();
 
                 while (true) {
-                    line = bufferedReader.readLine();
+                    String line = bufferedReader.readLine();
                     if (line == null) {
                         break;
                     }
@@ -127,10 +125,10 @@ public class Storage {
         if (Files.exists(path)) {
             try {
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
-                String line = bufferedReader.readLine();
+                bufferedReader.readLine();
 
                 while (true) {
-                    line = bufferedReader.readLine();
+                    String line = bufferedReader.readLine();
                     if (line == null) {
                         break;
                     }
@@ -152,10 +150,10 @@ public class Storage {
         if (Files.exists(path)) {
             try {
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
-                String line = bufferedReader.readLine();
+                bufferedReader.readLine();
 
                 while (true) {
-                    line = bufferedReader.readLine();
+                    String line = bufferedReader.readLine();
                     if (line == null) {
                         break;
                     }
@@ -185,10 +183,10 @@ public class Storage {
         if (Files.exists(path)) {
             try {
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
-                String line = bufferedReader.readLine();
+                bufferedReader.readLine();
 
                 while (true) {
-                    line = bufferedReader.readLine();
+                    String line = bufferedReader.readLine();
                     if (line == null) {
                         break;
                     }
@@ -228,10 +226,10 @@ public class Storage {
         if (Files.exists(path)) {
             try {
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
-                String line = bufferedReader.readLine();
+                bufferedReader.readLine();
 
                 while (true) {
-                    line = bufferedReader.readLine();
+                    String line = bufferedReader.readLine();
                     if (line == null) {
                         break;
                     }
@@ -258,9 +256,9 @@ public class Storage {
         if (Files.exists(path)) {
             try {
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
-                String line = bufferedReader.readLine();
+                bufferedReader.readLine();
 
-                line = bufferedReader.readLine();
+                String line = bufferedReader.readLine();
 
                 return parser.readStudentAccessPeriod(line);
 

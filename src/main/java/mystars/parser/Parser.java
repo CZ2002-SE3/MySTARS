@@ -45,8 +45,8 @@ public class Parser {
     public static final String ESCAPED_LINE_SEPARATOR = "\\|";
     public static final String LINE_SEPARATOR = ESCAPED_LINE_SEPARATOR.replace("\\", "");
     public static final String TILDE_SEPARATOR = "~";
-    public static final String ESCAPED_ASTERISK_SEPERATOR = "\\*";
-    public static final String ASTERISK_SEPERATOR = ESCAPED_ASTERISK_SEPERATOR.replace("\\", "");
+    public static final String ESCAPED_ASTERISK_SEPARATOR = "\\*";
+    public static final String ASTERISK_SEPARATOR = ESCAPED_ASTERISK_SEPARATOR.replace("\\", "");
 
     /**
      * Parses admin input, and returns corresponding command.
@@ -180,7 +180,7 @@ public class Parser {
             throw new MyStarsException("Number of AUs is not valid!");
         }
 
-        String[] lessonsString = lessonString.split(ESCAPED_ASTERISK_SEPERATOR);
+        String[] lessonsString = lessonString.split(ESCAPED_ASTERISK_SEPARATOR);
         LessonList lessonList = readLessons(lessonsString);
 
         return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
@@ -209,7 +209,7 @@ public class Parser {
 
             Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, week, group);
 
-            if (!lessonList.addLesson(lessonToAdd)) {
+            if (!lessonList.tryAddLesson(lessonToAdd)) {
                 throw new MyStarsException("Lesson Clash!");
             }
         }

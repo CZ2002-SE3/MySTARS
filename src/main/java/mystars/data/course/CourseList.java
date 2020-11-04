@@ -73,10 +73,6 @@ public class CourseList {
         courses.remove(courseToDrop);
     }
 
-    public String getFormattedString() {
-        return courses.stream().map(Course::getFormattedString).collect(Collectors.joining(System.lineSeparator()));
-    }
-
     public boolean isCourseInList(String courseCode) {
         for (Course course : courses) {
             if (course.getCourseCode().equalsIgnoreCase(courseCode)) {

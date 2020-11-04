@@ -65,7 +65,7 @@ public class SwopIndexCommand extends StudentCommand {
                 peerCourse.addRegisteredStudent(student);
                 currentCourse.addRegisteredStudent(peer);
             } catch (MyStarsException e) {
-                // undo dropping of course
+                // Undo dropping of course if there is error adding courses
                 student.addCourseToRegistered(currentCourse);
                 currentCourse.addRegisteredStudent(student);
                 peer.addCourseToRegistered(peerCourse);

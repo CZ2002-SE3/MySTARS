@@ -672,11 +672,11 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter course code:
-Index: 10001 Vacancies/Waitlists: 0/2
-Index: 10002 Vacancies/Waitlists: 0/2
-Index: 10003 Vacancies/Waitlists: 3/0
-Index: 10004 Vacancies/Waitlists: 5/0
-Index: 10005 Vacancies/Waitlists: 5/0
+Index: 10001 Vacancies/Waitlist Size: 0/2
+Index: 10002 Vacancies/Waitlist Size: 0/2
+Index: 10003 Vacancies/Waitlist Size: 3/0
+Index: 10004 Vacancies/Waitlist Size: 5/0
+Index: 10005 Vacancies/Waitlist Size: 5/0
 
 ------------------------------------------------------------
 
@@ -735,10 +735,10 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter course code:
-Index: 20710 Vacancies/Waitlists: 0/0
-Index: 20711 Vacancies/Waitlists: 7/0
-Index: 20712 Vacancies/Waitlists: 10/0
-Index: 20713 Vacancies/Waitlists: 10/0
+Index: 20710 Vacancies/Waitlist Size: 0/0
+Index: 20711 Vacancies/Waitlist Size: 7/0
+Index: 20712 Vacancies/Waitlist Size: 10/0
+Index: 20713 Vacancies/Waitlist Size: 10/0
 
 ------------------------------------------------------------
 

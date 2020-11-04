@@ -1,4 +1,4 @@
-format: username|password|type //is not hashed yet
+format: username|password|type
 IRVIN001|pass0001|student
 JUNHONG002|pass0002|student
 CHENYI001|pass0003|student

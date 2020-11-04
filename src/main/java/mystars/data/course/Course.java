@@ -14,9 +14,8 @@ public class Course {
     private int initialVacancy;
     private LessonList lessonList;
     private String courseCode;
-    // Might be wise to change school to enum afterwards
     private String school;
-    private String indexNumber;
+    private final String indexNumber;
     private int numOfAUs;
     private ArrayList<Student> registeredStudents;
     private ArrayList<Student> waitlistedStudents;
@@ -37,31 +36,19 @@ public class Course {
         return courseCode;
     }
 
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
-    }
-
     public String getSchool() {
         return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
     }
 
     public String getIndexNumber() {
         return indexNumber;
     }
 
-    public void setIndexNumber(String indexNumber) {
-        this.indexNumber = indexNumber;
-    }
-
     public int getVacancies() {
         return initialVacancy - registeredStudents.size();
     }
 
-    public int getWaitlists() {
+    public int getWaitlistedSize() {
         return waitlistedStudents.size();
     }
 
@@ -108,7 +95,7 @@ public class Course {
     public String getStorageString() {
         return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancy)
                 , Integer.toString(numOfAUs), lessonList.getLessons().stream().map(Lesson::getStorageString)
-                        .collect(Collectors.joining(Parser.ASTERISK_SEPERATOR)));
+                        .collect(Collectors.joining(Parser.ASTERISK_SEPARATOR)));
     }
 
     public boolean isClash(Course courseToAdd) {
@@ -174,7 +161,7 @@ public class Course {
     }
 
     public String getVacancyString() {
-        return "Index: " + getIndexNumber() + " Vacancies/Waitlists: " + getVacancies() + "/" + getWaitlists();
+        return "Index: " + getIndexNumber() + " Vacancies/Waitlist Size: " + getVacancies() + "/" + getWaitlistedSize();
     }
 
     public boolean checkWaitlist() {
