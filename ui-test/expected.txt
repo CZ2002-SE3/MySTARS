@@ -933,36 +933,36 @@ Please select an item:
 
 Here are your registered courses:
 Total No. of Courses Registered: 5
-Total No. of AUs Registered: 16
+Total No. of AUs Registered: 15
 
 #1
-Course Code: CZ2005
-School: SCSE
-Index Number: 10230
-AU: 3
-
-#2
 Course Code: CZ2007
 School: SCSE
 Index Number: 10813
 AU: 3
 
-#3
-Course Code: MH2500
-School: SPMS
-Index Number: 90830
-AU: 4
+#2
+Course Code: CZ2002
+School: SCSE
+Index Number: 20710
+AU: 3
 
-#4
+#3
 Course Code: CZ2001
 School: SCSE
 Index Number: 10003
 AU: 3
 
-#5
-Course Code: CZ2002
+#4
+Course Code: CZ2005
 School: SCSE
-Index Number: 20710
+Index Number: 10230
+AU: 3
+
+#5
+Course Code: CZ2008
+School: SCSE
+Index Number: 12800
 AU: 3
 
 
