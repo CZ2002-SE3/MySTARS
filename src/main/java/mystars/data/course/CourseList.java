@@ -4,7 +4,6 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.user.Student;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class CourseList {
 

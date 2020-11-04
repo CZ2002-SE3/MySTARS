@@ -1,6 +1,5 @@
 package mystars.commands.shared;
 
-import mystars.data.exception.MyStarsException;
 import mystars.data.user.UserList;
 import mystars.ui.Ui;
 

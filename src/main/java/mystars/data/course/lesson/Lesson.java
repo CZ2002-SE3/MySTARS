@@ -7,12 +7,12 @@ import java.time.LocalTime;
 
 public class Lesson {
     private final Week week;
-    private LessonType lessonType;
-    private String venue;
-    private LocalTime startTime;
-    private LocalTime endTime;
-    private DayOfWeek day;
     private final String group;
+    private final LessonType lessonType;
+    private final String venue;
+    private final LocalTime startTime;
+    private final LocalTime endTime;
+    private final DayOfWeek day;
 
     public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek day, Week week
             , String group) {

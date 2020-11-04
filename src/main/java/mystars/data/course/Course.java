@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 
 public class Course {
 
+    private final String indexNumber;
     private int initialVacancy;
     private LessonList lessonList;
     private String courseCode;
     private String school;
-    private final String indexNumber;
     private int numOfAUs;
     private ArrayList<Student> registeredStudents;
     private ArrayList<Student> waitlistedStudents;
@@ -86,10 +86,6 @@ public class Course {
 
     public boolean isSameIndexNo(Course course) {
         return course.getIndexNumber().equals(getIndexNumber());
-    }
-
-    public String getFormattedString() {
-        return courseCode + Parser.TILDE_SEPARATOR + indexNumber;
     }
 
     public String getStorageString() {

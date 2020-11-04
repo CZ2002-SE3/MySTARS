@@ -22,4 +22,3 @@ public class EmailValidChecker extends ValidChecker {
         return new InputValidChecker().check(line);
     }
 }
-

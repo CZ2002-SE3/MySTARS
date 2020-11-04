@@ -53,5 +53,4 @@ public class SendMailTLS {
                 " and you have been successfully registered for the course." + System.lineSeparator() + System.lineSeparator() +
                 "Regards," + System.lineSeparator() + "STARS Administrators";
     }
-
 }
