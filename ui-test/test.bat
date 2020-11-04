@@ -1,7 +1,8 @@
 @ECHO OFF
 
-REM Create bin directory if it does not exist
+REM Create bin and db directory if it does not exist
 if not exist ..\bin mkdir ..\bin
+if not exist ..\ui-test\db mkdir ..\ui-test\db
 
 REM Create temporary test database from source database
 XCOPY /s/y ..\db ..\ui-test\db
