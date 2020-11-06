@@ -203,6 +203,24 @@ Index Number: 20713
 AU: 3
 
 
+Course Code: CZ2004
+School: SCSE
+Index Number: 10217
+AU: 3
+
+
+Course Code: CZ2004
+School: SCSE
+Index Number: 10218
+AU: 3
+
+
+Course Code: CZ2004
+School: SCSE
+Index Number: 10219
+AU: 3
+
+
 Course Code: CZ2005
 School: SCSE
 Index Number: 10230
@@ -861,6 +879,23 @@ Total No. of Courses Registered: 0
 Total No. of AUs Registered: 0
 
 
+
+------------------------------------------------------------
+
+Hello student!
+1. Add Course
+2. Drop Course
+3. Check/Print Courses Registered
+4. Check Vacancies Available
+5. Change Index Number of Course
+6. Swop Index Number with Another Student
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
+Enter  index number:
+Sorry! Exceed maximum AU allowed!
 
 ------------------------------------------------------------
 
