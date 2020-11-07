@@ -32,5 +32,6 @@ public abstract class StudentCommand extends Command {
      * @param storage    Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException;
+    public abstract void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage)
+            throws MyStarsException;
 }

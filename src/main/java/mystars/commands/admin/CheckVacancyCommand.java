@@ -23,8 +23,8 @@ public class CheckVacancyCommand extends AdminCommand {
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
-            throws MyStarsException {
+    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui,
+                        Storage storage) throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
         courseList.checkIndexNoInList(indexNumber);
         ui.showVacancy(courseList, indexNumber);

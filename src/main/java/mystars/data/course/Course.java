@@ -20,8 +20,8 @@ public class Course {
     private ArrayList<Student> registeredStudents;
     private ArrayList<Student> waitlistedStudents;
 
-    public Course(String courseCode, String school, String indexNumber, int initialVacancies, int numOfAUs
-            , LessonList lessonList) {
+    public Course(String courseCode, String school, String indexNumber, int initialVacancies, int numOfAUs,
+                  LessonList lessonList) {
         this.courseCode = courseCode;
         this.school = school;
         this.indexNumber = indexNumber;
@@ -70,10 +70,8 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course Code: " + courseCode + System.lineSeparator() +
-                "School: " + school + System.lineSeparator() +
-                "Index Number: " + indexNumber + System.lineSeparator() +
-                "AU: " + numOfAUs + System.lineSeparator() + System.lineSeparator();
+        return String.join(System.lineSeparator(), "Course Code: " + courseCode, "School: " + school,
+                "Index Number: " + indexNumber, "AU: " + numOfAUs, System.lineSeparator());
     }
 
     public int getInitialVacancy() {
@@ -89,8 +87,8 @@ public class Course {
     }
 
     public String getStorageString() {
-        return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancy)
-                , Integer.toString(numOfAUs), lessonList.getLessons().stream().map(Lesson::getStorageString)
+        return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancy),
+                Integer.toString(numOfAUs), lessonList.getLessons().stream().map(Lesson::getStorageString)
                         .collect(Collectors.joining(Parser.ASTERISK_SEPARATOR)));
     }
 
@@ -183,7 +181,7 @@ public class Course {
     }
 
     private void sendEmailToStudent(Student studentToNotify) {
-        new EmailSender().sendMail(studentToNotify.getEmail(), getCourseCode(), getIndexNumber()
-                , studentToNotify.getName());
+        new EmailSender().sendMail(studentToNotify.getEmail(), getCourseCode(), getIndexNumber(),
+                studentToNotify.getName());
     }
 }

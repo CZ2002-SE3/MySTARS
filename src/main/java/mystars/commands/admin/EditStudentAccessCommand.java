@@ -26,8 +26,8 @@ public class EditStudentAccessCommand extends AdminCommand {
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
-            throws MyStarsException {
+    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui,
+                        Storage storage) throws MyStarsException {
         ui.showAccessPeriod(accessDateTime);
         accessDateTime = ui.getNewAccessPeriod();
 

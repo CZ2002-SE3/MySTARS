@@ -17,9 +17,11 @@ public class LessonList {
 
     public boolean tryAddLesson(Lesson newLesson) {
         boolean isClash = getLessons().stream().anyMatch(newLesson::isClash);
+
         if (isClash) {
             return false;
         }
+
         lessons.add(newLesson);
         return true;
     }

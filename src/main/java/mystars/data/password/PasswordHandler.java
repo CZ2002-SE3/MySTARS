@@ -13,6 +13,8 @@ import java.util.Base64;
 
 public class PasswordHandler {
 
+    private static final String HASH_ERROR = "Hashing issue!";
+
     private static final int PBKDF2_ITERATIONS = 32768;
     private static final int KEY_LENGTH = 16;
 
@@ -48,7 +50,7 @@ public class PasswordHandler {
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
             return factory.generateSecret(spec).getEncoded();
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            throw new MyStarsException("Hashing issue!");
+            throw new MyStarsException(HASH_ERROR);
         }
     }
 

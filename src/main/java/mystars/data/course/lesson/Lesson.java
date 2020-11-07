@@ -14,8 +14,8 @@ public class Lesson {
     private final LocalTime endTime;
     private final DayOfWeek day;
 
-    public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek day, Week week
-            , String group) {
+    public Lesson(LessonType lessonType, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek day, Week week,
+                  String group) {
         this.lessonType = lessonType;
         this.venue = venue;
         this.startTime = startTime;
@@ -38,8 +38,8 @@ public class Lesson {
     }
 
     public String getStorageString() {
-        return String.join(Parser.TILDE_SEPARATOR, lessonType.name(), venue, startTime.toString(), endTime.toString()
-                , day.toString(), getWeek().name(), group);
+        return String.join(Parser.TILDE_SEPARATOR, lessonType.name(), venue, startTime.toString(), endTime.toString(),
+                day.toString(), getWeek().name(), group);
     }
 
     public Week getWeek() {

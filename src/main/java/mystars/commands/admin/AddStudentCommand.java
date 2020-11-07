@@ -27,8 +27,8 @@ public class AddStudentCommand extends AdminCommand {
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
-            throws MyStarsException {
+    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui,
+                        Storage storage) throws MyStarsException {
         Student newStudent = ui.getNewStudentFromUser(users);
         users.addStudent(newStudent);
 

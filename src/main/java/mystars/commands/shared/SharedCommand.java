@@ -22,7 +22,6 @@ public abstract class SharedCommand extends Command {
      * @param ui             Ui object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui)
-            throws MyStarsException;
+    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui) throws MyStarsException;
 
 }

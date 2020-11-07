@@ -40,9 +40,8 @@ public class CourseList {
         for (int i = 1; i <= courses.size(); i++) {
             coursesString.append("#").append(i).append(System.lineSeparator()).append(courses.get(i - 1).toString());
         }
-        return "Total No. of Courses Registered: " + courses.size() + System.lineSeparator() +
-                "Total No. of AUs Registered: " + getTotalNoOfAUs() + System.lineSeparator() + System.lineSeparator()
-                + coursesString.toString();
+        return String.join(System.lineSeparator(), "Total No. of Courses Registered: " + courses.size(),
+                "Total No. of AUs Registered: " + getTotalNoOfAUs(), System.lineSeparator() + coursesString.toString());
     }
 
     public boolean isCourseInList(Course courseToCheck) {

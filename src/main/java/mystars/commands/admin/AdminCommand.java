@@ -24,6 +24,6 @@ public abstract class AdminCommand extends Command {
      * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui
-            , Storage storage) throws MyStarsException;
+    public abstract void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui,
+                                 Storage storage) throws MyStarsException;
 }

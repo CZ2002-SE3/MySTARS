@@ -15,11 +15,11 @@ public class EmailSender {
     private static final String[] STARTTLS = {"mail.smtp.starttls.enable", "true"};
     private static final String[] HOST = {"mail.smtp.host", "smtp.gmail.com"};
     private static final String[] PORT = {"mail.smtp.port", "587"};
+    private static final String[] USERNAME_AND_PASSWORD = {"cz2002.se3.group1@gmail.com", "ilovestars"};
+
+    private static final String SUBJECT = "New Course Registered Notification";
 
     public void sendMail(String targetEmailAddress, String emailContent) {
-
-        final String username = "cz2002.se3.group1@gmail.com"; // to be added
-        final String password = "ilovestars"; // to be added
 
         Properties props = new Properties();
         props.put(AUTH[0], AUTH[1]);
@@ -29,15 +29,14 @@ public class EmailSender {
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+                return new PasswordAuthentication(USERNAME_AND_PASSWORD[0], USERNAME_AND_PASSWORD[1]);
             }
         });
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("from-email@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(targetEmailAddress)); // to be added an email addr
-            message.setSubject("New Course Registered Notification");
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(targetEmailAddress));
+            message.setSubject(SUBJECT);
             message.setText(emailContent);
 
             Transport.send(message);
@@ -48,9 +47,9 @@ public class EmailSender {
     }
 
     public void sendMail(String email, String courseCode, String indexNumber, String name) {
-        sendMail(email, "Dear " + name + "," + System.lineSeparator() + System.lineSeparator()
+        sendMail(email, String.join(System.lineSeparator(), "Dear " + name + ",", System.lineSeparator()
                 + "We are pleased to inform you that there is an available slot in " + courseCode + ", of index number "
-                + indexNumber + " and you have been successfully registered for the course." + System.lineSeparator()
-                + System.lineSeparator() + "Regards," + System.lineSeparator() + "STARS Administrators");
+                + indexNumber + " and you have been successfully registered for the course.", System.lineSeparator()
+                + "Regards,", "STARS Administrators"));
     }
 }
