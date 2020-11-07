@@ -48,6 +48,15 @@ public class Parser {
     public static final String ESCAPED_ASTERISK_SEPARATOR = "\\*";
     public static final String ASTERISK_SEPARATOR = ESCAPED_ASTERISK_SEPARATOR.replace("\\", "");
 
+    private static final String INVALID_TYPE_ERROR = "Invalid user type: ";
+    private static final String INVALID_VACANCY_ERROR = "Vacancy is invalid!";
+    private static final String INVALID_AU_ERROR = "Number of AUs is invalid!";
+    private static final String LESSON_CLASH_ERROR = "Lessons clash!";
+    private static final String DATETIME_PARSE_ERROR = "I am unable to parse date/time.";
+
+    private static final String STUDENT = "student";
+    private static final String ADMIN = "admin";
+
     /**
      * Parses admin input, and returns corresponding command.
      *
@@ -132,14 +141,14 @@ public class Parser {
         String password = userSplit[1].trim();
         String type = userSplit[2].trim();
         switch (type) {
-        case "student":
+        case STUDENT:
             user = new Student();
             break;
-        case "admin":
+        case ADMIN:
             user = new Admin();
             break;
         default:
-            throw new MyStarsException("Invalid user type: " + type);
+            throw new MyStarsException(INVALID_TYPE_ERROR + type);
         }
 
 
@@ -171,13 +180,13 @@ public class Parser {
         if (new NumberValidChecker().check(vacancyString)) {
             vacancy = Integer.parseInt(vacancyString);
         } else {
-            throw new MyStarsException("Vacancy is not valid!");
+            throw new MyStarsException(INVALID_VACANCY_ERROR);
         }
 
         if (new NumberValidChecker().check(numOfAUsString)) {
             numOfAUs = Integer.parseInt(numOfAUsString);
         } else {
-            throw new MyStarsException("Number of AUs is not valid!");
+            throw new MyStarsException(INVALID_AU_ERROR);
         }
 
         String[] lessonsString = lessonString.split(ESCAPED_ASTERISK_SEPARATOR);
@@ -210,7 +219,7 @@ public class Parser {
             Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, week, group);
 
             if (!lessonList.tryAddLesson(lessonToAdd)) {
-                throw new MyStarsException("Lesson Clash!");
+                throw new MyStarsException(LESSON_CLASH_ERROR);
             }
         }
 
@@ -272,7 +281,7 @@ public class Parser {
             LocalDateTime end = LocalDateTime.parse(dateTime[1].trim());
             return new LocalDateTime[]{start, end};
         } catch (DateTimeParseException dateTimeParseException) {
-            throw new MyStarsException("I am unable to parse date/time.");
+            throw new MyStarsException(DATETIME_PARSE_ERROR);
         }
     }
 
@@ -288,7 +297,8 @@ public class Parser {
         String[] matricNos = line.split(ESCAPED_LINE_SEPARATOR);
         ArrayList<Student> registeredStudents = new ArrayList<>();
         for (int i = 1; i < matricNos.length; i++) {
-            for (Student student : userList.getUsers().stream().filter(Student.class::isInstance).map(Student.class::cast).collect(Collectors.toList())) {
+            for (Student student : userList.getUsers().stream().filter(Student.class::isInstance)
+                    .map(Student.class::cast).collect(Collectors.toList())) {
                 if (student.getMatricNo().equalsIgnoreCase(matricNos[i])) {
                     registeredStudents.add(student);
                 }

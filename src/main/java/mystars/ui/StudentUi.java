@@ -7,9 +7,9 @@ import mystars.parser.Parser;
 
 public class StudentUi extends Ui {
 
-    private static final String MENU = String.join(System.lineSeparator(), "1. Add Course", "2. Drop Course"
-            , "3. Check/Print Courses Registered", "4. Check Vacancies Available", "5. Change Index Number of Course"
-            , "6. Swop Index Number with Another Student", "7. Logout", "Please select an item:");
+    private static final String MENU = String.join(System.lineSeparator(), "1. Add Course", "2. Drop Course",
+            "3. Check/Print Courses Registered", "4. Check Vacancies Available", "5. Change Index Number of Course",
+            "6. Swop Index Number with Another Student", "7. Logout", "Please select an item:");
 
     public StudentUi(Parser parser) {
         super(parser);
@@ -52,16 +52,16 @@ public class StudentUi extends Ui {
     }
 
     public void showIndexNoChanged(Course desiredCourse, Course currentCourse) {
-        printNicely("Index No changed from: " + currentCourse.getIndexNumber() + " to " +
-                desiredCourse.getIndexNumber());
+        printNicely("Index No changed from: " + currentCourse.getIndexNumber() + " to "
+                + desiredCourse.getIndexNumber());
         showCourse(desiredCourse);
     }
 
     public void showIndexSwop(Course currentCourse, Course peerCourse, Student student, Student peer) {
-        printNicely(student.getMatricNo() + "-Index No changed from: " + currentCourse.getIndexNumber() + " to " +
-                peerCourse.getIndexNumber());
-        printNicely(peer.getMatricNo() + "-Index No changed from: " + peerCourse.getIndexNumber() + " to " +
-                currentCourse.getIndexNumber());
+        printNicely(student.getMatricNo() + "-Index No changed from: " + currentCourse.getIndexNumber() + " to "
+                + peerCourse.getIndexNumber());
+        printNicely(peer.getMatricNo() + "-Index No changed from: " + peerCourse.getIndexNumber() + " to "
+                + currentCourse.getIndexNumber());
     }
 
     public void showCourseVacancy(CourseList courseList, String courseCode) {

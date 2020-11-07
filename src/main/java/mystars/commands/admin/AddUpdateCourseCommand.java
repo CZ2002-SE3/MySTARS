@@ -1,13 +1,16 @@
 package mystars.commands.admin;
 
+import mystars.MyStars;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.mail.EmailSender;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
 
 import java.time.LocalDateTime;
+import java.util.logging.Level;
 
 
 public class AddUpdateCourseCommand extends AdminCommand {
@@ -44,6 +47,7 @@ public class AddUpdateCourseCommand extends AdminCommand {
 
         Course modifiedCourse = courseList.updateCourse(course);
         if (modifiedCourse.checkWaitlist()) {
+            MyStars.logger.log(Level.INFO, EmailSender.SEND_EMAIL_MESSAGE);
             ui.showEmailSent();
         }
 

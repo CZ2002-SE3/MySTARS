@@ -33,14 +33,12 @@ import java.time.format.DateTimeFormatter;
 
 public class AdminUi extends Ui {
 
-    private static final String MENU = String.join(System.lineSeparator(), "1. Edit student access period"
-            , "2. Add a student (name, matric number, gender, nationality, etc)"
-            , "3. Add/Update a course (course code, school, its index numbers and vacancy)"
-            , "4. Check available slot for an index number (vacancy in a class)"
-            , "5. Print student list by index number"
-            , "6. Print student list by course (all students registered for the selected course)."
-            , "7. Logout"
-            , "Please select an item:");
+    private static final String MENU = String.join(System.lineSeparator(), "1. Edit student access period",
+            "2. Add a student (name, matric number, gender, nationality, etc)",
+            "3. Add/Update a course (course code, school, its index numbers and vacancy)",
+            "4. Check available slot for an index number (vacancy in a class)", "5. Print student list by index number",
+            "6. Print student list by course (all students registered for the selected course).", "7. Logout",
+            "Please select an item:");
     private static final String WELCOME_MESSAGE = "Hello Admin!";
 
     @Override
@@ -54,10 +52,12 @@ public class AdminUi extends Ui {
     }
 
     public LocalDateTime[] getNewAccessPeriod() throws MyStarsException {
-        String startDateTimeString = getUserInput("Enter new start date & time in this format: yyyy-MM-dd HH:mm", new DateTimeValidChecker());
+        String startDateTimeString = getUserInput("Enter new start date & time (yyyy-MM-dd HH:mm):",
+                new DateTimeValidChecker());
         LocalDateTime startDateTime = LocalDateTime.parse(startDateTimeString.replace(" ", "T"));
 
-        String endDateTimeString = getUserInput("Enter new end date & time in this format: yyyy-MM-dd HH:mm", new DateTimeValidChecker());
+        String endDateTimeString = getUserInput("Enter new end date & time (yyyy-MM-dd HH:mm):",
+                new DateTimeValidChecker());
         LocalDateTime endDateTime = LocalDateTime.parse(endDateTimeString.replace(" ", "T"));
 
         if (startDateTime.isAfter(endDateTime)) {
@@ -79,7 +79,8 @@ public class AdminUi extends Ui {
         String name = getUserInput("Enter student name:", new InputValidChecker());
         String matricNo = getUserInput("Enter matric number:", new MatricNoValidChecker()).toUpperCase();
         users.checkDuplicateMatricNo(matricNo);
-        Gender gender = Gender.valueOf(getUserInput("Enter gender (M/F):", new GenderValidChecker()).toUpperCase());
+        Gender gender = Gender.valueOf(getUserInput("Enter gender (M/F):",
+                new GenderValidChecker()).toUpperCase());
         String nationality = getUserInput("Enter nationality:", new InputValidChecker());
         String courseOfStudy = getUserInput("Enter course of study:", new InputValidChecker()).toUpperCase();
         int yearOfStudy = Integer.parseInt(getUserInput("Enter year of study:", new YearOfStudyValidChecker()));
@@ -87,8 +88,8 @@ public class AdminUi extends Ui {
         char[][] usernameAndPassword = readUsernameAndPassword();
         users.checkDuplicateUsername(usernameAndPassword[0]);
         usernameAndPassword[1] = new PasswordHandler().generatePBKDF2String(usernameAndPassword[1]).toCharArray();
-        return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, email, usernameAndPassword[0]
-                , usernameAndPassword[1]);
+        return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, email,
+                usernameAndPassword[0], usernameAndPassword[1]);
     }
 
     public void showStudentList(UserList users) {
@@ -116,7 +117,8 @@ public class AdminUi extends Ui {
         String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
         int vacancy = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
         if (course.getRegisteredStudents().size() > vacancy) {
-            throw new MyStarsException("There are more than " + vacancy + " students currently registered in the course!");
+            throw new MyStarsException("There are more than " + vacancy
+                    + " students currently registered in the course!");
         }
         int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
         LessonList lessonList = getLessonList();
@@ -159,7 +161,9 @@ public class AdminUi extends Ui {
     }
 
     private Lesson getLesson() {
-        LessonType lessonType = LessonType.valueOf(getUserInput("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):", new LessonTypeValidChecker()).toUpperCase());
+        LessonType lessonType = LessonType.valueOf(
+                getUserInput("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):",
+                        new LessonTypeValidChecker()).toUpperCase());
         String venue = getUserInput("Enter venue:", new InputValidChecker()).toUpperCase();
         LocalTime[] times = getStartAndEndTime();
         DayOfWeek day = DayOfWeek.valueOf(getUserInput("Enter day", new DayOfWeekValidChecker()).toUpperCase());

@@ -4,6 +4,7 @@ import mystars.MyStars;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.mail.EmailSender;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
@@ -28,8 +29,7 @@ public class Storage {
     private static final String READ_ERROR = "I am unable to read file.";
     private static final String DIRECTORY_ERROR = "I am unable to create directory.";
     private static final String WRITE_ERROR = "I am unable to write file.";
-
-    private static final String SEND_EMAIL_MESSAGE = "Email sent!";
+    private static final String VACANCY_ERROR = "No more vacancy to put student!";
 
     private static final String SETTINGS_FORMAT = "format: start datetime|end datetime";
     private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|"
@@ -172,7 +172,7 @@ public class Storage {
                         course.addRegisteredStudents(students);
 
                     } else {
-                        throw new MyStarsException("No more vacancy to put student!");
+                        throw new MyStarsException(VACANCY_ERROR);
                     }
                 }
             } catch (IOException e) {
@@ -204,7 +204,8 @@ public class Storage {
                     course.addWaitlistedStudents(students);
 
                     if (course.checkWaitlist()) {
-                        MyStars.logger.log(Level.INFO, SEND_EMAIL_MESSAGE);
+                        MyStars.logger.log(Level.INFO, EmailSender.SEND_EMAIL_MESSAGE);
+                        System.out.println(EmailSender.SEND_EMAIL_MESSAGE);
                     }
 
                     saveCourses(courseList);

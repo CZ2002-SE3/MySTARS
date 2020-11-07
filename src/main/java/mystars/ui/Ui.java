@@ -17,15 +17,15 @@ public abstract class Ui {
 
     static final Scanner in = new Scanner(System.in);
     private static final String DOTTED_LINE = "------------------------------------------------------------";
-    private static final String LOGO = String.join(System.lineSeparator()
-            , " _______         _______________________ _______ _______ "
-            , "(       )\\     /(  ____ \\__   __(  ___  |  ____ |  ____ \\"
-            , "| () () ( \\   / ) (    \\/  ) (  | (   ) | (    )| (    \\/"
-            , "| || || |\\ (_) /| (_____   | |  | (___) | (____)| (_____ "
-            , "| |(_)| | \\   / (_____  )  | |  |  ___  |     __|_____  )"
-            , "| |   | |  ) (        ) |  | |  | (   ) | (\\ (        ) |"
-            , "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |"
-            , "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)",
+    private static final String LOGO = String.join(System.lineSeparator(),
+            " _______         _______________________ _______ _______ ",
+            "(       )\\     /(  ____ \\__   __(  ___  |  ____ |  ____ \\",
+            "| () () ( \\   / ) (    \\/  ) (  | (   ) | (    )| (    \\/",
+            "| || || |\\ (_) /| (_____   | |  | (___) | (____)| (_____ ",
+            "| |(_)| | \\   / (_____  )  | |  |  ___  |     __|_____  )",
+            "| |   | |  ) (        ) |  | |  | (   ) | (\\ (        ) |",
+            "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |",
+            "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)",
             "                                                         ", "Welcome!");
 
 
@@ -152,7 +152,7 @@ public abstract class Ui {
 
     public void showEmailSent() {
         showLine();
-        printNicely("Added waitlisted student to course and email sent to inform student.");
+        printNicely("Added waitlisted student to course and sent email.");
         showLine();
     }
 }

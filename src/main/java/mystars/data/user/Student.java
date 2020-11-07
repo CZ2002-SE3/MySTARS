@@ -9,7 +9,14 @@ import mystars.parser.Parser;
 public class Student extends User {
 
     public static final int MAX_AU_ALLOWED = 21;
-
+    private static final String EXCEED_AU_ERROR = "Exceed maximum AU allowed!";
+    private static final String TIMING_CLASH_ERROR = "Timings clash!";
+    private static final String COURSE_IN_REGISTERED_ERROR = "Course already present in registered courses.";
+    private static final String COURSE_IN_WAITLISTED_ERROR = "Course already present in waitlisted courses.";
+    private static final String COURSE_NOT_IN_REGISTERED_ERROR = "Course does not exist in registered courses.";
+    private static final String COURSE_NOT_IN_WAITLISTED_ERROR = "Course does not exist in waitlisted courses.";
+    private static final String REGISTERED_CLASH_ERROR = "Course clashes with registered courses.";
+    private static final String WAITLISTED_CLASH_ERROR = "Course clashes with waitlisted courses.";
     private String name;
     private String matricNo;
     private Gender gender;
@@ -20,8 +27,8 @@ public class Student extends User {
     private CourseList waitlistedCourses;
     private String email;
 
-    public Student(String name, String matricNo, Gender gender, String nationality, String username, String courseOfStudy
-            , int yearOfStudy, String email) {
+    public Student(String name, String matricNo, Gender gender, String nationality, String username,
+                   String courseOfStudy, int yearOfStudy, String email) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
@@ -34,8 +41,8 @@ public class Student extends User {
         super.setUsername(username.toCharArray());
     }
 
-    public Student(String name, String matricNo, Gender gender, String nationality, String courseOfStudy, int yearOfStudy
-            , String email, char[] username, char[] password) {
+    public Student(String name, String matricNo, Gender gender, String nationality, String courseOfStudy,
+                   int yearOfStudy, String email, char[] username, char[] password) {
         this.name = name;
         this.matricNo = matricNo;
         this.gender = gender;
@@ -140,13 +147,13 @@ public class Student extends User {
 
     @Override
     public String getFormattedUserInfo() {
-        return String.join(Parser.LINE_SEPARATOR, String.valueOf(getUsername())
-                , String.valueOf(getPassword()), "student");
+        return String.join(Parser.LINE_SEPARATOR, String.valueOf(getUsername()),
+                String.valueOf(getPassword()), "student");
     }
 
     public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
         if (courseToAdd.getNumOfAUs() + registeredCourses.getTotalNoOfAUs() > MAX_AU_ALLOWED) {
-            throw new MyStarsException("Exceed maximum AU allowed!");
+            throw new MyStarsException(EXCEED_AU_ERROR);
         }
         checkCoursesInList(courseToAdd);
         registeredCourses.addCourse(courseToAdd);
@@ -167,16 +174,16 @@ public class Student extends User {
 
     public void checkCoursesInList(Course courseToAdd) throws MyStarsException {
         if (isCourseInRegistered(courseToAdd)) {
-            throw new MyStarsException("Course already present in registered courses.");
+            throw new MyStarsException(COURSE_IN_REGISTERED_ERROR);
         }
         if (isCourseInWaitlisted(courseToAdd)) {
-            throw new MyStarsException("Course already present in waitlisted courses.");
+            throw new MyStarsException(COURSE_IN_WAITLISTED_ERROR);
         }
         if (registeredCourses.isClash(courseToAdd)) {
-            throw new MyStarsException("Course clashes with registered courses.");
+            throw new MyStarsException(REGISTERED_CLASH_ERROR);
         }
         if (waitlistedCourses.isClash(courseToAdd)) {
-            throw new MyStarsException("Course clashes with waitlisted courses.");
+            throw new MyStarsException(WAITLISTED_CLASH_ERROR);
         }
     }
 
@@ -184,7 +191,7 @@ public class Student extends User {
         if (registeredCourses.isCourseInList(courseToDrop)) {
             registeredCourses.dropCourse(courseToDrop);
         } else {
-            throw new MyStarsException("Course does not exist in registered courses.");
+            throw new MyStarsException(COURSE_NOT_IN_REGISTERED_ERROR);
         }
     }
 
@@ -192,7 +199,7 @@ public class Student extends User {
         if (waitlistedCourses.isCourseInList(courseToDrop)) {
             waitlistedCourses.dropCourse(courseToDrop);
         } else {
-            throw new MyStarsException("Course does not exist in waitlisted courses.");
+            throw new MyStarsException(COURSE_NOT_IN_WAITLISTED_ERROR);
         }
     }
 
@@ -212,12 +219,12 @@ public class Student extends User {
                 Course removedCourse = registeredCourses.getCourses().remove(i);
                 if (courseToModify.getNumOfAUs() + registeredCourses.getTotalNoOfAUs() > MAX_AU_ALLOWED) {
                     registeredCourses.getCourses().add(removedCourse);
-                    throw new MyStarsException("Exceed max AU allowed!");
+                    throw new MyStarsException(EXCEED_AU_ERROR);
                 }
                 for (Course registered : registeredCourses.getCourses()) {
                     if (registered.isClash(courseToModify)) {
                         registeredCourses.getCourses().add(removedCourse);
-                        throw new MyStarsException("Timings clash!");
+                        throw new MyStarsException(TIMING_CLASH_ERROR);
                     }
                 }
                 registeredCourses.getCourses().add(courseToModify);

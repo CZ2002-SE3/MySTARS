@@ -11,6 +11,8 @@ import java.util.Properties;
 
 public class EmailSender {
 
+    public static final String SEND_EMAIL_MESSAGE = "Added waitlisted student to course and sent email.";
+
     private static final String[] AUTH = {"mail.smtp.auth", "true"};
     private static final String[] STARTTLS = {"mail.smtp.starttls.enable", "true"};
     private static final String[] HOST = {"mail.smtp.host", "smtp.gmail.com"};

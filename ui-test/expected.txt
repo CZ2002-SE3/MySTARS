@@ -339,8 +339,8 @@ Please select an item:
 Here is the access period currently:
 2020-07-07 09:00
 2020-12-12 17:00
-Enter new start date & time in this format: yyyy-MM-dd HH:mm
-Enter new end date & time in this format: yyyy-MM-dd HH:mm
+Enter new start date & time (yyyy-MM-dd HH:mm):
+Enter new end date & time (yyyy-MM-dd HH:mm):
 
 Successfully changed! Access period is as follows: 
 2020-11-01 10:00
@@ -922,7 +922,7 @@ AU: 3
 
 ------------------------------------------------------------
 
-Added waitlisted student to course and email sent to inform student.
+Added waitlisted student to course and sent email.
 
 ------------------------------------------------------------
 

@@ -1,12 +1,16 @@
 package mystars.commands.student;
 
+import mystars.MyStars;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.mail.EmailSender;
 import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
+
+import java.util.logging.Level;
 
 
 /**
@@ -46,6 +50,7 @@ public class DropCourseCommand extends StudentCommand {
         }
 
         if (course.checkWaitlist()) {
+            MyStars.logger.log(Level.INFO, EmailSender.SEND_EMAIL_MESSAGE);
             ui.showEmailSent();
         }
 

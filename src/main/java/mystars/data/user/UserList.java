@@ -8,6 +8,9 @@ import java.util.Arrays;
 
 public class UserList {
 
+    private static final String DUPLICATE_MATRIC_ERROR = "Duplicate matric number!";
+    private static final String DUPLICATE_USERNAME_ERROR = "Duplicate username!";
+
     private final ArrayList<User> users;
 
     /**
@@ -73,13 +76,13 @@ public class UserList {
 
     public void checkDuplicateMatricNo(String line) throws MyStarsException {
         if (isDuplicateMatricNo(line)) {
-            throw new MyStarsException("Duplicate matric number!");
+            throw new MyStarsException(DUPLICATE_MATRIC_ERROR);
         }
     }
 
     public void checkDuplicateUsername(char[] line) throws MyStarsException {
         if (isDuplicateUsername(line)) {
-            throw new MyStarsException("Duplicate username!");
+            throw new MyStarsException(DUPLICATE_USERNAME_ERROR);
         }
     }
 
