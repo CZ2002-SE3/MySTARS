@@ -38,6 +38,7 @@ public class MyStars {
      * Initialises MySTARS.
      */
     public MyStars() {
+        logger.setLevel(Level.WARNING);
         parser = new Parser();
         ui = new StudentUi(parser);
         storage = new Storage(parser);
@@ -68,7 +69,6 @@ public class MyStars {
      * Runs MySTARS.
      */
     public void run() {
-        logger.setLevel(Level.WARNING);
         ui.showLine();
         ui.showWelcome();
         Command command = new LogoutCommand();
