@@ -68,10 +68,20 @@ public class UserList {
     }
 
     public void addStudent(Student student) throws MyStarsException {
-        if (!isDuplicateStudent(student)) {
-            users.add(student);
+        users.add(student);
+    }
+
+    public String checkMatricNo(String line) throws MyStarsException {
+        if (!isDuplicateMatricNo(line)) {
+            return line;
         } else {
-            throw new MyStarsException("Duplicate username/matric number!");
+            throw new MyStarsException("Duplicate matric number!");
+        }
+    }
+
+    public void checkUsername(char[] line) throws MyStarsException {
+        if (isDuplicateUsername(line)) {
+            throw new MyStarsException("Duplicate username!");
         }
     }
 
@@ -79,6 +89,24 @@ public class UserList {
         for (User user : users) {
             if (user.equals(student)
                     || (user instanceof Student && ((Student) user).getMatricNo().equals(student.getMatricNo()))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isDuplicateMatricNo(String line) {
+        for (User user : users) {
+            if (user instanceof Student && ((Student) user).getMatricNo().equals(line)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isDuplicateUsername(char[] line) {
+        for (User user : users) {
+            if (Arrays.equals(user.getUsername(), line)) {
                 return true;
             }
         }

@@ -29,7 +29,7 @@ public class AddStudentCommand extends AdminCommand {
     @Override
     public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui, Storage storage)
             throws MyStarsException {
-        Student newStudent = ui.getNewStudentFromUser();
+        Student newStudent = ui.getNewStudentFromUser(users);
         users.addStudent(newStudent);
 
         storage.saveStudent(newStudent);

@@ -75,15 +75,16 @@ public class AdminUi extends Ui {
         printNicely("Please restart program for change to take effect.");
     }
 
-    public Student getNewStudentFromUser() throws MyStarsException {
+    public Student getNewStudentFromUser(UserList users) throws MyStarsException {
         String name = getUserInput("Enter student name:", new InputValidChecker());
-        String matricNo = getUserInput("Enter matric number:", new MatricNoValidChecker()).toUpperCase();
+        String matricNo = users.checkMatricNo(getUserInput("Enter matric number:", new MatricNoValidChecker()).toUpperCase());
         Gender gender = Gender.valueOf(getUserInput("Enter gender (M/F):", new GenderValidChecker()).toUpperCase());
         String nationality = getUserInput("Enter nationality:", new InputValidChecker());
         String courseOfStudy = getUserInput("Enter course of study:", new InputValidChecker()).toUpperCase();
         int yearOfStudy = Integer.parseInt(getUserInput("Enter year of study:", new YearOfStudyValidChecker()));
         String email = getUserInput("Enter email:", new EmailValidChecker());
         char[][] usernameAndPassword = readUsernameAndPassword();
+        users.checkUsername(usernameAndPassword[0]);
         usernameAndPassword[1] = new PasswordHandler().generatePBKDF2String(usernameAndPassword[1]).toCharArray();
         return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, email, usernameAndPassword[0]
                 , usernameAndPassword[1]);
