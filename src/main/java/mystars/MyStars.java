@@ -18,6 +18,7 @@ import mystars.ui.StudentUi;
 import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -67,6 +68,7 @@ public class MyStars {
      * Runs MySTARS.
      */
     public void run() {
+        logger.setLevel(Level.WARNING);
         ui.showLine();
         ui.showWelcome();
         Command command = new LogoutCommand();
