@@ -77,14 +77,15 @@ public class AdminUi extends Ui {
 
     public Student getNewStudentFromUser(UserList users) throws MyStarsException {
         String name = getUserInput("Enter student name:", new InputValidChecker());
-        String matricNo = users.checkMatricNo(getUserInput("Enter matric number:", new MatricNoValidChecker()).toUpperCase());
+        String matricNo = getUserInput("Enter matric number:", new MatricNoValidChecker()).toUpperCase();
+        users.checkDuplicateMatricNo(matricNo);
         Gender gender = Gender.valueOf(getUserInput("Enter gender (M/F):", new GenderValidChecker()).toUpperCase());
         String nationality = getUserInput("Enter nationality:", new InputValidChecker());
         String courseOfStudy = getUserInput("Enter course of study:", new InputValidChecker()).toUpperCase();
         int yearOfStudy = Integer.parseInt(getUserInput("Enter year of study:", new YearOfStudyValidChecker()));
         String email = getUserInput("Enter email:", new EmailValidChecker());
         char[][] usernameAndPassword = readUsernameAndPassword();
-        users.checkUsername(usernameAndPassword[0]);
+        users.checkDuplicateUsername(usernameAndPassword[0]);
         usernameAndPassword[1] = new PasswordHandler().generatePBKDF2String(usernameAndPassword[1]).toCharArray();
         return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, email, usernameAndPassword[0]
                 , usernameAndPassword[1]);
@@ -188,7 +189,7 @@ public class AdminUi extends Ui {
         courses.getCourses().forEach(course -> printNicely(course.toString()));
     }
 
-    public String askUpdate() {
-        return getUserInput("Do you want to update course? (Y/N)", new OptionValidChecker());
+    public boolean askUpdate() {
+        return parser.isYes(getUserInput("Do you want to update course? (Y/N)", new OptionValidChecker()));
     }
 }

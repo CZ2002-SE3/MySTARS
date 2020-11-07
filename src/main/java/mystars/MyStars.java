@@ -18,7 +18,6 @@ import mystars.ui.StudentUi;
 import mystars.ui.Ui;
 
 import java.time.LocalDateTime;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -26,7 +25,7 @@ import java.util.logging.Logger;
  */
 public class MyStars {
 
-    private static final Logger logger = Logger.getLogger(MyStars.class.getName());
+    public static final Logger logger = Logger.getLogger(MyStars.class.getName());
     private final Parser parser;
     private final Storage storage;
     private Ui ui;
@@ -68,7 +67,6 @@ public class MyStars {
      * Runs MySTARS.
      */
     public void run() {
-        logger.setLevel(Level.WARNING);
         ui.showLine();
         ui.showWelcome();
         Command command = new LogoutCommand();
@@ -80,11 +78,9 @@ public class MyStars {
                 }
 
                 if (command.getUser() instanceof Student) {
-                    logger.log(Level.INFO, "show student ui");
                     ui = new StudentUi();
                     command = parser.parseStudentInput(ui.readCommand());
                 } else if (command.getUser() instanceof Admin) {
-                    logger.log(Level.INFO, "show admin ui");
                     ui = new AdminUi();
                     command = parser.parseAdminInput(ui.readCommand());
                 }

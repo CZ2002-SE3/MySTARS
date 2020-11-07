@@ -147,8 +147,7 @@ public abstract class Ui {
     }
 
     public String getIndexNumber(String description) {
-        return getUserInput(String.join(" ", "Enter", description, "index number:"),
-                new IndexNumberValidChecker());
+        return getUserInput("Enter " + description + "index number:", new IndexNumberValidChecker());
     }
 
     public void showEmailSent() {

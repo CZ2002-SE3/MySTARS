@@ -67,32 +67,20 @@ public class UserList {
         return users;
     }
 
-    public void addStudent(Student student) throws MyStarsException {
+    public void addStudent(Student student) {
         users.add(student);
     }
 
-    public String checkMatricNo(String line) throws MyStarsException {
-        if (!isDuplicateMatricNo(line)) {
-            return line;
-        } else {
+    public void checkDuplicateMatricNo(String line) throws MyStarsException {
+        if (isDuplicateMatricNo(line)) {
             throw new MyStarsException("Duplicate matric number!");
         }
     }
 
-    public void checkUsername(char[] line) throws MyStarsException {
+    public void checkDuplicateUsername(char[] line) throws MyStarsException {
         if (isDuplicateUsername(line)) {
             throw new MyStarsException("Duplicate username!");
         }
-    }
-
-    private boolean isDuplicateStudent(Student student) {
-        for (User user : users) {
-            if (user.equals(student)
-                    || (user instanceof Student && ((Student) user).getMatricNo().equals(student.getMatricNo()))) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public boolean isDuplicateMatricNo(String line) {

@@ -41,7 +41,7 @@ Enter year of study:
 Enter email:
 Enter Username: 
 Enter Password: 
-Sorry! Duplicate username/matric number!
+Sorry! Duplicate username!
 
 ------------------------------------------------------------
 
@@ -101,7 +101,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Course Code: CZ2001
 School: SCSE
 Index Number: 10001
@@ -124,7 +124,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Enter course code:
 Invalid input!
 Enter course code:
@@ -302,7 +302,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Sorry! No such index.
 
 ------------------------------------------------------------
@@ -319,7 +319,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 The number of vacancy is 1.
 
 ------------------------------------------------------------
@@ -386,7 +386,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Course Registered!
 Course Code: CZ2008
 School: SCSE
@@ -443,7 +443,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Course Registered!
 Course Code: CZ2007
 School: SCSE
@@ -466,7 +466,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Course Registered!
 Course Code: CZ2002
 School: SCSE
@@ -489,7 +489,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Course Waitlisted!
 Course Code: CZ2008
 School: SCSE
@@ -512,7 +512,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Sorry! No such index.
 
 ------------------------------------------------------------
@@ -529,7 +529,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Sorry! Course clashes with waitlisted courses.
 
 ------------------------------------------------------------
@@ -546,7 +546,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Course Registered!
 Course Code: CZ2001
 School: SCSE
@@ -569,7 +569,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Course Registered!
 Course Code: CZ2005
 School: SCSE
@@ -592,7 +592,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Sorry! Course clashes with registered courses.
 
 ------------------------------------------------------------
@@ -894,7 +894,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Sorry! Exceed maximum AU allowed!
 
 ------------------------------------------------------------
@@ -911,7 +911,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Registered Course Dropped!
 Course Code: CZ2008
 School: SCSE
@@ -1086,7 +1086,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Sorry! No such index.
 
 ------------------------------------------------------------
@@ -1103,7 +1103,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 Here are the list of students:
 Leonardo Irvin Pratama, U1920301J, M, Indonesian
 Woon Yoke Min, U1920004N, F, Singaporean
@@ -1123,7 +1123,7 @@ Please select an item:
 
 ------------------------------------------------------------
 
-Enter  index number:
+Enter index number:
 The number of vacancy is 0.
 
 ------------------------------------------------------------

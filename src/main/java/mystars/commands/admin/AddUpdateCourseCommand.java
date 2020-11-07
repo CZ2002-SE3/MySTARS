@@ -3,7 +3,6 @@ package mystars.commands.admin;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.shared.Option;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
@@ -34,7 +33,7 @@ public class AddUpdateCourseCommand extends AdminCommand {
         if (courseList.isIndexNoInList(indexNumber)) {
             ui.showCourse(courseList.getCourseByIndex(indexNumber));
 
-            if (Option.N.name().equalsIgnoreCase(ui.askUpdate())) {
+            if (!ui.askUpdate()) {
                 return;
             }
 
