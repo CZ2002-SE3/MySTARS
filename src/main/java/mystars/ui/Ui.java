@@ -43,9 +43,9 @@ public abstract class Ui {
      * Prints dotted line.
      */
     public void showLine() {
-        printNicely("");
+        printNicely();
         printNicely(DOTTED_LINE);
-        printNicely("");
+        printNicely();
     }
 
     /**
@@ -68,6 +68,10 @@ public abstract class Ui {
      */
     protected void printNicely(String string) {
         System.out.println(string);
+    }
+
+    protected void printNicely() {
+        printNicely("");
     }
 
     public void showToUser(String message) {
@@ -153,6 +157,5 @@ public abstract class Ui {
     public void showEmailSent() {
         showLine();
         printNicely("Added waitlisted student to course and sent email.");
-        showLine();
     }
 }

@@ -106,8 +106,6 @@ Course Code: CZ2001
 School: SCSE
 Index Number: 10001
 AU: 3
-
-
 Do you want to update course? (Y/N)
 
 ------------------------------------------------------------
@@ -149,144 +147,122 @@ Enter day
 Enter Week (ODD, EVEN, BOTH):
 Enter group:
 Add more lesson? (Y/N)
+
+Here is the courses list:
 Course Code: CZ2001
 School: SCSE
 Index Number: 10001
 AU: 3
-
 
 Course Code: CZ2001
 School: SCSE
 Index Number: 10002
 AU: 3
 
-
 Course Code: CZ2001
 School: SCSE
 Index Number: 10003
 AU: 3
-
 
 Course Code: CZ2001
 School: SCSE
 Index Number: 10004
 AU: 3
 
-
 Course Code: CZ2001
 School: SCSE
 Index Number: 10005
 AU: 3
-
 
 Course Code: CZ2002
 School: SCSE
 Index Number: 20710
 AU: 3
 
-
 Course Code: CZ2002
 School: SCSE
 Index Number: 20711
 AU: 3
-
 
 Course Code: CZ2002
 School: SCSE
 Index Number: 20712
 AU: 3
 
-
 Course Code: CZ2002
 School: SCSE
 Index Number: 20713
 AU: 3
-
 
 Course Code: CZ2004
 School: SCSE
 Index Number: 10217
 AU: 3
 
-
 Course Code: CZ2004
 School: SCSE
 Index Number: 10218
 AU: 3
-
 
 Course Code: CZ2004
 School: SCSE
 Index Number: 10219
 AU: 3
 
-
 Course Code: CZ2005
 School: SCSE
 Index Number: 10230
 AU: 3
-
 
 Course Code: CZ2005
 School: SCSE
 Index Number: 10231
 AU: 3
 
-
 Course Code: CZ2005
 School: SCSE
 Index Number: 10232
 AU: 3
-
 
 Course Code: CZ2007
 School: SCSE
 Index Number: 10813
 AU: 3
 
-
 Course Code: CZ2007
 School: SCSE
 Index Number: 10814
 AU: 3
-
 
 Course Code: CZ2007
 School: SCSE
 Index Number: 10815
 AU: 3
 
-
 Course Code: MH2500
 School: SPMS
 Index Number: 90830
 AU: 4
-
 
 Course Code: MH2500
 School: SPMS
 Index Number: 90831
 AU: 4
 
-
 Course Code: MH2500
 School: SPMS
 Index Number: 90832
 AU: 4
-
 
 Course Code: MH2500
 School: SPMS
 Index Number: 90833
 AU: 4
 
-
 Course Code: CZ2008
 School: SCSE
 Index Number: 12800
 AU: 3
-
-
 
 ------------------------------------------------------------
 
@@ -393,8 +369,6 @@ School: SCSE
 Index Number: 12800
 AU: 3
 
-
-
 ------------------------------------------------------------
 
 Hello student!
@@ -450,8 +424,6 @@ School: SCSE
 Index Number: 10813
 AU: 3
 
-
-
 ------------------------------------------------------------
 
 Hello student!
@@ -473,8 +445,6 @@ School: SCSE
 Index Number: 20710
 AU: 3
 
-
-
 ------------------------------------------------------------
 
 Hello student!
@@ -495,8 +465,6 @@ Course Code: CZ2008
 School: SCSE
 Index Number: 12800
 AU: 3
-
-
 
 ------------------------------------------------------------
 
@@ -553,8 +521,6 @@ School: SCSE
 Index Number: 10003
 AU: 3
 
-
-
 ------------------------------------------------------------
 
 Hello student!
@@ -575,8 +541,6 @@ Course Code: CZ2005
 School: SCSE
 Index Number: 10230
 AU: 3
-
-
 
 ------------------------------------------------------------
 
@@ -618,25 +582,21 @@ Course Code: CZ2007
 School: SCSE
 Index Number: 10813
 AU: 3
-
 #2
 Course Code: CZ2002
 School: SCSE
 Index Number: 20710
 AU: 3
-
 #3
 Course Code: CZ2001
 School: SCSE
 Index Number: 10003
 AU: 3
-
 #4
 Course Code: CZ2005
 School: SCSE
 Index Number: 10230
 AU: 3
-
 
 Here are your waitlisted courses:
 Total No. of Courses Registered: 1
@@ -647,8 +607,6 @@ Course Code: CZ2008
 School: SCSE
 Index Number: 12800
 AU: 3
-
-
 
 ------------------------------------------------------------
 
@@ -736,8 +694,6 @@ School: SCSE
 Index Number: 10003
 AU: 3
 
-
-
 ------------------------------------------------------------
 
 Hello student!
@@ -816,8 +772,8 @@ Enter original index number:
 Enter peer index number:
 Enter Username: 
 Enter Password: 
-U1920301J-Index No changed from: 20711 to 20710
-U1920001N-Index No changed from: 20710 to 20711
+U1920301J - Index No changed from: 20711 to 20710
+U1920001N - Index No changed from: 20710 to 20711
 
 ------------------------------------------------------------
 
@@ -842,42 +798,35 @@ Course Code: CZ2005
 School: SCSE
 Index Number: 10230
 AU: 3
-
 #2
 Course Code: CZ2007
 School: SCSE
 Index Number: 10813
 AU: 3
-
 #3
 Course Code: MH2500
 School: SPMS
 Index Number: 90830
 AU: 4
-
 #4
 Course Code: CZ2008
 School: SCSE
 Index Number: 12800
 AU: 3
-
 #5
 Course Code: CZ2001
 School: SCSE
 Index Number: 10003
 AU: 3
-
 #6
 Course Code: CZ2002
 School: SCSE
 Index Number: 20710
 AU: 3
 
-
 Here are your waitlisted courses:
 Total No. of Courses Registered: 0
 Total No. of AUs Registered: 0
-
 
 
 ------------------------------------------------------------
@@ -918,14 +867,9 @@ School: SCSE
 Index Number: 12800
 AU: 3
 
-
-
 ------------------------------------------------------------
 
 Added waitlisted student to course and sent email.
-
-------------------------------------------------------------
-
 
 ------------------------------------------------------------
 
@@ -975,36 +919,30 @@ Course Code: CZ2007
 School: SCSE
 Index Number: 10813
 AU: 3
-
 #2
 Course Code: CZ2002
 School: SCSE
 Index Number: 20710
 AU: 3
-
 #3
 Course Code: CZ2001
 School: SCSE
 Index Number: 10003
 AU: 3
-
 #4
 Course Code: CZ2005
 School: SCSE
 Index Number: 10230
 AU: 3
-
 #5
 Course Code: CZ2008
 School: SCSE
 Index Number: 12800
 AU: 3
 
-
 Here are your waitlisted courses:
 Total No. of Courses Registered: 0
 Total No. of AUs Registered: 0
-
 
 
 ------------------------------------------------------------

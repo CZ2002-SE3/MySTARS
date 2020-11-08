@@ -32,6 +32,7 @@ public class StudentUi extends Ui {
     public void printAllCourses(Student student) {
         printNicely("Here are your registered courses:");
         printNicely(student.getRegisteredCourses().toString());
+        printNicely();
         printNicely("Here are your waitlisted courses:");
         printNicely(student.getWaitlistedCourses().toString());
     }
@@ -58,9 +59,9 @@ public class StudentUi extends Ui {
     }
 
     public void showIndexSwop(Course currentCourse, Course peerCourse, Student student, Student peer) {
-        printNicely(student.getMatricNo() + "-Index No changed from: " + currentCourse.getIndexNumber() + " to "
+        printNicely(student.getMatricNo() + " - Index No changed from: " + currentCourse.getIndexNumber() + " to "
                 + peerCourse.getIndexNumber());
-        printNicely(peer.getMatricNo() + "-Index No changed from: " + peerCourse.getIndexNumber() + " to "
+        printNicely(peer.getMatricNo() + " - Index No changed from: " + peerCourse.getIndexNumber() + " to "
                 + currentCourse.getIndexNumber());
     }
 

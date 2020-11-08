@@ -38,10 +38,11 @@ public class CourseList {
     public String toString() {
         StringBuilder coursesString = new StringBuilder();
         for (int i = 1; i <= courses.size(); i++) {
-            coursesString.append("#").append(i).append(System.lineSeparator()).append(courses.get(i - 1).toString());
+            coursesString.append(System.lineSeparator()).append("#").append(i).append(System.lineSeparator())
+                    .append(courses.get(i - 1).toString());
         }
         return String.join(System.lineSeparator(), "Total No. of Courses Registered: " + courses.size(),
-                "Total No. of AUs Registered: " + getTotalNoOfAUs(), System.lineSeparator() + coursesString.toString());
+                "Total No. of AUs Registered: " + getTotalNoOfAUs(), coursesString.toString());
     }
 
     public boolean isCourseInList(Course courseToCheck) {

@@ -30,11 +30,9 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.stream.Collectors;
 
 public class AdminUi extends Ui {
-
-    private static final String START_END_TIME_ERROR = "End date/time cannot be early than start date/time";
-    private static final String VACANCY_ERROR = "More students registered for course than vacancies available!";
 
     private static final String MENU = String.join(System.lineSeparator(), "1. Edit student access period",
             "2. Add a student (name, matric number, gender, nationality, etc)",
@@ -54,7 +52,7 @@ public class AdminUi extends Ui {
         showToUser(WELCOME_MESSAGE);
     }
 
-    public LocalDateTime[] getNewAccessPeriod() throws MyStarsException {
+    public LocalDateTime[] getNewAccessPeriod() {
         String startDateTimeString = getUserInput("Enter new start date & time (yyyy-MM-dd HH:mm):",
                 new DateTimeValidChecker());
         LocalDateTime startDateTime = LocalDateTime.parse(startDateTimeString.replace(" ", "T"));
@@ -63,15 +61,21 @@ public class AdminUi extends Ui {
                 new DateTimeValidChecker());
         LocalDateTime endDateTime = LocalDateTime.parse(endDateTimeString.replace(" ", "T"));
 
-        if (startDateTime.isAfter(endDateTime)) {
-            throw new MyStarsException(START_END_TIME_ERROR);
+        while (!parser.isValidStartEndDateTime(startDateTime, endDateTime)) {
+            printNicely("End date & time is before start date & time!");
+            startDateTimeString = getUserInput("Enter new start date & time (yyyy-MM-dd HH:mm):",
+                    new DateTimeValidChecker());
+            startDateTime = LocalDateTime.parse(startDateTimeString.replace(" ", "T"));
+            endDateTimeString = getUserInput("Enter new end date & time (yyyy-MM-dd HH:mm):",
+                    new DateTimeValidChecker());
+            endDateTime = LocalDateTime.parse(endDateTimeString.replace(" ", "T"));
         }
 
         return new LocalDateTime[]{startDateTime, endDateTime};
     }
 
     public void showNewAccessPeriod(LocalDateTime[] accessDateTime) {
-        printNicely("");
+        printNicely();
         printNicely("Successfully changed! Access period is as follows: ");
         printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
@@ -96,7 +100,7 @@ public class AdminUi extends Ui {
     }
 
     public void showStudentList(UserList users) {
-        printNicely("");
+        printNicely();
         printNicely("Here is the student list:");
         users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
     }
@@ -119,9 +123,7 @@ public class AdminUi extends Ui {
         String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
         String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
         int vacancy = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
-        if (course.getRegisteredStudents().size() > vacancy) {
-            throw new MyStarsException(VACANCY_ERROR);
-        }
+        course.checkEnoughVacancies(vacancy);
         int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
         LessonList lessonList = getLessonList();
 
@@ -187,12 +189,15 @@ public class AdminUi extends Ui {
 
 
     public void showAddedStudent(Student newStudent) {
-        printNicely("");
+        printNicely();
         printNicely("Student added: " + newStudent.toString());
     }
 
     public void showCourseList(CourseList courses) {
-        courses.getCourses().forEach(course -> printNicely(course.toString()));
+        printNicely();
+        printNicely("Here is the courses list:");
+        printNicely(courses.getCourses().stream().map(Course::toString)
+                .collect(Collectors.joining(System.lineSeparator() + System.lineSeparator())));
     }
 
     public boolean askUpdate() {

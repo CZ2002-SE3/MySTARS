@@ -310,4 +310,8 @@ public class Parser {
     public String readCourseIndex(String line) {
         return line.split(ESCAPED_LINE_SEPARATOR)[0];
     }
+
+    public boolean isValidStartEndDateTime(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return startDateTime.isBefore(endDateTime);
+    }
 }

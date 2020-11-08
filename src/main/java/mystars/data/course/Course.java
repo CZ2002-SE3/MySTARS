@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class Course {
 
+    private static final String VACANCY_ERROR = "More students registered for course than vacancies available!";
     private final String indexNumber;
     private int initialVacancy;
     private LessonList lessonList;
@@ -71,7 +72,7 @@ public class Course {
     @Override
     public String toString() {
         return String.join(System.lineSeparator(), "Course Code: " + courseCode, "School: " + school,
-                "Index Number: " + indexNumber, "AU: " + numOfAUs, System.lineSeparator());
+                "Index Number: " + indexNumber, "AU: " + numOfAUs);
     }
 
     public int getInitialVacancy() {
@@ -183,5 +184,11 @@ public class Course {
     private void sendEmailToStudent(Student studentToNotify) throws MyStarsException {
         new EmailSender().sendMail(studentToNotify.getEmail(), getCourseCode(), getIndexNumber(),
                 studentToNotify.getName());
+    }
+
+    public void checkEnoughVacancies(int vacancy) throws MyStarsException {
+        if (getRegisteredStudents().size() > vacancy) {
+            throw new MyStarsException(VACANCY_ERROR);
+        }
     }
 }
