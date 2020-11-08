@@ -11,7 +11,8 @@ public class LogoutCommand extends SharedCommand {
 
     /**
      * Executes command.
-     *  @param accessDateTime Access period.
+     *
+     * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
      */
@@ -19,5 +20,7 @@ public class LogoutCommand extends SharedCommand {
     public void execute(AccessDateTime accessDateTime, UserList users, Ui ui) {
         setLoginStatus(false);
         ui.showToUser(MESSAGE);
+
+        checkExit(accessDateTime, users, ui);
     }
 }

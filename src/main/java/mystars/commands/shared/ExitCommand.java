@@ -13,13 +13,15 @@ public class ExitCommand extends SharedCommand {
 
     /**
      * Says goodbye to user and exits MySTARS.
-     *  @param accessDateTime Access period.
+     *
+     * @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
      */
     @Override
     public void execute(AccessDateTime accessDateTime, UserList users, Ui ui) {
         setExit();
+        ui.showLine();
         ui.showToUser(MESSAGE);
     }
 }

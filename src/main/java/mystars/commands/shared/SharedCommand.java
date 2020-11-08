@@ -23,4 +23,10 @@ public abstract class SharedCommand extends Command {
      */
     public abstract void execute(AccessDateTime accessDateTime, UserList users, Ui ui) throws MyStarsException;
 
+    void checkExit(AccessDateTime accessDateTime, UserList users, Ui ui) {
+        if (ui.askExit()) {
+            new ExitCommand().execute(accessDateTime, users, ui);
+        }
+    }
+
 }

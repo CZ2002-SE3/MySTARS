@@ -105,8 +105,8 @@ public abstract class Ui {
 
     public abstract void showMenu();
 
-    public String askExit() {
-        return getUserInput("Do you want to exit? (Y/N)", new OptionValidChecker());
+    public boolean askExit() {
+        return parser.isYes(getUserInput("Do you want to exit? (Y/N)", new OptionValidChecker()));
     }
 
     String getUserInput(String message, ValidChecker validChecker) {

@@ -16,4 +16,9 @@ public class AccessDateTime {
     public void setAccessDateTime(LocalDateTime[] accessDateTime) {
         this.accessDateTime = accessDateTime;
     }
+
+    public boolean isAccessPeriod() {
+        return !getAccessDateTime()[0].isAfter(LocalDateTime.now())
+                && !getAccessDateTime()[1].isBefore(LocalDateTime.now());
+    }
 }
