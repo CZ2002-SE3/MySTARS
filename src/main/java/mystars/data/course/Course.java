@@ -1,5 +1,6 @@
 package mystars.data.course;
 
+import mystars.MyStars;
 import mystars.data.course.lesson.Lesson;
 import mystars.data.exception.MyStarsException;
 import mystars.data.mail.EmailSender;
@@ -7,6 +8,7 @@ import mystars.data.user.Student;
 import mystars.parser.Parser;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 public class Course {
@@ -161,21 +163,20 @@ public class Course {
 
     public boolean checkWaitlist() throws MyStarsException {
         boolean isTransfer = false;
-        int i = 0;
-        while (isThereWaitlistedStudents() && isVacancy()) {
+        for (int i = 0; isThereWaitlistedStudents() && isVacancy(); i++) {
             Student studentToNotify = getWaitlistedStudents().get(i);
             try {
                 studentToNotify.dropWaitlistedCourse(this);
                 studentToNotify.addCourseToRegistered(this);
             } catch (MyStarsException e) {
-                i++;
+                MyStars.logger.log(Level.WARNING, e.getMessage());
                 continue;
             }
-
             dropWaitlistedStudent(studentToNotify);
             addRegisteredStudent(studentToNotify);
 
             sendEmailToStudent(studentToNotify);
+            i--;
             isTransfer = true;
         }
         return isTransfer;
