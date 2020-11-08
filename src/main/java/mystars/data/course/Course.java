@@ -158,7 +158,7 @@ public class Course {
         return "Index: " + getIndexNumber() + " Vacancies/Waitlist Size: " + getVacancies() + "/" + getWaitlistedSize();
     }
 
-    public boolean checkWaitlist() {
+    public boolean checkWaitlist() throws MyStarsException {
         boolean isTransfer = false;
         int i = 0;
         while (isThereWaitlistedStudents() && isVacancy()) {
@@ -180,7 +180,7 @@ public class Course {
         return isTransfer;
     }
 
-    private void sendEmailToStudent(Student studentToNotify) {
+    private void sendEmailToStudent(Student studentToNotify) throws MyStarsException {
         new EmailSender().sendMail(studentToNotify.getEmail(), getCourseCode(), getIndexNumber(),
                 studentToNotify.getName());
     }

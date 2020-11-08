@@ -1,5 +1,6 @@
 package mystars.data.mail;
 
+import mystars.data.exception.MyStarsException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -9,7 +10,7 @@ class EmailSenderTest {
 
     @Test
     void sendMail_invalidEmail_expectException() {
-        assertThrows(RuntimeException.class, () -> new EmailSender().sendMail("invalidEmail", ""));
+        assertThrows(MyStarsException.class, () -> new EmailSender().sendMail("invalidEmail", ""));
     }
 
     @Test

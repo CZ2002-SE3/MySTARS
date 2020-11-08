@@ -1,5 +1,7 @@
 package mystars.data.mail;
 
+import mystars.data.exception.MyStarsException;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -13,6 +15,8 @@ public class EmailSender {
 
     public static final String SEND_EMAIL_MESSAGE = "Added waitlisted student to course and sent email.";
 
+    private static final String EMAIL_ERROR = "Failed to send email!";
+
     private static final String[] AUTH = {"mail.smtp.auth", "true"};
     private static final String[] STARTTLS = {"mail.smtp.starttls.enable", "true"};
     private static final String[] HOST = {"mail.smtp.host", "smtp.gmail.com"};
@@ -21,7 +25,7 @@ public class EmailSender {
 
     private static final String SUBJECT = "New Course Registered Notification";
 
-    public void sendMail(String targetEmailAddress, String emailContent) {
+    public void sendMail(String targetEmailAddress, String emailContent) throws MyStarsException {
 
         Properties props = new Properties();
         props.put(AUTH[0], AUTH[1]);
@@ -44,11 +48,11 @@ public class EmailSender {
             Transport.send(message);
 
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            throw new MyStarsException(EMAIL_ERROR);
         }
     }
 
-    public void sendMail(String email, String courseCode, String indexNumber, String name) {
+    public void sendMail(String email, String courseCode, String indexNumber, String name) throws MyStarsException {
         sendMail(email, String.join(System.lineSeparator(), "Dear " + name + ",", System.lineSeparator()
                 + "We are pleased to inform you that there is an available slot in " + courseCode + ", of index number "
                 + indexNumber + " and you have been successfully registered for the course.", System.lineSeparator()

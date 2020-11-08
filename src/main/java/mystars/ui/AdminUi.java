@@ -33,6 +33,9 @@ import java.time.format.DateTimeFormatter;
 
 public class AdminUi extends Ui {
 
+    private static final String START_END_TIME_ERROR = "End date/time cannot be early than start date/time";
+    private static final String VACANCY_ERROR = "More students registered for course than vacancies available!";
+
     private static final String MENU = String.join(System.lineSeparator(), "1. Edit student access period",
             "2. Add a student (name, matric number, gender, nationality, etc)",
             "3. Add/Update a course (course code, school, its index numbers and vacancy)",
@@ -61,7 +64,7 @@ public class AdminUi extends Ui {
         LocalDateTime endDateTime = LocalDateTime.parse(endDateTimeString.replace(" ", "T"));
 
         if (startDateTime.isAfter(endDateTime)) {
-            throw new MyStarsException("End date/time cannot be early than start date/time");
+            throw new MyStarsException(START_END_TIME_ERROR);
         }
 
         return new LocalDateTime[]{startDateTime, endDateTime};
@@ -117,8 +120,7 @@ public class AdminUi extends Ui {
         String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
         int vacancy = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
         if (course.getRegisteredStudents().size() > vacancy) {
-            throw new MyStarsException("There are more than " + vacancy
-                    + " students currently registered in the course!");
+            throw new MyStarsException(VACANCY_ERROR);
         }
         int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
         LessonList lessonList = getLessonList();
