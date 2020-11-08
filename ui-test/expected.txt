@@ -28,6 +28,30 @@ Please select an item:
 
 ------------------------------------------------------------
 
+Here is the access period currently:
+2020-07-07 09:00
+2020-12-12 17:00
+Enter new start date & time (yyyy-MM-dd HH:mm):
+Enter new end date & time (yyyy-MM-dd HH:mm):
+
+Successfully changed! Access period is as follows: 
+2019-11-01 10:00
+2019-12-01 17:00
+
+------------------------------------------------------------
+
+Hello Admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
 Enter student name:
 Enter matric number:
 Invalid input!
@@ -312,9 +336,41 @@ Please select an item:
 
 ------------------------------------------------------------
 
+You have successfully logged out!
+Do you want to exit? (Y/N)
+
+------------------------------------------------------------
+
+Enter Username: 
+Enter Password: 
+
+------------------------------------------------------------
+
+MyStars is closed for students...
+Do you want to exit? (Y/N)
+
+------------------------------------------------------------
+
+Enter Username: 
+Enter Password: 
+
+------------------------------------------------------------
+
+Hello Admin!
+1. Edit student access period
+2. Add a student (name, matric number, gender, nationality, etc)
+3. Add/Update a course (course code, school, its index numbers and vacancy)
+4. Check available slot for an index number (vacancy in a class)
+5. Print student list by index number
+6. Print student list by course (all students registered for the selected course).
+7. Logout
+Please select an item:
+
+------------------------------------------------------------
+
 Here is the access period currently:
-2020-07-07 09:00
-2020-12-12 17:00
+2019-11-01 10:00
+2019-12-01 17:00
 Enter new start date & time (yyyy-MM-dd HH:mm):
 Enter new end date & time (yyyy-MM-dd HH:mm):
 
