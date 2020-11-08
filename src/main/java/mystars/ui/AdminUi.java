@@ -154,8 +154,11 @@ public class AdminUi extends Ui {
         LessonList lessonList = new LessonList();
         String option = Option.Y.name();
         while (parser.isYes(option)) {
-            if (!lessonList.tryAddLesson(getLesson())) {
+            Lesson lesson = getLesson();
+            if (lessonList.isClash(lesson)) {
                 printNicely("Not added as timing clash!");
+            } else {
+                lessonList.addLesson(lesson);
             }
             option = getUserInput("Add more lesson? (Y/N)", new OptionValidChecker());
         }

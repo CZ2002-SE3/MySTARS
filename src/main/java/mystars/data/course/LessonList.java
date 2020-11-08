@@ -15,14 +15,11 @@ public class LessonList {
         return lessons;
     }
 
-    public boolean tryAddLesson(Lesson newLesson) {
-        boolean isClash = getLessons().stream().anyMatch(newLesson::isClash);
-
-        if (isClash) {
-            return false;
-        }
-
+    public void addLesson(Lesson newLesson) {
         lessons.add(newLesson);
-        return true;
+    }
+
+    public boolean isClash(Lesson lesson) {
+        return getLessons().stream().anyMatch(lesson::isClash);
     }
 }
