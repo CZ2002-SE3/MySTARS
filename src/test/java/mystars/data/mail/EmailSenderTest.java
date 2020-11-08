@@ -10,11 +10,13 @@ class EmailSenderTest {
 
     @Test
     void sendMail_invalidEmail_expectException() {
-        assertThrows(MyStarsException.class, () -> new EmailSender().sendMail("invalidEmail", ""));
+        assertThrows(MyStarsException.class, () -> new EmailSender()
+                .sendMail("invalidEmail", ""));
     }
 
     @Test
     void sendMail_validEmail_expectNoException() {
-        assertDoesNotThrow(() -> new EmailSender().sendMail("cz2002.se3.group1@gmail.com", ":)"));
+        assertDoesNotThrow(() -> new EmailSender()
+                .sendMail("cz2002.se3.group1@gmail.com", ":)"));
     }
 }

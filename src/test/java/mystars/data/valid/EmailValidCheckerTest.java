@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class EmailValidCheckerTest {
 
     @Test
-    void check_invalidEmail_returnsFalse() {
+    void isValid_invalidEmail_returnsFalse() {
         assertFalse(new EmailValidChecker().isValid("a@a."));
     }
 
     @Test
-    void check_validEmail_returnsTrue() {
+    void isValid_validEmail_returnsTrue() {
         assertTrue(new EmailValidChecker().isValid("2@2.com"));
     }
 }
