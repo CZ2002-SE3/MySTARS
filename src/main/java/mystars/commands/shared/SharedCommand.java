@@ -2,10 +2,9 @@ package mystars.commands.shared;
 
 import mystars.commands.Command;
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.AccessDateTime;
 import mystars.data.user.UserList;
 import mystars.ui.Ui;
-
-import java.time.LocalDateTime;
 
 /**
  * Parent shared command class.
@@ -22,6 +21,6 @@ public abstract class SharedCommand extends Command {
      * @param ui             Ui object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui) throws MyStarsException;
+    public abstract void execute(AccessDateTime accessDateTime, UserList users, Ui ui) throws MyStarsException;
 
 }

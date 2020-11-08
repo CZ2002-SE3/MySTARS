@@ -321,7 +321,6 @@ Enter new end date & time (yyyy-MM-dd HH:mm):
 Successfully changed! Access period is as follows: 
 2020-11-01 10:00
 2020-12-01 17:00
-Please restart program for change to take effect.
 
 ------------------------------------------------------------
 

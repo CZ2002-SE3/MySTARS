@@ -8,6 +8,7 @@ import mystars.commands.shared.LogoutCommand;
 import mystars.commands.student.StudentCommand;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.AccessDateTime;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.UserList;
@@ -32,7 +33,7 @@ public class MyStars {
     private Ui ui;
     private UserList users;
     private CourseList courses;
-    private LocalDateTime[] accessDateTime;
+    private AccessDateTime accessDateTime;
 
     /**
      * Initialises MySTARS.
@@ -46,7 +47,7 @@ public class MyStars {
             courses = new CourseList(storage.loadCourses());
             users = new UserList(storage.loadUsers());
             users.addDetails(storage.loadStudents(), storage.loadAdmins());
-            accessDateTime = storage.loadAccessPeriod();
+            accessDateTime = new AccessDateTime(storage.loadAccessPeriod());
             storage.loadCourseRegisteredStudents(courses, users);
             storage.loadCourseWaitlistStudents(courses, users);
 

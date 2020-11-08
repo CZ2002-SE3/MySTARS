@@ -1,9 +1,8 @@
 package mystars.commands.shared;
 
+import mystars.data.shared.AccessDateTime;
 import mystars.data.user.UserList;
 import mystars.ui.Ui;
-
-import java.time.LocalDateTime;
 
 public class LogoutCommand extends SharedCommand {
 
@@ -12,13 +11,12 @@ public class LogoutCommand extends SharedCommand {
 
     /**
      * Executes command.
-     *
-     * @param accessDateTime Access period.
+     *  @param accessDateTime Access period.
      * @param users          UserList object.
      * @param ui             Ui object.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui) {
+    public void execute(AccessDateTime accessDateTime, UserList users, Ui ui) {
         setLoginStatus(false);
         ui.showToUser(MESSAGE);
     }

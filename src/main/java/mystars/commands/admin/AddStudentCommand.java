@@ -2,12 +2,11 @@ package mystars.commands.admin;
 
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.AccessDateTime;
 import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
-
-import java.time.LocalDateTime;
 
 /**
  * Adds new student.
@@ -27,7 +26,7 @@ public class AddStudentCommand extends AdminCommand {
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui,
+    public void execute(AccessDateTime accessDateTime, CourseList courseList, UserList users, AdminUi ui,
                         Storage storage) throws MyStarsException {
         Student newStudent = ui.getNewStudentFromUser(users);
         users.addStudent(newStudent);

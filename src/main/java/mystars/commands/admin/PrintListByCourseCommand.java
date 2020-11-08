@@ -2,11 +2,10 @@ package mystars.commands.admin;
 
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.AccessDateTime;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
-
-import java.time.LocalDateTime;
 
 public class PrintListByCourseCommand extends AdminCommand {
 
@@ -23,7 +22,7 @@ public class PrintListByCourseCommand extends AdminCommand {
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui,
+    public void execute(AccessDateTime accessDateTime, CourseList courseList, UserList users, AdminUi ui,
                         Storage storage) throws MyStarsException {
         String courseCode = ui.getCourseCode();
         courseList.checkCourseInList(courseCode);

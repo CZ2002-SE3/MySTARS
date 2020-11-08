@@ -79,7 +79,6 @@ public class AdminUi extends Ui {
         printNicely("Successfully changed! Access period is as follows: ");
         printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        printNicely("Please restart program for change to take effect.");
     }
 
     public Student getNewStudentFromUser(UserList users) throws MyStarsException {

@@ -3,11 +3,10 @@ package mystars.commands.admin;
 import mystars.commands.Command;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.AccessDateTime;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
-
-import java.time.LocalDateTime;
 
 /**
  * Parent admin command class.
@@ -24,6 +23,6 @@ public abstract class AdminCommand extends Command {
      * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
-    public abstract void execute(LocalDateTime[] accessDateTime, CourseList courseList, UserList users, AdminUi ui,
+    public abstract void execute(AccessDateTime accessDateTime, CourseList courseList, UserList users, AdminUi ui,
                                  Storage storage) throws MyStarsException;
 }

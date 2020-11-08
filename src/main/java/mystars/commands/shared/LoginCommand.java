@@ -1,6 +1,7 @@
 package mystars.commands.shared;
 
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.AccessDateTime;
 import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.ui.Ui;
@@ -20,14 +21,14 @@ public class LoginCommand extends SharedCommand {
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(LocalDateTime[] accessDateTime, UserList users, Ui ui)
+    public void execute(AccessDateTime accessDateTime, UserList users, Ui ui)
             throws MyStarsException {
         char[][] usernameAndPassword = ui.readUsernameAndPassword();
         setLoginStatus(users.isLoginValid(usernameAndPassword));
         setUser(users.getUser(usernameAndPassword));
 
         if (users.getUser(usernameAndPassword) instanceof Student) {
-            checkAccessPeriod(accessDateTime, ui);
+            checkAccessPeriod(accessDateTime.getAccessDateTime(), ui);
         }
         if (!isLogin()) {
             ui.showLine();
