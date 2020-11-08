@@ -11,7 +11,7 @@ public class CourseCodeValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         return line.length() == COURSE_CODE_LENGTH && line.substring(0, 1).chars().allMatch(Character::isLetter)
                 && line.substring(2, COURSE_CODE_LENGTH - 1).chars().allMatch(Character::isDigit);
     }

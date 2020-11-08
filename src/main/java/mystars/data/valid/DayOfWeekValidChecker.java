@@ -12,7 +12,7 @@ public class DayOfWeekValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         return Arrays.stream(DayOfWeek.values()).map(DayOfWeek::name).anyMatch(line::equalsIgnoreCase);
     }
 }

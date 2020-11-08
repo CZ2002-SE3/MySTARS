@@ -9,7 +9,7 @@ public class NumberValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         return line.chars().allMatch(Character::isDigit) && Integer.parseInt(line) >= 0;
     }
 }

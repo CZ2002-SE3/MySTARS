@@ -13,7 +13,7 @@ public class GenderValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         return Arrays.stream(Gender.values()).map(Gender::name).anyMatch(line::equalsIgnoreCase);
     }
 }

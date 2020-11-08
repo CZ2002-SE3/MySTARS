@@ -13,7 +13,7 @@ public class OptionValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         return Arrays.stream(Option.values()).map(Option::name).anyMatch(line::equalsIgnoreCase);
     }
 }

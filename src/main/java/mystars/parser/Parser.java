@@ -177,13 +177,13 @@ public class Parser {
 
         int vacancy;
         int numOfAUs;
-        if (new NumberValidChecker().check(vacancyString)) {
+        if (new NumberValidChecker().isValid(vacancyString)) {
             vacancy = Integer.parseInt(vacancyString);
         } else {
             throw new MyStarsException(INVALID_VACANCY_ERROR);
         }
 
-        if (new NumberValidChecker().check(numOfAUsString)) {
+        if (new NumberValidChecker().isValid(numOfAUsString)) {
             numOfAUs = Integer.parseInt(numOfAUsString);
         } else {
             throw new MyStarsException(INVALID_AU_ERROR);

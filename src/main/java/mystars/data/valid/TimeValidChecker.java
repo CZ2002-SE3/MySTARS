@@ -12,7 +12,7 @@ public class TimeValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         try {
             LocalTime.parse(line);
             return true;

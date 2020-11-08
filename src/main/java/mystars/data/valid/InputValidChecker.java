@@ -12,7 +12,7 @@ public class InputValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         return !line.contains(Parser.LINE_SEPARATOR) && !line.contains(Parser.ASTERISK_SEPARATOR)
                 && !line.contains(Parser.TILDE_SEPARATOR) && !line.equals(EMPTY_STRING);
     }

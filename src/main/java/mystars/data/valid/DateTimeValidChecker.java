@@ -14,7 +14,7 @@ public class DateTimeValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         try {
             LocalDateTime.parse(line.replace(SPACE, DATE_TIME_SEPARATOR));
             return true;

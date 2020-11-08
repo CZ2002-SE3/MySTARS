@@ -12,13 +12,13 @@ public class EmailValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         try {
             InternetAddress internetAddress = new InternetAddress(line);
             internetAddress.validate();
         } catch (AddressException e) {
             return false;
         }
-        return new InputValidChecker().check(line);
+        return new InputValidChecker().isValid(line);
     }
 }

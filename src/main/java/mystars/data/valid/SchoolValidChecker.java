@@ -12,7 +12,7 @@ public class SchoolValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         return line.length() >= MIN_SCHOOL_LENGTH && line.length() <= MAX_SCHOOL_LENGTH
                 && line.chars().allMatch(Character::isLetter);
     }

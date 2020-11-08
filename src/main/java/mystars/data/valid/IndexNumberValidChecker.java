@@ -11,7 +11,7 @@ public class IndexNumberValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
+    public boolean isValid(String line) {
         return line.length() == INDEX_NO_LENGTH && line.chars().allMatch(Character::isDigit);
     }
 }

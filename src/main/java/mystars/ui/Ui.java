@@ -112,7 +112,7 @@ public abstract class Ui {
     String getUserInput(String message, ValidChecker validChecker) {
         printNicely(message);
         String line = in.nextLine().trim();
-        while (!validChecker.check(line)) {
+        while (!validChecker.isValid(line)) {
             printNicely("Invalid input!");
             printNicely(message);
             line = in.nextLine().trim();

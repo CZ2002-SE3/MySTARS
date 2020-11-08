@@ -11,8 +11,8 @@ public class MatricNoValidChecker extends ValidChecker {
      * @return If input is valid.
      */
     @Override
-    public boolean check(String line) {
-        return new InputValidChecker().check(line) && line.length() == MATRIC_NO_LENGTH
+    public boolean isValid(String line) {
+        return new InputValidChecker().isValid(line) && line.length() == MATRIC_NO_LENGTH
                 && line.substring(1, MATRIC_NO_LENGTH - 1).chars().allMatch(Character::isDigit)
                 && Character.isLetter(line.charAt(0)) && Character.isLetter(line.charAt(MATRIC_NO_LENGTH - 1));
     }

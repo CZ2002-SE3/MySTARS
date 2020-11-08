@@ -8,5 +8,5 @@ public abstract class ValidChecker {
      * @param line Line to check.
      * @return If input is valid.
      */
-    public abstract boolean check(String line);
+    public abstract boolean isValid(String line);
 }
