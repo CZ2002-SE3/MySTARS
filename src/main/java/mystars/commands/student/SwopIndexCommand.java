@@ -45,8 +45,8 @@ public class SwopIndexCommand extends StudentCommand {
 
         if (peer.equals(student)) {
             throw new MyStarsException(SAME_USER_ERROR);
-        } else if (!student.getRegisteredCourses().isIndexNoInList(originalIndexNumber) ||
-                !peer.getRegisteredCourses().isIndexNoInList(peerIndexNumber)) {
+        } else if (!student.getRegisteredCourses().isIndexNoInList(originalIndexNumber)
+                || !peer.getRegisteredCourses().isIndexNoInList(peerIndexNumber)) {
             throw new MyStarsException(NOT_REGISTERED_ERROR);
         }
 
