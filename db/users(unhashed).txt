@@ -1,7 +1,7 @@
 format: username|password|type
 IRVIN001|pass0001|student
 JUNHONG002|pass0002|student
-CHENYI001|pass0003|student
+CHINYI001|pass0003|student
 FERLITA001|pass0004|student
 YOKEMIN002|pass0005|student
 SOPHIA021|pass0006|student

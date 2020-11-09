@@ -1,7 +1,7 @@
 format: name|matriculation number|gender|nationality|username|CourseOfStudy~YearOfStudy|email
 Leonardo Irvin Pratama|U1920301J|M|Indonesian|IRVIN001|CSC~2|cz2002.se3.group1@gmail.com
 Tan Jun Hong|U1920001N|M|Singaporean|JUNHONG002|BCG~2|cz2002.se3.group1@gmail.com
-Tey Chin Yi|U1920002P|M|Singaporean|CHENYI001|BCG~2|cz2002.se3.group1@gmail.com
+Tey Chin Yi|U1920002P|M|Singaporean|CHINYI001|BCG~2|cz2002.se3.group1@gmail.com
 Ferlita Halim|U1920003R|F|Indonesian|FERLITA001|CSC~2|cz2002.se3.group1@gmail.com
 Woon Yoke Min|U1920004N|F|Singaporean|YOKEMIN002|BCG~2|cz2002.se3.group1@gmail.com
 Sophia Wang|U1819001A|F|Malaysian|SOPHIA021|ECONS~3|cz2002.se3.group1@gmail.com
