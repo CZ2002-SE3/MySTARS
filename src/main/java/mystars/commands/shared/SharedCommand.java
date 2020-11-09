@@ -28,5 +28,4 @@ public abstract class SharedCommand extends Command {
             new ExitCommand().execute(accessDateTime, users, ui);
         }
     }
-
 }

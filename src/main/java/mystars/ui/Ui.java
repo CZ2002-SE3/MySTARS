@@ -122,12 +122,6 @@ public abstract class Ui {
 
     public abstract void greetUser();
 
-    public void showAccessPeriod(LocalDateTime[] accessDateTime) {
-        printNicely("Here is the access period currently:");
-        printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-    }
-
     public void showCourse(Course course) {
         printNicely(course.toString());
     }

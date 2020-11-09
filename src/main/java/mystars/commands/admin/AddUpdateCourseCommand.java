@@ -55,5 +55,4 @@ public class AddUpdateCourseCommand extends AdminCommand {
         storage.saveCourses(courseList);
         ui.showCourseList(courseList);
     }
-
 }

@@ -74,6 +74,12 @@ public class AdminUi extends Ui {
         return new LocalDateTime[]{startDateTime, endDateTime};
     }
 
+    public void showAccessPeriod(LocalDateTime[] accessDateTime) {
+        printNicely("Here is the access period currently:");
+        printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+    }
+
     public void showNewAccessPeriod(LocalDateTime[] accessDateTime) {
         printNicely();
         printNicely("Successfully changed! Access period is as follows: ");
