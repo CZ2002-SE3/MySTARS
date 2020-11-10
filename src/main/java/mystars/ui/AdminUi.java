@@ -75,16 +75,18 @@ public class AdminUi extends Ui {
     }
 
     public void showAccessPeriod(LocalDateTime[] accessDateTime) {
-        printNicely("Here is the access period currently:");
-        printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        showStartEndDateTime(accessDateTime, "Here is the access period currently:");
+    }
+
+    public void showStartEndDateTime(LocalDateTime[] accessDateTime, String message) {
+        showToUser(String.join(System.lineSeparator(), message,
+                accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))));
     }
 
     public void showNewAccessPeriod(LocalDateTime[] accessDateTime) {
         printNicely();
-        printNicely("Successfully changed! Access period is as follows: ");
-        printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        showStartEndDateTime(accessDateTime, "Successfully changed! Access period is as follows: ");
     }
 
     public Student getNewStudentFromUser(UserList users) throws MyStarsException {
@@ -125,24 +127,21 @@ public class AdminUi extends Ui {
     }
 
     public Course updateCourseDetails(String indexNumber, Course course) throws MyStarsException {
-        String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
-        String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
-        int vacancy = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
-        course.checkEnoughVacancies(vacancy);
-        int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
-        LessonList lessonList = getLessonList();
+        Course newCourse = getCourseDetails(indexNumber);
+        course.checkEnoughVacancies(newCourse.getInitialVacancies());
+        newCourse.setLessonList(getLessonList());
 
-        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
+        return newCourse;
     }
 
     public Course getCourseDetails(String indexNumber) {
         String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
         String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
-        int vacancy = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
+        int initialVacancies = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
         int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
         LessonList lessonList = getLessonList();
 
-        return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
+        return new Course(courseCode, school, indexNumber, initialVacancies, numOfAUs, lessonList);
     }
 
     private Week getWeek() {

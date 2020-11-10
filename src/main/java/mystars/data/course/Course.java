@@ -16,7 +16,7 @@ public class Course {
 
     private static final String VACANCY_ERROR = "More students registered for course than vacancies available!";
     private final String indexNumber;
-    private int initialVacancy;
+    private int initialVacancies;
     private LessonList lessonList;
     private String courseCode;
     private String school;
@@ -29,7 +29,7 @@ public class Course {
         this.courseCode = courseCode;
         this.school = school;
         this.indexNumber = indexNumber;
-        this.initialVacancy = initialVacancies;
+        this.initialVacancies = initialVacancies;
         this.numOfAUs = numOfAUs;
         this.lessonList = lessonList;
         registeredStudents = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Course {
     }
 
     public int getVacancies() {
-        return initialVacancy - registeredStudents.size();
+        return initialVacancies - registeredStudents.size();
     }
 
     public int getWaitlistedSize() {
@@ -72,14 +72,18 @@ public class Course {
         return numOfAUs;
     }
 
+    public void setLessonList(LessonList lessonList) {
+        this.lessonList = lessonList;
+    }
+
     @Override
     public String toString() {
         return String.join(System.lineSeparator(), "Course Code: " + courseCode, "School: " + school,
                 "Index Number: " + indexNumber, "AU: " + numOfAUs);
     }
 
-    public int getInitialVacancy() {
-        return initialVacancy;
+    public int getInitialVacancies() {
+        return initialVacancies;
     }
 
     public boolean isSameCourseCode(Course course) {
@@ -91,7 +95,7 @@ public class Course {
     }
 
     public String getStorageString() {
-        return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancy),
+        return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancies),
                 Integer.toString(numOfAUs), lessonList.getLessons().stream().map(Lesson::getStorageString)
                         .collect(Collectors.joining(Parser.ASTERISK_SEPARATOR)));
     }
@@ -146,7 +150,7 @@ public class Course {
     public void copyCourseDetails(Course newCourse) {
         courseCode = newCourse.courseCode;
         school = newCourse.getSchool();
-        initialVacancy = newCourse.getInitialVacancy();
+        initialVacancies = newCourse.getInitialVacancies();
         numOfAUs = newCourse.getNumOfAUs();
         lessonList = newCourse.lessonList;
     }
