@@ -1,6 +1,6 @@
 package mystars.data.valid;
 
-public class IndexNumberValidChecker extends ValidChecker {
+public class IndexNumberValidChecker implements ValidChecker {
 
     private static final int INDEX_NO_LENGTH = 5;
 

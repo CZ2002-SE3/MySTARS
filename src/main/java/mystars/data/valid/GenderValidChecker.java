@@ -4,7 +4,7 @@ import mystars.data.shared.Gender;
 
 import java.util.Arrays;
 
-public class GenderValidChecker extends ValidChecker {
+public class GenderValidChecker implements ValidChecker {
 
     /**
      * Check input validity.

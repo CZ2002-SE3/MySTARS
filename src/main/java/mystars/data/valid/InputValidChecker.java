@@ -2,7 +2,7 @@ package mystars.data.valid;
 
 import mystars.parser.Parser;
 
-public class InputValidChecker extends ValidChecker {
+public class InputValidChecker implements ValidChecker {
     private static final String EMPTY_STRING = "";
 
     /**

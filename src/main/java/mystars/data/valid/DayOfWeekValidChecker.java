@@ -3,7 +3,7 @@ package mystars.data.valid;
 import java.time.DayOfWeek;
 import java.util.Arrays;
 
-public class DayOfWeekValidChecker extends ValidChecker {
+public class DayOfWeekValidChecker implements ValidChecker {
 
     /**
      * Check input validity.

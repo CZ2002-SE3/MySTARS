@@ -1,6 +1,6 @@
 package mystars.data.valid;
 
-public class CourseCodeValidChecker extends ValidChecker {
+public class CourseCodeValidChecker implements ValidChecker {
 
     private static final int COURSE_CODE_LENGTH = 6;
 

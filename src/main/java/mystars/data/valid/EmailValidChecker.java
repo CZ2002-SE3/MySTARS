@@ -3,7 +3,7 @@ package mystars.data.valid;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
-public class EmailValidChecker extends ValidChecker {
+public class EmailValidChecker implements ValidChecker {
 
     /**
      * Check input validity.

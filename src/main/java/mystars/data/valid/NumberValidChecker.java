@@ -1,6 +1,6 @@
 package mystars.data.valid;
 
-public class NumberValidChecker extends ValidChecker {
+public class NumberValidChecker implements ValidChecker {
 
     /**
      * Check input validity.

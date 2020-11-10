@@ -1,6 +1,6 @@
 package mystars.data.valid;
 
-public class MatricNoValidChecker extends ValidChecker {
+public class MatricNoValidChecker implements ValidChecker {
 
     private static final int MATRIC_NO_LENGTH = 9;
 

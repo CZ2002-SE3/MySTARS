@@ -4,7 +4,7 @@ import mystars.data.shared.Option;
 
 import java.util.Arrays;
 
-public class OptionValidChecker extends ValidChecker {
+public class OptionValidChecker implements ValidChecker {
 
     /**
      * Check input validity.

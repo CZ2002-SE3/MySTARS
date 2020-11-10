@@ -3,7 +3,7 @@ package mystars.data.valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-public class DateTimeValidChecker extends ValidChecker {
+public class DateTimeValidChecker implements ValidChecker {
     private static final String SPACE = " ";
     private static final String DATE_TIME_SEPARATOR = "T";
 

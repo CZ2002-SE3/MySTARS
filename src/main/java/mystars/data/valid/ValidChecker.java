@@ -1,6 +1,6 @@
 package mystars.data.valid;
 
-public abstract class ValidChecker {
+public interface ValidChecker {
 
     /**
      * Check input validity.
@@ -8,5 +8,5 @@ public abstract class ValidChecker {
      * @param line Line to check.
      * @return If input is valid.
      */
-    public abstract boolean isValid(String line);
+    boolean isValid(String line);
 }

@@ -4,7 +4,7 @@ import mystars.data.course.lesson.LessonType;
 
 import java.util.Arrays;
 
-public class LessonTypeValidChecker extends ValidChecker {
+public class LessonTypeValidChecker implements ValidChecker {
 
     /**
      * Check input validity.

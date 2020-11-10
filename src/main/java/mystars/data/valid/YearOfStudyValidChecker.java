@@ -1,6 +1,6 @@
 package mystars.data.valid;
 
-public class YearOfStudyValidChecker extends ValidChecker {
+public class YearOfStudyValidChecker implements ValidChecker {
 
     private static final int MAX_YEAR_OF_STUDY = 5;
     private static final int MIN_YEAR_OF_STUDY = 1;

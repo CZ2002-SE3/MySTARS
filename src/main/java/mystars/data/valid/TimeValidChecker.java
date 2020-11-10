@@ -3,7 +3,7 @@ package mystars.data.valid;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 
-public class TimeValidChecker extends ValidChecker {
+public class TimeValidChecker implements ValidChecker {
 
     /**
      * Check input validity.
