@@ -21,12 +21,12 @@ public abstract class Command {
         return isExit;
     }
 
-    public boolean isLogin() {
-        return isLogin;
-    }
-
     protected void setExit() {
         isExit = true;
+    }
+
+    public boolean isLogin() {
+        return isLogin;
     }
 
     protected void setLoginStatus(boolean isLogin) {

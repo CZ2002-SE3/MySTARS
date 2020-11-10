@@ -34,15 +34,13 @@ public class CourseList {
         return courses.stream().mapToInt(Course::getNumOfAUs).sum();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder coursesString = new StringBuilder();
-        for (int i = 1; i <= courses.size(); i++) {
-            coursesString.append(System.lineSeparator()).append("#").append(i).append(System.lineSeparator())
-                    .append(courses.get(i - 1).toString());
+    public Course getCourseByIndex(String indexNumber) {
+        for (Course course : courses) {
+            if (course.getIndexNumber().equals(indexNumber)) {
+                return course;
+            }
         }
-        return String.join(System.lineSeparator(), "Total No. of Courses Registered: " + courses.size(),
-                "Total No. of AUs Registered: " + getTotalNoOfAUs(), coursesString.toString());
+        return null;
     }
 
     public boolean isCourseInList(Course courseToCheck) {
@@ -58,20 +56,6 @@ public class CourseList {
         return getCourseByIndex(indexNumber) != null;
     }
 
-    public void checkIndexNoInList(String indexNumber) throws MyStarsException {
-        if (!isIndexNoInList(indexNumber)) {
-            throw new MyStarsException(NO_INDEX_ERROR);
-        }
-    }
-
-    public void addCourse(Course courseToAdd) {
-        courses.add(courseToAdd);
-    }
-
-    public void dropCourse(Course courseToDrop) {
-        courses.remove(courseToDrop);
-    }
-
     public boolean isCourseInList(String courseCode) {
         for (Course course : courses) {
             if (course.getCourseCode().equalsIgnoreCase(courseCode)) {
@@ -81,19 +65,27 @@ public class CourseList {
         return false;
     }
 
-    public void checkCourseInList(String courseCode) throws MyStarsException {
-        if (!isCourseInList(courseCode)) {
-            throw new MyStarsException(NO_COURSE_ERROR);
-        }
+    public boolean isClash(Course courseToAdd) {
+        return courses.stream().anyMatch(courseToAdd::isClash);
     }
 
-    public Course getCourseByIndex(String indexNumber) {
-        for (Course course : courses) {
-            if (course.getIndexNumber().equals(indexNumber)) {
-                return course;
-            }
+    @Override
+    public String toString() {
+        StringBuilder coursesString = new StringBuilder();
+        for (int i = 1; i <= courses.size(); i++) {
+            coursesString.append(System.lineSeparator()).append("#").append(i).append(System.lineSeparator())
+                    .append(courses.get(i - 1).toString());
         }
-        return null;
+        return String.join(System.lineSeparator(), "Total No. of Courses Registered: " + courses.size(),
+                "Total No. of AUs Registered: " + getTotalNoOfAUs(), coursesString.toString());
+    }
+
+    public void addCourse(Course courseToAdd) {
+        courses.add(courseToAdd);
+    }
+
+    public void dropCourse(Course courseToDrop) {
+        courses.remove(courseToDrop);
     }
 
     public Course updateCourse(Course newCourse) throws MyStarsException {
@@ -111,7 +103,15 @@ public class CourseList {
         return newCourse;
     }
 
-    public boolean isClash(Course courseToAdd) {
-        return courses.stream().anyMatch(courseToAdd::isClash);
+    public void checkIndexNoInList(String indexNumber) throws MyStarsException {
+        if (!isIndexNoInList(indexNumber)) {
+            throw new MyStarsException(NO_INDEX_ERROR);
+        }
+    }
+
+    public void checkCourseInList(String courseCode) throws MyStarsException {
+        if (!isCourseInList(courseCode)) {
+            throw new MyStarsException(NO_COURSE_ERROR);
+        }
     }
 }

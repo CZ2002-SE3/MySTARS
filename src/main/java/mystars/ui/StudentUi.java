@@ -29,7 +29,7 @@ public class StudentUi extends Ui {
         printNicely("Hello student!");
     }
 
-    public void printAllCourses(Student student) {
+    public void showAllCourses(Student student) {
         printNicely("Here are your registered courses:");
         printNicely(student.getRegisteredCourses().toString());
         printNicely();

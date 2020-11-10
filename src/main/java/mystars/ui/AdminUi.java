@@ -49,7 +49,72 @@ public class AdminUi extends Ui {
 
     @Override
     public void greetUser() {
-        showToUser(WELCOME_MESSAGE);
+        printNicely(WELCOME_MESSAGE);
+    }
+
+    public void showStartEndDateTime(LocalDateTime[] accessDateTime, String message) {
+        printNicely(message);
+        printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+    }
+
+    public void showAccessPeriod(LocalDateTime[] accessDateTime) {
+        showStartEndDateTime(accessDateTime, "Here is the access period currently:");
+    }
+
+    public void showNewAccessPeriod(LocalDateTime[] accessDateTime) {
+        printNicely();
+        showStartEndDateTime(accessDateTime, "Successfully changed! Access period is as follows: ");
+    }
+
+    public void showStudentList(UserList users) {
+        printNicely();
+        printNicely("Here is the student list:");
+        users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
+    }
+
+    public void showStudentListByIndex(UserList users, String indexNumber) {
+        printNicely("Here are the list of students:");
+        users.getUsers().stream().filter(Student.class::isInstance)
+                .filter((student) -> ((Student) student).getRegisteredCourses().isIndexNoInList(indexNumber))
+                .forEach(user -> printNicely(user.toString()));
+    }
+
+    public void showStudentListByCourse(UserList users, String courseCode) {
+        printNicely("Here are the list of students:");
+        users.getUsers().stream().filter(Student.class::isInstance)
+                .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
+                .forEach(user -> printNicely(user.toString()));
+    }
+
+    public void showCourseList(CourseList courses) {
+        printNicely();
+        printNicely("Here is the courses list:");
+        printNicely(courses.getCourses().stream().map(Course::toString)
+                .collect(Collectors.joining(System.lineSeparator() + System.lineSeparator())));
+    }
+
+    public void showAddedStudent(Student newStudent) {
+        printNicely();
+        printNicely("Student added: " + newStudent.toString());
+    }
+
+    public Course updateCourseDetails(String indexNumber, Course course) throws MyStarsException {
+        Course newCourse = getCourseDetails(indexNumber);
+        course.checkEnoughVacancies(newCourse.getInitialVacancies());
+        newCourse.setLessonList(getLessonList());
+
+        return newCourse;
+    }
+
+    public Course getCourseDetails(String indexNumber) {
+        String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
+        String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
+        int initialVacancies = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
+        int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
+        LessonList lessonList = getLessonList();
+
+        return new Course(courseCode, school, indexNumber, initialVacancies, numOfAUs, lessonList);
     }
 
     public LocalDateTime[] getNewAccessPeriod() {
@@ -74,21 +139,6 @@ public class AdminUi extends Ui {
         return new LocalDateTime[]{startDateTime, endDateTime};
     }
 
-    public void showAccessPeriod(LocalDateTime[] accessDateTime) {
-        showStartEndDateTime(accessDateTime, "Here is the access period currently:");
-    }
-
-    public void showStartEndDateTime(LocalDateTime[] accessDateTime, String message) {
-        showToUser(String.join(System.lineSeparator(), message,
-                accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
-                accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))));
-    }
-
-    public void showNewAccessPeriod(LocalDateTime[] accessDateTime) {
-        printNicely();
-        showStartEndDateTime(accessDateTime, "Successfully changed! Access period is as follows: ");
-    }
-
     public Student getNewStudentFromUser(UserList users) throws MyStarsException {
         String name = getUserInput("Enter student name:", new InputValidChecker());
         String matricNo = getUserInput("Enter matric number:", new MatricNoValidChecker()).toUpperCase();
@@ -104,44 +154,6 @@ public class AdminUi extends Ui {
         usernameAndPassword[1] = new PasswordHandler().generatePBKDF2String(usernameAndPassword[1]).toCharArray();
         return new Student(name, matricNo, gender, nationality, courseOfStudy, yearOfStudy, email,
                 usernameAndPassword[0], usernameAndPassword[1]);
-    }
-
-    public void showStudentList(UserList users) {
-        printNicely();
-        printNicely("Here is the student list:");
-        users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
-    }
-
-    public void showStudentListByIndex(UserList users, String indexNumber) {
-        printNicely("Here are the list of students:");
-        users.getUsers().stream().filter(Student.class::isInstance)
-                .filter((student) -> ((Student) student).getRegisteredCourses().isIndexNoInList(indexNumber))
-                .forEach(user -> printNicely(user.toString()));
-    }
-
-    public void showStudentListByCourse(UserList users, String courseCode) {
-        printNicely("Here are the list of students:");
-        users.getUsers().stream().filter(Student.class::isInstance)
-                .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
-                .forEach(user -> printNicely(user.toString()));
-    }
-
-    public Course updateCourseDetails(String indexNumber, Course course) throws MyStarsException {
-        Course newCourse = getCourseDetails(indexNumber);
-        course.checkEnoughVacancies(newCourse.getInitialVacancies());
-        newCourse.setLessonList(getLessonList());
-
-        return newCourse;
-    }
-
-    public Course getCourseDetails(String indexNumber) {
-        String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
-        String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
-        int initialVacancies = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
-        int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
-        LessonList lessonList = getLessonList();
-
-        return new Course(courseCode, school, indexNumber, initialVacancies, numOfAUs, lessonList);
     }
 
     private Week getWeek() {
@@ -192,19 +204,6 @@ public class AdminUi extends Ui {
             endTime = LocalTime.parse(getUserInput("Enter end time (HH:mm)", new TimeValidChecker()));
         }
         return new LocalTime[]{startTime, endTime};
-    }
-
-
-    public void showAddedStudent(Student newStudent) {
-        printNicely();
-        printNicely("Student added: " + newStudent.toString());
-    }
-
-    public void showCourseList(CourseList courses) {
-        printNicely();
-        printNicely("Here is the courses list:");
-        printNicely(courses.getCourses().stream().map(Course::toString)
-                .collect(Collectors.joining(System.lineSeparator() + System.lineSeparator())));
     }
 
     public boolean askUpdate() {

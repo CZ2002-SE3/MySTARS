@@ -132,23 +132,28 @@ public class Student extends User {
         this.email = email;
     }
 
-    @Override
-    public void copyDetails(User user) {
-        setName(((Student) user).getName());
-        setMatricNo(((Student) user).getMatricNo());
-        setGender(((Student) user).getGender());
-        setNationality(((Student) user).getNationality());
-        setCourseOfStudy(((Student) user).getCourseOfStudy());
-        setYearOfStudy(((Student) user).getYearOfStudy());
-        setEmail(((Student) user).getEmail());
-        setRegisteredCourses(((Student) user).getRegisteredCourses());
-        setWaitlistedCourses(((Student) user).getWaitlistedCourses());
+    public boolean isCourseInRegistered(Course courseToAdd) {
+        return registeredCourses.isCourseInList(courseToAdd);
+    }
+
+    public boolean isCourseInWaitlisted(Course courseToAdd) {
+        return waitlistedCourses.isCourseInList(courseToAdd);
     }
 
     @Override
     public String getFormattedUserInfo() {
         return String.join(Parser.LINE_SEPARATOR, String.valueOf(getUsername()),
                 String.valueOf(getPassword()), "student");
+    }
+
+    public String getFormattedString() {
+        return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
+                , String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy, email);
+    }
+
+    @Override
+    public String toString() {
+        return String.join(", ", name, matricNo, String.valueOf(gender), nationality);
     }
 
     public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
@@ -162,29 +167,6 @@ public class Student extends User {
     public void addCourseToWaitlisted(Course courseToAdd) throws MyStarsException {
         checkCoursesInList(courseToAdd);
         waitlistedCourses.addCourse(courseToAdd);
-    }
-
-    public boolean isCourseInRegistered(Course courseToAdd) {
-        return registeredCourses.isCourseInList(courseToAdd);
-    }
-
-    public boolean isCourseInWaitlisted(Course courseToAdd) {
-        return waitlistedCourses.isCourseInList(courseToAdd);
-    }
-
-    public void checkCoursesInList(Course courseToAdd) throws MyStarsException {
-        if (isCourseInRegistered(courseToAdd)) {
-            throw new MyStarsException(COURSE_IN_REGISTERED_ERROR);
-        }
-        if (isCourseInWaitlisted(courseToAdd)) {
-            throw new MyStarsException(COURSE_IN_WAITLISTED_ERROR);
-        }
-        if (registeredCourses.isClash(courseToAdd)) {
-            throw new MyStarsException(REGISTERED_CLASH_ERROR);
-        }
-        if (waitlistedCourses.isClash(courseToAdd)) {
-            throw new MyStarsException(WAITLISTED_CLASH_ERROR);
-        }
     }
 
     public void dropRegisteredCourse(Course courseToDrop) throws MyStarsException {
@@ -203,14 +185,32 @@ public class Student extends User {
         }
     }
 
-    public String getFormattedString() {
-        return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
-                , String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy, email);
+    @Override
+    public void copyDetails(User user) {
+        setName(((Student) user).getName());
+        setMatricNo(((Student) user).getMatricNo());
+        setGender(((Student) user).getGender());
+        setNationality(((Student) user).getNationality());
+        setCourseOfStudy(((Student) user).getCourseOfStudy());
+        setYearOfStudy(((Student) user).getYearOfStudy());
+        setEmail(((Student) user).getEmail());
+        setRegisteredCourses(((Student) user).getRegisteredCourses());
+        setWaitlistedCourses(((Student) user).getWaitlistedCourses());
     }
 
-    @Override
-    public String toString() {
-        return String.join(", ", name, matricNo, String.valueOf(gender), nationality);
+    public void checkCoursesInList(Course courseToAdd) throws MyStarsException {
+        if (isCourseInRegistered(courseToAdd)) {
+            throw new MyStarsException(COURSE_IN_REGISTERED_ERROR);
+        }
+        if (isCourseInWaitlisted(courseToAdd)) {
+            throw new MyStarsException(COURSE_IN_WAITLISTED_ERROR);
+        }
+        if (registeredCourses.isClash(courseToAdd)) {
+            throw new MyStarsException(REGISTERED_CLASH_ERROR);
+        }
+        if (waitlistedCourses.isClash(courseToAdd)) {
+            throw new MyStarsException(WAITLISTED_CLASH_ERROR);
+        }
     }
 
     public void modifyCourse(Course courseToModify) throws MyStarsException {

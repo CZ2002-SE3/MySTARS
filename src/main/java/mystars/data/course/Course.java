@@ -56,6 +56,26 @@ public class Course {
         return waitlistedStudents.size();
     }
 
+    public int getNumOfAUs() {
+        return numOfAUs;
+    }
+
+    public ArrayList<Student> getRegisteredStudents() {
+        return registeredStudents;
+    }
+
+    public ArrayList<Student> getWaitlistedStudents() {
+        return waitlistedStudents;
+    }
+
+    public int getInitialVacancies() {
+        return initialVacancies;
+    }
+
+    public void setLessonList(LessonList lessonList) {
+        this.lessonList = lessonList;
+    }
+
     public boolean isVacancy() {
         return getVacancies() > 0;
     }
@@ -68,24 +88,6 @@ public class Course {
         return !getWaitlistedStudents().isEmpty();
     }
 
-    public int getNumOfAUs() {
-        return numOfAUs;
-    }
-
-    public void setLessonList(LessonList lessonList) {
-        this.lessonList = lessonList;
-    }
-
-    @Override
-    public String toString() {
-        return String.join(System.lineSeparator(), "Course Code: " + courseCode, "School: " + school,
-                "Index Number: " + indexNumber, "AU: " + numOfAUs);
-    }
-
-    public int getInitialVacancies() {
-        return initialVacancies;
-    }
-
     public boolean isSameCourseCode(Course course) {
         return course.getCourseCode().equals(getCourseCode());
     }
@@ -94,15 +96,15 @@ public class Course {
         return course.getIndexNumber().equals(getIndexNumber());
     }
 
-    public String getStorageString() {
-        return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancies),
-                Integer.toString(numOfAUs), lessonList.getLessons().stream().map(Lesson::getStorageString)
-                        .collect(Collectors.joining(Parser.ASTERISK_SEPARATOR)));
-    }
-
     public boolean isClash(Course courseToAdd) {
         return courseToAdd.lessonList.getLessons().stream()
                 .anyMatch(lesson -> lessonList.getLessons().stream().anyMatch(lesson::isClash));
+    }
+
+    @Override
+    public String toString() {
+        return String.join(System.lineSeparator(), "Course Code: " + courseCode, "School: " + school,
+                "Index Number: " + indexNumber, "AU: " + numOfAUs);
     }
 
     public String getRegisteredFormattedString() {
@@ -110,25 +112,23 @@ public class Course {
                 .collect(Collectors.joining(Parser.LINE_SEPARATOR)));
     }
 
-    public ArrayList<Student> getRegisteredStudents() {
-        return registeredStudents;
+    public String getWaitlistedFormattedString() {
+        return String.join(Parser.LINE_SEPARATOR, indexNumber, waitlistedStudents.stream().map(Student::getMatricNo)
+                .collect(Collectors.joining(Parser.LINE_SEPARATOR)));
     }
 
-    public ArrayList<Student> getWaitlistedStudents() {
-        return waitlistedStudents;
+    public String getVacancyString() {
+        return "Index: " + getIndexNumber() + " Vacancies/Waitlist Size: " + getVacancies() + "/" + getWaitlistedSize();
+    }
+
+    public String getStorageString() {
+        return String.join(Parser.LINE_SEPARATOR, courseCode, school, indexNumber, Integer.toString(initialVacancies),
+                Integer.toString(numOfAUs), lessonList.getLessons().stream().map(Lesson::getStorageString)
+                        .collect(Collectors.joining(Parser.ASTERISK_SEPARATOR)));
     }
 
     public void addRegisteredStudents(ArrayList<Student> students) {
         registeredStudents = students;
-    }
-
-    public void addWaitlistedStudents(ArrayList<Student> students) {
-        waitlistedStudents = students;
-    }
-
-    public String getWaitlistedFormattedString() {
-        return String.join(Parser.LINE_SEPARATOR, indexNumber, waitlistedStudents.stream().map(Student::getMatricNo)
-                .collect(Collectors.joining(Parser.LINE_SEPARATOR)));
     }
 
     public void addRegisteredStudent(Student student) {
@@ -139,6 +139,10 @@ public class Course {
         registeredStudents.remove(student);
     }
 
+    public void addWaitlistedStudents(ArrayList<Student> students) {
+        waitlistedStudents = students;
+    }
+
     public void addWaitlistedStudent(Student student) {
         waitlistedStudents.add(student);
     }
@@ -147,23 +151,10 @@ public class Course {
         waitlistedStudents.remove(student);
     }
 
-    public void copyCourseDetails(Course newCourse) {
-        courseCode = newCourse.courseCode;
-        school = newCourse.getSchool();
-        initialVacancies = newCourse.getInitialVacancies();
-        numOfAUs = newCourse.getNumOfAUs();
-        lessonList = newCourse.lessonList;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        assert obj instanceof Course;
-
-        return indexNumber.equals(((Course) obj).getIndexNumber());
-    }
-
-    public String getVacancyString() {
-        return "Index: " + getIndexNumber() + " Vacancies/Waitlist Size: " + getVacancies() + "/" + getWaitlistedSize();
+    public void checkEnoughVacancies(int vacancy) throws MyStarsException {
+        if (getRegisteredStudents().size() > vacancy) {
+            throw new MyStarsException(VACANCY_ERROR);
+        }
     }
 
     public boolean checkWaitlist() throws MyStarsException {
@@ -187,14 +178,23 @@ public class Course {
         return isTransfer;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        assert obj instanceof Course;
+
+        return indexNumber.equals(((Course) obj).getIndexNumber());
+    }
+
+    public void copyCourseDetails(Course newCourse) {
+        courseCode = newCourse.courseCode;
+        school = newCourse.getSchool();
+        initialVacancies = newCourse.getInitialVacancies();
+        numOfAUs = newCourse.getNumOfAUs();
+        lessonList = newCourse.lessonList;
+    }
+
     private void sendToStudent(Student studentToNotify, Sender sender) throws MyStarsException {
         sender.send(studentToNotify.getEmail(), getCourseCode(), getIndexNumber(),
                 studentToNotify.getName());
-    }
-
-    public void checkEnoughVacancies(int vacancy) throws MyStarsException {
-        if (getRegisteredStudents().size() > vacancy) {
-            throw new MyStarsException(VACANCY_ERROR);
-        }
     }
 }

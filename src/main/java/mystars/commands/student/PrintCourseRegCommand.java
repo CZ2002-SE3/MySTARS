@@ -21,6 +21,6 @@ public class PrintCourseRegCommand extends StudentCommand {
     @Override
     public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) {
         Student student = (Student) this.getUser();
-        ui.printAllCourses(student);
+        ui.showAllCourses(student);
     }
 }

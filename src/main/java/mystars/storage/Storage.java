@@ -273,10 +273,35 @@ public class Storage {
         return new LocalDateTime[]{LocalDateTime.now(), LocalDateTime.now()};
     }
 
+    public void saveCourses(CourseList courses) throws MyStarsException {
+        String coursesString = courses.getCourses().stream().map(Course::getStorageString)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString;
+        writeToFile(coursesFileContent, COURSES_FILE);
+
+        String registeredString = courses.getCourses().stream().filter(Course::isThereRegisteredStudents)
+                .map(Course::getRegisteredFormattedString).collect(Collectors.joining(System.lineSeparator()));
+
+        String registeredFileContent = REGISTERED_FORMAT + System.lineSeparator() + registeredString;
+        writeToFile(registeredFileContent, REGISTERED_FILE);
+
+        String waitlistedString = courses.getCourses().stream().filter(Course::isThereWaitlistedStudents)
+                .map(Course::getWaitlistedFormattedString).collect(Collectors.joining(System.lineSeparator()));
+
+        String waitlistedFileContent = WAITLISTED_FORMAT + System.lineSeparator() + waitlistedString;
+        writeToFile(waitlistedFileContent, WAITLISTED_FILE);
+    }
+
     public void saveAccessPeriod(LocalDateTime[] accessPeriod) throws MyStarsException {
         String accessPeriodString = SETTINGS_FORMAT + System.lineSeparator() + accessPeriod[0] +
                 Parser.LINE_SEPARATOR + accessPeriod[1];
         writeToFile(accessPeriodString, SETTINGS_FILE);
+    }
+
+    public void saveStudent(Student newStudent) throws MyStarsException {
+        appendToFile(newStudent.getFormattedString(), STUDENTS_FILE);
+        appendToFile(newStudent.getFormattedUserInfo(), USERS_FILE);
     }
 
     /**
@@ -324,30 +349,5 @@ public class Storage {
                 throw new MyStarsException(WRITE_ERROR);
             }
         }
-    }
-
-    public void saveStudent(Student newStudent) throws MyStarsException {
-        appendToFile(newStudent.getFormattedString(), STUDENTS_FILE);
-        appendToFile(newStudent.getFormattedUserInfo(), USERS_FILE);
-    }
-
-    public void saveCourses(CourseList courses) throws MyStarsException {
-        String coursesString = courses.getCourses().stream().map(Course::getStorageString)
-                .collect(Collectors.joining(System.lineSeparator()));
-
-        String coursesFileContent = COURSES_FORMAT + System.lineSeparator() + coursesString;
-        writeToFile(coursesFileContent, COURSES_FILE);
-
-        String registeredString = courses.getCourses().stream().filter(Course::isThereRegisteredStudents)
-                .map(Course::getRegisteredFormattedString).collect(Collectors.joining(System.lineSeparator()));
-
-        String registeredFileContent = REGISTERED_FORMAT + System.lineSeparator() + registeredString;
-        writeToFile(registeredFileContent, REGISTERED_FILE);
-
-        String waitlistedString = courses.getCourses().stream().filter(Course::isThereWaitlistedStudents)
-                .map(Course::getWaitlistedFormattedString).collect(Collectors.joining(System.lineSeparator()));
-
-        String waitlistedFileContent = WAITLISTED_FORMAT + System.lineSeparator() + waitlistedString;
-        writeToFile(waitlistedFileContent, WAITLISTED_FILE);
     }
 }

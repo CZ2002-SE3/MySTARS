@@ -29,18 +29,7 @@ public class UserList {
         this.users = users;
     }
 
-    public boolean isLoginValid(char[][] usernameAndPassword) throws MyStarsException {
-
-        for (User user : users) {
-            if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
-                return new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword());
-            }
-        }
-        return false;
-    }
-
     public User getUser(char[][] usernameAndPassword) throws MyStarsException {
-
         for (User user : users) {
             if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
                 if (new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword())) {
@@ -53,37 +42,17 @@ public class UserList {
         return null;
     }
 
-    public void addDetails(ArrayList<User> students, ArrayList<User> admins) {
-        ArrayList<User> userDetails = new ArrayList<>(students);
-        userDetails.addAll(admins);
-        for (User user : users) {
-            for (User userDetail : userDetails) {
-                if (user.equals(userDetail)) {
-                    user.copyDetails(userDetail);
-                    break;
-                }
-            }
-        }
-    }
-
     public ArrayList<User> getUsers() {
         return users;
     }
 
-    public void addStudent(Student student) {
-        users.add(student);
-    }
-
-    public void checkDuplicateMatricNo(String line) throws MyStarsException {
-        if (isDuplicateMatricNo(line)) {
-            throw new MyStarsException(DUPLICATE_MATRIC_ERROR);
+    public boolean isLoginValid(char[][] usernameAndPassword) throws MyStarsException {
+        for (User user : users) {
+            if (Arrays.equals(user.getUsername(), usernameAndPassword[0])) {
+                return new PasswordHandler().validatePassword(usernameAndPassword[1], user.getPassword());
+            }
         }
-    }
-
-    public void checkDuplicateUsername(char[] line) throws MyStarsException {
-        if (isDuplicateUsername(line)) {
-            throw new MyStarsException(DUPLICATE_USERNAME_ERROR);
-        }
+        return false;
     }
 
     public boolean isDuplicateMatricNo(String line) {
@@ -102,5 +71,34 @@ public class UserList {
             }
         }
         return false;
+    }
+
+    public void addDetails(ArrayList<User> students, ArrayList<User> admins) {
+        ArrayList<User> userDetails = new ArrayList<>(students);
+        userDetails.addAll(admins);
+        for (User user : users) {
+            for (User userDetail : userDetails) {
+                if (user.equals(userDetail)) {
+                    user.copyDetails(userDetail);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void addStudent(Student student) {
+        users.add(student);
+    }
+
+    public void checkDuplicateMatricNo(String line) throws MyStarsException {
+        if (isDuplicateMatricNo(line)) {
+            throw new MyStarsException(DUPLICATE_MATRIC_ERROR);
+        }
+    }
+
+    public void checkDuplicateUsername(char[] line) throws MyStarsException {
+        if (isDuplicateUsername(line)) {
+            throw new MyStarsException(DUPLICATE_USERNAME_ERROR);
+        }
     }
 }

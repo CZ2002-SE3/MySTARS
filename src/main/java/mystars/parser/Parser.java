@@ -195,10 +195,6 @@ public class Parser {
         return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
     }
 
-    public boolean isValidWeek(String line) {
-        return Arrays.stream(Week.values()).map(Week::name).anyMatch(line::equalsIgnoreCase);
-    }
-
     private LessonList readLessons(String[] lessonsString) throws MyStarsException {
         LessonList lessonList = new LessonList();
         for (String lessonString : lessonsString) {
@@ -286,14 +282,6 @@ public class Parser {
         }
     }
 
-    public boolean isYes(String line) {
-        return line.trim().equalsIgnoreCase(Option.Y.name());
-    }
-
-    public boolean isValidStartEndTime(LocalTime startTime, LocalTime endTime) {
-        return startTime.isBefore(endTime);
-    }
-
     public ArrayList<Student> readStudentList(String line, UserList userList) {
         String[] matricNos = line.split(ESCAPED_LINE_SEPARATOR);
         ArrayList<Student> registeredStudents = new ArrayList<>();
@@ -310,6 +298,18 @@ public class Parser {
 
     public String readCourseIndex(String line) {
         return line.split(ESCAPED_LINE_SEPARATOR)[0];
+    }
+
+    public boolean isValidWeek(String line) {
+        return Arrays.stream(Week.values()).map(Week::name).anyMatch(line::equalsIgnoreCase);
+    }
+
+    public boolean isYes(String line) {
+        return line.trim().equalsIgnoreCase(Option.Y.name());
+    }
+
+    public boolean isValidStartEndTime(LocalTime startTime, LocalTime endTime) {
+        return startTime.isBefore(endTime);
     }
 
     public boolean isValidStartEndDateTime(LocalDateTime startDateTime, LocalDateTime endDateTime) {

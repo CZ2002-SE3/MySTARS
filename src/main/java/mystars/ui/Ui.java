@@ -46,6 +46,10 @@ public abstract class Ui {
         printNicely();
     }
 
+    public void showToUser(String message) {
+        Arrays.stream(message.split(System.lineSeparator())).forEach(this::printNicely);
+    }
+
     /**
      * Reads command from user.
      *
@@ -72,10 +76,6 @@ public abstract class Ui {
         printNicely("");
     }
 
-    public void showToUser(String message) {
-        Arrays.stream(message.split(System.lineSeparator())).forEach(this::printNicely);
-    }
-
     public char[][] readUsernameAndPassword() {
         char[] username = readUsername();
         char[] password = readPassword();
@@ -97,14 +97,31 @@ public abstract class Ui {
         return System.console().readPassword();
     }
 
+    public boolean askExit() {
+        return parser.isYes(getUserInput("Do you want to exit? (Y/N)", new OptionValidChecker()));
+    }
+
     public void showWelcome() {
         showToUser(LOGO);
     }
 
-    public abstract void showMenu();
+    public void showCourse(Course course) {
+        printNicely(course.toString());
+    }
 
-    public boolean askExit() {
-        return parser.isYes(getUserInput("Do you want to exit? (Y/N)", new OptionValidChecker()));
+    public void showVacancy(CourseList courses, String indexNumber) {
+        for (Course course : courses.getCourses()) {
+            if (course.getIndexNumber().equals(indexNumber)) {
+                printNicely("The number of vacancy is " + course.getVacancies() + ".");
+                return;
+            }
+        }
+        printNicely("Index not found!");
+    }
+
+    public void showEmailSent() {
+        showLine();
+        printNicely("Added waitlisted student to course and sent email.");
     }
 
     String getUserInput(String message, ValidChecker validChecker) {
@@ -118,26 +135,6 @@ public abstract class Ui {
         return line;
     }
 
-    public abstract void greetUser();
-
-    public void showCourse(Course course) {
-        printNicely(course.toString());
-    }
-
-    public String getCourseCode() {
-        return getUserInput("Enter course code:", new CourseCodeValidChecker()).toUpperCase();
-    }
-
-    public void showVacancy(CourseList courses, String indexNumber) {
-        for (Course course : courses.getCourses()) {
-            if (course.getIndexNumber().equals(indexNumber)) {
-                printNicely("The number of vacancy is " + course.getVacancies() + ".");
-                return;
-            }
-        }
-        printNicely("Index not found!");
-    }
-
     public String getIndexNumber() {
         return getIndexNumber("");
     }
@@ -146,8 +143,11 @@ public abstract class Ui {
         return getUserInput("Enter " + description + "index number:", new IndexNumberValidChecker());
     }
 
-    public void showEmailSent() {
-        showLine();
-        printNicely("Added waitlisted student to course and sent email.");
+    public String getCourseCode() {
+        return getUserInput("Enter course code:", new CourseCodeValidChecker()).toUpperCase();
     }
+
+    public abstract void showMenu();
+
+    public abstract void greetUser();
 }
