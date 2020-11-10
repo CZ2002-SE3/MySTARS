@@ -4,7 +4,7 @@ import mystars.MyStars;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.mail.EmailSender;
+import mystars.data.sender.Sender;
 import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
@@ -204,8 +204,8 @@ public class Storage {
                     course.addWaitlistedStudents(students);
 
                     if (course.checkWaitlist()) {
-                        MyStars.logger.log(Level.INFO, EmailSender.SEND_EMAIL_MESSAGE);
-                        System.out.println(EmailSender.SEND_EMAIL_MESSAGE);
+                        MyStars.logger.log(Level.INFO, Sender.SEND_MESSAGE);
+                        System.out.println(Sender.SEND_MESSAGE);
                     }
 
                     saveCourses(courseList);

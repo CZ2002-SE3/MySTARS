@@ -3,7 +3,8 @@ package mystars.data.course;
 import mystars.MyStars;
 import mystars.data.course.lesson.Lesson;
 import mystars.data.exception.MyStarsException;
-import mystars.data.mail.EmailSender;
+import mystars.data.sender.EmailSender;
+import mystars.data.sender.Sender;
 import mystars.data.user.Student;
 import mystars.parser.Parser;
 
@@ -175,15 +176,15 @@ public class Course {
             dropWaitlistedStudent(studentToNotify);
             addRegisteredStudent(studentToNotify);
 
-            sendEmailToStudent(studentToNotify);
+            sendToStudent(studentToNotify, new EmailSender());
             i--;
             isTransfer = true;
         }
         return isTransfer;
     }
 
-    private void sendEmailToStudent(Student studentToNotify) throws MyStarsException {
-        new EmailSender().sendMail(studentToNotify.getEmail(), getCourseCode(), getIndexNumber(),
+    private void sendToStudent(Student studentToNotify, Sender sender) throws MyStarsException {
+        sender.send(studentToNotify.getEmail(), getCourseCode(), getIndexNumber(),
                 studentToNotify.getName());
     }
 

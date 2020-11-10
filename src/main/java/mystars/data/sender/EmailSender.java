@@ -1,4 +1,4 @@
-package mystars.data.mail;
+package mystars.data.sender;
 
 import mystars.data.exception.MyStarsException;
 
@@ -11,11 +11,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class EmailSender {
-
-    public static final String SEND_EMAIL_MESSAGE = "Added waitlisted student to course and sent email.";
-
-    private static final String EMAIL_ERROR = "Failed to send email!";
+public class EmailSender implements Sender {
 
     private static final String[] AUTH = {"mail.smtp.auth", "true"};
     private static final String[] STARTTLS = {"mail.smtp.starttls.enable", "true"};
@@ -25,7 +21,7 @@ public class EmailSender {
 
     private static final String SUBJECT = "New Course Registered Notification";
 
-    public void sendMail(String targetEmailAddress, String emailContent) throws MyStarsException {
+    private void send(String targetEmailAddress, String emailContent) throws MyStarsException {
 
         Properties props = new Properties();
         props.put(AUTH[0], AUTH[1]);
@@ -48,12 +44,12 @@ public class EmailSender {
             Transport.send(message);
 
         } catch (MessagingException e) {
-            throw new MyStarsException(EMAIL_ERROR);
+            throw new MyStarsException(SEND_ERROR);
         }
     }
 
-    public void sendMail(String email, String courseCode, String indexNumber, String name) throws MyStarsException {
-        sendMail(email, String.join(System.lineSeparator(), "Dear " + name + ",", System.lineSeparator()
+    public void send(String email, String courseCode, String indexNumber, String name) throws MyStarsException {
+        send(email, String.join(System.lineSeparator(), "Dear " + name + ",", System.lineSeparator()
                 + "We are pleased to inform you that there is an available slot in " + courseCode + ", of index number "
                 + indexNumber + " and you have been successfully registered for the course.", System.lineSeparator()
                 + "Regards,", "STARS Administrators"));

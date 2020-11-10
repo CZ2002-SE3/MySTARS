@@ -8,8 +8,6 @@ import mystars.data.valid.OptionValidChecker;
 import mystars.data.valid.ValidChecker;
 import mystars.parser.Parser;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 

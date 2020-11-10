@@ -1,4 +1,4 @@
-package mystars.data.mail;
+package mystars.data.sender;
 
 import mystars.data.exception.MyStarsException;
 import org.junit.jupiter.api.Test;
@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class EmailSenderTest {
 
     @Test
-    void sendMail_invalidEmail_expectException() {
+    void send_invalidEmail_expectException() {
         assertThrows(MyStarsException.class, () -> new EmailSender()
-                .sendMail("invalidEmail", ""));
+                .send("invalidEmail", "CZ2002", "10001", "Tan"));
     }
 
     @Test
-    void sendMail_validEmail_expectNoException() {
+    void send_validEmail_expectNoException() {
         assertDoesNotThrow(() -> new EmailSender()
-                .sendMail("cz2002.se3.group1@gmail.com", ":)"));
+                .send("cz2002.se3.group1@gmail.com", "CZ2002", "10001", "Tan"));
     }
 }
