@@ -1,5 +1,21 @@
 package mystars.data.course.lesson;
 
+/**
+ * Week (Odd/Even/Both)
+ */
 public enum Week {
-    ODD, EVEN, BOTH
+    /**
+     * Odd week
+     */
+    ODD,
+
+    /**
+     * Even week
+     */
+    EVEN,
+
+    /**
+     * Both weeks
+     */
+    BOTH
 }

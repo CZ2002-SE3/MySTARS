@@ -9,23 +9,48 @@ import mystars.storage.Storage;
 import mystars.ui.StudentUi;
 
 /**
- * Swop index no for student.
+ * Swops index no. for student.
  */
 public class SwopIndexCommand extends StudentCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "6";
 
+    /**
+     * List of courses.
+     */
+    private final CourseList courses;
+
+    /**
+     * Storage handler.
+     */
     private final Storage storage;
+
+    /**
+     * List of users.
+     */
     private final UserList users;
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui      Ui object.
+     * @param courses List of courses.
+     * @param storage Storage handler.
+     * @param users   List of users.
+     */
     public SwopIndexCommand(StudentUi ui, CourseList courses, Storage storage, UserList users) {
-        super(ui, courses);
+        super(ui);
+        this.courses = courses;
         this.storage = storage;
         this.users = users;
     }
 
     /**
-     * Executes command.
+     * Gets original and peer's index numbers, along with peer's login details.
+     * If indexes can be swapped, they will be swapped.
      *
      * @throws MyStarsException If there is issue executing command.
      */

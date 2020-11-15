@@ -213,7 +213,7 @@ public class Student extends User {
         }
     }
 
-    public void modifyCourse(Course courseToModify) throws MyStarsException {
+    public void modifyRegisteredCourse(Course courseToModify) throws MyStarsException {
         for (int i = 0; i < registeredCourses.getCourses().size(); i++) {
             if (registeredCourses.getCourses().get(i).equals(courseToModify)) {
                 Course removedCourse = registeredCourses.getCourses().remove(i);
@@ -228,6 +228,15 @@ public class Student extends User {
                     }
                 }
                 registeredCourses.getCourses().add(courseToModify);
+                break;
+            }
+        }
+    }
+
+    public void modifyWaitlistedCourse(Course courseToModify) {
+        for (int i = 0; i < waitlistedCourses.getCourses().size(); i++) {
+            if (waitlistedCourses.getCourses().get(i).equals(courseToModify)) {
+                waitlistedCourses.getCourses().set(i, courseToModify);
                 break;
             }
         }

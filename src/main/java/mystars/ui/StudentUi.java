@@ -84,7 +84,7 @@ public class StudentUi extends Ui {
     }
 
     public void showCourseVacancy(CourseList courses, String courseCode) {
-        printNicely(String.format("%-10s %-15s %-20s", "Index", "Vacancies", "Waitlist Size"));
+        printNicely(String.format(Course.VACANCY_FORMAT, "Index", "Vacancies", "Waitlist Size"));
         courses.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode))
                 .map(Course::getVacancyString).forEach(this::printNicely);
     }

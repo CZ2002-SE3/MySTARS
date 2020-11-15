@@ -18,6 +18,11 @@ public class AddCourseCommand extends StudentCommand {
     public static final String COMMAND_WORD = "1";
 
     /**
+     * List of courses.
+     */
+    private final CourseList courses;
+
+    /**
      * Storage handler.
      */
     private final Storage storage;
@@ -30,7 +35,8 @@ public class AddCourseCommand extends StudentCommand {
      * @param storage Storage handler.
      */
     public AddCourseCommand(StudentUi ui, CourseList courses, Storage storage) {
-        super(ui, courses);
+        super(ui);
+        this.courses = courses;
         this.storage = storage;
     }
 

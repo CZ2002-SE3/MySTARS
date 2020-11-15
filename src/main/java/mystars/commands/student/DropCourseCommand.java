@@ -17,12 +17,31 @@ import java.util.logging.Level;
  */
 public class DropCourseCommand extends StudentCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "2";
 
+    /**
+     * List of courses.
+     */
+    private final CourseList courses;
+
+    /**
+     * Storage handler.
+     */
     private final Storage storage;
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui      Ui object.
+     * @param courses List of courses.
+     * @param storage Storage handler.
+     */
     public DropCourseCommand(StudentUi ui, CourseList courses, Storage storage) {
-        super(ui, courses);
+        super(ui);
+        this.courses = courses;
         this.storage = storage;
     }
 

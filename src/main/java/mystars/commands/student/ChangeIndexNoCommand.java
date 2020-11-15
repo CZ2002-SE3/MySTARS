@@ -18,6 +18,11 @@ public class ChangeIndexNoCommand extends StudentCommand {
     public static final String COMMAND_WORD = "5";
 
     /**
+     * List of courses.
+     */
+    private final CourseList courses;
+
+    /**
      * Storage handler.
      */
     private final Storage storage;
@@ -30,7 +35,8 @@ public class ChangeIndexNoCommand extends StudentCommand {
      * @param storage Storage handler.
      */
     public ChangeIndexNoCommand(StudentUi ui, CourseList courses, Storage storage) {
-        super(ui, courses);
+        super(ui);
+        this.courses = courses;
         this.storage = storage;
     }
 

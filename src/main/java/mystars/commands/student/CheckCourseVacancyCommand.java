@@ -15,13 +15,19 @@ public class CheckCourseVacancyCommand extends StudentCommand {
     public static final String COMMAND_WORD = "4";
 
     /**
+     * List of courses.
+     */
+    private final CourseList courses;
+
+    /**
      * Initialises command for execution.
      *
      * @param ui      Ui object.
      * @param courses List of courses.
      */
     public CheckCourseVacancyCommand(StudentUi ui, CourseList courses) {
-        super(ui, courses);
+        super(ui);
+        this.courses = courses;
     }
 
     /**

@@ -169,7 +169,7 @@ public class Storage {
                         for (Student student : students) {
                             student.addCourseToRegistered(course);
                         }
-                        course.addRegisteredStudents(students);
+                        course.setRegisteredStudents(students);
 
                     } else {
                         throw new MyStarsException(VACANCY_ERROR);
@@ -201,7 +201,7 @@ public class Storage {
                     for (Student student : students) {
                         student.addCourseToWaitlisted(course);
                     }
-                    course.addWaitlistedStudents(students);
+                    course.setWaitlistedStudents(students);
 
                     if (course.checkWaitlist()) {
                         MyStars.logger.log(Level.INFO, Sender.SEND_MESSAGE);

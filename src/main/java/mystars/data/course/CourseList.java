@@ -94,7 +94,10 @@ public class CourseList {
             if (course.getIndexNumber().equals(newCourse.getIndexNumber())) {
                 course.copyCourseDetails(newCourse);
                 for (Student student : course.getRegisteredStudents()) {
-                    student.modifyCourse(course);
+                    student.modifyRegisteredCourse(course);
+                }
+                for (Student student : course.getWaitlistedStudents()) {
+                    student.modifyWaitlistedCourse(course);
                 }
                 return course;
             }

@@ -1,8 +1,8 @@
 package mystars.ui;
 
 import mystars.data.course.Course;
-import mystars.data.course.LessonList;
 import mystars.data.course.lesson.Lesson;
+import mystars.data.course.lesson.LessonList;
 import mystars.data.course.lesson.LessonType;
 import mystars.data.course.lesson.Week;
 import mystars.data.exception.MyStarsException;
