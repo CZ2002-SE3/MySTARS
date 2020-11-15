@@ -1,13 +1,15 @@
 package mystars.data.user;
 
+import mystars.data.shared.Gender;
+
 public class Admin extends User {
 
     private String name;
     private String staffId;
-    private char gender;
+    private Gender gender;
     private String nationality;
 
-    public Admin(String name, String staffId, char gender, String nationality, String username) {
+    public Admin(String name, String staffId, Gender gender, String nationality, String username) {
         this.name = name;
         this.staffId = staffId;
         this.gender = gender;
@@ -35,11 +37,11 @@ public class Admin extends User {
         this.staffId = staffId;
     }
 
-    public char getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

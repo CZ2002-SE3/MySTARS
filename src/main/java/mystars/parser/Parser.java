@@ -270,7 +270,7 @@ public class Parser {
         String[] adminSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String name = adminSplit[0].trim();
         String staffId = adminSplit[1].trim();
-        char gender = adminSplit[2].trim().charAt(0);
+        Gender gender = Gender.valueOf(adminSplit[2].trim());
         String nationality = adminSplit[3].trim();
         String username = adminSplit[4].trim();
 
