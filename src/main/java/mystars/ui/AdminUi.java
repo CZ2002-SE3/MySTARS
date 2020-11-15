@@ -54,8 +54,10 @@ public class AdminUi extends Ui {
 
     public void showStartEndDateTime(LocalDateTime[] accessDateTime, String message) {
         printNicely(message);
-        printNicely(accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        printNicely(accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        printNicely("Start Date/Time\t: "
+                + accessDateTime[0].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        printNicely("End Date/Time\t: "
+                + accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
     }
 
     public void showAccessPeriod(LocalDateTime[] accessDateTime) {
