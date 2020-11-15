@@ -12,10 +12,23 @@ import mystars.ui.StudentUi;
  */
 public class AddCourseCommand extends StudentCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "1";
 
+    /**
+     * Storage handler.
+     */
     private final Storage storage;
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui      Ui object.
+     * @param courses List of courses.
+     * @param storage Storage handler.
+     */
     public AddCourseCommand(StudentUi ui, CourseList courses, Storage storage) {
         super(ui, courses);
         this.storage = storage;

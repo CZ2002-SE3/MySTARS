@@ -28,9 +28,9 @@ public class PrintListByIndexCommand extends AdminCommand {
     /**
      * Initialises command for execution.
      *
-     * @param ui Ui object.
+     * @param ui      Ui object.
      * @param courses List of courses.
-     * @param users List of users.
+     * @param users   List of users.
      */
     public PrintListByIndexCommand(AdminUi ui, CourseList courses, UserList users) {
         super(ui);
@@ -47,6 +47,7 @@ public class PrintListByIndexCommand extends AdminCommand {
     public void execute() throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
         courses.checkIndexNoInList(indexNumber);
+
         ui.showStudentListByIndex(users, indexNumber);
     }
 }

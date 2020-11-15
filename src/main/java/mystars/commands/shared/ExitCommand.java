@@ -22,6 +22,7 @@ public class ExitCommand extends SharedCommand {
     @Override
     public void execute() {
         setExit();
+
         ui.showExit();
     }
 }

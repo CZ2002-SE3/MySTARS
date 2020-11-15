@@ -4,16 +4,28 @@ import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.ui.StudentUi;
 
+/**
+ * Checks vacancy of course's index.
+ */
 public class CheckCourseVacancyCommand extends StudentCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "4";
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui      Ui object.
+     * @param courses List of courses.
+     */
     public CheckCourseVacancyCommand(StudentUi ui, CourseList courses) {
         super(ui, courses);
     }
 
     /**
-     * Executes command.
+     * Checks vacancy of a course's index and shows it to user.
      *
      * @throws MyStarsException If there is issue executing command.
      */

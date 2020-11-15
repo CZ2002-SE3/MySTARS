@@ -6,7 +6,7 @@ import mystars.ui.Ui;
 /**
  * Parent shared command class.
  */
-public abstract class SharedCommand extends Command {
+abstract class SharedCommand extends Command {
 
     /**
      * Invalid login error message.

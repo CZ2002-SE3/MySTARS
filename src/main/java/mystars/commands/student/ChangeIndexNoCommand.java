@@ -8,21 +8,34 @@ import mystars.storage.Storage;
 import mystars.ui.StudentUi;
 
 /**
- * Change index no for student.
+ * Changes index no for student.
  */
 public class ChangeIndexNoCommand extends StudentCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "5";
 
+    /**
+     * Storage handler.
+     */
     private final Storage storage;
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui      Ui object.
+     * @param courses List of courses.
+     * @param storage Storage handler.
+     */
     public ChangeIndexNoCommand(StudentUi ui, CourseList courses, Storage storage) {
         super(ui, courses);
         this.storage = storage;
     }
 
     /**
-     * Executes command.
+     * Changes student's course to another index, and saves updated information to storage.
      *
      * @throws MyStarsException If there is issue executing command.
      */
@@ -52,8 +65,7 @@ public class ChangeIndexNoCommand extends StudentCommand {
         student.addCourseToRegistered(desiredCourse);
         desiredCourse.addRegisteredStudent(student);
 
-        ui.showIndexNoChanged(desiredCourse, currentCourse);
-
         storage.saveCourses(courses);
+        ui.showIndexNoChanged(desiredCourse, currentCourse);
     }
 }

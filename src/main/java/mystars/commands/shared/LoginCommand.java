@@ -24,8 +24,8 @@ public class LoginCommand extends SharedCommand {
     /**
      * Initialises command for execution.
      *
-     * @param ui Ui object.
-     * @param users List of users.
+     * @param ui             Ui object.
+     * @param users          List of users.
      * @param accessDateTime Student's access date/time.
      */
     public LoginCommand(Ui ui, UserList users, AccessDateTime accessDateTime) {
@@ -53,6 +53,7 @@ public class LoginCommand extends SharedCommand {
 
         if (users.getUser(usernameAndPassword) instanceof Student && !accessDateTime.isAccessPeriod()) {
             ui.showClosed();
+
             checkExit();
             setLoginStatus(false);
         }

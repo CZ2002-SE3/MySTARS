@@ -72,7 +72,7 @@ public class StudentUi extends Ui {
 
     public void showIndexSwop(Course currentCourse, Course peerCourse, Student student, Student peer) {
         printNicely("Successfully changed!");
-        printNicely( "Current course of " + student.getMatricNo() + ":");
+        printNicely("Current course of " + student.getMatricNo() + ":");
         showCourse(peerCourse);
         printNicely();
         printNicely("Current course of " + peer.getMatricNo() + ":");

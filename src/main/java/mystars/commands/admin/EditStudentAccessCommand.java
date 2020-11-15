@@ -28,8 +28,8 @@ public class EditStudentAccessCommand extends AdminCommand {
     /**
      * Initialises command for execution.
      *
-     * @param ui Ui object.
-     * @param storage Storage handler.
+     * @param ui             Ui object.
+     * @param storage        Storage handler.
      * @param accessDateTime Student's access date/time.
      */
     public EditStudentAccessCommand(AdminUi ui, Storage storage, AccessDateTime accessDateTime) {

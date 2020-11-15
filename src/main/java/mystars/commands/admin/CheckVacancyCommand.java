@@ -22,7 +22,7 @@ public class CheckVacancyCommand extends AdminCommand {
     /**
      * Initialises command for execution.
      *
-     * @param ui Ui object.
+     * @param ui      Ui object.
      * @param courses List of courses.
      */
     public CheckVacancyCommand(AdminUi ui, CourseList courses) {
@@ -39,6 +39,7 @@ public class CheckVacancyCommand extends AdminCommand {
     public void execute() throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
         courses.checkIndexNoInList(indexNumber);
+
         ui.showVacancy(courses, indexNumber);
     }
 }
