@@ -3,7 +3,6 @@ package mystars.commands.admin;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.ui.AdminUi;
-import mystars.ui.Ui;
 
 public class CheckVacancyCommand extends AdminCommand {
 
@@ -11,8 +10,8 @@ public class CheckVacancyCommand extends AdminCommand {
 
     private final CourseList courses;
 
-    public CheckVacancyCommand(Ui ui, CourseList courses) {
-        super((AdminUi) ui);
+    public CheckVacancyCommand(AdminUi ui, CourseList courses) {
+        super(ui);
         this.courses = courses;
     }
 

@@ -6,7 +6,6 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.user.Student;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
-import mystars.ui.Ui;
 
 /**
  * Adds course for student.
@@ -17,8 +16,8 @@ public class AddCourseCommand extends StudentCommand {
 
     private final Storage storage;
 
-    public AddCourseCommand(Ui ui, CourseList courses, Storage storage) {
-        super((StudentUi) ui, courses);
+    public AddCourseCommand(StudentUi ui, CourseList courses, Storage storage) {
+        super(ui, courses);
         this.storage = storage;
     }
 

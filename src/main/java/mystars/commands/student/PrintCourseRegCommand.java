@@ -2,14 +2,13 @@ package mystars.commands.student;
 
 import mystars.data.user.Student;
 import mystars.ui.StudentUi;
-import mystars.ui.Ui;
 
 public class PrintCourseRegCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "3";
 
-    public PrintCourseRegCommand(Ui ui) {
-        super((StudentUi) ui, null);
+    public PrintCourseRegCommand(StudentUi ui) {
+        super(ui, null);
     }
 
     /**

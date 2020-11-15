@@ -8,7 +8,6 @@ import mystars.data.sender.Sender;
 import mystars.data.user.Student;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
-import mystars.ui.Ui;
 
 import java.util.logging.Level;
 
@@ -22,8 +21,8 @@ public class DropCourseCommand extends StudentCommand {
 
     private final Storage storage;
 
-    public DropCourseCommand(Ui ui, CourseList courses, Storage storage) {
-        super((StudentUi) ui, courses);
+    public DropCourseCommand(StudentUi ui, CourseList courses, Storage storage) {
+        super(ui, courses);
         this.storage = storage;
     }
 

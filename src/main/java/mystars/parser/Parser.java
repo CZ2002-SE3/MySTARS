@@ -30,7 +30,8 @@ import mystars.data.user.User;
 import mystars.data.user.UserList;
 import mystars.data.valid.NumberValidChecker;
 import mystars.storage.Storage;
-import mystars.ui.Ui;
+import mystars.ui.AdminUi;
+import mystars.ui.StudentUi;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -73,7 +74,7 @@ public class Parser {
      * @return Command to execute.
      * @throws MyStarsException If command is invalid.
      */
-    public Command parseAdminInput(String fullCommand, UserList users, Ui ui, CourseList courses, Storage storage,
+    public Command parseAdminInput(String fullCommand, UserList users, AdminUi ui, CourseList courses, Storage storage,
                                    AccessDateTime accessDateTime) throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
@@ -105,8 +106,8 @@ public class Parser {
         return command;
     }
 
-    public Command parseStudentInput(String fullCommand, UserList users, Ui ui, CourseList courses, Storage storage)
-            throws MyStarsException {
+    public Command parseStudentInput(String fullCommand, UserList users, StudentUi ui, CourseList courses,
+                                     Storage storage) throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
         case AddCourseCommand.COMMAND_WORD:

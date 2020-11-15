@@ -7,7 +7,6 @@ import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
-import mystars.ui.Ui;
 
 /**
  * Swop index no for student.
@@ -19,8 +18,8 @@ public class SwopIndexCommand extends StudentCommand {
     private final Storage storage;
     private final UserList users;
 
-    public SwopIndexCommand(Ui ui, CourseList courses, Storage storage, UserList users) {
-        super((StudentUi) ui, courses);
+    public SwopIndexCommand(StudentUi ui, CourseList courses, Storage storage, UserList users) {
+        super(ui, courses);
         this.storage = storage;
         this.users = users;
     }

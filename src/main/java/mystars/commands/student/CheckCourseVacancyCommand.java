@@ -3,14 +3,13 @@ package mystars.commands.student;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.ui.StudentUi;
-import mystars.ui.Ui;
 
 public class CheckCourseVacancyCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "4";
 
-    public CheckCourseVacancyCommand(Ui ui, CourseList courses) {
-        super((StudentUi) ui, courses);
+    public CheckCourseVacancyCommand(StudentUi ui, CourseList courses) {
+        super(ui, courses);
     }
 
     /**

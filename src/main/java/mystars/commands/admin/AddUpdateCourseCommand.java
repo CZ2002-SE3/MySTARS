@@ -7,7 +7,6 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.sender.Sender;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
-import mystars.ui.Ui;
 
 import java.util.logging.Level;
 
@@ -19,8 +18,8 @@ public class AddUpdateCourseCommand extends AdminCommand {
     private final Storage storage;
     private final CourseList courses;
 
-    public AddUpdateCourseCommand(Ui ui, Storage storage, CourseList courses) {
-        super((AdminUi) ui);
+    public AddUpdateCourseCommand(AdminUi ui, Storage storage, CourseList courses) {
+        super(ui);
         this.storage = storage;
         this.courses = courses;
     }

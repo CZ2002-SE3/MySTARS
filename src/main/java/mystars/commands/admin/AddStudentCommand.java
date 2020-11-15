@@ -5,7 +5,6 @@ import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
-import mystars.ui.Ui;
 
 /**
  * Adds new student.
@@ -17,8 +16,8 @@ public class AddStudentCommand extends AdminCommand {
     private final Storage storage;
     private final UserList users;
 
-    public AddStudentCommand(Ui ui, Storage storage, UserList users) {
-        super((AdminUi) ui);
+    public AddStudentCommand(AdminUi ui, Storage storage, UserList users) {
+        super(ui);
         this.storage = storage;
         this.users = users;
     }

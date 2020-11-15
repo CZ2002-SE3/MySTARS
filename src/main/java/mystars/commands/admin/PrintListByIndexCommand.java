@@ -4,7 +4,6 @@ import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.UserList;
 import mystars.ui.AdminUi;
-import mystars.ui.Ui;
 
 public class PrintListByIndexCommand extends AdminCommand {
 
@@ -13,8 +12,8 @@ public class PrintListByIndexCommand extends AdminCommand {
     private final CourseList courses;
     private final UserList users;
 
-    public PrintListByIndexCommand(Ui ui, CourseList courses, UserList users) {
-        super((AdminUi) ui);
+    public PrintListByIndexCommand(AdminUi ui, CourseList courses, UserList users) {
+        super(ui);
         this.courses = courses;
         this.users = users;
     }

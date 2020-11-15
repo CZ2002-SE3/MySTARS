@@ -4,7 +4,6 @@ import mystars.data.exception.MyStarsException;
 import mystars.data.shared.AccessDateTime;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
-import mystars.ui.Ui;
 
 /**
  * Edits student access period.
@@ -16,8 +15,8 @@ public class EditStudentAccessCommand extends AdminCommand {
     private final Storage storage;
     private final AccessDateTime accessDateTime;
 
-    public EditStudentAccessCommand(Ui ui, Storage storage, AccessDateTime accessDateTime) {
-        super((AdminUi) ui);
+    public EditStudentAccessCommand(AdminUi ui, Storage storage, AccessDateTime accessDateTime) {
+        super(ui);
         this.storage = storage;
         this.accessDateTime = accessDateTime;
     }

@@ -75,10 +75,11 @@ public class MyStars {
                     command = new LoginCommand(ui, users, accessDateTime);
                 } else if (command.getUser() instanceof Student) {
                     ui = new StudentUi();
-                    command = parser.parseStudentInput(ui.readCommand(), users, ui, courses, storage);
+                    command = parser.parseStudentInput(ui.readCommand(), users, (StudentUi) ui, courses, storage);
                 } else if (command.getUser() instanceof Admin) {
                     ui = new AdminUi();
-                    command = parser.parseAdminInput(ui.readCommand(), users, ui, courses, storage, accessDateTime);
+                    command = parser.parseAdminInput(ui.readCommand(), users, (AdminUi) ui, courses, storage,
+                            accessDateTime);
                 }
                 command.execute();
             } catch (MyStarsException e) {
