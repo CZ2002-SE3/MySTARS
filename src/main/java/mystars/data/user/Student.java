@@ -140,7 +140,6 @@ public class Student extends User {
         return waitlistedCourses.isCourseInList(courseToAdd);
     }
 
-    @Override
     public String getFormattedUserInfo() {
         return String.join(Parser.LINE_SEPARATOR, String.valueOf(getUsername()),
                 String.valueOf(getPassword()), "student");

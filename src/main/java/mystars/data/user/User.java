@@ -1,7 +1,5 @@
 package mystars.data.user;
 
-import mystars.data.exception.MyStarsException;
-
 public abstract class User {
 
     private char[] username;
@@ -41,6 +39,4 @@ public abstract class User {
     }
 
     public abstract void copyDetails(User user);
-
-    public abstract String getFormattedUserInfo() throws MyStarsException;
 }
