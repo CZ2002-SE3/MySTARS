@@ -1,25 +1,22 @@
 package mystars.commands.student;
 
-import mystars.data.course.CourseList;
 import mystars.data.user.Student;
-import mystars.data.user.UserList;
-import mystars.storage.Storage;
 import mystars.ui.StudentUi;
+import mystars.ui.Ui;
 
 public class PrintCourseRegCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "3";
 
+    public PrintCourseRegCommand(Ui ui) {
+        super((StudentUi) ui, null);
+    }
+
     /**
      * Executes command.
-     *
-     * @param courseList CourseList object.
-     * @param users      UserList object.
-     * @param ui         Ui object.
-     * @param storage    Storage object.
      */
     @Override
-    public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) {
+    public void execute() {
         Student student = (Student) this.getUser();
         ui.showAllCourses(student);
     }

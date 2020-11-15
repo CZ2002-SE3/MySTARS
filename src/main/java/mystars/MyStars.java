@@ -1,11 +1,8 @@
 package mystars;
 
 import mystars.commands.Command;
-import mystars.commands.admin.AdminCommand;
 import mystars.commands.shared.LoginCommand;
 import mystars.commands.shared.LogoutCommand;
-import mystars.commands.shared.SharedCommand;
-import mystars.commands.student.StudentCommand;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.shared.AccessDateTime;
@@ -71,34 +68,24 @@ public class MyStars {
     public void run() {
         ui.showLine();
         ui.showWelcome();
-        Command command = new LogoutCommand();
+        Command command = new LogoutCommand(ui);
         while (!command.isExit()) {
             try {
                 if (!command.isLogin()) {
-                    command = new LoginCommand();
+                    command = new LoginCommand(ui, users, accessDateTime);
                 } else if (command.getUser() instanceof Student) {
                     ui = new StudentUi();
-                    command = parser.parseStudentInput(ui.readCommand());
+                    command = parser.parseStudentInput(ui.readCommand(), users, ui, courses, storage);
                 } else if (command.getUser() instanceof Admin) {
                     ui = new AdminUi();
-                    command = parser.parseAdminInput(ui.readCommand());
+                    command = parser.parseAdminInput(ui.readCommand(), users, ui, courses, storage, accessDateTime);
                 }
-                execute(command);
+                command.execute();
             } catch (MyStarsException e) {
                 ui.showToUser(e.getMessage());
             } finally {
                 ui.showLine();
             }
-        }
-    }
-
-    private void execute(Command command) throws MyStarsException {
-        if (command instanceof StudentCommand) {
-            ((StudentCommand) command).execute(courses, users, (StudentUi) ui, storage);
-        } else if (command instanceof AdminCommand) {
-            ((AdminCommand) command).execute(accessDateTime, courses, users, (AdminUi) ui, storage);
-        } else if (command instanceof SharedCommand) {
-            ((SharedCommand) command).execute(accessDateTime, users, ui);
         }
     }
 }

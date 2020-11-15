@@ -65,8 +65,8 @@ public class StudentUi extends Ui {
                 + currentCourse.getIndexNumber());
     }
 
-    public void showCourseVacancy(CourseList courseList, String courseCode) {
-        courseList.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode))
+    public void showCourseVacancy(CourseList courses, String courseCode) {
+        courses.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode))
                 .map(Course::getVacancyString).forEach(this::printNicely);
     }
 }

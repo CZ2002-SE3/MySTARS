@@ -6,9 +6,9 @@ import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.sender.Sender;
 import mystars.data.user.Student;
-import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
+import mystars.ui.Ui;
 
 import java.util.logging.Level;
 
@@ -20,21 +20,24 @@ public class DropCourseCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "2";
 
+    private final Storage storage;
+
+    public DropCourseCommand(Ui ui, CourseList courses, Storage storage) {
+        super((StudentUi) ui, courses);
+        this.storage = storage;
+    }
+
     /**
      * Prompts student for course to drop, and saves changes to file.
      *
-     * @param courseList CourseList object.
-     * @param users      UserList object.
-     * @param ui         Ui object.
-     * @param storage    Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
+    public void execute() throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
-        courseList.isIndexNoInList(indexNumber);
+        courses.isIndexNoInList(indexNumber);
 
-        Course course = courseList.getCourseByIndex(indexNumber);
+        Course course = courses.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
 
         if (student.isCourseInRegistered(course)) {
@@ -54,6 +57,6 @@ public class DropCourseCommand extends StudentCommand {
             ui.showEmailSent();
         }
 
-        storage.saveCourses(courseList);
+        storage.saveCourses(courses);
     }
 }

@@ -7,6 +7,7 @@ import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
+import mystars.ui.Ui;
 
 /**
  * Swop index no for student.
@@ -15,26 +16,31 @@ public class SwopIndexCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "6";
 
+    private final Storage storage;
+    private final UserList users;
+
+    public SwopIndexCommand(Ui ui, CourseList courses, Storage storage, UserList users) {
+        super((StudentUi) ui, courses);
+        this.storage = storage;
+        this.users = users;
+    }
+
     /**
      * Executes command.
      *
-     * @param courseList CourseList object.
-     * @param users      UserList object.
-     * @param ui         Ui object.
-     * @param storage    Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
+    public void execute() throws MyStarsException {
         Student student = (Student) getUser();
 
         String originalIndexNumber = ui.getIndexNumber(ORIGINAL);
-        courseList.checkIndexNoInList(originalIndexNumber);
-        Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
+        courses.checkIndexNoInList(originalIndexNumber);
+        Course currentCourse = courses.getCourseByIndex(originalIndexNumber);
 
         String peerIndexNumber = ui.getIndexNumber(PEER);
-        courseList.checkIndexNoInList(peerIndexNumber);
-        Course peerCourse = courseList.getCourseByIndex(peerIndexNumber);
+        courses.checkIndexNoInList(peerIndexNumber);
+        Course peerCourse = courses.getCourseByIndex(peerIndexNumber);
 
         char[][] usernameAndPassword = ui.readUsernameAndPassword();
         if (!(users.getUser(usernameAndPassword) instanceof Student)) {
@@ -78,6 +84,6 @@ public class SwopIndexCommand extends StudentCommand {
 
         ui.showIndexSwop(currentCourse, peerCourse, student, peer);
 
-        storage.saveCourses(courseList);
+        storage.saveCourses(courses);
     }
 }

@@ -4,9 +4,9 @@ import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Student;
-import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
+import mystars.ui.Ui;
 
 /**
  * Change index no for student.
@@ -15,27 +15,30 @@ public class ChangeIndexNoCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "5";
 
+    private final Storage storage;
+
+    public ChangeIndexNoCommand(Ui ui, CourseList courses, Storage storage) {
+        super((StudentUi) ui, courses);
+        this.storage = storage;
+    }
+
     /**
      * Executes command.
      *
-     * @param courseList CourseList object.
-     * @param users      UserList object.
-     * @param ui         Ui object.
-     * @param storage    Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
+    public void execute() throws MyStarsException {
         Student student = (Student) getUser();
 
         String originalIndexNumber = ui.getIndexNumber(ORIGINAL);
-        courseList.checkIndexNoInList(originalIndexNumber);
+        courses.checkIndexNoInList(originalIndexNumber);
 
         String desiredIndexNumber = ui.getIndexNumber(DESIRED);
-        courseList.checkIndexNoInList(desiredIndexNumber);
+        courses.checkIndexNoInList(desiredIndexNumber);
 
-        Course currentCourse = courseList.getCourseByIndex(originalIndexNumber);
-        Course desiredCourse = courseList.getCourseByIndex(desiredIndexNumber);
+        Course currentCourse = courses.getCourseByIndex(originalIndexNumber);
+        Course desiredCourse = courses.getCourseByIndex(desiredIndexNumber);
 
         if (originalIndexNumber.equals(desiredIndexNumber)) {
             throw new MyStarsException(SAME_INDEX_ERROR);
@@ -52,6 +55,6 @@ public class ChangeIndexNoCommand extends StudentCommand {
 
         ui.showIndexNoChanged(desiredCourse, currentCourse);
 
-        storage.saveCourses(courseList);
+        storage.saveCourses(courses);
     }
 }

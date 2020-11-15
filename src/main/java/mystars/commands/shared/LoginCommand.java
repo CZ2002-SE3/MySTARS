@@ -10,16 +10,22 @@ public class LoginCommand extends SharedCommand {
 
     private static final String MESSAGE = "MyStars is closed for students...";
 
+    private final UserList users;
+    private final AccessDateTime accessDateTime;
+
+    public LoginCommand(Ui ui, UserList users, AccessDateTime accessDateTime) {
+        super(ui);
+        this.users = users;
+        this.accessDateTime = accessDateTime;
+    }
+
     /**
      * Executes command.
      *
-     * @param accessDateTime Access period.
-     * @param users          UserList object.
-     * @param ui             Ui object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(AccessDateTime accessDateTime, UserList users, Ui ui)
+    public void execute()
             throws MyStarsException {
         char[][] usernameAndPassword = ui.readUsernameAndPassword();
         setLoginStatus(users.isLoginValid(usernameAndPassword));
@@ -33,7 +39,7 @@ public class LoginCommand extends SharedCommand {
         if (users.getUser(usernameAndPassword) instanceof Student && !accessDateTime.isAccessPeriod()) {
             ui.showLine();
             ui.showToUser(MESSAGE);
-            checkExit(accessDateTime, users, ui);
+            checkExit(ui);
             setLoginStatus(false);
         }
     }

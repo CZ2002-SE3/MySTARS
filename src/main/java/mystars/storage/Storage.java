@@ -148,7 +148,7 @@ public class Storage {
         return admins;
     }
 
-    public void loadCourseRegisteredStudents(CourseList courseList, UserList userList) throws MyStarsException {
+    public void loadCourseRegisteredStudents(CourseList courses, UserList users) throws MyStarsException {
         Path path = Paths.get(FOLDER, REGISTERED_FILE);
 
         if (Files.exists(path)) {
@@ -162,8 +162,8 @@ public class Storage {
                         break;
                     }
                     String courseIndex = parser.readCourseIndex(line);
-                    Course course = courseList.getCourseByIndex(courseIndex);
-                    ArrayList<Student> students = parser.readStudentList(line, userList);
+                    Course course = courses.getCourseByIndex(courseIndex);
+                    ArrayList<Student> students = parser.readStudentList(line, users);
 
                     if (course.isVacancy()) {
                         for (Student student : students) {
@@ -181,7 +181,7 @@ public class Storage {
         }
     }
 
-    public void loadCourseWaitlistStudents(CourseList courseList, UserList userList) throws MyStarsException {
+    public void loadCourseWaitlistStudents(CourseList courses, UserList users) throws MyStarsException {
         Path path = Paths.get(FOLDER, WAITLISTED_FILE);
 
         if (Files.exists(path)) {
@@ -195,8 +195,8 @@ public class Storage {
                         break;
                     }
                     String courseIndex = parser.readCourseIndex(line);
-                    Course course = courseList.getCourseByIndex(courseIndex);
-                    ArrayList<Student> students = parser.readStudentList(line, userList);
+                    Course course = courses.getCourseByIndex(courseIndex);
+                    ArrayList<Student> students = parser.readStudentList(line, users);
 
                     for (Student student : students) {
                         student.addCourseToWaitlisted(course);
@@ -208,7 +208,7 @@ public class Storage {
                         System.out.println(Sender.SEND_MESSAGE);
                     }
 
-                    saveCourses(courseList);
+                    saveCourses(courses);
                 }
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);

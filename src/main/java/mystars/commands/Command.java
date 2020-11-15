@@ -1,5 +1,6 @@
 package mystars.commands;
 
+import mystars.data.exception.MyStarsException;
 import mystars.data.user.User;
 
 /**
@@ -40,4 +41,11 @@ public abstract class Command {
     protected void setUser(User user) {
         Command.user = user;
     }
+
+    /**
+     * Executes command.
+     *
+     * @throws MyStarsException If there is issue executing command.
+     */
+    public abstract void execute() throws MyStarsException;
 }

@@ -2,28 +2,27 @@ package mystars.commands.student;
 
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.user.UserList;
-import mystars.storage.Storage;
 import mystars.ui.StudentUi;
+import mystars.ui.Ui;
 
 public class CheckCourseVacancyCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "4";
 
+    public CheckCourseVacancyCommand(Ui ui, CourseList courses) {
+        super((StudentUi) ui, courses);
+    }
+
     /**
      * Executes command.
      *
-     * @param courseList CourseList object.
-     * @param users      UserList object.
-     * @param ui         Ui object.
-     * @param storage    Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
+    public void execute() throws MyStarsException {
         String courseCode = ui.getCourseCode();
-        courseList.checkCourseInList(courseCode);
+        courses.checkCourseInList(courseCode);
 
-        ui.showCourseVacancy(courseList, courseCode);
+        ui.showCourseVacancy(courses, courseCode);
     }
 }

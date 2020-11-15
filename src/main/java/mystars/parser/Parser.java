@@ -15,11 +15,13 @@ import mystars.commands.student.DropCourseCommand;
 import mystars.commands.student.PrintCourseRegCommand;
 import mystars.commands.student.SwopIndexCommand;
 import mystars.data.course.Course;
+import mystars.data.course.CourseList;
 import mystars.data.course.LessonList;
 import mystars.data.course.lesson.Lesson;
 import mystars.data.course.lesson.LessonType;
 import mystars.data.course.lesson.Week;
 import mystars.data.exception.MyStarsException;
+import mystars.data.shared.AccessDateTime;
 import mystars.data.shared.Gender;
 import mystars.data.shared.Option;
 import mystars.data.user.Admin;
@@ -27,6 +29,8 @@ import mystars.data.user.Student;
 import mystars.data.user.User;
 import mystars.data.user.UserList;
 import mystars.data.valid.NumberValidChecker;
+import mystars.storage.Storage;
+import mystars.ui.Ui;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -60,33 +64,39 @@ public class Parser {
     /**
      * Parses admin input, and returns corresponding command.
      *
-     * @param fullCommand String of admin input to parse.
+     * @param fullCommand    String of admin input to parse.
+     * @param users          List of users.
+     * @param ui             Ui object.
+     * @param courses        List of courses.
+     * @param storage        Storage handler.
+     * @param accessDateTime Student's access date/time.
      * @return Command to execute.
      * @throws MyStarsException If command is invalid.
      */
-    public Command parseAdminInput(String fullCommand) throws MyStarsException {
+    public Command parseAdminInput(String fullCommand, UserList users, Ui ui, CourseList courses, Storage storage,
+                                   AccessDateTime accessDateTime) throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
         case EditStudentAccessCommand.COMMAND_WORD:
-            command = new EditStudentAccessCommand();
+            command = new EditStudentAccessCommand(ui, storage, accessDateTime);
             break;
         case AddStudentCommand.COMMAND_WORD:
-            command = new AddStudentCommand();
+            command = new AddStudentCommand(ui, storage, users);
             break;
         case AddUpdateCourseCommand.COMMAND_WORD:
-            command = new AddUpdateCourseCommand();
+            command = new AddUpdateCourseCommand(ui, storage, courses);
             break;
         case CheckVacancyCommand.COMMAND_WORD:
-            command = new CheckVacancyCommand();
+            command = new CheckVacancyCommand(ui, courses);
             break;
         case PrintListByIndexCommand.COMMAND_WORD:
-            command = new PrintListByIndexCommand();
+            command = new PrintListByIndexCommand(ui, courses, users);
             break;
         case PrintListByCourseCommand.COMMAND_WORD:
-            command = new PrintListByCourseCommand();
+            command = new PrintListByCourseCommand(ui, courses, users);
             break;
         case LogoutCommand.COMMAND_WORD:
-            command = new LogoutCommand();
+            command = new LogoutCommand(ui);
             break;
         default:
             throw new MyStarsException(Command.COMMAND_ERROR);
@@ -95,29 +105,30 @@ public class Parser {
         return command;
     }
 
-    public Command parseStudentInput(String fullCommand) throws MyStarsException {
+    public Command parseStudentInput(String fullCommand, UserList users, Ui ui, CourseList courses, Storage storage)
+            throws MyStarsException {
         Command command;
         switch (fullCommand.trim()) {
         case AddCourseCommand.COMMAND_WORD:
-            command = new AddCourseCommand();
+            command = new AddCourseCommand(ui, courses, storage);
             break;
         case DropCourseCommand.COMMAND_WORD:
-            command = new DropCourseCommand();
+            command = new DropCourseCommand(ui, courses, storage);
             break;
         case PrintCourseRegCommand.COMMAND_WORD:
-            command = new PrintCourseRegCommand();
+            command = new PrintCourseRegCommand(ui);
             break;
         case CheckCourseVacancyCommand.COMMAND_WORD:
-            command = new CheckCourseVacancyCommand();
+            command = new CheckCourseVacancyCommand(ui, courses);
             break;
         case ChangeIndexNoCommand.COMMAND_WORD:
-            command = new ChangeIndexNoCommand();
+            command = new ChangeIndexNoCommand(ui, courses, storage);
             break;
         case SwopIndexCommand.COMMAND_WORD:
-            command = new SwopIndexCommand();
+            command = new SwopIndexCommand(ui, courses, storage, users);
             break;
         case LogoutCommand.COMMAND_WORD:
-            command = new LogoutCommand();
+            command = new LogoutCommand(ui);
             break;
         default:
             throw new MyStarsException(Command.COMMAND_ERROR);
@@ -282,11 +293,11 @@ public class Parser {
         }
     }
 
-    public ArrayList<Student> readStudentList(String line, UserList userList) {
+    public ArrayList<Student> readStudentList(String line, UserList users) {
         String[] matricNos = line.split(ESCAPED_LINE_SEPARATOR);
         ArrayList<Student> registeredStudents = new ArrayList<>();
         for (int i = 1; i < matricNos.length; i++) {
-            for (Student student : userList.getUsers().stream().filter(Student.class::isInstance)
+            for (Student student : users.getUsers().stream().filter(Student.class::isInstance)
                     .map(Student.class::cast).collect(Collectors.toList())) {
                 if (student.getMatricNo().equalsIgnoreCase(matricNos[i])) {
                     registeredStudents.add(student);

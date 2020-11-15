@@ -4,9 +4,9 @@ import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
 import mystars.data.user.Student;
-import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
+import mystars.ui.Ui;
 
 /**
  * Adds course for student.
@@ -15,20 +15,23 @@ public class AddCourseCommand extends StudentCommand {
 
     public static final String COMMAND_WORD = "1";
 
+    private final Storage storage;
+
+    public AddCourseCommand(Ui ui, CourseList courses, Storage storage) {
+        super((StudentUi) ui, courses);
+        this.storage = storage;
+    }
+
     /**
      * Prompts user for course to add and saves to file.
      *
-     * @param courseList CourseList object.
-     * @param users      UserList object.
-     * @param ui         Ui object.
-     * @param storage    Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(CourseList courseList, UserList users, StudentUi ui, Storage storage) throws MyStarsException {
+    public void execute() throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
-        courseList.checkIndexNoInList(indexNumber);
-        Course course = courseList.getCourseByIndex(indexNumber);
+        courses.checkIndexNoInList(indexNumber);
+        Course course = courses.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
 
         if (course.isVacancy()) {
@@ -41,6 +44,6 @@ public class AddCourseCommand extends StudentCommand {
             ui.showCourseWaitlisted(course);
         }
 
-        storage.saveCourses(courseList);
+        storage.saveCourses(courses);
     }
 }

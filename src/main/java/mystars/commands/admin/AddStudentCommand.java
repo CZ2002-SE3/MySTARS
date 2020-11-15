@@ -1,12 +1,11 @@
 package mystars.commands.admin;
 
-import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
-import mystars.data.shared.AccessDateTime;
 import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
+import mystars.ui.Ui;
 
 /**
  * Adds new student.
@@ -15,19 +14,22 @@ public class AddStudentCommand extends AdminCommand {
 
     public static final String COMMAND_WORD = "2";
 
+    private final Storage storage;
+    private final UserList users;
+
+    public AddStudentCommand(Ui ui, Storage storage, UserList users) {
+        super((AdminUi) ui);
+        this.storage = storage;
+        this.users = users;
+    }
+
     /**
      * Adds a new student, and save to file.
      *
-     * @param accessDateTime Access period.
-     * @param courseList     CourseList object.
-     * @param users          UserList object.
-     * @param ui             Ui object.
-     * @param storage        Storage object.
      * @throws MyStarsException If there is issue executing command.
      */
     @Override
-    public void execute(AccessDateTime accessDateTime, CourseList courseList, UserList users, AdminUi ui,
-                        Storage storage) throws MyStarsException {
+    public void execute() throws MyStarsException {
         Student newStudent = ui.getNewStudentFromUser(users);
         users.addStudent(newStudent);
 
