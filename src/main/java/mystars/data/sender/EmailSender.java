@@ -21,7 +21,13 @@ public class EmailSender implements Sender {
 
     private static final String SUBJECT = "New Course Registered Notification";
 
-    private void send(String targetEmailAddress, String emailContent) throws MyStarsException {
+    private final String targetEmailAddress;
+
+    public EmailSender(String targetEmailAddress) {
+        this.targetEmailAddress = targetEmailAddress;
+    }
+
+    private void send(String emailContent) throws MyStarsException {
 
         Properties props = new Properties();
         props.put(AUTH[0], AUTH[1]);
@@ -48,8 +54,9 @@ public class EmailSender implements Sender {
         }
     }
 
-    public void send(String email, String courseCode, String indexNumber, String name) throws MyStarsException {
-        send(email, String.join(System.lineSeparator(), "Dear " + name + ",", System.lineSeparator()
+    @Override
+    public void send(String courseCode, String indexNumber, String name) throws MyStarsException {
+        send(String.join(System.lineSeparator(), "Dear " + name + ",", System.lineSeparator()
                 + "We are pleased to inform you that there is an available slot in " + courseCode + ", of index number "
                 + indexNumber + " and you have been successfully registered for the course.", System.lineSeparator()
                 + "Regards,", "STARS Administrators"));

@@ -171,7 +171,7 @@ public class Course {
             dropWaitlistedStudent(studentToNotify);
             addRegisteredStudent(studentToNotify);
 
-            sendToStudent(studentToNotify, new EmailSender());
+            sendToStudent(studentToNotify, new EmailSender(studentToNotify.getEmail()));
             i--;
             isTransfer = true;
         }
@@ -194,7 +194,6 @@ public class Course {
     }
 
     private void sendToStudent(Student studentToNotify, Sender sender) throws MyStarsException {
-        sender.send(studentToNotify.getEmail(), getCourseCode(), getIndexNumber(),
-                studentToNotify.getName());
+        sender.send(getCourseCode(), getIndexNumber(), studentToNotify.getName());
     }
 }
