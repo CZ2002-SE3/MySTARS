@@ -35,7 +35,7 @@ public class AddUpdateCourseCommand extends AdminCommand {
         Course course;
 
         if (courses.isIndexNoInList(indexNumber)) {
-            ui.showCourse(courses.getCourseByIndex(indexNumber));
+            ui.showExistingCourse(courses.getCourseByIndex(indexNumber));
 
             if (!ui.askUpdate()) {
                 return;

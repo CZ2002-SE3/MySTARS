@@ -27,6 +27,8 @@ public abstract class Ui {
             "                                                         ", "Welcome!");
 
 
+    private static final String COURSE_HEADER = String.format(Course.FORMAT, "Course Code", "School", "Index No.", "AU");
+
     static Parser parser;
 
     public Ui() {
@@ -106,7 +108,15 @@ public abstract class Ui {
     }
 
     public void showCourse(Course course) {
+        printNicely(COURSE_HEADER);
         printNicely(course.toString());
+    }
+
+    public void showCourseList(CourseList courses) {
+        printNicely();
+        printNicely("Here is the courses list:");
+        printNicely(COURSE_HEADER);
+        courses.getCourses().forEach(course -> printNicely(course.toString()));
     }
 
     public void showVacancy(CourseList courses, String indexNumber) {

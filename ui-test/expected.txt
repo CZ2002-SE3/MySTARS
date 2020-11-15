@@ -29,14 +29,14 @@ Please select an item:
 ------------------------------------------------------------
 
 Here is the access period currently:
-2020-07-07 09:00
-2020-12-12 17:00
+Start Date/Time	: 2020-07-07 09:00
+End Date/Time	: 2020-12-12 17:00
 Enter new start date & time (yyyy-MM-dd HH:mm):
 Enter new end date & time (yyyy-MM-dd HH:mm):
 
 Successfully changed! Access period is as follows: 
-2019-11-01 10:00
-2019-12-01 17:00
+Start Date/Time	: 2019-11-01 10:00
+End Date/Time	: 2019-12-01 17:00
 
 ------------------------------------------------------------
 
@@ -91,25 +91,28 @@ Enter email:
 Enter Username: 
 Enter Password: 
 
-Student added: Test User, U1920000L, M, Singaporean
+Student added: 
+Name                           Matric No.      Gender     Nationality    
+Test User                      U1920000L       M          Singaporean    
 
-Here is the student list:
-Leonardo Irvin Pratama, U1920301J, M, Indonesian
-Tan Jun Hong, U1920001N, M, Singaporean
-Tey Chin Yi, U1920002P, M, Singaporean
-Ferlita Halim, U1920003R, F, Indonesian
-Woon Yoke Min, U1920004N, F, Singaporean
-Sophia Wang, U1819001A, F, Malaysian
-Jackson Ho, U1819002B, M, Singaporean
-Olivia See, U1819003C, F, Singaporean
-Lim Wei Jie, Liam, U1819004D, M, Chinese
-Emma Watson, U1819005E, F, French
-Noah Lee, U2021010M, M, Malaysian
-Ava Bhadravati, U2021021K, F, Indian
-Aiden, Chen De Xing, U2021033L, M, Singaporean
-Aria Jin, U2021042T, F, Chinese
-Jason, Chin Kai Sheng, U2021050P, M, Singaporean
-Test User, U1920000L, M, Singaporean
+Here is the list of students:
+Name                           Matric No.      Gender     Nationality    
+Leonardo Irvin Pratama         U1920301J       M          Indonesian     
+Tan Jun Hong                   U1920001N       M          Singaporean    
+Tey Chin Yi                    U1920002P       M          Singaporean    
+Ferlita Halim                  U1920003R       F          Indonesian     
+Woon Yoke Min                  U1920004N       F          Singaporean    
+Sophia Wang                    U1819001A       F          Malaysian      
+Jackson Ho                     U1819002B       M          Singaporean    
+Olivia See                     U1819003C       F          Singaporean    
+Lim Wei Jie, Liam              U1819004D       M          Chinese        
+Emma Watson                    U1819005E       F          French         
+Noah Lee                       U2021010M       M          Malaysian      
+Ava Bhadravati                 U2021021K       F          Indian         
+Aiden, Chen De Xing            U2021033L       M          Singaporean    
+Aria Jin                       U2021042T       F          Chinese        
+Jason, Chin Kai Sheng          U2021050P       M          Singaporean    
+Test User                      U1920000L       M          Singaporean    
 
 ------------------------------------------------------------
 
@@ -126,10 +129,9 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Course Code: CZ2001
-School: SCSE
-Index Number: 10001
-AU: 3
+Here is the course to be updated:
+Course Code     School     Index No.  AU   
+CZ2001          SCSE       10001      3    
 Do you want to update course? (Y/N)
 
 ------------------------------------------------------------
@@ -173,120 +175,30 @@ Enter group:
 Add more lesson? (Y/N)
 
 Here is the courses list:
-Course Code: CZ2001
-School: SCSE
-Index Number: 10001
-AU: 3
-
-Course Code: CZ2001
-School: SCSE
-Index Number: 10002
-AU: 3
-
-Course Code: CZ2001
-School: SCSE
-Index Number: 10003
-AU: 3
-
-Course Code: CZ2001
-School: SCSE
-Index Number: 10004
-AU: 3
-
-Course Code: CZ2001
-School: SCSE
-Index Number: 10005
-AU: 3
-
-Course Code: CZ2002
-School: SCSE
-Index Number: 20710
-AU: 3
-
-Course Code: CZ2002
-School: SCSE
-Index Number: 20711
-AU: 3
-
-Course Code: CZ2002
-School: SCSE
-Index Number: 20712
-AU: 3
-
-Course Code: CZ2002
-School: SCSE
-Index Number: 20713
-AU: 3
-
-Course Code: CZ2004
-School: SCSE
-Index Number: 10217
-AU: 3
-
-Course Code: CZ2004
-School: SCSE
-Index Number: 10218
-AU: 3
-
-Course Code: CZ2004
-School: SCSE
-Index Number: 10219
-AU: 3
-
-Course Code: CZ2005
-School: SCSE
-Index Number: 10230
-AU: 3
-
-Course Code: CZ2005
-School: SCSE
-Index Number: 10231
-AU: 3
-
-Course Code: CZ2005
-School: SCSE
-Index Number: 10232
-AU: 3
-
-Course Code: CZ2007
-School: SCSE
-Index Number: 10813
-AU: 3
-
-Course Code: CZ2007
-School: SCSE
-Index Number: 10814
-AU: 3
-
-Course Code: CZ2007
-School: SCSE
-Index Number: 10815
-AU: 3
-
-Course Code: MH2500
-School: SPMS
-Index Number: 90830
-AU: 4
-
-Course Code: MH2500
-School: SPMS
-Index Number: 90831
-AU: 4
-
-Course Code: MH2500
-School: SPMS
-Index Number: 90832
-AU: 4
-
-Course Code: MH2500
-School: SPMS
-Index Number: 90833
-AU: 4
-
-Course Code: CZ2008
-School: SCSE
-Index Number: 12800
-AU: 3
+Course Code     School     Index No.  AU   
+CZ2001          SCSE       10001      3    
+CZ2001          SCSE       10002      3    
+CZ2001          SCSE       10003      3    
+CZ2001          SCSE       10004      3    
+CZ2001          SCSE       10005      3    
+CZ2002          SCSE       20710      3    
+CZ2002          SCSE       20711      3    
+CZ2002          SCSE       20712      3    
+CZ2002          SCSE       20713      3    
+CZ2004          SCSE       10217      3    
+CZ2004          SCSE       10218      3    
+CZ2004          SCSE       10219      3    
+CZ2005          SCSE       10230      3    
+CZ2005          SCSE       10231      3    
+CZ2005          SCSE       10232      3    
+CZ2007          SCSE       10813      3    
+CZ2007          SCSE       10814      3    
+CZ2007          SCSE       10815      3    
+MH2500          SPMS       90830      4    
+MH2500          SPMS       90831      4    
+MH2500          SPMS       90832      4    
+MH2500          SPMS       90833      4    
+CZ2008          SCSE       12800      3    
 
 ------------------------------------------------------------
 
@@ -369,14 +281,14 @@ Please select an item:
 ------------------------------------------------------------
 
 Here is the access period currently:
-2019-11-01 10:00
-2019-12-01 17:00
+Start Date/Time	: 2019-11-01 10:00
+End Date/Time	: 2019-12-01 17:00
 Enter new start date & time (yyyy-MM-dd HH:mm):
 Enter new end date & time (yyyy-MM-dd HH:mm):
 
 Successfully changed! Access period is as follows: 
-2020-11-01 10:00
-2020-12-01 17:00
+Start Date/Time	: 2020-11-01 10:00
+End Date/Time	: 2020-12-01 17:00
 
 ------------------------------------------------------------
 
@@ -415,11 +327,9 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Course Registered!
-Course Code: CZ2008
-School: SCSE
-Index Number: 12800
-AU: 3
+Following course registered: 
+Course Code     School     Index No.  AU   
+CZ2008          SCSE       12800      3    
 
 ------------------------------------------------------------
 
@@ -467,11 +377,9 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Course Registered!
-Course Code: CZ2007
-School: SCSE
-Index Number: 10813
-AU: 3
+Following course registered: 
+Course Code     School     Index No.  AU   
+CZ2007          SCSE       10813      3    
 
 ------------------------------------------------------------
 
@@ -488,11 +396,9 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Course Registered!
-Course Code: CZ2002
-School: SCSE
-Index Number: 20710
-AU: 3
+Following course registered: 
+Course Code     School     Index No.  AU   
+CZ2002          SCSE       20710      3    
 
 ------------------------------------------------------------
 
@@ -509,11 +415,9 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Course Waitlisted!
-Course Code: CZ2008
-School: SCSE
-Index Number: 12800
-AU: 3
+Following course waitlisted!
+Course Code     School     Index No.  AU   
+CZ2008          SCSE       12800      3    
 
 ------------------------------------------------------------
 
@@ -564,11 +468,9 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Course Registered!
-Course Code: CZ2001
-School: SCSE
-Index Number: 10003
-AU: 3
+Following course registered: 
+Course Code     School     Index No.  AU   
+CZ2001          SCSE       10003      3    
 
 ------------------------------------------------------------
 
@@ -585,11 +487,9 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Course Registered!
-Course Code: CZ2005
-School: SCSE
-Index Number: 10230
-AU: 3
+Following course registered: 
+Course Code     School     Index No.  AU   
+CZ2005          SCSE       10230      3    
 
 ------------------------------------------------------------
 
@@ -623,39 +523,23 @@ Please select an item:
 ------------------------------------------------------------
 
 Here are your registered courses:
-Total No. of Courses Registered: 4
-Total No. of AUs Registered: 12
+Total No. of Courses: 4
+Total No. of AUs: 12
 
-#1
-Course Code: CZ2007
-School: SCSE
-Index Number: 10813
-AU: 3
-#2
-Course Code: CZ2002
-School: SCSE
-Index Number: 20710
-AU: 3
-#3
-Course Code: CZ2001
-School: SCSE
-Index Number: 10003
-AU: 3
-#4
-Course Code: CZ2005
-School: SCSE
-Index Number: 10230
-AU: 3
+Here is the courses list:
+Course Code     School     Index No.  AU   
+CZ2007          SCSE       10813      3    
+CZ2002          SCSE       20710      3    
+CZ2001          SCSE       10003      3    
+CZ2005          SCSE       10230      3    
 
 Here are your waitlisted courses:
-Total No. of Courses Registered: 1
-Total No. of AUs Registered: 3
+Total No. of Courses: 1
+Total No. of AUs: 3
 
-#1
-Course Code: CZ2008
-School: SCSE
-Index Number: 12800
-AU: 3
+Here is the courses list:
+Course Code     School     Index No.  AU   
+CZ2008          SCSE       12800      3    
 
 ------------------------------------------------------------
 
@@ -694,11 +578,12 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter course code:
-Index: 10001 Vacancies/Waitlist Size: 0/2
-Index: 10002 Vacancies/Waitlist Size: 0/2
-Index: 10003 Vacancies/Waitlist Size: 3/0
-Index: 10004 Vacancies/Waitlist Size: 5/0
-Index: 10005 Vacancies/Waitlist Size: 5/0
+Index      Vacancies       Waitlist Size       
+10001      0               2                   
+10002      0               2                   
+10003      3               0                   
+10004      5               0                   
+10005      5               0                   
 
 ------------------------------------------------------------
 
@@ -734,11 +619,13 @@ Please select an item:
 
 Enter original index number:
 Enter desired index number:
-Index No changed from: 10001 to 10003
-Course Code: CZ2001
-School: SCSE
-Index Number: 10003
-AU: 3
+Successfully changed!
+Old course:
+Course Code     School     Index No.  AU   
+CZ2001          SCSE       10001      3    
+New course:
+Course Code     School     Index No.  AU   
+CZ2001          SCSE       10003      3    
 
 ------------------------------------------------------------
 
@@ -755,10 +642,11 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter course code:
-Index: 20710 Vacancies/Waitlist Size: 0/0
-Index: 20711 Vacancies/Waitlist Size: 7/0
-Index: 20712 Vacancies/Waitlist Size: 10/0
-Index: 20713 Vacancies/Waitlist Size: 10/0
+Index      Vacancies       Waitlist Size       
+20710      0               0                   
+20711      7               0                   
+20712      10              0                   
+20713      10              0                   
 
 ------------------------------------------------------------
 
@@ -818,8 +706,14 @@ Enter original index number:
 Enter peer index number:
 Enter Username: 
 Enter Password: 
-U1920301J - Index No changed from: 20711 to 20710
-U1920001N - Index No changed from: 20710 to 20711
+Successfully changed!
+Current course of U1920301J:
+Course Code     School     Index No.  AU   
+CZ2002          SCSE       20710      3    
+
+Current course of U1920001N:
+Course Code     School     Index No.  AU   
+CZ2002          SCSE       20711      3    
 
 ------------------------------------------------------------
 
@@ -836,44 +730,24 @@ Please select an item:
 ------------------------------------------------------------
 
 Here are your registered courses:
-Total No. of Courses Registered: 6
-Total No. of AUs Registered: 19
+Total No. of Courses: 6
+Total No. of AUs: 19
 
-#1
-Course Code: CZ2005
-School: SCSE
-Index Number: 10230
-AU: 3
-#2
-Course Code: CZ2007
-School: SCSE
-Index Number: 10813
-AU: 3
-#3
-Course Code: MH2500
-School: SPMS
-Index Number: 90830
-AU: 4
-#4
-Course Code: CZ2008
-School: SCSE
-Index Number: 12800
-AU: 3
-#5
-Course Code: CZ2001
-School: SCSE
-Index Number: 10003
-AU: 3
-#6
-Course Code: CZ2002
-School: SCSE
-Index Number: 20710
-AU: 3
+Here is the courses list:
+Course Code     School     Index No.  AU   
+CZ2005          SCSE       10230      3    
+CZ2007          SCSE       10813      3    
+MH2500          SPMS       90830      4    
+CZ2008          SCSE       12800      3    
+CZ2001          SCSE       10003      3    
+CZ2002          SCSE       20710      3    
 
 Here are your waitlisted courses:
-Total No. of Courses Registered: 0
-Total No. of AUs Registered: 0
+Total No. of Courses: 0
+Total No. of AUs: 0
 
+Here is the courses list:
+Course Code     School     Index No.  AU   
 
 ------------------------------------------------------------
 
@@ -907,11 +781,9 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Registered Course Dropped!
-Course Code: CZ2008
-School: SCSE
-Index Number: 12800
-AU: 3
+Following Registered course dropped:
+Course Code     School     Index No.  AU   
+CZ2008          SCSE       12800      3    
 
 ------------------------------------------------------------
 
@@ -954,39 +826,23 @@ Please select an item:
 ------------------------------------------------------------
 
 Here are your registered courses:
-Total No. of Courses Registered: 5
-Total No. of AUs Registered: 15
+Total No. of Courses: 5
+Total No. of AUs: 15
 
-#1
-Course Code: CZ2007
-School: SCSE
-Index Number: 10813
-AU: 3
-#2
-Course Code: CZ2002
-School: SCSE
-Index Number: 20710
-AU: 3
-#3
-Course Code: CZ2001
-School: SCSE
-Index Number: 10003
-AU: 3
-#4
-Course Code: CZ2005
-School: SCSE
-Index Number: 10230
-AU: 3
-#5
-Course Code: CZ2008
-School: SCSE
-Index Number: 12800
-AU: 3
+Here is the courses list:
+Course Code     School     Index No.  AU   
+CZ2007          SCSE       10813      3    
+CZ2002          SCSE       20710      3    
+CZ2001          SCSE       10003      3    
+CZ2005          SCSE       10230      3    
+CZ2008          SCSE       12800      3    
 
 Here are your waitlisted courses:
-Total No. of Courses Registered: 0
-Total No. of AUs Registered: 0
+Total No. of Courses: 0
+Total No. of AUs: 0
 
+Here is the courses list:
+Course Code     School     Index No.  AU   
 
 ------------------------------------------------------------
 
@@ -1042,13 +898,13 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter course code:
-Here are the list of students:
-Leonardo Irvin Pratama, U1920301J, M, Indonesian
-Tan Jun Hong, U1920001N, M, Singaporean
-Tey Chin Yi, U1920002P, M, Singaporean
-Ferlita Halim, U1920003R, F, Indonesian
-Woon Yoke Min, U1920004N, F, Singaporean
-Test User, U1920000L, M, Singaporean
+Here is the list of students of course CZ2002:
+Leonardo Irvin Pratama         U1920301J       M          Indonesian     
+Tan Jun Hong                   U1920001N       M          Singaporean    
+Tey Chin Yi                    U1920002P       M          Singaporean    
+Ferlita Halim                  U1920003R       F          Indonesian     
+Woon Yoke Min                  U1920004N       F          Singaporean    
+Test User                      U1920000L       M          Singaporean    
 
 ------------------------------------------------------------
 
@@ -1082,10 +938,10 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Here are the list of students:
-Leonardo Irvin Pratama, U1920301J, M, Indonesian
-Woon Yoke Min, U1920004N, F, Singaporean
-Test User, U1920000L, M, Singaporean
+Here is the list of students of index 20710:
+Leonardo Irvin Pratama         U1920301J       M          Indonesian     
+Woon Yoke Min                  U1920004N       F          Singaporean    
+Test User                      U1920000L       M          Singaporean    
 
 ------------------------------------------------------------
 

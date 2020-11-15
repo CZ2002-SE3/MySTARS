@@ -31,41 +31,60 @@ public class StudentUi extends Ui {
 
     public void showAllCourses(Student student) {
         printNicely("Here are your registered courses:");
-        printNicely(student.getRegisteredCourses().toString());
+        printNicely("Total No. of Courses: " + student.getRegisteredCourses().getNoOfCourses());
+        printNicely("Total No. of AUs: " + student.getRegisteredCourses().getTotalNoOfAUs());
+        //printNicely(student.getRegisteredCourses().toString());
+        showCourseList(student.getRegisteredCourses());
         printNicely();
         printNicely("Here are your waitlisted courses:");
-        printNicely(student.getWaitlistedCourses().toString());
+        printNicely("Total No. of Courses: " + student.getWaitlistedCourses().getNoOfCourses());
+        printNicely("Total No. of AUs: " + student.getWaitlistedCourses().getTotalNoOfAUs());
+        showCourseList(student.getWaitlistedCourses());
+        //printNicely(student.getWaitlistedCourses().toString());
     }
 
     public void showCourseRegistered(Course course) {
-        printNicely("Course Registered!");
+        printNicely("Following course registered: ");
         showCourse(course);
     }
 
     public void showDroppedCourse(Course course, String type) {
-        printNicely(type + " Course Dropped!");
+        printNicely("Following " + type + " course dropped:");
         showCourse(course);
     }
 
     public void showCourseWaitlisted(Course course) {
-        printNicely("Course Waitlisted!");
+        printNicely("Following course waitlisted!");
         showCourse(course);
     }
 
     public void showIndexNoChanged(Course desiredCourse, Course currentCourse) {
-        printNicely("Index No changed from: " + currentCourse.getIndexNumber() + " to "
-                + desiredCourse.getIndexNumber());
+        //printNicely(String.format("%-10s %-15s %-20s", "Old Index No.", "Vacancies", "Waitlist Size"));
+        printNicely("Successfully changed!");
+        printNicely("Old course:");
+        showCourse(currentCourse);
+        printNicely("New course:");
         showCourse(desiredCourse);
+        /*printNicely("Index No changed from: " + currentCourse.getIndexNumber() + " to "
+                + desiredCourse.getIndexNumber());
+        showCourse(desiredCourse);*/
     }
 
     public void showIndexSwop(Course currentCourse, Course peerCourse, Student student, Student peer) {
-        printNicely(student.getMatricNo() + " - Index No changed from: " + currentCourse.getIndexNumber() + " to "
+        printNicely("Successfully changed!");
+        printNicely( "Current course of " + student.getMatricNo() + ":");
+        showCourse(peerCourse);
+        printNicely();
+        printNicely("Current course of " + peer.getMatricNo() + ":");
+        showCourse(currentCourse);
+        /*printNicely(student.getMatricNo() + " - Index No changed from: " + currentCourse.getIndexNumber() + " to "
                 + peerCourse.getIndexNumber());
         printNicely(peer.getMatricNo() + " - Index No changed from: " + peerCourse.getIndexNumber() + " to "
-                + currentCourse.getIndexNumber());
+                + currentCourse.getIndexNumber());*/
     }
 
     public void showCourseVacancy(CourseList courses, String courseCode) {
+        printNicely(String.format("%-10s %-15s %-20s", "Index", "Vacancies", "Waitlist Size"));
         courses.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode))
                 .map(Course::getVacancyString).forEach(this::printNicely);
     }

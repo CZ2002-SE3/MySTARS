@@ -69,16 +69,16 @@ public class CourseList {
         return courses.stream().anyMatch(courseToAdd::isClash);
     }
 
-    @Override
+    /*@Override
     public String toString() {
         StringBuilder coursesString = new StringBuilder();
         for (int i = 1; i <= courses.size(); i++) {
-            coursesString.append(System.lineSeparator()).append("#").append(i).append(System.lineSeparator())
+            coursesString.append(System.lineSeparator()).append("#").append(i).append(" ")
                     .append(courses.get(i - 1).toString());
         }
-        return String.join(System.lineSeparator(), "Total No. of Courses Registered: " + courses.size(),
-                "Total No. of AUs Registered: " + getTotalNoOfAUs(), coursesString.toString());
-    }
+        return String.join(System.lineSeparator(), "Total No. of Courses: " + courses.size(),
+                "Total No. of AUs: " + getTotalNoOfAUs(), coursesString.toString());
+    }*/
 
     public void addCourse(Course courseToAdd) {
         courses.add(courseToAdd);
@@ -113,5 +113,9 @@ public class CourseList {
         if (!isCourseInList(courseCode)) {
             throw new MyStarsException(NO_COURSE_ERROR);
         }
+    }
+
+    public int getNoOfCourses() {
+        return courses.size();
     }
 }

@@ -34,6 +34,8 @@ import java.util.stream.Collectors;
 
 public class AdminUi extends Ui {
 
+    private static final String STUDENT_HEADER = String.format(Student.FORMAT, "Name", "Matric No.", "Gender", "Nationality");
+
     private static final String MENU = String.join(System.lineSeparator(), "1. Edit student access period",
             "2. Add a student (name, matric number, gender, nationality, etc)",
             "3. Add/Update a course (course code, school, its index numbers and vacancy)",
@@ -71,38 +73,29 @@ public class AdminUi extends Ui {
 
     public void showStudentList(UserList users) {
         printNicely();
-        printNicely("Here is the student list:");
-        printNicely();
-        printNicely(String.format("%-30s %-15s %-10s %-15s", "Name", "Matric No.", "Gender", "Nationality"));
+        printNicely("Here is the list of students:");
+        printNicely(STUDENT_HEADER);
         users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
     }
 
     public void showStudentListByIndex(UserList users, String indexNumber) {
-        printNicely("Here are the list of students:");
+        printNicely("Here is the list of students of index " + indexNumber + ":");
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isIndexNoInList(indexNumber))
                 .forEach(user -> printNicely(user.toString()));
     }
 
     public void showStudentListByCourse(UserList users, String courseCode) {
-        printNicely("Here are the list of students:");
+        printNicely("Here is the list of students of course " + courseCode + ":");
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
                 .forEach(user -> printNicely(user.toString()));
     }
 
-    public void showCourseList(CourseList courses) {
-        printNicely();
-        printNicely("Here is the courses list:");
-        printNicely(courses.getCourses().stream().map(Course::toString)
-                .collect(Collectors.joining(System.lineSeparator() + System.lineSeparator())));
-    }
-
     public void showAddedStudent(Student newStudent) {
         printNicely();
         printNicely("Student added: ");
-        printNicely();
-        printNicely(String.format("%-30s %-15s %-10s %-15s", "Name", "Matric No.", "Gender", "Nationality"));
+        printNicely(STUDENT_HEADER);
         printNicely(newStudent.toString());
     }
 
@@ -215,5 +208,10 @@ public class AdminUi extends Ui {
 
     public boolean askUpdate() {
         return parser.isYes(getUserInput("Do you want to update course? (Y/N)", new OptionValidChecker()));
+    }
+
+    public void showExistingCourse(Course courseByIndex) {
+        printNicely("Here is the course to be updated:");
+        showCourse(courseByIndex);
     }
 }

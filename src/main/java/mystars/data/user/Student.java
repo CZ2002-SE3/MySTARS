@@ -8,6 +8,7 @@ import mystars.parser.Parser;
 
 public class Student extends User {
 
+    public static final String FORMAT = "%-30s %-15s %-10s %-15s";
     public static final int MAX_AU_ALLOWED = 21;
     private static final String EXCEED_AU_ERROR = "Exceed maximum AU allowed!";
     private static final String TIMING_CLASH_ERROR = "Timings clash!";
@@ -152,7 +153,7 @@ public class Student extends User {
 
     @Override
     public String toString() {
-        return String.format("%-30s %-15s %-10s %-15s", name, matricNo, gender, nationality);
+        return String.format(FORMAT, name, matricNo, gender, nationality);
     }
 
     public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
