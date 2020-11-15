@@ -72,6 +72,8 @@ public class AdminUi extends Ui {
     public void showStudentList(UserList users) {
         printNicely();
         printNicely("Here is the student list:");
+        printNicely();
+        printNicely(String.format("%-30s %-15s %-10s %-15s", "Name", "Matric No.", "Gender", "Nationality"));
         users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
     }
 
@@ -98,7 +100,10 @@ public class AdminUi extends Ui {
 
     public void showAddedStudent(Student newStudent) {
         printNicely();
-        printNicely("Student added: " + newStudent.toString());
+        printNicely("Student added: ");
+        printNicely();
+        printNicely(String.format("%-30s %-15s %-10s %-15s", "Name", "Matric No.", "Gender", "Nationality"));
+        printNicely(newStudent.toString());
     }
 
     public Course updateCourseDetails(String indexNumber, Course course) throws MyStarsException {

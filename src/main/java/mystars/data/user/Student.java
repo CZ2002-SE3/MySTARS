@@ -152,7 +152,7 @@ public class Student extends User {
 
     @Override
     public String toString() {
-        return String.join(", ", name, matricNo, String.valueOf(gender), nationality);
+        return String.format("%-30s %-15s %-10s %-15s", name, matricNo, gender, nationality);
     }
 
     public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {
