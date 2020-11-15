@@ -52,6 +52,11 @@ public abstract class Ui {
         Arrays.stream(message.split(System.lineSeparator())).forEach(this::printNicely);
     }
 
+    public void showExit() {
+        showLine();
+        showToUser("Bye! See you again soon!");
+    }
+
     /**
      * Reads command from user.
      *
@@ -85,12 +90,12 @@ public abstract class Ui {
     }
 
     private char[] readUsername() {
-        printNicely("Enter Username: ");
+        printNicely("Enter Username:");
         return in.nextLine().replaceAll(Parser.ESCAPED_LINE_SEPARATOR, "").toUpperCase().toCharArray();
     }
 
     private char[] readPassword() {
-        printNicely("Enter Password: ");
+        printNicely("Enter Password:");
 
         if (System.console() == null) {
             return in.nextLine().toCharArray();
@@ -160,4 +165,13 @@ public abstract class Ui {
     public abstract void showMenu();
 
     public abstract void greetUser();
+
+    public void showClosed() {
+        showLine();
+        showToUser("MyStars is closed for students...");
+    }
+
+    public void showLogout() {
+        showToUser("You have successfully logged out!");
+    }
 }

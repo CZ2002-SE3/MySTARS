@@ -44,7 +44,7 @@ public class StudentUi extends Ui {
     }
 
     public void showCourseRegistered(Course course) {
-        printNicely("Following course registered: ");
+        printNicely("Following course registered:");
         showCourse(course);
     }
 

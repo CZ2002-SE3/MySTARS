@@ -11,8 +11,8 @@
 |/     \|  \_/  \_______)  )_(  |/     \|/   \__|_______)
                                                          
 Welcome!
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 
@@ -34,7 +34,7 @@ End Date/Time	: 2020-12-12 17:00
 Enter new start date & time (yyyy-MM-dd HH:mm):
 Enter new end date & time (yyyy-MM-dd HH:mm):
 
-Successfully changed! Access period is as follows: 
+Successfully changed! Access period is as follows:
 Start Date/Time	: 2019-11-01 10:00
 End Date/Time	: 2019-12-01 17:00
 
@@ -63,8 +63,8 @@ Enter nationality:
 Enter course of study:
 Enter year of study:
 Enter email:
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 Sorry! Duplicate username!
 
 ------------------------------------------------------------
@@ -88,10 +88,10 @@ Enter nationality:
 Enter course of study:
 Enter year of study:
 Enter email:
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
-Student added: 
+Student added:
 Name                           Matric No.      Gender     Nationality    
 Test User                      U1920000L       M          Singaporean    
 
@@ -253,8 +253,8 @@ Do you want to exit? (Y/N)
 
 ------------------------------------------------------------
 
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 
@@ -263,8 +263,8 @@ Do you want to exit? (Y/N)
 
 ------------------------------------------------------------
 
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 
@@ -286,7 +286,7 @@ End Date/Time	: 2019-12-01 17:00
 Enter new start date & time (yyyy-MM-dd HH:mm):
 Enter new end date & time (yyyy-MM-dd HH:mm):
 
-Successfully changed! Access period is as follows: 
+Successfully changed! Access period is as follows:
 Start Date/Time	: 2020-11-01 10:00
 End Date/Time	: 2020-12-01 17:00
 
@@ -309,8 +309,8 @@ Do you want to exit? (Y/N)
 
 ------------------------------------------------------------
 
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 
@@ -327,7 +327,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Following course registered: 
+Following course registered:
 Course Code     School     Index No.  AU   
 CZ2008          SCSE       12800      3    
 
@@ -350,8 +350,8 @@ Do you want to exit? (Y/N)
 
 ------------------------------------------------------------
 
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 
@@ -359,8 +359,8 @@ Sorry! Invalid username/password!
 
 ------------------------------------------------------------
 
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 
@@ -377,7 +377,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Following course registered: 
+Following course registered:
 Course Code     School     Index No.  AU   
 CZ2007          SCSE       10813      3    
 
@@ -396,7 +396,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Following course registered: 
+Following course registered:
 Course Code     School     Index No.  AU   
 CZ2002          SCSE       20710      3    
 
@@ -468,7 +468,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Following course registered: 
+Following course registered:
 Course Code     School     Index No.  AU   
 CZ2001          SCSE       10003      3    
 
@@ -487,7 +487,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Following course registered: 
+Following course registered:
 Course Code     School     Index No.  AU   
 CZ2005          SCSE       10230      3    
 
@@ -560,8 +560,8 @@ Do you want to exit? (Y/N)
 
 ------------------------------------------------------------
 
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 
@@ -664,8 +664,8 @@ Please select an item:
 
 Enter original index number:
 Enter peer index number:
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 Sorry! Either of you are not registered for the specified index!
 
 ------------------------------------------------------------
@@ -684,8 +684,8 @@ Please select an item:
 
 Enter original index number:
 Enter peer index number:
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 Sorry! User not valid!
 
 ------------------------------------------------------------
@@ -704,8 +704,8 @@ Please select an item:
 
 Enter original index number:
 Enter peer index number:
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 Successfully changed!
 Current course of U1920301J:
 Course Code     School     Index No.  AU   
@@ -808,8 +808,8 @@ Do you want to exit? (Y/N)
 
 ------------------------------------------------------------
 
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 
@@ -863,8 +863,8 @@ Do you want to exit? (Y/N)
 
 ------------------------------------------------------------
 
-Enter Username: 
-Enter Password: 
+Enter Username:
+Enter Password:
 
 ------------------------------------------------------------
 

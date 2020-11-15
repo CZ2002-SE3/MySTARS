@@ -6,13 +6,28 @@ import mystars.data.user.Student;
 import mystars.data.user.UserList;
 import mystars.ui.Ui;
 
+/**
+ * Checks login of user.
+ */
 public class LoginCommand extends SharedCommand {
 
-    private static final String MESSAGE = "MyStars is closed for students...";
-
+    /**
+     * List of users.
+     */
     private final UserList users;
+
+    /**
+     * Student's access date/time.
+     */
     private final AccessDateTime accessDateTime;
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui Ui object.
+     * @param users List of users.
+     * @param accessDateTime Student's access date/time.
+     */
     public LoginCommand(Ui ui, UserList users, AccessDateTime accessDateTime) {
         super(ui);
         this.users = users;
@@ -20,7 +35,7 @@ public class LoginCommand extends SharedCommand {
     }
 
     /**
-     * Executes command.
+     * Prompts user for login info and checks validity.
      *
      * @throws MyStarsException If there is issue executing command.
      */
@@ -37,9 +52,8 @@ public class LoginCommand extends SharedCommand {
         }
 
         if (users.getUser(usernameAndPassword) instanceof Student && !accessDateTime.isAccessPeriod()) {
-            ui.showLine();
-            ui.showToUser(MESSAGE);
-            checkExit(ui);
+            ui.showClosed();
+            checkExit();
             setLoginStatus(false);
         }
     }

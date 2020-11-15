@@ -7,8 +7,11 @@ import mystars.ui.Ui;
  */
 public class ExitCommand extends SharedCommand {
 
-    private static final String MESSAGE = "Bye! See you again soon!";
-
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui Ui object.
+     */
     public ExitCommand(Ui ui) {
         super(ui);
     }
@@ -19,7 +22,6 @@ public class ExitCommand extends SharedCommand {
     @Override
     public void execute() {
         setExit();
-        ui.showLine();
-        ui.showToUser(MESSAGE);
+        ui.showExit();
     }
 }

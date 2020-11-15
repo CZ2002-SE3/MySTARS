@@ -2,23 +2,33 @@ package mystars.commands.shared;
 
 import mystars.ui.Ui;
 
+/**
+ * Logs out user.
+ */
 public class LogoutCommand extends SharedCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "7";
-    private static final String MESSAGE = "You have successfully logged out!";
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui Ui object.
+     */
     public LogoutCommand(Ui ui) {
         super(ui);
     }
 
     /**
-     * Executes command.
+     * Logs out user and asks to exit.
      */
     @Override
     public void execute() {
         setLoginStatus(false);
-        ui.showToUser(MESSAGE);
+        ui.showLogout();
 
-        checkExit(ui);
+        checkExit();
     }
 }

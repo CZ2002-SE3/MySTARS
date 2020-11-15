@@ -1,7 +1,6 @@
 package mystars.ui;
 
 import mystars.data.course.Course;
-import mystars.data.course.CourseList;
 import mystars.data.course.LessonList;
 import mystars.data.course.lesson.Lesson;
 import mystars.data.course.lesson.LessonType;
@@ -30,7 +29,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.stream.Collectors;
 
 public class AdminUi extends Ui {
 
@@ -68,7 +66,7 @@ public class AdminUi extends Ui {
 
     public void showNewAccessPeriod(LocalDateTime[] accessDateTime) {
         printNicely();
-        showStartEndDateTime(accessDateTime, "Successfully changed! Access period is as follows: ");
+        showStartEndDateTime(accessDateTime, "Successfully changed! Access period is as follows:");
     }
 
     public void showStudentList(UserList users) {
@@ -94,7 +92,7 @@ public class AdminUi extends Ui {
 
     public void showAddedStudent(Student newStudent) {
         printNicely();
-        printNicely("Student added: ");
+        printNicely("Student added:");
         printNicely(STUDENT_HEADER);
         printNicely(newStudent.toString());
     }

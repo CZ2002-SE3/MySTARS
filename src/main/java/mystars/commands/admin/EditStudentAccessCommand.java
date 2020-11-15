@@ -10,11 +10,28 @@ import mystars.ui.AdminUi;
  */
 public class EditStudentAccessCommand extends AdminCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "1";
 
+    /**
+     * Storage handler.
+     */
     private final Storage storage;
+
+    /**
+     * Student's access date/time.
+     */
     private final AccessDateTime accessDateTime;
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui Ui object.
+     * @param storage Storage handler.
+     * @param accessDateTime Student's access date/time.
+     */
     public EditStudentAccessCommand(AdminUi ui, Storage storage, AccessDateTime accessDateTime) {
         super(ui);
         this.storage = storage;

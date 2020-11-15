@@ -11,13 +11,31 @@ import mystars.ui.AdminUi;
 import java.util.logging.Level;
 
 
+/**
+ * Adds or updates course.
+ */
 public class AddUpdateCourseCommand extends AdminCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "3";
 
+    /**
+     * Storage handler.
+     */
     private final Storage storage;
+
+    /**
+     * List of courses.
+     */
     private final CourseList courses;
 
+    /**
+     * @param ui      Ui object.
+     * @param storage Storage handler.
+     * @param courses List of courses.
+     */
     public AddUpdateCourseCommand(AdminUi ui, Storage storage, CourseList courses) {
         super(ui);
         this.storage = storage;
@@ -25,7 +43,10 @@ public class AddUpdateCourseCommand extends AdminCommand {
     }
 
     /**
-     * Executes command.
+     * Checks if course index entered exists.
+     * If so, asks user to confirm updating course and prompts accordingly.
+     * Else, prompts user to enter new course details.
+     * Then, saves course to file.
      *
      * @throws MyStarsException If there is issue executing command.
      */

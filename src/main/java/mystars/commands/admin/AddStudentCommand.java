@@ -11,11 +11,28 @@ import mystars.ui.AdminUi;
  */
 public class AddStudentCommand extends AdminCommand {
 
+    /**
+     * Command word to trigger this command.
+     */
     public static final String COMMAND_WORD = "2";
 
+    /**
+     * Storage handler.
+     */
     private final Storage storage;
+
+    /**
+     * List of users.
+     */
     private final UserList users;
 
+    /**
+     * Initialises command for execution.
+     *
+     * @param ui      Ui object.
+     * @param storage Storage handler.
+     * @param users   List of users.
+     */
     public AddStudentCommand(AdminUi ui, Storage storage, UserList users) {
         super(ui);
         this.storage = storage;
@@ -23,7 +40,7 @@ public class AddStudentCommand extends AdminCommand {
     }
 
     /**
-     * Adds a new student, and save to file.
+     * Adds a new student, displays that student and the list of students, and saves updated list to file.
      *
      * @throws MyStarsException If there is issue executing command.
      */
