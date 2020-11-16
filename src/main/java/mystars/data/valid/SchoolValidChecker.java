@@ -1,12 +1,22 @@
 package mystars.data.valid;
 
+/**
+ * School code validity checker.
+ */
 public class SchoolValidChecker implements ValidChecker {
 
+    /**
+     * Maximum school code length.
+     */
     private static final int MAX_SCHOOL_LENGTH = 4;
+
+    /**
+     * Minimum school code length.
+     */
     private static final int MIN_SCHOOL_LENGTH = 3;
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

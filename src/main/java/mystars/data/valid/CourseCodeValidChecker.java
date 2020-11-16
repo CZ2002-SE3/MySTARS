@@ -1,11 +1,17 @@
 package mystars.data.valid;
 
+/**
+ * Course code validity checker.
+ */
 public class CourseCodeValidChecker implements ValidChecker {
 
+    /**
+     * Course code length.
+     */
     private static final int COURSE_CODE_LENGTH = 6;
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

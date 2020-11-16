@@ -4,6 +4,9 @@ import mystars.data.shared.Option;
 
 import java.util.Arrays;
 
+/**
+ * Option validity checker.
+ */
 public class OptionValidChecker implements ValidChecker {
 
     /**

@@ -1,11 +1,17 @@
 package mystars.data.valid;
 
+/**
+ * Matriculation number validity checker.
+ */
 public class MatricNoValidChecker implements ValidChecker {
 
+    /**
+     * Matriculation number length.
+     */
     private static final int MATRIC_NO_LENGTH = 9;
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

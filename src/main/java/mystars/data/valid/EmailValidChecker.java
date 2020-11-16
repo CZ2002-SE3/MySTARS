@@ -3,10 +3,13 @@ package mystars.data.valid;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
+/**
+ * Email validity checker.
+ */
 public class EmailValidChecker implements ValidChecker {
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

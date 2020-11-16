@@ -2,11 +2,18 @@ package mystars.data.valid;
 
 import mystars.parser.Parser;
 
+/**
+ * Input valid checker.
+ */
 public class InputValidChecker implements ValidChecker {
+
+    /**
+     * Empty string.
+     */
     private static final String EMPTY_STRING = "";
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

@@ -23,12 +23,39 @@ import java.util.logging.Logger;
  */
 public class MyStars {
 
+    /**
+     * Logger object.
+     */
     public static final Logger logger = Logger.getLogger(MyStars.class.getName());
+
+    /**
+     * Parser object.
+     */
     private final Parser parser;
+
+    /**
+     * Storage handler.
+     */
     private final Storage storage;
+
+    /**
+     * User interface.
+     */
     private Ui ui;
+
+    /**
+     * List of users.
+     */
     private UserList users;
+
+    /**
+     * List of courses.
+     */
     private CourseList courses;
+
+    /**
+     * Access date/time.
+     */
     private AccessDateTime accessDateTime;
 
     /**

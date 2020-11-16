@@ -1,11 +1,17 @@
 package mystars.data.valid;
 
+/**
+ * Index number validity checker.
+ */
 public class IndexNumberValidChecker implements ValidChecker {
 
+    /**
+     * Index number length.
+     */
     private static final int INDEX_NO_LENGTH = 5;
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

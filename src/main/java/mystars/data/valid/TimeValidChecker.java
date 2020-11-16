@@ -3,10 +3,13 @@ package mystars.data.valid;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Time validity checker.
+ */
 public class TimeValidChecker implements ValidChecker {
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

@@ -4,10 +4,13 @@ import mystars.data.course.lesson.LessonType;
 
 import java.util.Arrays;
 
+/**
+ * Lesson type validity checker.
+ */
 public class LessonTypeValidChecker implements ValidChecker {
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

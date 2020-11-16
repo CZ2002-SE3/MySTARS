@@ -1,9 +1,12 @@
 package mystars.data.valid;
 
+/**
+ * Number validity checker.
+ */
 public class NumberValidChecker implements ValidChecker {
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

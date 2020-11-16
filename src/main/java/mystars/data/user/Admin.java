@@ -15,11 +15,11 @@ public class Admin extends User {
     /**
      * Initializes Admin object.
      *
-     * @param name Name of admin.
-     * @param staffId Staff ID.
-     * @param gender Gender of admin.
+     * @param name        Name of admin.
+     * @param staffId     Staff ID.
+     * @param gender      Gender of admin.
      * @param nationality Nationality of admin.
-     * @param username Username of admin.
+     * @param username    Username of admin.
      */
     public Admin(String name, String staffId, Gender gender, String nationality, String username) {
         super(name, gender, nationality);
@@ -35,7 +35,7 @@ public class Admin extends User {
     }
 
     /**
-     * Copys details to combine login info and admin details.
+     * Copies details to combine login info and admin details.
      *
      * @param user Admin user to combine.
      */

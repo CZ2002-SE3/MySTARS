@@ -3,10 +3,13 @@ package mystars.data.valid;
 import java.time.DayOfWeek;
 import java.util.Arrays;
 
+/**
+ * Day of week validity checker.
+ */
 public class DayOfWeekValidChecker implements ValidChecker {
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

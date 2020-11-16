@@ -47,7 +47,7 @@ public class AddStudentCommand extends AdminCommand {
     @Override
     public void execute() throws MyStarsException {
         Student newStudent = ui.getNewStudentFromUser(users);
-        users.addStudent(newStudent);
+        users.addUser(newStudent);
 
         storage.saveStudent(newStudent);
         ui.showAddedStudent(newStudent);

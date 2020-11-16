@@ -1,12 +1,22 @@
 package mystars.data.valid;
 
+/**
+ * Year of study validity checker.
+ */
 public class YearOfStudyValidChecker implements ValidChecker {
 
+    /**
+     * Maximum year of study.
+     */
     private static final int MAX_YEAR_OF_STUDY = 5;
+
+    /**
+     * Minimum year of study.
+     */
     private static final int MIN_YEAR_OF_STUDY = 1;
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.

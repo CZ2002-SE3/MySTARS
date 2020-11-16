@@ -1,9 +1,12 @@
 package mystars.data.valid;
 
+/**
+ * Validity checker.
+ */
 public interface ValidChecker {
 
     /**
-     * Check input validity.
+     * Checks input validity.
      *
      * @param line Line to check.
      * @return If input is valid.
