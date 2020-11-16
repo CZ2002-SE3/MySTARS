@@ -156,7 +156,7 @@ Enter course code:
 Enter school:
 Enter vacancy:
 Enter number of AUs:
-Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):
+Enter Lesson type (LEC for Lecture, TUT for Tutorial, LAB for Lab):
 Enter venue:
 Enter start time (HH:mm)
 Invalid input!
@@ -166,7 +166,7 @@ Enter day
 Enter week (ODD, EVEN, BOTH):
 Enter group:
 Add more lesson? (Y/N)
-Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):
+Enter Lesson type (LEC for Lecture, TUT for Tutorial, LAB for Lab):
 Enter venue:
 Enter start time (HH:mm)
 Enter end time (HH:mm)
