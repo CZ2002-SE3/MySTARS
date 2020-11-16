@@ -24,30 +24,102 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
+/**
+ * Storage handler.
+ */
 public class Storage {
 
+    /**
+     * Reading error message.
+     */
     private static final String READ_ERROR = "I am unable to read file.";
+
+    /**
+     * Directory error message.
+     */
     private static final String DIRECTORY_ERROR = "I am unable to create directory.";
+
+    /**
+     * Write error message.
+     */
     private static final String WRITE_ERROR = "I am unable to write file.";
+
+    /**
+     * Vacancy error message.
+     */
     private static final String VACANCY_ERROR = "No more vacancy to put student!";
 
+    /**
+     * Settings format string.
+     */
     private static final String SETTINGS_FORMAT = "format: start datetime|end datetime";
+
+    /**
+     * Courses format string.
+     */
     private static final String COURSES_FORMAT = "format: course code|school|index number|vacancy|number of AUs|"
             + "Lesson1*Lesson2*... (refer to Lesson.java for format)";
+
+    /**
+     * Registered format string.
+     */
     private static final String REGISTERED_FORMAT = "format: index number|student1 matric no.|student2...";
+
+    /**
+     * Waitlisted format string.
+     */
     private static final String WAITLISTED_FORMAT = REGISTERED_FORMAT;
 
+    /**
+     * Folder path.
+     */
     private static final String FOLDER = "db";
+
+    /**
+     * User file.
+     */
     private static final String USERS_FILE = "users.txt";
+
+    /**
+     * Student file.
+     */
     private static final String STUDENTS_FILE = "students.txt";
+
+    /**
+     * Admin file.
+     */
     private static final String ADMINS_FILE = "admins.txt";
+
+    /**
+     * Course file.
+     */
     private static final String COURSES_FILE = "courses.txt";
+
+    /**
+     * Setting file.
+     */
     private static final String SETTINGS_FILE = "settings.txt";
+
+    /**
+     * Registered file.
+     */
     private static final String REGISTERED_FILE = "registered.txt";
+
+    /**
+     * Waitlisted file.
+     */
     private static final String WAITLISTED_FILE = "waitlist.txt";
 
+    /**
+     * Parser object.
+     */
     private final Parser parser;
 
+    /**
+     * Initializes storage handler.
+     *
+     * @param parser Parser object.
+     */
     public Storage(Parser parser) {
         this.parser = parser;
     }
@@ -148,6 +220,13 @@ public class Storage {
         return admins;
     }
 
+    /**
+     * Loads registered students, and updates course and student about the registration.
+     *
+     * @param courses List of courses.
+     * @param users   List of users.
+     * @throws MyStarsException If there is issue loading file.
+     */
     public void loadCourseRegisteredStudents(CourseList courses, UserList users) throws MyStarsException {
         Path path = Paths.get(FOLDER, REGISTERED_FILE);
 
@@ -181,6 +260,13 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads waitlisted students, and updates course and student about the waitlist.
+     *
+     * @param courses List of courses.
+     * @param users   List of users.
+     * @throws MyStarsException If there is issue loading file.
+     */
     public void loadCourseWaitlistStudents(CourseList courses, UserList users) throws MyStarsException {
         Path path = Paths.get(FOLDER, WAITLISTED_FILE);
 
@@ -273,6 +359,12 @@ public class Storage {
         return new LocalDateTime[]{LocalDateTime.now(), LocalDateTime.now()};
     }
 
+    /**
+     * Save courses to storage.
+     *
+     * @param courses Courses to save.
+     * @throws MyStarsException If there is issue saving to file.
+     */
     public void saveCourses(CourseList courses) throws MyStarsException {
         String coursesString = courses.getCourses().stream().map(Course::getStorageString)
                 .collect(Collectors.joining(System.lineSeparator()));
@@ -299,6 +391,12 @@ public class Storage {
         writeToFile(accessPeriodString, SETTINGS_FILE);
     }
 
+    /**
+     * Saves new student to file.
+     *
+     * @param newStudent Student to append to file.
+     * @throws MyStarsException If there is issue saving file.
+     */
     public void saveStudent(Student newStudent) throws MyStarsException {
         appendToFile(newStudent.getFormattedString(), STUDENTS_FILE);
         appendToFile(newStudent.getFormattedUserInfo(), USERS_FILE);
