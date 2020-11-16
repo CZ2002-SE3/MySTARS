@@ -23,6 +23,7 @@ import mystars.data.valid.NumberValidChecker;
 import mystars.data.valid.OptionValidChecker;
 import mystars.data.valid.SchoolValidChecker;
 import mystars.data.valid.TimeValidChecker;
+import mystars.data.valid.WeekValidChecker;
 import mystars.data.valid.YearOfStudyValidChecker;
 
 import java.time.DayOfWeek;
@@ -156,17 +157,6 @@ public class AdminUi extends Ui {
                 usernameAndPassword[0], usernameAndPassword[1]);
     }
 
-    private Week getWeek() {
-        printNicely("Enter Week (ODD, EVEN, BOTH):");
-        String line = in.nextLine().trim();
-        while (!parser.isValidWeek(line)) {
-            printNicely("Enter valid week!");
-            printNicely("Enter Week (ODD, EVEN, BOTH):");
-            line = in.nextLine().trim();
-        }
-        return Week.valueOf(line.toUpperCase());
-    }
-
     private LessonList getLessonList() {
         LessonList lessonList = new LessonList();
         String option = Option.Y.name();
@@ -190,7 +180,8 @@ public class AdminUi extends Ui {
         String venue = getUserInput("Enter venue:", new InputValidChecker()).toUpperCase();
         LocalTime[] times = getStartAndEndTime();
         DayOfWeek day = DayOfWeek.valueOf(getUserInput("Enter day", new DayOfWeekValidChecker()).toUpperCase());
-        Week week = getWeek();
+        Week week = Week.valueOf(getUserInput("Enter week (ODD, EVEN, BOTH):",
+                new WeekValidChecker()).toUpperCase());
         String group = getUserInput("Enter group:", new InputValidChecker()).toUpperCase();
         return new Lesson(lessonType, venue, times[0], times[1], day, week, group);
     }

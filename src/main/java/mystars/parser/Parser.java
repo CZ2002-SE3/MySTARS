@@ -312,18 +312,44 @@ public class Parser {
         return line.split(ESCAPED_LINE_SEPARATOR)[0];
     }
 
+    /**
+     * Returns if user input is a valid week.
+     *
+     * @param line
+     * @return
+     */
     public boolean isValidWeek(String line) {
         return Arrays.stream(Week.values()).map(Week::name).anyMatch(line::equalsIgnoreCase);
     }
 
-    public boolean isYes(String line) {
-        return line.trim().equalsIgnoreCase(Option.Y.name());
+    /**
+     * Returns if user input is yes.
+     *
+     * @param option User input.
+     * @return True if yes, false otherwise.
+     */
+    public boolean isYes(String option) {
+        return option.trim().equalsIgnoreCase(Option.Y.name());
     }
 
+    /**
+     * Returns if start time and end time is valid.
+     *
+     * @param startTime Start time.
+     * @param endTime End time.
+     * @return True if it is valid, false otherwise.
+     */
     public boolean isValidStartEndTime(LocalTime startTime, LocalTime endTime) {
         return startTime.isBefore(endTime);
     }
 
+    /**
+     * Returns if start date/time and end date/time is valid.
+     *
+     * @param startDateTime Start date/time.
+     * @param endDateTime End date/time.
+     * @return True if it is valid, false otherwise.
+     */
     public boolean isValidStartEndDateTime(LocalDateTime startDateTime, LocalDateTime endDateTime) {
         return startDateTime.isBefore(endDateTime);
     }
