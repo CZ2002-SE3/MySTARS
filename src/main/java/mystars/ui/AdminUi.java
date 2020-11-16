@@ -277,7 +277,7 @@ public class AdminUi extends Ui {
      */
     private Lesson getLesson() {
         LessonType lessonType = LessonType.valueOf(
-                getUserInput("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):",
+                getUserInput("Enter Lesson type (LEC for Lecture, TUT for Tutorial, LAB for Lab):",
                         new LessonTypeValidChecker()).toUpperCase());
         String venue = getUserInput("Enter venue:", new InputValidChecker()).toUpperCase();
         LocalTime[] times = getStartAndEndTime();

@@ -2,7 +2,7 @@
 
 This is the group assignment for CZ2002. Given below are instructions on how to use it.
 
-## Setting up in Intellij
+## Setting Up Environment in Intellij
 
 Prerequisites: JDK 11 (use the exact version), update Intellij to the most recent version.
 
@@ -23,6 +23,34 @@ Prerequisites: JDK 11 (use the exact version), update Intellij to the most recen
     1. Click `OK`
 1. After the above steps are completed, locate the `src/main/java/mystars/MyStars.java` file, right-click it, and
    choose `Run MyStars.main()`. If the setup is correct, you should see something like the below:
+   ```
+   ------------------------------------------------------------
+   
+    _______         _______________________ _______ _______ 
+   (       )\     /(  ____ \__   __(  ___  |  ____ |  ____ \
+   | () () ( \   / ) (    \/  ) (  | (   ) | (    )| (    \/
+   | || || |\ (_) /| (_____   | |  | (___) | (____)| (_____ 
+   | |(_)| | \   / (_____  )  | |  |  ___  |     __|_____  )
+   | |   | |  ) (        ) |  | |  | (   ) | (\ (        ) |
+   | )   ( |  | |  /\____) |  | |  | )   ( | ) \ \_/\____) |
+   |/     \|  \_/  \_______)  )_(  |/     \|/   \__|_______)
+                                                         
+   Welcome!
+   Enter Username:
+   ```
+
+## Running Program in Terminal
+
+* In Windows
+    1. Locate the _project root directory,_ whose path ends with `MySTARS`.
+    1. Type `javac -cp .\lib\*;.\src\main\java -Xlint:none -d .\bin .\src\main\java\mystars\MyStars.java` and press enter to compile the code.
+    1. Now, type `java -classpath .\lib\*;.\bin mystars.MyStars` and press enter to run the program.
+* In UNIX
+    1. Locate the _project root directory,_ whose path ends with `MySTARS`.
+    1. Type `javac -cp ./lib/*:./src/main/java -Xlint:none -d ./bin ./src/main/java/mystars/MyStars.java` and press enter to compile the code.
+    1. Now, type `java -classpath .\lib\*:.\bin mystars.MyStars` and press enter to run the program.
+
+If the setup is correct, you should see something like the below:
    ```
    ------------------------------------------------------------
    
