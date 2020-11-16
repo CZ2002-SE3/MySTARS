@@ -74,7 +74,7 @@ public abstract class StudentCommand extends Command {
     final StudentUi ui;
 
     /**
-     * Initialises ui object for subclasses.
+     * Initializes Ui object for subclasses.
      *
      * @param ui Ui object.
      */

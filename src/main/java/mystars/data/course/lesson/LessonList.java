@@ -13,7 +13,7 @@ public class LessonList {
     private final ArrayList<Lesson> lessons;
 
     /**
-     * Initialises LessonList object.
+     * Initializes LessonList object.
      */
     public LessonList() {
         lessons = new ArrayList<>();

@@ -22,7 +22,7 @@ public class LoginCommand extends SharedCommand {
     private final AccessDateTime accessDateTime;
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui             Ui object.
      * @param users          List of users.

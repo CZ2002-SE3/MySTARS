@@ -26,7 +26,7 @@ public class EditStudentAccessCommand extends AdminCommand {
     private final AccessDateTime accessDateTime;
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui             Ui object.
      * @param storage        Storage handler.

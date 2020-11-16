@@ -14,7 +14,7 @@ public class PrintCourseRegCommand extends StudentCommand {
     public static final String COMMAND_WORD = "3";
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui Ui object.
      */

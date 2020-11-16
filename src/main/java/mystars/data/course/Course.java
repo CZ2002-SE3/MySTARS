@@ -74,7 +74,7 @@ public class Course {
     private ArrayList<Student> waitlistedStudents;
 
     /**
-     * Initialises course object.
+     * Initializes course object.
      *
      * @param courseCode       Course code.
      * @param school           School code.
@@ -90,9 +90,9 @@ public class Course {
         this.indexNumber = indexNumber;
         this.initialVacancies = initialVacancies;
         this.numOfAUs = numOfAUs;
-        this.lessonList = lessonList;
-        registeredStudents = new ArrayList<>();
-        waitlistedStudents = new ArrayList<>();
+        setLessonList(lessonList);
+        setRegisteredStudents(new ArrayList<>());
+        setWaitlistedStudents(new ArrayList<>());
     }
 
     /**
@@ -392,7 +392,10 @@ public class Course {
             dropWaitlistedStudent(studentToNotify);
             addRegisteredStudent(studentToNotify);
 
+            // This could be called in a loop iterating through an ArrayList of Senders.
+            // As such, we can loop through this statement to send via other methods.
             sendToStudent(studentToNotify, new EmailSender(studentToNotify.getEmail()));
+
             i--;
             isTransfer = true;
         }

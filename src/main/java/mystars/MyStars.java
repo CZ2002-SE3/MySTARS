@@ -32,7 +32,7 @@ public class MyStars {
     private AccessDateTime accessDateTime;
 
     /**
-     * Initialises MySTARS.
+     * Initializes MySTARS.
      */
     public MyStars() {
         logger.setLevel(Level.WARNING);

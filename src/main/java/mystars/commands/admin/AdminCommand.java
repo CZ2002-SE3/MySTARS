@@ -14,7 +14,7 @@ abstract class AdminCommand extends Command {
     final AdminUi ui;
 
     /**
-     * Initialises ui object for subclasses.
+     * Initializes Ui object for subclasses.
      *
      * @param ui Ui object.
      */

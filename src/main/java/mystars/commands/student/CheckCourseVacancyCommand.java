@@ -20,7 +20,7 @@ public class CheckCourseVacancyCommand extends StudentCommand {
     private final CourseList courses;
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui      Ui object.
      * @param courses List of courses.

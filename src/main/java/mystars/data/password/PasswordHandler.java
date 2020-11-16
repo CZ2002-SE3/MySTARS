@@ -11,63 +11,43 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
+/**
+ * Handles passwords.
+ */
 public class PasswordHandler {
 
+    /**
+     * Hash error message.
+     */
     private static final String HASH_ERROR = "Hashing issue!";
 
+    /**
+     * Number of PBKDF2 iterations (for hashing).
+     */
     private static final int PBKDF2_ITERATIONS = 32768;
-    private static final int KEY_LENGTH = 16;
 
     /**
-     * Generates and returns hash & salt string.
-     *
-     * @param password Password to generate hash & salt.
-     * @return Hash & salt, separated by tilde
-     * @throws MyStarsException If there is hashing issue.
+     * Key length.
      */
-    public String generatePBKDF2String(char[] password) throws MyStarsException {
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[KEY_LENGTH];
-        random.nextBytes(salt);
-        byte[] hash = generatePBKDF2(password, salt, PBKDF2_ITERATIONS, KEY_LENGTH);
-        return Base64.getEncoder().encodeToString(salt) + Parser.TILDE_SEPARATOR
-                + Base64.getEncoder().encodeToString(hash);
-    }
+    private static final int KEY_LENGTH = 16;
 
     /**
      * Generates hash as byte array.
      *
-     * @param password   Password to hash.
-     * @param salt       Salt to use.
-     * @param iterations Iteration used for hashing.
-     * @param bytes      Number of bytes to be used.
+     * @param password Password to hash.
+     * @param salt     Salt to use.
+     * @param bytes    Number of bytes to be used.
      * @return Hashed password.
      * @throws MyStarsException If there is issue hashing password.
      */
-    public byte[] generatePBKDF2(char[] password, byte[] salt, int iterations, int bytes) throws MyStarsException {
-        KeySpec spec = new PBEKeySpec(password, salt, iterations, bytes * 8);
+    private byte[] generatePBKDF2(char[] password, byte[] salt, int bytes) throws MyStarsException {
+        KeySpec spec = new PBEKeySpec(password, salt, PasswordHandler.PBKDF2_ITERATIONS, bytes * 8);
         try {
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
             return factory.generateSecret(spec).getEncoded();
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new MyStarsException(HASH_ERROR);
         }
-    }
-
-    /**
-     * Check if password equals to the hash.
-     *
-     * @param password Password to be compared.
-     * @param goodHash Hash to be compared.
-     * @return True if equal, false otherwise.
-     * @throws MyStarsException If there is issue hashing password.
-     */
-    public boolean validatePassword(char[] password, char[] goodHash) throws MyStarsException {
-        String[] params = String.valueOf(goodHash).split(Parser.TILDE_SEPARATOR);
-        byte[] salt = Base64.getDecoder().decode(params[0]);
-        byte[] hash = Base64.getDecoder().decode(params[1]);
-        byte[] testHash = generatePBKDF2(password, salt, PBKDF2_ITERATIONS, hash.length);
-        return slowEquals(hash, testHash);
     }
 
     /**
@@ -85,5 +65,37 @@ public class PasswordHandler {
         }
 
         return diff == 0;
+    }
+
+    /**
+     * Generates and returns hash & salt string.
+     *
+     * @param password Password to generate hash & salt.
+     * @return Hash & salt, separated by tilde
+     * @throws MyStarsException If there is hashing issue.
+     */
+    public String generatePBKDF2String(char[] password) throws MyStarsException {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[KEY_LENGTH];
+        random.nextBytes(salt);
+        byte[] hash = generatePBKDF2(password, salt, KEY_LENGTH);
+        return Base64.getEncoder().encodeToString(salt) + Parser.TILDE_SEPARATOR
+                + Base64.getEncoder().encodeToString(hash);
+    }
+
+    /**
+     * Check if password equals to the hash.
+     *
+     * @param password Password to be compared.
+     * @param goodHash Hash to be compared.
+     * @return True if equal, false otherwise.
+     * @throws MyStarsException If there is issue hashing password.
+     */
+    public boolean validatePassword(char[] password, char[] goodHash) throws MyStarsException {
+        String[] params = String.valueOf(goodHash).split(Parser.TILDE_SEPARATOR);
+        byte[] salt = Base64.getDecoder().decode(params[0]);
+        byte[] hash = Base64.getDecoder().decode(params[1]);
+        byte[] testHash = generatePBKDF2(password, salt, hash.length);
+        return slowEquals(hash, testHash);
     }
 }

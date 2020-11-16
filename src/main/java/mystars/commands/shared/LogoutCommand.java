@@ -13,7 +13,7 @@ public class LogoutCommand extends SharedCommand {
     public static final String COMMAND_WORD = "7";
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui Ui object.
      */

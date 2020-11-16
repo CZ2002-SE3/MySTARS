@@ -1,5 +1,16 @@
 package mystars.data.shared;
 
+/**
+ * Gender (Male/Female)
+ */
 public enum Gender {
-    M, F
+    /**
+     * Male.
+     */
+    M,
+
+    /**
+     * Female.
+     */
+    F
 }

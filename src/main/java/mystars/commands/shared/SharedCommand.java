@@ -19,7 +19,7 @@ abstract class SharedCommand extends Command {
     final Ui ui;
 
     /**
-     * Initialises ui object for subclasses.
+     * Initializes Ui object for subclasses.
      *
      * @param ui Ui object.
      */

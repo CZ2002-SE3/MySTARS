@@ -8,7 +8,7 @@ import mystars.ui.Ui;
 public class ExitCommand extends SharedCommand {
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui Ui object.
      */

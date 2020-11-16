@@ -11,22 +11,63 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
+/**
+ * Sender for email.
+ */
 public class EmailSender implements Sender {
 
+    /**
+     * Authentication setting.
+     */
     private static final String[] AUTH = {"mail.smtp.auth", "true"};
+
+    /**
+     * STARTTLS setting.
+     */
     private static final String[] STARTTLS = {"mail.smtp.starttls.enable", "true"};
+
+
+    /**
+     * Host setting.
+     */
     private static final String[] HOST = {"mail.smtp.host", "smtp.gmail.com"};
+
+    /**
+     * Port setting.
+     */
     private static final String[] PORT = {"mail.smtp.port", "587"};
+
+
+    /**
+     * Username and password of sender.
+     */
     private static final String[] USERNAME_AND_PASSWORD = {"cz2002.se3.group1@gmail.com", "ilovestars"};
 
+    /**
+     * Subject title.
+     */
     private static final String SUBJECT = "New Course Registered Notification";
 
+    /**
+     * Email address to send.
+     */
     private final String targetEmailAddress;
 
+    /**
+     * Initialize Sender with email.
+     *
+     * @param targetEmailAddress email address to send to.
+     */
     public EmailSender(String targetEmailAddress) {
         this.targetEmailAddress = targetEmailAddress;
     }
 
+    /**
+     * Sends email.
+     *
+     * @param emailContent Email body.
+     * @throws MyStarsException If there is issue sending email.
+     */
     private void send(String emailContent) throws MyStarsException {
 
         Properties props = new Properties();
@@ -54,6 +95,14 @@ public class EmailSender implements Sender {
         }
     }
 
+    /**
+     * Sends email with given details.
+     *
+     * @param courseCode  Course code that was successfully registered.
+     * @param indexNumber Index number of successfully registered course.
+     * @param name        Name of student.
+     * @throws MyStarsException If there is issue sending notification.
+     */
     @Override
     public void send(String courseCode, String indexNumber, String name) throws MyStarsException {
         send(String.join(System.lineSeparator(), "Dear " + name + ",", System.lineSeparator()
