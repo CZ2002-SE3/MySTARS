@@ -1,7 +1,7 @@
 package mystars.data.shared;
 
 /**
- * Gender (Male/Female)
+ * Gender (Male/Female).
  */
 public enum Gender {
     /**

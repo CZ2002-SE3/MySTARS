@@ -55,7 +55,7 @@ public abstract class Command {
     }
 
     /**
-     * Sets MySTARS's login status
+     * Sets MySTARS's login status.
      *
      * @param isLogin Login status to set.
      */

@@ -1,21 +1,21 @@
 package mystars.data.course.lesson;
 
 /**
- * Lesson type (Lecture/Tutorial/Lab)
+ * Lesson type (Lecture/Tutorial/Lab).
  */
 public enum LessonType {
     /**
-     * Lecture
+     * Lecture.
      */
     LEC,
 
     /**
-     * Tutorial
+     * Tutorial.
      */
     TUT,
 
     /**
-     * Lab
+     * Lab.
      */
     LAB
 }

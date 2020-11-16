@@ -26,7 +26,7 @@ public class MyStars {
     /**
      * Logger object.
      */
-    public static final Logger logger = Logger.getLogger(MyStars.class.getName());
+    public static Logger logger;
 
     /**
      * Parser object.
@@ -62,6 +62,7 @@ public class MyStars {
      * Initializes MySTARS.
      */
     public MyStars() {
+        logger = Logger.getLogger(MyStars.class.getName());
         logger.setLevel(Level.WARNING);
         parser = new Parser();
         ui = new StudentUi(parser);

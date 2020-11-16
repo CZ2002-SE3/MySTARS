@@ -19,11 +19,13 @@ public abstract class Ui {
     /**
      * Scanner for user input.
      */
-    static final Scanner in = new Scanner(System.in);
+    static final Scanner IN = new Scanner(System.in);
+
     /**
      * Dotted line string.
      */
     private static final String DOTTED_LINE = "------------------------------------------------------------";
+
     /**
      * MySTARS logo.
      */
@@ -37,14 +39,17 @@ public abstract class Ui {
             "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |",
             "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)",
             "                                                         ");
+
     /**
      * Welcome message.
      */
     private static final String WELCOME_MESSAGE = "Welcome!";
+
     /**
      * Course table header.
      */
     private static final String COURSE_HEADER = String.format(Course.FORMAT, "Course Code", "School", "Index No.", "AU");
+
     /**
      * Parser to parse user input.
      */
@@ -100,7 +105,7 @@ public abstract class Ui {
     public String readCommand() {
         greetUser();
         showMenu();
-        String fullCommand = in.nextLine();
+        String fullCommand = IN.nextLine();
         showLine();
         return fullCommand;
     }
@@ -128,7 +133,7 @@ public abstract class Ui {
      */
     private char[] readUsername() {
         printNicely("Enter Username:");
-        return in.nextLine().replaceAll(Parser.ESCAPED_LINE_SEPARATOR, "").toUpperCase().toCharArray();
+        return IN.nextLine().replaceAll(Parser.ESCAPED_LINE_SEPARATOR, "").toUpperCase().toCharArray();
     }
 
     /**
@@ -140,7 +145,7 @@ public abstract class Ui {
         printNicely("Enter Password:");
 
         if (System.console() == null) {
-            return in.nextLine().toCharArray();
+            return IN.nextLine().toCharArray();
         }
 
         return System.console().readPassword();
@@ -229,11 +234,11 @@ public abstract class Ui {
      */
     String getUserInput(String message, ValidChecker validChecker) {
         printNicely(message);
-        String line = in.nextLine().trim();
+        String line = IN.nextLine().trim();
         while (!validChecker.isValid(line)) {
             printNicely("Invalid input!");
             printNicely(message);
-            line = in.nextLine().trim();
+            line = IN.nextLine().trim();
         }
         return line;
     }

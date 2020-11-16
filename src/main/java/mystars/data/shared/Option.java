@@ -1,16 +1,16 @@
 package mystars.data.shared;
 
 /**
- * Option (Yes/No)
+ * Option (Yes/No).
  */
 public enum Option {
     /**
-     * Yes
+     * Yes.
      */
     Y,
 
     /**
-     * No
+     * No.
      */
     N
 }

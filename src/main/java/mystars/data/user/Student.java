@@ -224,9 +224,9 @@ public class Student extends User {
     }
 
     /**
-     * Returns string for storage in users.txt
+     * Returns string for storage in users.txt.
      *
-     * @return Formatted string for storage in users.txt
+     * @return Formatted string for storage in users.txt.
      */
     public String getFormattedUserInfo() {
         return String.join(Parser.LINE_SEPARATOR, String.valueOf(getUsername()),
@@ -234,9 +234,9 @@ public class Student extends User {
     }
 
     /**
-     * Returns string for storage in students.txt
+     * Returns string for storage in students.txt.
      *
-     * @return Formatted string for storage in students.txt
+     * @return Formatted string for storage in students.txt.
      */
     public String getFormattedString() {
         return String.join(Parser.LINE_SEPARATOR, getName(), matricNo, String.valueOf(getGender()),

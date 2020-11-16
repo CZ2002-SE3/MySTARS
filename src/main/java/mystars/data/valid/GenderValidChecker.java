@@ -5,7 +5,7 @@ import mystars.data.shared.Gender;
 import java.util.Arrays;
 
 /**
- * Gender validity checker
+ * Gender validity checker.
  */
 public class GenderValidChecker implements ValidChecker {
 

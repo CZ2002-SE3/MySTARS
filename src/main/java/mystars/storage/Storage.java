@@ -377,7 +377,7 @@ public class Storage {
     }
 
     /**
-     * Save courses to storage.
+     * Saves courses to file.
      *
      * @param courses Courses to save.
      * @throws MyStarsException If there is issue saving to file.
@@ -402,9 +402,15 @@ public class Storage {
         writeToFile(waitlistedFileContent, WAITLISTED_FILE);
     }
 
+    /**
+     * Saves access period to file.
+     *
+     * @param accessPeriod Access period.
+     * @throws MyStarsException If there is issue saving file.
+     */
     public void saveAccessPeriod(LocalDateTime[] accessPeriod) throws MyStarsException {
-        String accessPeriodString = SETTINGS_FORMAT + System.lineSeparator() + accessPeriod[0] +
-                Parser.LINE_SEPARATOR + accessPeriod[1];
+        String accessPeriodString = SETTINGS_FORMAT + System.lineSeparator() + accessPeriod[0]
+                + Parser.LINE_SEPARATOR + accessPeriod[1];
         writeToFile(accessPeriodString, SETTINGS_FILE);
     }
 
