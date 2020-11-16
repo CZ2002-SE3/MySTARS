@@ -14,7 +14,7 @@ public class Student extends User {
     /**
      * Table format of student.
      */
-    public static final String FORMAT = "%-30s %-15s %-10s %-15s";
+    public static final String FORMAT = "%-30s %-10s %-15s";
 
     /**
      * Maximum number of AUs allowed.
@@ -251,7 +251,7 @@ public class Student extends User {
      */
     @Override
     public String toString() {
-        return String.format(FORMAT, getName(), matricNo, getGender(), getNationality());
+        return String.format(FORMAT, getName(), getGender(), getNationality());
     }
 
     /**

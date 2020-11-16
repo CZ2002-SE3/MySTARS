@@ -30,6 +30,11 @@ import java.util.stream.Collectors;
 public class Storage {
 
     /**
+     * File not found error message.
+     */
+    private static final String FILE_NOT_FOUND_ERROR = "I am unable to find file.";
+
+    /**
      * Reading error message.
      */
     private static final String READ_ERROR = "I am unable to read file.";
@@ -151,6 +156,8 @@ public class Storage {
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
             }
+        } else {
+            throw new MyStarsException(FILE_NOT_FOUND_ERROR);
         }
 
         return users;
@@ -183,6 +190,8 @@ public class Storage {
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
             }
+        } else {
+            throw new MyStarsException(FILE_NOT_FOUND_ERROR);
         }
 
         return students;
@@ -215,6 +224,8 @@ public class Storage {
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
             }
+        } else {
+            throw new MyStarsException(FILE_NOT_FOUND_ERROR);
         }
 
         return admins;
@@ -257,6 +268,8 @@ public class Storage {
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
             }
+        } else {
+            throw new MyStarsException(FILE_NOT_FOUND_ERROR);
         }
     }
 
@@ -299,6 +312,8 @@ public class Storage {
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
             }
+        } else {
+            throw new MyStarsException(FILE_NOT_FOUND_ERROR);
         }
     }
 
@@ -329,6 +344,8 @@ public class Storage {
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
             }
+        } else {
+            throw new MyStarsException(FILE_NOT_FOUND_ERROR);
         }
 
         return courses;
@@ -354,9 +371,9 @@ public class Storage {
             } catch (IOException e) {
                 throw new MyStarsException(READ_ERROR);
             }
+        } else {
+            throw new MyStarsException(FILE_NOT_FOUND_ERROR);
         }
-
-        return new LocalDateTime[]{LocalDateTime.now(), LocalDateTime.now()};
     }
 
     /**

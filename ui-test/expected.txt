@@ -18,11 +18,11 @@ Enter Password:
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -42,11 +42,11 @@ End Date/Time	: 2019-12-01 17:00
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -71,11 +71,11 @@ Sorry! Duplicate username!
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -92,37 +92,37 @@ Enter Username:
 Enter Password:
 
 Student added:
-Name                           Matric No.      Gender     Nationality    
-Test User                      U1920000L       M          Singaporean    
+Name                           Gender     Nationality    
+Test User                      M          Singaporean    
 
 Here is the list of students:
-Name                           Matric No.      Gender     Nationality    
-Leonardo Irvin Pratama         U1920301J       M          Indonesian     
-Tan Jun Hong                   U1920001N       M          Singaporean    
-Tey Chin Yi                    U1920002P       M          Singaporean    
-Ferlita Halim                  U1920003R       F          Indonesian     
-Woon Yoke Min                  U1920004N       F          Singaporean    
-Sophia Wang                    U1819001A       F          Malaysian      
-Jackson Ho                     U1819002B       M          Singaporean    
-Olivia See                     U1819003C       F          Singaporean    
-Lim Wei Jie, Liam              U1819004D       M          Chinese        
-Emma Watson                    U1819005E       F          French         
-Noah Lee                       U2021010M       M          Malaysian      
-Ava Bhadravati                 U2021021K       F          Indian         
-Aiden, Chen De Xing            U2021033L       M          Singaporean    
-Aria Jin                       U2021042T       F          Chinese        
-Jason, Chin Kai Sheng          U2021050P       M          Singaporean    
-Test User                      U1920000L       M          Singaporean    
+Name                           Gender     Nationality    
+Leonardo Irvin Pratama         M          Indonesian     
+Tan Jun Hong                   M          Singaporean    
+Tey Chin Yi                    M          Singaporean    
+Ferlita Halim                  F          Indonesian     
+Woon Yoke Min                  F          Singaporean    
+Sophia Wang                    F          Malaysian      
+Jackson Ho                     M          Singaporean    
+Olivia See                     F          Singaporean    
+Lim Wei Jie, Liam              M          Chinese        
+Emma Watson                    F          French         
+Noah Lee                       M          Malaysian      
+Ava Bhadravati                 F          Indian         
+Aiden, Chen De Xing            M          Singaporean    
+Aria Jin                       F          Chinese        
+Jason, Chin Kai Sheng          M          Singaporean    
+Test User                      M          Singaporean    
 
 ------------------------------------------------------------
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -139,11 +139,11 @@ Do you want to update course? (Y/N)
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -205,11 +205,11 @@ CZ2008          SCSE       12800      3
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -222,11 +222,11 @@ Sorry! No such index.
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -239,11 +239,11 @@ The number of vacancy is 1.
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -271,11 +271,11 @@ Enter Password:
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -295,11 +295,11 @@ End Date/Time	: 2020-12-01 17:00
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -884,11 +884,11 @@ Enter Password:
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -901,11 +901,11 @@ Sorry! No such course.
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -914,22 +914,23 @@ Please select an item:
 Enter course code:
 
 Here is the list of students of course CZ2002:
-Leonardo Irvin Pratama         U1920301J       M          Indonesian     
-Tan Jun Hong                   U1920001N       M          Singaporean    
-Tey Chin Yi                    U1920002P       M          Singaporean    
-Ferlita Halim                  U1920003R       F          Indonesian     
-Woon Yoke Min                  U1920004N       F          Singaporean    
-Test User                      U1920000L       M          Singaporean    
+Name                           Gender     Nationality    
+Leonardo Irvin Pratama         M          Indonesian     
+Tan Jun Hong                   M          Singaporean    
+Tey Chin Yi                    M          Singaporean    
+Ferlita Halim                  F          Indonesian     
+Woon Yoke Min                  F          Singaporean    
+Test User                      M          Singaporean    
 
 ------------------------------------------------------------
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -942,11 +943,11 @@ Sorry! No such index.
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -955,19 +956,20 @@ Please select an item:
 Enter index number:
 
 Here is the list of students of index 20710:
-Leonardo Irvin Pratama         U1920301J       M          Indonesian     
-Woon Yoke Min                  U1920004N       F          Singaporean    
-Test User                      U1920000L       M          Singaporean    
+Name                           Gender     Nationality    
+Leonardo Irvin Pratama         M          Indonesian     
+Woon Yoke Min                  F          Singaporean    
+Test User                      M          Singaporean    
 
 ------------------------------------------------------------
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 
@@ -980,11 +982,11 @@ The number of vacancy is 0.
 
 Hello Admin!
 1. Edit student access period
-2. Add a student (name, matric number, gender, nationality, etc)
-3. Add/Update a course (course code, school, its index numbers and vacancy)
-4. Check available slot for an index number (vacancy in a class)
+2. Add a student
+3. Add/Update a course
+4. Check available slot for an index number
 5. Print student list by index number
-6. Print student list by course (all students registered for the selected course).
+6. Print student list by course
 7. Logout
 Please select an item:
 

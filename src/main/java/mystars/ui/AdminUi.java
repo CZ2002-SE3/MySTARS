@@ -39,17 +39,14 @@ public class AdminUi extends Ui {
     /**
      * Student table header.
      */
-    private static final String STUDENT_HEADER = String.format(Student.FORMAT, "Name", "Matric No.", "Gender",
-            "Nationality");
+    private static final String STUDENT_HEADER = String.format(Student.FORMAT, "Name", "Gender", "Nationality");
 
     /**
      * Menu.
      */
     private static final String MENU = String.join(System.lineSeparator(), "1. Edit student access period",
-            "2. Add a student (name, matric number, gender, nationality, etc)",
-            "3. Add/Update a course (course code, school, its index numbers and vacancy)",
-            "4. Check available slot for an index number (vacancy in a class)", "5. Print student list by index number",
-            "6. Print student list by course (all students registered for the selected course).", "7. Logout",
+            "2. Add a student", "3. Add/Update a course", "4. Check available slot for an index number",
+            "5. Print student list by index number", "6. Print student list by course", "7. Logout",
             "Please select an item:");
 
     /**
@@ -127,6 +124,7 @@ public class AdminUi extends Ui {
     public void showStudentListByIndex(UserList users, String indexNumber) {
         printNicely();
         printNicely("Here is the list of students of index " + indexNumber + ":");
+        printNicely(STUDENT_HEADER);
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isIndexNoInList(indexNumber))
                 .forEach(user -> printNicely(user.toString()));
@@ -141,6 +139,7 @@ public class AdminUi extends Ui {
     public void showStudentListByCourse(UserList users, String courseCode) {
         printNicely();
         printNicely("Here is the list of students of course " + courseCode + ":");
+        printNicely(STUDENT_HEADER);
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
                 .forEach(user -> printNicely(user.toString()));
