@@ -129,6 +129,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
+
 Here is the course to be updated:
 Course Code     School     Index No.  AU   
 CZ2001          SCSE       10001      3    
@@ -327,6 +328,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
+
 Following course registered:
 Course Code     School     Index No.  AU   
 CZ2008          SCSE       12800      3    
@@ -377,6 +379,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
+
 Following course registered:
 Course Code     School     Index No.  AU   
 CZ2007          SCSE       10813      3    
@@ -396,6 +399,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
+
 Following course registered:
 Course Code     School     Index No.  AU   
 CZ2002          SCSE       20710      3    
@@ -415,6 +419,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
+
 Following course waitlisted!
 Course Code     School     Index No.  AU   
 CZ2008          SCSE       12800      3    
@@ -468,6 +473,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
+
 Following course registered:
 Course Code     School     Index No.  AU   
 CZ2001          SCSE       10003      3    
@@ -487,6 +493,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
+
 Following course registered:
 Course Code     School     Index No.  AU   
 CZ2005          SCSE       10230      3    
@@ -578,6 +585,8 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter course code:
+
+Here are the indexes' vacancies/waitlist sizes
 Index      Vacancies       Waitlist Size       
 10001      0               2                   
 10002      0               2                   
@@ -619,6 +628,7 @@ Please select an item:
 
 Enter original index number:
 Enter desired index number:
+
 Successfully changed!
 Old course:
 Course Code     School     Index No.  AU   
@@ -642,6 +652,8 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter course code:
+
+Here are the indexes' vacancies/waitlist sizes
 Index      Vacancies       Waitlist Size       
 20710      0               0                   
 20711      7               0                   
@@ -706,6 +718,7 @@ Enter original index number:
 Enter peer index number:
 Enter Username:
 Enter Password:
+
 Successfully changed!
 Current course of U1920301J:
 Course Code     School     Index No.  AU   
@@ -781,7 +794,8 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
-Following Registered course dropped:
+
+Following registered course dropped:
 Course Code     School     Index No.  AU   
 CZ2008          SCSE       12800      3    
 
@@ -898,6 +912,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter course code:
+
 Here is the list of students of course CZ2002:
 Leonardo Irvin Pratama         U1920301J       M          Indonesian     
 Tan Jun Hong                   U1920001N       M          Singaporean    
@@ -938,6 +953,7 @@ Please select an item:
 ------------------------------------------------------------
 
 Enter index number:
+
 Here is the list of students of index 20710:
 Leonardo Irvin Pratama         U1920301J       M          Indonesian     
 Woon Yoke Min                  U1920004N       F          Singaporean    

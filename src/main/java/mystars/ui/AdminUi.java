@@ -77,6 +77,7 @@ public class AdminUi extends Ui {
     }
 
     public void showStudentListByIndex(UserList users, String indexNumber) {
+        printNicely();
         printNicely("Here is the list of students of index " + indexNumber + ":");
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isIndexNoInList(indexNumber))
@@ -84,6 +85,7 @@ public class AdminUi extends Ui {
     }
 
     public void showStudentListByCourse(UserList users, String courseCode) {
+        printNicely();
         printNicely("Here is the list of students of course " + courseCode + ":");
         users.getUsers().stream().filter(Student.class::isInstance)
                 .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
@@ -209,6 +211,7 @@ public class AdminUi extends Ui {
     }
 
     public void showExistingCourse(Course courseByIndex) {
+        printNicely();
         printNicely("Here is the course to be updated:");
         showCourse(courseByIndex);
     }

@@ -61,12 +61,12 @@ public abstract class StudentCommand extends Command {
     /**
      * Registered string.
      */
-    static final String REGISTERED = "Registered";
+    static final String REGISTERED = "registered";
 
     /**
      * Waitlisted string.
      */
-    static final String WAITLISTED = "Waitlisted";
+    static final String WAITLISTED = "waitlisted";
 
     /**
      * Ui object.

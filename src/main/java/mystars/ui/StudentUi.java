@@ -33,33 +33,34 @@ public class StudentUi extends Ui {
         printNicely("Here are your registered courses:");
         printNicely("Total No. of Courses: " + student.getRegisteredCourses().getNoOfCourses());
         printNicely("Total No. of AUs: " + student.getRegisteredCourses().getTotalNoOfAUs());
-        //printNicely(student.getRegisteredCourses().toString());
         showCourseList(student.getRegisteredCourses());
         printNicely();
         printNicely("Here are your waitlisted courses:");
         printNicely("Total No. of Courses: " + student.getWaitlistedCourses().getNoOfCourses());
         printNicely("Total No. of AUs: " + student.getWaitlistedCourses().getTotalNoOfAUs());
         showCourseList(student.getWaitlistedCourses());
-        //printNicely(student.getWaitlistedCourses().toString());
     }
 
     public void showCourseRegistered(Course course) {
+        printNicely();
         printNicely("Following course registered:");
         showCourse(course);
     }
 
     public void showDroppedCourse(Course course, String type) {
+        printNicely();
         printNicely("Following " + type + " course dropped:");
         showCourse(course);
     }
 
     public void showCourseWaitlisted(Course course) {
+        printNicely();
         printNicely("Following course waitlisted!");
         showCourse(course);
     }
 
     public void showIndexNoChanged(Course desiredCourse, Course currentCourse) {
-        //printNicely(String.format("%-10s %-15s %-20s", "Old Index No.", "Vacancies", "Waitlist Size"));
+        printNicely();
         printNicely("Successfully changed!");
         printNicely("Old course:");
         showCourse(currentCourse);
@@ -68,6 +69,7 @@ public class StudentUi extends Ui {
     }
 
     public void showIndexSwop(Course currentCourse, Course peerCourse, Student student, Student peer) {
+        printNicely();
         printNicely("Successfully changed!");
         printNicely("Current course of " + student.getMatricNo() + ":");
         showCourse(peerCourse);
@@ -77,6 +79,8 @@ public class StudentUi extends Ui {
     }
 
     public void showCourseVacancy(CourseList courses, String courseCode) {
+        printNicely();
+        printNicely("Here are the indexes' vacancies/waitlist sizes");
         printNicely(String.format(Course.VACANCY_FORMAT, "Index", "Vacancies", "Waitlist Size"));
         courses.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode))
                 .map(Course::getVacancyString).forEach(this::printNicely);
