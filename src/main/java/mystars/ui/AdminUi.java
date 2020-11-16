@@ -31,28 +31,54 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Admin user interface.
+ */
 public class AdminUi extends Ui {
 
-    private static final String STUDENT_HEADER = String.format(Student.FORMAT, "Name", "Matric No.", "Gender", "Nationality");
+    /**
+     * Student table header.
+     */
+    private static final String STUDENT_HEADER = String.format(Student.FORMAT, "Name", "Matric No.", "Gender",
+            "Nationality");
 
+    /**
+     * Menu.
+     */
     private static final String MENU = String.join(System.lineSeparator(), "1. Edit student access period",
             "2. Add a student (name, matric number, gender, nationality, etc)",
             "3. Add/Update a course (course code, school, its index numbers and vacancy)",
             "4. Check available slot for an index number (vacancy in a class)", "5. Print student list by index number",
             "6. Print student list by course (all students registered for the selected course).", "7. Logout",
             "Please select an item:");
+
+    /**
+     * Welcome message.
+     */
     private static final String WELCOME_MESSAGE = "Hello Admin!";
 
+    /**
+     * Prints menu.
+     */
     @Override
     public void showMenu() {
         showToUser(MENU);
     }
 
+    /**
+     * Greets user.
+     */
     @Override
     public void greetUser() {
         printNicely(WELCOME_MESSAGE);
     }
 
+    /**
+     * Prints start date/time and end date/time.
+     *
+     * @param accessDateTime Start date/time and end date/time.
+     * @param message        Message to print.
+     */
     public void showStartEndDateTime(LocalDateTime[] accessDateTime, String message) {
         printNicely(message);
         printNicely("Start Date/Time\t: "
@@ -61,15 +87,30 @@ public class AdminUi extends Ui {
                 + accessDateTime[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
     }
 
+    /**
+     * Prints current access period.
+     *
+     * @param accessDateTime Access period.
+     */
     public void showAccessPeriod(LocalDateTime[] accessDateTime) {
         showStartEndDateTime(accessDateTime, "Here is the access period currently:");
     }
 
+    /**
+     * Prints new access period.
+     *
+     * @param accessDateTime Access period.
+     */
     public void showNewAccessPeriod(LocalDateTime[] accessDateTime) {
         printNicely();
         showStartEndDateTime(accessDateTime, "Successfully changed! Access period is as follows:");
     }
 
+    /**
+     * Prints student list.
+     *
+     * @param users List of users.
+     */
     public void showStudentList(UserList users) {
         printNicely();
         printNicely("Here is the list of students:");
@@ -77,6 +118,12 @@ public class AdminUi extends Ui {
         users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
     }
 
+    /**
+     * Prints student list of an index.
+     *
+     * @param users       List of users.
+     * @param indexNumber Index number to filter.
+     */
     public void showStudentListByIndex(UserList users, String indexNumber) {
         printNicely();
         printNicely("Here is the list of students of index " + indexNumber + ":");
@@ -85,6 +132,12 @@ public class AdminUi extends Ui {
                 .forEach(user -> printNicely(user.toString()));
     }
 
+    /**
+     * Prints student list of a course code.
+     *
+     * @param users      List of users.
+     * @param courseCode Course code to filter.
+     */
     public void showStudentListByCourse(UserList users, String courseCode) {
         printNicely();
         printNicely("Here is the list of students of course " + courseCode + ":");
@@ -93,6 +146,11 @@ public class AdminUi extends Ui {
                 .forEach(user -> printNicely(user.toString()));
     }
 
+    /**
+     * Prints added student.
+     *
+     * @param newStudent Added student,
+     */
     public void showAddedStudent(Student newStudent) {
         printNicely();
         printNicely("Student added:");
@@ -100,6 +158,14 @@ public class AdminUi extends Ui {
         printNicely(newStudent.toString());
     }
 
+    /**
+     * Updates course details with input from user.
+     *
+     * @param indexNumber Index number of course.
+     * @param course      Course to update.
+     * @return Updated course.
+     * @throws MyStarsException If there are not enough vacancies.
+     */
     public Course updateCourseDetails(String indexNumber, Course course) throws MyStarsException {
         Course newCourse = getCourseDetails(indexNumber);
         course.checkEnoughVacancies(newCourse.getInitialVacancies());
@@ -108,6 +174,12 @@ public class AdminUi extends Ui {
         return newCourse;
     }
 
+    /**
+     * Gets course details with input from user.
+     *
+     * @param indexNumber Index number of course.
+     * @return New course.
+     */
     public Course getCourseDetails(String indexNumber) {
         String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
         String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
@@ -118,6 +190,11 @@ public class AdminUi extends Ui {
         return new Course(courseCode, school, indexNumber, initialVacancies, numOfAUs, lessonList);
     }
 
+    /**
+     * Gets new access period from user.
+     *
+     * @return New access period.
+     */
     public LocalDateTime[] getNewAccessPeriod() {
         String startDateTimeString = getUserInput("Enter new start date & time (yyyy-MM-dd HH:mm):",
                 new DateTimeValidChecker());
@@ -140,6 +217,13 @@ public class AdminUi extends Ui {
         return new LocalDateTime[]{startDateTime, endDateTime};
     }
 
+    /**
+     * Gets new student from user.
+     *
+     * @param users List of users.
+     * @return New student.
+     * @throws MyStarsException If there is issue adding student.
+     */
     public Student getNewStudentFromUser(UserList users) throws MyStarsException {
         String name = getUserInput("Enter student name:", new InputValidChecker());
         String matricNo = getUserInput("Enter matric number:", new MatricNoValidChecker()).toUpperCase();
@@ -157,6 +241,11 @@ public class AdminUi extends Ui {
                 usernameAndPassword[0], usernameAndPassword[1]);
     }
 
+    /**
+     * Gets list of lessons from user.
+     *
+     * @return List of lessons.
+     */
     private LessonList getLessonList() {
         LessonList lessonList = new LessonList();
         String option = Option.Y.name();
@@ -173,6 +262,11 @@ public class AdminUi extends Ui {
         return lessonList;
     }
 
+    /**
+     * Gets lesson from user.
+     *
+     * @return Lesson.
+     */
     private Lesson getLesson() {
         LessonType lessonType = LessonType.valueOf(
                 getUserInput("Enter Lesson type(LEC for Lecture, TUT for Tutorial, LAB for Lab):",
@@ -186,6 +280,11 @@ public class AdminUi extends Ui {
         return new Lesson(lessonType, venue, times[0], times[1], day, week, group);
     }
 
+    /**
+     * Gets start and end time from user.
+     *
+     * @return Stars and end time.
+     */
     private LocalTime[] getStartAndEndTime() {
         LocalTime startTime = LocalTime.parse(getUserInput("Enter start time (HH:mm)", new TimeValidChecker()));
         LocalTime endTime = LocalTime.parse(getUserInput("Enter end time (HH:mm)", new TimeValidChecker()));
@@ -197,13 +296,23 @@ public class AdminUi extends Ui {
         return new LocalTime[]{startTime, endTime};
     }
 
+    /**
+     * Asks user whether to update course.
+     *
+     * @return True if users want to update course, false otherwise.
+     */
     public boolean askUpdate() {
         return parser.isYes(getUserInput("Do you want to update course? (Y/N)", new OptionValidChecker()));
     }
 
-    public void showExistingCourse(Course courseByIndex) {
+    /**
+     * Prints existing course.
+     *
+     * @param course Course to show.
+     */
+    public void showExistingCourse(Course course) {
         printNicely();
         printNicely("Here is the course to be updated:");
-        showCourse(courseByIndex);
+        showCourse(course);
     }
 }

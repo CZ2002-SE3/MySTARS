@@ -18,6 +18,11 @@ public class StudentUi extends Ui {
             "6. Swop Index Number with Another Student", "7. Logout", "Please select an item:");
 
     /**
+     * Welcome message.
+     */
+    private static final String WELCOME_MESSAGE = "Hello Student!";
+
+    /**
      * Initializes Ui with parser.
      *
      * @param parser Parser object.
@@ -46,7 +51,7 @@ public class StudentUi extends Ui {
      */
     @Override
     public void greetUser() {
-        printNicely("Hello student!");
+        printNicely(WELCOME_MESSAGE);
     }
 
     /**

@@ -315,7 +315,7 @@ Enter Password:
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -335,7 +335,7 @@ CZ2008          SCSE       12800      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -366,7 +366,7 @@ Enter Password:
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -386,7 +386,7 @@ CZ2007          SCSE       10813      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -406,7 +406,7 @@ CZ2002          SCSE       20710      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -426,7 +426,7 @@ CZ2008          SCSE       12800      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -443,7 +443,7 @@ Sorry! No such index.
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -460,7 +460,7 @@ Sorry! Course clashes with waitlisted courses.
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -480,7 +480,7 @@ CZ2001          SCSE       10003      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -500,7 +500,7 @@ CZ2005          SCSE       10230      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -517,7 +517,7 @@ Sorry! Course clashes with registered courses.
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -550,7 +550,7 @@ CZ2008          SCSE       12800      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -572,7 +572,7 @@ Enter Password:
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -596,7 +596,7 @@ Index      Vacancies       Waitlist Size
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -614,7 +614,7 @@ Sorry! These indexes are not from the same course.
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -639,7 +639,7 @@ CZ2001          SCSE       10003      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -662,7 +662,7 @@ Index      Vacancies       Waitlist Size
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -682,7 +682,7 @@ Sorry! Either of you are not registered for the specified index!
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -702,7 +702,7 @@ Sorry! User not valid!
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -730,7 +730,7 @@ CZ2002          SCSE       20711      3
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -764,7 +764,7 @@ Course Code     School     Index No.  AU
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -781,7 +781,7 @@ Sorry! Exceed maximum AU allowed!
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -805,7 +805,7 @@ Added waitlisted student to course and sent email.
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -827,7 +827,7 @@ Enter Password:
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered
@@ -860,7 +860,7 @@ Course Code     School     Index No.  AU
 
 ------------------------------------------------------------
 
-Hello student!
+Hello Student!
 1. Add Course
 2. Drop Course
 3. Check/Print Courses Registered

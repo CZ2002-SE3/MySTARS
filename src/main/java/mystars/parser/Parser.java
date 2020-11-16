@@ -38,7 +38,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
@@ -46,20 +45,64 @@ import java.util.stream.Collectors;
  */
 public class Parser {
 
-    // Used to separate each attribute of an object
+    /**
+     * Escaped line separator.
+     */
     public static final String ESCAPED_LINE_SEPARATOR = "\\|";
+
+    /**
+     * Line separator.
+     */
     public static final String LINE_SEPARATOR = ESCAPED_LINE_SEPARATOR.replace("\\", "");
+
+    /**
+     * Tilde separator.
+     */
     public static final String TILDE_SEPARATOR = "~";
+
+    /**
+     * Escaped asterisk separator.
+     */
     public static final String ESCAPED_ASTERISK_SEPARATOR = "\\*";
+
+    /**
+     * Asterisk separator.
+     */
     public static final String ASTERISK_SEPARATOR = ESCAPED_ASTERISK_SEPARATOR.replace("\\", "");
 
+    /**
+     * Invalid user type error message.
+     */
     private static final String INVALID_TYPE_ERROR = "Invalid user type: ";
+
+    /**
+     * Invalid vacancy error message.
+     */
     private static final String INVALID_VACANCY_ERROR = "Vacancy is invalid!";
+
+    /**
+     * Invalid AUs error message.
+     */
     private static final String INVALID_AU_ERROR = "Number of AUs is invalid!";
+
+    /**
+     * Lesson clash error message.
+     */
     private static final String LESSON_CLASH_ERROR = "Lessons clash!";
+
+    /**
+     * Date/time parse error message.
+     */
     private static final String DATETIME_PARSE_ERROR = "I am unable to parse date/time.";
 
+    /**
+     * Student string.
+     */
     private static final String STUDENT = "student";
+
+    /**
+     * Admin string.
+     */
     private static final String ADMIN = "admin";
 
     /**
@@ -106,6 +149,17 @@ public class Parser {
         return command;
     }
 
+    /**
+     * Parses student input, and returns corresponding command.
+     *
+     * @param fullCommand String of student input to parse.
+     * @param users       List of users.
+     * @param ui          Ui object.
+     * @param courses     List of courses.
+     * @param storage     Storage handler.
+     * @return Command to execute.
+     * @throws MyStarsException If command is invalid.
+     */
     public Command parseStudentInput(String fullCommand, UserList users, StudentUi ui, CourseList courses,
                                      Storage storage) throws MyStarsException {
         Command command;
@@ -207,6 +261,13 @@ public class Parser {
         return new Course(courseCode, school, indexNumber, vacancy, numOfAUs, lessonList);
     }
 
+    /**
+     * Reads list of lessons and returns it.
+     *
+     * @param lessonsString Lessons string.
+     * @return List of lessons.
+     * @throws MyStarsException If there is issue reading lessons.
+     */
     private LessonList readLessons(String[] lessonsString) throws MyStarsException {
         LessonList lessonList = new LessonList();
         for (String lessonString : lessonsString) {
@@ -294,12 +355,19 @@ public class Parser {
         }
     }
 
+    /**
+     * Reads and returns students list.
+     *
+     * @param line  Line to read.
+     * @param users Student list.
+     * @return List of students.
+     */
     public ArrayList<Student> readStudentList(String line, UserList users) {
         String[] matricNos = line.split(ESCAPED_LINE_SEPARATOR);
         ArrayList<Student> registeredStudents = new ArrayList<>();
         for (int i = 1; i < matricNos.length; i++) {
-            for (Student student : users.getUsers().stream().filter(Student.class::isInstance)
-                    .map(Student.class::cast).collect(Collectors.toList())) {
+            for (Student student : users.getUsers().stream().filter(Student.class::isInstance).map(Student.class::cast)
+                    .collect(Collectors.toList())) {
                 if (student.getMatricNo().equalsIgnoreCase(matricNos[i])) {
                     registeredStudents.add(student);
                 }
@@ -308,18 +376,14 @@ public class Parser {
         return registeredStudents;
     }
 
+    /**
+     * Reads course index and returns it.
+     *
+     * @param line Line to read.
+     * @return Course index.
+     */
     public String readCourseIndex(String line) {
         return line.split(ESCAPED_LINE_SEPARATOR)[0];
-    }
-
-    /**
-     * Returns if user input is a valid week.
-     *
-     * @param line
-     * @return
-     */
-    public boolean isValidWeek(String line) {
-        return Arrays.stream(Week.values()).map(Week::name).anyMatch(line::equalsIgnoreCase);
     }
 
     /**
@@ -336,7 +400,7 @@ public class Parser {
      * Returns if start time and end time is valid.
      *
      * @param startTime Start time.
-     * @param endTime End time.
+     * @param endTime   End time.
      * @return True if it is valid, false otherwise.
      */
     public boolean isValidStartEndTime(LocalTime startTime, LocalTime endTime) {
@@ -347,7 +411,7 @@ public class Parser {
      * Returns if start date/time and end date/time is valid.
      *
      * @param startDateTime Start date/time.
-     * @param endDateTime End date/time.
+     * @param endDateTime   End date/time.
      * @return True if it is valid, false otherwise.
      */
     public boolean isValidStartEndDateTime(LocalDateTime startDateTime, LocalDateTime endDateTime) {
