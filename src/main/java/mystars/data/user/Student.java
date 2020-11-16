@@ -18,10 +18,7 @@ public class Student extends User {
     private static final String COURSE_NOT_IN_WAITLISTED_ERROR = "Course does not exist in waitlisted courses.";
     private static final String REGISTERED_CLASH_ERROR = "Course clashes with registered courses.";
     private static final String WAITLISTED_CLASH_ERROR = "Course clashes with waitlisted courses.";
-    private String name;
     private String matricNo;
-    private Gender gender;
-    private String nationality;
     private String courseOfStudy;
     private int yearOfStudy;
     private CourseList registeredCourses;
@@ -30,10 +27,8 @@ public class Student extends User {
 
     public Student(String name, String matricNo, Gender gender, String nationality, String username,
                    String courseOfStudy, int yearOfStudy, String email) {
-        this.name = name;
+        super(name, gender, nationality);
         this.matricNo = matricNo;
-        this.gender = gender;
-        this.nationality = nationality;
         this.courseOfStudy = courseOfStudy;
         this.yearOfStudy = yearOfStudy;
         this.registeredCourses = new CourseList();
@@ -44,10 +39,8 @@ public class Student extends User {
 
     public Student(String name, String matricNo, Gender gender, String nationality, String courseOfStudy,
                    int yearOfStudy, String email, char[] username, char[] password) {
-        this.name = name;
+        super(name, gender, nationality);
         this.matricNo = matricNo;
-        this.gender = gender;
-        this.nationality = nationality;
         this.courseOfStudy = courseOfStudy;
         this.yearOfStudy = yearOfStudy;
         this.registeredCourses = new CourseList();
@@ -61,36 +54,12 @@ public class Student extends User {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getMatricNo() {
         return matricNo;
     }
 
     public void setMatricNo(String matricNo) {
         this.matricNo = matricNo;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
     }
 
     public CourseList getRegisteredCourses() {
@@ -147,13 +116,14 @@ public class Student extends User {
     }
 
     public String getFormattedString() {
-        return String.join(Parser.LINE_SEPARATOR, name, matricNo, String.valueOf(gender), nationality
-                , String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy, email);
+        return String.join(Parser.LINE_SEPARATOR, getName(), matricNo, String.valueOf(getGender()),
+                getNationality(), String.valueOf(getUsername()), courseOfStudy + Parser.TILDE_SEPARATOR + yearOfStudy,
+                email);
     }
 
     @Override
     public String toString() {
-        return String.format(FORMAT, name, matricNo, gender, nationality);
+        return String.format(FORMAT, getName(), matricNo, getGender(), getNationality());
     }
 
     public void addCourseToRegistered(Course courseToAdd) throws MyStarsException {

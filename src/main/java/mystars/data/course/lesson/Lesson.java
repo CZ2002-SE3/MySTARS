@@ -68,49 +68,13 @@ public class Lesson {
     }
 
     /**
-     * Returns start time of lesson.
-     *
-     * @return Start time.
-     */
-    private LocalTime getStartTime() {
-        return startTime;
-    }
-
-    /**
-     * Returns end time of lesson.
-     *
-     * @return End time.
-     */
-    private LocalTime getEndTime() {
-        return endTime;
-    }
-
-    /**
-     * Returns day of lesson.
-     *
-     * @return Day of week.
-     */
-    private DayOfWeek getDay() {
-        return day;
-    }
-
-    /**
-     * Returns week (Odd/Even/Both).
-     *
-     * @return Week.
-     */
-    private Week getWeek() {
-        return week;
-    }
-
-    /**
      * Returns lesson formatted for storage.
      *
      * @return Lesson formmated for storage.
      */
     public String getStorageString() {
-        return String.join(Parser.TILDE_SEPARATOR, lessonType.name(), venue, getStartTime().toString(),
-                getEndTime().toString(), getDay().toString(), getWeek().name(), group);
+        return String.join(Parser.TILDE_SEPARATOR, lessonType.name(), venue, startTime.toString(), endTime.toString(),
+                day.toString(), week.name(), group);
     }
 
     /**
@@ -120,8 +84,8 @@ public class Lesson {
      * @return True if lessons clashes, false otherwise.
      */
     public boolean isClash(Lesson newLesson) {
-        return (newLesson.getWeek() == Week.BOTH || getWeek() == Week.BOTH || newLesson.getWeek() == getWeek())
-                && getStartTime().isBefore(newLesson.getEndTime()) && getEndTime().isAfter(newLesson.getStartTime())
-                && newLesson.getDay() == getDay();
+        return (newLesson.week == Week.BOTH || week == Week.BOTH || newLesson.week == week)
+                && startTime.isBefore(newLesson.endTime) && endTime.isAfter(newLesson.startTime)
+                && newLesson.day == day;
     }
 }

@@ -65,9 +65,6 @@ public class StudentUi extends Ui {
         showCourse(currentCourse);
         printNicely("New course:");
         showCourse(desiredCourse);
-        /*printNicely("Index No changed from: " + currentCourse.getIndexNumber() + " to "
-                + desiredCourse.getIndexNumber());
-        showCourse(desiredCourse);*/
     }
 
     public void showIndexSwop(Course currentCourse, Course peerCourse, Student student, Student peer) {
@@ -77,10 +74,6 @@ public class StudentUi extends Ui {
         printNicely();
         printNicely("Current course of " + peer.getMatricNo() + ":");
         showCourse(currentCourse);
-        /*printNicely(student.getMatricNo() + " - Index No changed from: " + currentCourse.getIndexNumber() + " to "
-                + peerCourse.getIndexNumber());
-        printNicely(peer.getMatricNo() + " - Index No changed from: " + peerCourse.getIndexNumber() + " to "
-                + currentCourse.getIndexNumber());*/
     }
 
     public void showCourseVacancy(CourseList courses, String courseCode) {

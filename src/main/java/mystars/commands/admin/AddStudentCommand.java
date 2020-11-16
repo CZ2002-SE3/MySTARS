@@ -27,7 +27,7 @@ public class AddStudentCommand extends AdminCommand {
     private final UserList users;
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui      Ui object.
      * @param storage Storage handler.

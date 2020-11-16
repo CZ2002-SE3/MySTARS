@@ -2,62 +2,48 @@ package mystars.data.user;
 
 import mystars.data.shared.Gender;
 
+/**
+ * Admin class.
+ */
 public class Admin extends User {
 
-    private String name;
+    /**
+     * Staff ID.
+     */
     private String staffId;
-    private Gender gender;
-    private String nationality;
 
+    /**
+     * Initializes Admin object.
+     *
+     * @param name Name of admin.
+     * @param staffId Staff ID.
+     * @param gender Gender of admin.
+     * @param nationality Nationality of admin.
+     * @param username Username of admin.
+     */
     public Admin(String name, String staffId, Gender gender, String nationality, String username) {
-        this.name = name;
+        super(name, gender, nationality);
         this.staffId = staffId;
-        this.gender = gender;
-        this.nationality = nationality;
         super.setUsername(username.toCharArray());
     }
 
+    /**
+     * Empty constructor.
+     */
     public Admin() {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(String staffId) {
-        this.staffId = staffId;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
+    /**
+     * Copys details to combine login info and admin details.
+     *
+     * @param user Admin user to combine.
+     */
     @Override
     public void copyDetails(User user) {
-        setName(((Admin) user).getName());
-        setStaffId(((Admin) user).getStaffId());
-        setGender(((Admin) user).getGender());
-        setNationality(((Admin) user).getNationality());
+        setName(user.getName());
+        this.staffId = ((Admin) user).staffId;
+        setGender(user.getGender());
+        setNationality(user.getNationality());
     }
 }

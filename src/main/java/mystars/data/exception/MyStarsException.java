@@ -5,6 +5,9 @@ package mystars.data.exception;
  */
 public class MyStarsException extends Exception {
 
+    /**
+     * Sorry message.
+     */
     private static final String SORRY = "Sorry! ";
 
     /**

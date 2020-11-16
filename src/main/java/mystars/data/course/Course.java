@@ -74,7 +74,7 @@ public class Course {
     private ArrayList<Student> waitlistedStudents;
 
     /**
-     * Initialises course object.
+     * Initializes course object.
      *
      * @param courseCode       Course code.
      * @param school           School code.
@@ -90,9 +90,9 @@ public class Course {
         this.indexNumber = indexNumber;
         this.initialVacancies = initialVacancies;
         this.numOfAUs = numOfAUs;
-        this.lessonList = lessonList;
-        registeredStudents = new ArrayList<>();
-        waitlistedStudents = new ArrayList<>();
+        setLessonList(lessonList);
+        setRegisteredStudents(new ArrayList<>());
+        setWaitlistedStudents(new ArrayList<>());
     }
 
     /**
@@ -186,24 +186,6 @@ public class Course {
     }
 
     /**
-     * Returns school name.
-     *
-     * @return School name.
-     */
-    private String getSchool() {
-        return school;
-    }
-
-    /**
-     * Returns list of lessons.
-     *
-     * @return List of lessons.
-     */
-    private LessonList getLessonList() {
-        return lessonList;
-    }
-
-    /**
      * Sets list of lessons.
      *
      * @param lessonList List of lessons to set.
@@ -257,8 +239,8 @@ public class Course {
      * @return True if the courses clash, false otherwise.
      */
     public boolean isClash(Course courseToAdd) {
-        return courseToAdd.getLessonList().getLessons().stream()
-                .anyMatch(lesson -> getLessonList().getLessons().stream().anyMatch(lesson::isClash));
+        return courseToAdd.lessonList.getLessons().stream()
+                .anyMatch(lesson -> lessonList.getLessons().stream().anyMatch(lesson::isClash));
     }
 
     /**
@@ -278,7 +260,7 @@ public class Course {
      */
     @Override
     public String toString() {
-        return String.format(FORMAT, getCourseCode(), getSchool(), getIndexNumber(), getNumOfAUs());
+        return String.format(FORMAT, getCourseCode(), school, getIndexNumber(), getNumOfAUs());
     }
 
     /**
@@ -316,8 +298,8 @@ public class Course {
      * @return String formatted for storage in courses.txt.
      */
     public String getStorageString() {
-        return String.join(Parser.LINE_SEPARATOR, getCourseCode(), getSchool(), getIndexNumber(),
-                Integer.toString(getInitialVacancies()), Integer.toString(getNumOfAUs()), getLessonList().getLessons()
+        return String.join(Parser.LINE_SEPARATOR, getCourseCode(), school, getIndexNumber(),
+                Integer.toString(getInitialVacancies()), Integer.toString(getNumOfAUs()), lessonList.getLessons()
                         .stream().map(Lesson::getStorageString).collect(Collectors.joining(Parser.ASTERISK_SEPARATOR)));
     }
 
@@ -392,7 +374,10 @@ public class Course {
             dropWaitlistedStudent(studentToNotify);
             addRegisteredStudent(studentToNotify);
 
+            // This could be called in a loop iterating through an ArrayList of Senders.
+            // As such, we can loop through this statement to send via other methods.
             sendToStudent(studentToNotify, new EmailSender(studentToNotify.getEmail()));
+
             i--;
             isTransfer = true;
         }
@@ -419,10 +404,10 @@ public class Course {
      */
     void copyCourseDetails(Course newCourse) {
         courseCode = newCourse.getCourseCode();
-        school = newCourse.getSchool();
+        school = newCourse.school;
         initialVacancies = newCourse.getInitialVacancies();
         numOfAUs = newCourse.getNumOfAUs();
-        setLessonList(newCourse.getLessonList());
+        setLessonList(newCourse.lessonList);
     }
 
     /**

@@ -33,7 +33,7 @@ public class DropCourseCommand extends StudentCommand {
     private final Storage storage;
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui      Ui object.
      * @param courses List of courses.

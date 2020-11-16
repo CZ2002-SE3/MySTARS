@@ -34,7 +34,7 @@ public class SwopIndexCommand extends StudentCommand {
     private final UserList users;
 
     /**
-     * Initialises command for execution.
+     * Initializes command for execution.
      *
      * @param ui      Ui object.
      * @param courses List of courses.
