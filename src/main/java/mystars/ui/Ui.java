@@ -11,10 +11,22 @@ import mystars.parser.Parser;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * User interface class.
+ */
 public abstract class Ui {
 
+    /**
+     * Scanner for user input.
+     */
     static final Scanner in = new Scanner(System.in);
+    /**
+     * Dotted line string.
+     */
     private static final String DOTTED_LINE = "------------------------------------------------------------";
+    /**
+     * MySTARS logo.
+     */
     private static final String LOGO = String.join(System.lineSeparator(),
             " _______         _______________________ _______ _______ ",
             "(       )\\     /(  ____ \\__   __(  ___  |  ____ |  ____ \\",
@@ -24,19 +36,34 @@ public abstract class Ui {
             "| |   | |  ) (        ) |  | |  | (   ) | (\\ (        ) |",
             "| )   ( |  | |  /\\____) |  | |  | )   ( | ) \\ \\_/\\____) |",
             "|/     \\|  \\_/  \\_______)  )_(  |/     \\|/   \\__|_______)",
-            "                                                         ", "Welcome!");
-
-
+            "                                                         ");
+    /**
+     * Welcome message.
+     */
+    private static final String WELCOME_MESSAGE = "Welcome!";
+    /**
+     * Course table header.
+     */
     private static final String COURSE_HEADER = String.format(Course.FORMAT, "Course Code", "School", "Index No.", "AU");
-
+    /**
+     * Parser to parse user input.
+     */
     static Parser parser;
 
-    public Ui() {
-
+    /**
+     * Initializes Ui with parser.
+     *
+     * @param parser Parser object.
+     */
+    Ui(Parser parser) {
+        Ui.parser = parser;
     }
 
-    public Ui(Parser parser) {
-        Ui.parser = parser;
+    /**
+     * Empty constructor.
+     */
+    Ui() {
+
     }
 
     /**
@@ -48,10 +75,18 @@ public abstract class Ui {
         printNicely();
     }
 
+    /**
+     * Shows message to user.
+     *
+     * @param message Message to show.
+     */
     public void showToUser(String message) {
         Arrays.stream(message.split(System.lineSeparator())).forEach(this::printNicely);
     }
 
+    /**
+     * Prints exit message.
+     */
     public void showExit() {
         showLine();
         showToUser("Bye! See you again soon!");
@@ -75,25 +110,32 @@ public abstract class Ui {
      *
      * @param string String to print.
      */
-    protected void printNicely(String string) {
+    void printNicely(String string) {
         System.out.println(string);
     }
 
-    protected void printNicely() {
+    /**
+     * Prints new line with nice format.
+     */
+    void printNicely() {
         printNicely("");
     }
 
-    public char[][] readUsernameAndPassword() {
-        char[] username = readUsername();
-        char[] password = readPassword();
-        return new char[][]{username, password};
-    }
-
+    /**
+     * Returns username from user.
+     *
+     * @return Username from user.
+     */
     private char[] readUsername() {
         printNicely("Enter Username:");
         return in.nextLine().replaceAll(Parser.ESCAPED_LINE_SEPARATOR, "").toUpperCase().toCharArray();
     }
 
+    /**
+     * Returns password from user.
+     *
+     * @return Password from user.
+     */
     private char[] readPassword() {
         printNicely("Enter Password:");
 
@@ -104,19 +146,49 @@ public abstract class Ui {
         return System.console().readPassword();
     }
 
+    /**
+     * Returns username and password from user.
+     *
+     * @return Username and password.
+     */
+    public char[][] readUsernameAndPassword() {
+        char[] username = readUsername();
+        char[] password = readPassword();
+        return new char[][]{username, password};
+    }
+
+    /**
+     * Asks user for exit and return.
+     *
+     * @return True if user want to exit, false otherwise.
+     */
     public boolean askExit() {
         return parser.isYes(getUserInput("Do you want to exit? (Y/N)", new OptionValidChecker()));
     }
 
+    /**
+     * Prints welcome message.
+     */
     public void showWelcome() {
         showToUser(LOGO);
+        showToUser(WELCOME_MESSAGE);
     }
 
+    /**
+     * Prints course.
+     *
+     * @param course Course to print.
+     */
     public void showCourse(Course course) {
         printNicely(COURSE_HEADER);
         printNicely(course.toString());
     }
 
+    /**
+     * Prints list of courses.
+     *
+     * @param courses Courses to print.
+     */
     public void showCourseList(CourseList courses) {
         printNicely();
         printNicely("Here is the courses list:");
@@ -124,6 +196,12 @@ public abstract class Ui {
         courses.getCourses().forEach(course -> printNicely(course.toString()));
     }
 
+    /**
+     * Returns course vacancies.
+     *
+     * @param courses     List of courses.
+     * @param indexNumber Index number of course to show vacancy.
+     */
     public void showVacancy(CourseList courses, String indexNumber) {
         for (Course course : courses.getCourses()) {
             if (course.getIndexNumber().equals(indexNumber)) {
@@ -134,11 +212,21 @@ public abstract class Ui {
         printNicely("Index not found!");
     }
 
+    /**
+     * Show email sent message.
+     */
     public void showEmailSent() {
         showLine();
         printNicely("Added waitlisted student to course and sent email.");
     }
 
+    /**
+     * Returns user input.
+     *
+     * @param message      Message to show.
+     * @param validChecker Validity checker.
+     * @return Input from user.
+     */
     String getUserInput(String message, ValidChecker validChecker) {
         printNicely(message);
         String line = in.nextLine().trim();
@@ -150,27 +238,55 @@ public abstract class Ui {
         return line;
     }
 
+    /**
+     * Gets index number from user.
+     *
+     * @return Index number.
+     */
     public String getIndexNumber() {
         return getIndexNumber("");
     }
 
+    /**
+     * Gets index number from user.
+     *
+     * @param description Description of index number.
+     * @return Index number.
+     */
     public String getIndexNumber(String description) {
         return getUserInput("Enter " + description + "index number:", new IndexNumberValidChecker());
     }
 
+    /**
+     * Gets course code from user.
+     *
+     * @return Course code from user.
+     */
     public String getCourseCode() {
         return getUserInput("Enter course code:", new CourseCodeValidChecker()).toUpperCase();
     }
 
+    /**
+     * Prints menu.
+     */
     public abstract void showMenu();
 
+    /**
+     * Greets user.
+     */
     public abstract void greetUser();
 
+    /**
+     * Prints closed message.
+     */
     public void showClosed() {
         showLine();
         showToUser("MyStars is closed for students...");
     }
 
+    /**
+     * Prints logout message.
+     */
     public void showLogout() {
         showToUser("You have successfully logged out!");
     }

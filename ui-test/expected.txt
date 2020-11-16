@@ -420,7 +420,7 @@ Please select an item:
 
 Enter index number:
 
-Following course waitlisted!
+Following course waitlisted:
 Course Code     School     Index No.  AU   
 CZ2008          SCSE       12800      3    
 

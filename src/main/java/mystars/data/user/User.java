@@ -48,7 +48,7 @@ public abstract class User {
     /**
      * Empty constructor.
      */
-    public User() {
+    User() {
 
     }
 

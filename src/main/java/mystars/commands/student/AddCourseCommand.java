@@ -55,11 +55,11 @@ public class AddCourseCommand extends StudentCommand {
         if (course.isVacancy()) {
             student.addCourseToRegistered(course);
             course.addRegisteredStudent(student);
-            ui.showCourseRegistered(course);
+            ui.showAddedCourse(course, REGISTERED);
         } else {
             student.addCourseToWaitlisted(course);
             course.addWaitlistedStudent(student);
-            ui.showCourseWaitlisted(course);
+            ui.showAddedCourse(course, WAITLISTED);
         }
 
         storage.saveCourses(courses);
