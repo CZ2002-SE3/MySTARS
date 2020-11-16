@@ -10,6 +10,7 @@ import mystars.data.password.PasswordHandler;
 import mystars.data.shared.Gender;
 import mystars.data.shared.Option;
 import mystars.data.user.Student;
+import mystars.data.user.User;
 import mystars.data.user.UserList;
 import mystars.data.valid.CourseCodeValidChecker;
 import mystars.data.valid.DateTimeValidChecker;
@@ -112,7 +113,11 @@ public class AdminUi extends Ui {
         printNicely();
         printNicely("Here is the list of students:");
         printNicely(STUDENT_HEADER);
-        users.getUsers().stream().filter(Student.class::isInstance).forEach(user -> printNicely(user.toString()));
+        for (User user : users.getUsers()) {
+            if (user instanceof Student) {
+                printNicely(user.toString());
+            }
+        }
     }
 
     /**
@@ -125,9 +130,11 @@ public class AdminUi extends Ui {
         printNicely();
         printNicely("Here is the list of students of index " + indexNumber + ":");
         printNicely(STUDENT_HEADER);
-        users.getUsers().stream().filter(Student.class::isInstance)
-                .filter((student) -> ((Student) student).getRegisteredCourses().isIndexNoInList(indexNumber))
-                .forEach(user -> printNicely(user.toString()));
+        for (User user : users.getUsers()) {
+            if (user instanceof Student && ((Student) user).getRegisteredCourses().isIndexNoInList(indexNumber)) {
+                printNicely(user.toString());
+            }
+        }
     }
 
     /**
@@ -140,9 +147,11 @@ public class AdminUi extends Ui {
         printNicely();
         printNicely("Here is the list of students of course " + courseCode + ":");
         printNicely(STUDENT_HEADER);
-        users.getUsers().stream().filter(Student.class::isInstance)
-                .filter((student) -> ((Student) student).getRegisteredCourses().isCourseInList(courseCode))
-                .forEach(user -> printNicely(user.toString()));
+        for (User user : users.getUsers()) {
+            if (user instanceof Student && ((Student) user).getRegisteredCourses().isCourseInList(courseCode)) {
+                printNicely(user.toString());
+            }
+        }
     }
 
     /**

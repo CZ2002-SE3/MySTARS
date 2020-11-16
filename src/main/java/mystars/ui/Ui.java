@@ -8,7 +8,6 @@ import mystars.data.valid.OptionValidChecker;
 import mystars.data.valid.ValidChecker;
 import mystars.parser.Parser;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -87,7 +86,9 @@ public abstract class Ui {
      * @param message Message to show.
      */
     public void showToUser(String message) {
-        Arrays.stream(message.split(System.lineSeparator())).forEach(this::printNicely);
+        for (String line : message.split(System.lineSeparator())) {
+            printNicely(line);
+        }
     }
 
     /**
@@ -199,7 +200,9 @@ public abstract class Ui {
         printNicely();
         printNicely("Here is the courses list:");
         printNicely(COURSE_HEADER);
-        courses.getCourses().forEach(course -> printNicely(course.toString()));
+        for (Course course : courses.getCourses()) {
+            printNicely(course.toString());
+        }
     }
 
     /**

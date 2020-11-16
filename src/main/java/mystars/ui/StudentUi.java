@@ -138,7 +138,10 @@ public class StudentUi extends Ui {
         printNicely();
         printNicely("Here are the indexes' vacancies/waitlist sizes");
         printNicely(String.format(Course.VACANCY_FORMAT, "Index", "Vacancies", "Waitlist Size"));
-        courses.getCourses().stream().filter((course) -> course.getCourseCode().equals(courseCode))
-                .map(Course::getVacancyString).forEach(this::printNicely);
+        for (Course course : courses.getCourses()) {
+            if (course.getCourseCode().equals(courseCode)) {
+                printNicely(course.getVacancyString());
+            }
+        }
     }
 }
