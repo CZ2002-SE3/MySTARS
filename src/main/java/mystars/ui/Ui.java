@@ -48,7 +48,8 @@ public abstract class Ui {
     /**
      * Course table header.
      */
-    private static final String COURSE_HEADER = String.format(Course.FORMAT, "Course Code", "School", "Index No.", "AU");
+    private static final String COURSE_HEADER = String.format(Course.FORMAT, "Course Code", "School", "Index No.",
+            "AU");
 
     /**
      * Parser to parse user input.
