@@ -242,7 +242,7 @@ public class Parser {
 
         int vacancy;
         int numOfAUs;
-       try {
+        try {
             vacancy = Integer.parseInt(vacancyString);
         } catch (NumberFormatException numberFormatException) {
             throw new MyStarsException(INVALID_VACANCY_ERROR);

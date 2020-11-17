@@ -254,6 +254,16 @@ public class Course {
     }
 
     /**
+     * Checks if number of AUs between 2 indexes with same course code are the same.
+     *
+     * @param course Course to check.
+     * @return True if same number of AUs, false otherwise.
+     */
+    public boolean isValidNumOfAUs(Course course) {
+        return !isSameCourseCode(course) || getNumOfAUs() == course.getNumOfAUs();
+    }
+
+    /**
      * Course formatted for table.
      *
      * @return Course formatted for table.

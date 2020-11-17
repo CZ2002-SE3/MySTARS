@@ -326,7 +326,7 @@ public class Student extends User {
     }
 
     /**
-     * Checks courses in list, and whether that is an issue.
+     * Checks courses in list, and see if there is issue adding the course.
      *
      * @param courseToAdd Course to add.
      * @throws MyStarsException If there is issue adding course.

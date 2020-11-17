@@ -9,6 +9,12 @@ import mystars.ui.AdminUi;
 abstract class AdminCommand extends Command {
 
     /**
+     * Different AUs error message.
+     */
+    static final String DIFFERENT_AU_ERROR
+            = "Existing course code have different number of AUs from given number of AUs!";
+
+    /**
      * Ui object.
      */
     final AdminUi ui;

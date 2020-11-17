@@ -21,6 +21,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
@@ -38,22 +39,32 @@ public class Storage {
     /**
      * Reading error message.
      */
-    private static final String READ_ERROR = "I am unable to read file.";
+    private static final String READ_ERROR = "I am unable to read file. Things may not work as expected. " +
+            "Please ensure db folder is present with the respective text files.";
 
     /**
      * Directory error message.
      */
-    private static final String DIRECTORY_ERROR = "I am unable to create directory.";
+    private static final String DIRECTORY_ERROR = "I am unable to create directory. Things may not work as expected. " +
+            "Please ensure db folder is accessible to program.";
 
     /**
      * Write error message.
      */
-    private static final String WRITE_ERROR = "I am unable to write file.";
+    private static final String WRITE_ERROR = "I am unable to write file. Things may not work as expected. " +
+            "Please ensure db folder is accessible to program.";
 
     /**
      * Vacancy error message.
      */
-    private static final String VACANCY_ERROR = "No more vacancy to put student!";
+    private static final String VACANCY_ERROR = "No more vacancy to put student! Things may not work as expected. " +
+            "Please ensure enough vacancy is assigned to course.";
+
+    /**
+     * Invalid AUs error message.
+     */
+    private static final String INVALID_AU_ERROR = "Same course code have different number of AUs! "
+            + "Things may not work as expected. Please ensure same course code have the same number of AUs.";
 
     /**
      * Settings format string.
@@ -340,6 +351,9 @@ public class Storage {
                     }
 
                     Course course = parser.readCourse(line);
+                    if (courses.stream().anyMatch(Predicate.not(course::isValidNumOfAUs))) {
+                        throw new MyStarsException(INVALID_AU_ERROR);
+                    }
                     courses.add(course);
                 }
             } catch (IOException e) {
