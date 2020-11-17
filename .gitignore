@@ -1,11 +1,9 @@
 /.idea/
 /out/
 /src/main/java/META-INF/
-/*.iml
+/ui-test/db/
+/ui-test/output.txt
 
 .DS_Store
 *.iml
 bin/
-
-/ui-test/db/
-/ui-test/output.txt
