@@ -97,12 +97,12 @@ public class Parser {
     /**
      * Student string.
      */
-    private static final String STUDENT = "student";
+    private static final String STUDENT = "STUDENT";
 
     /**
      * Admin string.
      */
-    private static final String ADMIN = "admin";
+    private static final String ADMIN = "ADMIN";
 
     /**
      * Parses admin input, and returns corresponding command.
@@ -202,9 +202,9 @@ public class Parser {
 
         User user;
         String[] userSplit = line.split(ESCAPED_LINE_SEPARATOR);
-        String username = userSplit[0].trim();
+        String username = userSplit[0].trim().toUpperCase();
         String password = userSplit[1].trim();
-        String type = userSplit[2].trim();
+        String type = userSplit[2].trim().toUpperCase();
         switch (type) {
         case STUDENT:
             user = new Student();
@@ -233,8 +233,8 @@ public class Parser {
     public Course readCourse(String line) throws MyStarsException {
 
         String[] courseSplit = line.split(ESCAPED_LINE_SEPARATOR);
-        String courseCode = courseSplit[0].trim();
-        String school = courseSplit[1].trim();
+        String courseCode = courseSplit[0].trim().toUpperCase();
+        String school = courseSplit[1].trim().toUpperCase();
         String indexNumber = courseSplit[2].trim();
         String vacancyString = courseSplit[3].trim();
         String numOfAUsString = courseSplit[4].trim();
@@ -272,17 +272,17 @@ public class Parser {
         for (String lessonString : lessonsString) {
             String[] lessonDetailsString = lessonString.split(TILDE_SEPARATOR);
 
-            LessonType lessonType = LessonType.valueOf(lessonDetailsString[0].trim());
+            LessonType lessonType = LessonType.valueOf(lessonDetailsString[0].trim().toUpperCase());
 
-            String venue = lessonDetailsString[1];
-            LocalTime startTime = LocalTime.parse(lessonDetailsString[2]);
-            LocalTime endTime = LocalTime.parse(lessonDetailsString[3]);
+            String venue = lessonDetailsString[1].trim().toUpperCase();
+            LocalTime startTime = LocalTime.parse(lessonDetailsString[2].trim());
+            LocalTime endTime = LocalTime.parse(lessonDetailsString[3].trim());
 
-            DayOfWeek day = DayOfWeek.valueOf(lessonDetailsString[4].trim());
+            DayOfWeek day = DayOfWeek.valueOf(lessonDetailsString[4].trim().toUpperCase());
 
-            Week week = Week.valueOf(lessonDetailsString[5].trim());
+            Week week = Week.valueOf(lessonDetailsString[5].trim().toUpperCase());
 
-            String group = lessonDetailsString[6];
+            String group = lessonDetailsString[6].trim().toUpperCase();
 
             Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, week, group);
 
@@ -305,16 +305,16 @@ public class Parser {
 
         String[] studentSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String name = studentSplit[0].trim();
-        String matricNo = studentSplit[1].trim();
-        Gender gender = Gender.valueOf(studentSplit[2].trim());
+        String matricNo = studentSplit[1].trim().toUpperCase();
+        Gender gender = Gender.valueOf(studentSplit[2].trim().toUpperCase());
         String nationality = studentSplit[3].trim();
-        String username = studentSplit[4].trim();
+        String username = studentSplit[4].trim().toUpperCase();
 
         String[] courseAndYear = studentSplit[5].split(TILDE_SEPARATOR);
-        String courseOfStudy = courseAndYear[0];
-        int yearOfStudy = Integer.parseInt(courseAndYear[1]);
+        String courseOfStudy = courseAndYear[0].trim().toUpperCase();
+        int yearOfStudy = Integer.parseInt(courseAndYear[1].trim());
 
-        String email = studentSplit[6];
+        String email = studentSplit[6].trim();
 
         return new Student(name, matricNo, gender, nationality, username, courseOfStudy, yearOfStudy, email);
     }
@@ -330,9 +330,9 @@ public class Parser {
         String[] adminSplit = line.split(ESCAPED_LINE_SEPARATOR);
         String name = adminSplit[0].trim();
         String staffId = adminSplit[1].trim();
-        Gender gender = Gender.valueOf(adminSplit[2].trim());
+        Gender gender = Gender.valueOf(adminSplit[2].trim().toUpperCase());
         String nationality = adminSplit[3].trim();
-        String username = adminSplit[4].trim();
+        String username = adminSplit[4].trim().toUpperCase();
 
         return new Admin(name, staffId, gender, nationality, username);
     }
@@ -367,7 +367,7 @@ public class Parser {
         for (int i = 1; i < matricNos.length; i++) {
             for (Student student : users.getUsers().stream().filter(Student.class::isInstance).map(Student.class::cast)
                     .collect(Collectors.toList())) {
-                if (student.getMatricNo().equalsIgnoreCase(matricNos[i])) {
+                if (student.getMatricNo().equalsIgnoreCase(matricNos[i].trim())) {
                     registeredStudents.add(student);
                 }
             }

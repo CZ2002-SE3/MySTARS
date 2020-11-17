@@ -189,7 +189,7 @@ public class AdminUi extends Ui {
      * @return New course.
      */
     public Course getCourseDetails(String indexNumber) {
-        String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker());
+        String courseCode = getUserInput("Enter course code:", new CourseCodeValidChecker()).toUpperCase();
         String school = getUserInput("Enter school:", new SchoolValidChecker()).toUpperCase();
         int initialVacancies = Integer.parseInt(getUserInput("Enter vacancy:", new NumberValidChecker()));
         int numOfAUs = Integer.parseInt(getUserInput("Enter number of AUs:", new NumberValidChecker()));
