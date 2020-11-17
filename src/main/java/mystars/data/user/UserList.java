@@ -17,7 +17,7 @@ public class UserList {
     private static final String DUPLICATE_MATRIC_ERROR = "Duplicate matric number!";
 
     /**
-     * Duplicate username erro message.
+     * Duplicate username error message.
      */
     private static final String DUPLICATE_USERNAME_ERROR = "Duplicate username!";
 

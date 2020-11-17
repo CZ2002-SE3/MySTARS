@@ -70,7 +70,7 @@ public class Lesson {
     /**
      * Returns lesson formatted for storage.
      *
-     * @return Lesson formmated for storage.
+     * @return Lesson formatted for storage.
      */
     public String getStorageString() {
         return String.join(Parser.TILDE_SEPARATOR, lessonType.name(), venue, startTime.toString(), endTime.toString(),
