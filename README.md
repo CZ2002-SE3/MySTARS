@@ -4,10 +4,12 @@ This is the group assignment for CZ2002. Instructions on how to use it are given
 
 ## Setting Up Environment in Intellij
 
-Prerequisites: JDK 11 (Could work on other versions, but mostly tested on JDK 11), update Intellij to the latest version.
+Prerequisites: JDK 11 (Could work on other versions, but mostly tested on JDK 11), update Intellij to the latest
+version.
 
 1. Import the project into Intellij as follows:
-    1. Open IntelliJ (if you are not in the welcome screen, click File → Close Project to close the existing project dialog first).
+    1. Open IntelliJ (if you are not in the welcome screen, click File → Close Project to close the existing project
+       dialog first).
     1. Click `Open`.
     1. Select the project directory, and click `OK`.
     1. Accept the defaults if there are any further prompts.
