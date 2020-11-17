@@ -1,28 +1,27 @@
 # MySTARS
 
-This is the group assignment for CZ2002. Given below are instructions on how to use it.
+This is the group assignment for CZ2002. Instructions on how to use it are given below.
 
 ## Setting Up Environment in Intellij
 
-Prerequisites: JDK 11 (use the exact version), update Intellij to the most recent version.
+Prerequisites: JDK 11 (Could work on other versions, but mostly tested on JDK 11), update Intellij to the latest version.
 
-1. **Configure Intellij for JDK 11**, as described [here](https://se-education.org/guides/tutorials/intellijJdk.html).
-1. Set up the correct JDK version, as follows:
-    1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`
-    1. If JDK 11 is listed in the dropdown, select it. If it is not, click `New...` and select the directory where you
-       installed JDK 11
-    1. Click `OK`
 1. Import the project into Intellij as follows:
-    1. Click `Open or Import`.
-    1. Select the project directory, and click `OK`
-    1. If there are any further prompts, accept the defaults.
+    1. Open IntelliJ (if you are not in the welcome screen, click File → Close Project to close the existing project dialog first).
+    1. Click `Open`.
+    1. Select the project directory, and click `OK`.
+    1. Accept the defaults if there are any further prompts.
+1. Set up the correct JDK version, as follows:
+    1. Click `File` > `Project Structure` > `Project`.
+    1. Under Project SDK, select the correct JDK version.
+    1. Click `OK`.
 1. Add library to project
-    1. Click `Project Structure` > `Modules` and then `Dependencies`.
-    1. Select `+` icon and then `JARs or Directories...`
+    1. Click `File` > `Project Structure` > `Modules` and then `Dependencies`.
+    1. Select `+` icon and then `JARs or Directories...`.
     1. Locate the `lib` folder and select it.
-    1. Click `OK`
+    1. Click `OK`.
 1. After the above steps are completed, locate the `src/main/java/mystars/MyStars.java` file, right-click it, and
-   choose `Run MyStars.main()`. If the setup is correct, you should see something like the below:
+   choose `Run MyStars.main()`. If the setup is correct, you should see something like this:
    ```
    ------------------------------------------------------------
    
@@ -52,7 +51,7 @@ Prerequisites: JDK 11 (use the exact version), update Intellij to the most recen
        enter to compile the code.
     1. Now, type `java -classpath .\lib\*:.\bin mystars.MyStars` and press enter to run the program.
 
-If the setup is correct, you should see something like the below:
+If the setup is correct, you should see something like this:
 
    ```
    ------------------------------------------------------------
@@ -74,10 +73,8 @@ If the setup is correct, you should see something like the below:
 
 ### I/O redirection tests
 
-* To run _I/O redirection_ tests (aka _Text UI tests_), navigate to the `ui-test` and run the `test(.bat/.sh)` script.
+* To run _I/O redirection_ tests, navigate to the `ui-test` and run the `test(.bat/.sh)` script.
 
 ### JUnit tests
 
-* A skeleton JUnit test (`src/test/java/mystars/MyStarsTest.java`) is provided with this project template.
-* If you are new to JUnit, refer to
-  the [JUnit Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/junit.html).
+* JUnit tests are included and can be located at `src/test/java/mystars`.
