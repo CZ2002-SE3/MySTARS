@@ -28,7 +28,6 @@ import mystars.data.user.Admin;
 import mystars.data.user.Student;
 import mystars.data.user.User;
 import mystars.data.user.UserList;
-import mystars.data.valid.NumberValidChecker;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
 import mystars.ui.StudentUi;
@@ -243,15 +242,15 @@ public class Parser {
 
         int vacancy;
         int numOfAUs;
-        if (new NumberValidChecker().isValid(vacancyString)) {
+       try {
             vacancy = Integer.parseInt(vacancyString);
-        } else {
+        } catch (NumberFormatException numberFormatException) {
             throw new MyStarsException(INVALID_VACANCY_ERROR);
         }
 
-        if (new NumberValidChecker().isValid(numOfAUsString)) {
+        try {
             numOfAUs = Integer.parseInt(numOfAUsString);
-        } else {
+        } catch (NumberFormatException numberFormatException) {
             throw new MyStarsException(INVALID_AU_ERROR);
         }
 
