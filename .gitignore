@@ -1,5 +1,6 @@
 /.idea/
 /out/
+/src/main/java/META-INF/
 /*.iml
 
 .DS_Store
