@@ -8,7 +8,6 @@ import mystars.data.sender.Sender;
 import mystars.storage.Storage;
 import mystars.ui.AdminUi;
 
-import java.util.function.Predicate;
 import java.util.logging.Level;
 
 
@@ -67,7 +66,7 @@ public class AddUpdateCourseCommand extends AdminCommand {
         } else {
             course = ui.getCourseDetails(indexNumber);
 
-            if (courses.getCourses().stream().anyMatch(Predicate.not(course::isValidNumOfAUs))) {
+            if (!courses.getCourses().stream().allMatch(course::isValidNumOfAUs)) {
                 throw new MyStarsException(DIFFERENT_AU_ERROR);
             }
         }

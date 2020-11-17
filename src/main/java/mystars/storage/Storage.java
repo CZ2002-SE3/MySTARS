@@ -21,7 +21,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
@@ -351,7 +350,7 @@ public class Storage {
                     }
 
                     Course course = parser.readCourse(line);
-                    if (courses.stream().anyMatch(Predicate.not(course::isValidNumOfAUs))) {
+                    if (!courses.stream().allMatch(course::isValidNumOfAUs)) {
                         throw new MyStarsException(INVALID_AU_ERROR);
                     }
                     courses.add(course);
