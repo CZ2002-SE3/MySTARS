@@ -32,7 +32,8 @@ public class Storage {
     /**
      * File not found error message.
      */
-    private static final String FILE_NOT_FOUND_ERROR = "I am unable to find file.";
+    private static final String FILE_NOT_FOUND_ERROR = "I am unable to find file. Things may not work as expected. " +
+            "Please ensure db folder is present with the respective text files.";
 
     /**
      * Reading error message.
