@@ -271,17 +271,12 @@ public class Parser {
         LessonList lessonList = new LessonList();
         for (String lessonString : lessonsString) {
             String[] lessonDetailsString = lessonString.split(TILDE_SEPARATOR);
-
             LessonType lessonType = LessonType.valueOf(lessonDetailsString[0].trim().toUpperCase());
-
             String venue = lessonDetailsString[1].trim().toUpperCase();
             LocalTime startTime = LocalTime.parse(lessonDetailsString[2].trim());
             LocalTime endTime = LocalTime.parse(lessonDetailsString[3].trim());
-
             DayOfWeek day = DayOfWeek.valueOf(lessonDetailsString[4].trim().toUpperCase());
-
             Week week = Week.valueOf(lessonDetailsString[5].trim().toUpperCase());
-
             String group = lessonDetailsString[6].trim().toUpperCase();
 
             Lesson lessonToAdd = new Lesson(lessonType, venue, startTime, endTime, day, week, group);
@@ -340,14 +335,16 @@ public class Parser {
     /**
      * Reads student's access period.
      *
-     * @param line Line of DateTime to read.
+     * @param line Line of date/time to read.
      * @return Access period.
+     * @throws MyStarsException If there is problem parsing date/time.
      */
     public LocalDateTime[] readStudentAccessPeriod(String line) throws MyStarsException {
         try {
             String[] dateTime = line.split(ESCAPED_LINE_SEPARATOR);
             LocalDateTime start = LocalDateTime.parse(dateTime[0].trim());
             LocalDateTime end = LocalDateTime.parse(dateTime[1].trim());
+            
             return new LocalDateTime[]{start, end};
         } catch (DateTimeParseException dateTimeParseException) {
             throw new MyStarsException(DATETIME_PARSE_ERROR);

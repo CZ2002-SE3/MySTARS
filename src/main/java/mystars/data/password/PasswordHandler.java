@@ -68,10 +68,10 @@ public class PasswordHandler {
     }
 
     /**
-     * Generates and returns hash & salt string.
+     * Generates and returns hash and salt string.
      *
-     * @param password Password to generate hash & salt.
-     * @return Hash & salt, separated by tilde
+     * @param password Password to generate hash and salt.
+     * @return Hash and salt, separated by tilde.
      * @throws MyStarsException If there is hashing issue.
      */
     public String generatePBKDF2String(char[] password) throws MyStarsException {

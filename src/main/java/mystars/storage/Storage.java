@@ -32,32 +32,32 @@ public class Storage {
     /**
      * File not found error message.
      */
-    private static final String FILE_NOT_FOUND_ERROR = "I am unable to find file. Things may not work as expected. " +
-            "Please ensure db folder is present with the respective text files.";
+    private static final String FILE_NOT_FOUND_ERROR = "I am unable to find file. Things may not work as expected. "
+            + "Please ensure db folder is present with the respective text files.";
 
     /**
      * Reading error message.
      */
-    private static final String READ_ERROR = "I am unable to read file. Things may not work as expected. " +
-            "Please ensure db folder is present with the respective text files.";
+    private static final String READ_ERROR = "I am unable to read file. Things may not work as expected. "
+            + "Please ensure db folder is present with the respective text files.";
 
     /**
      * Directory error message.
      */
-    private static final String DIRECTORY_ERROR = "I am unable to create directory. Things may not work as expected. " +
-            "Please ensure db folder is accessible to program.";
+    private static final String DIRECTORY_ERROR = "I am unable to create directory. Things may not work as expected. "
+            + "Please ensure db folder is accessible to program.";
 
     /**
      * Write error message.
      */
-    private static final String WRITE_ERROR = "I am unable to write file. Things may not work as expected. " +
-            "Please ensure db folder is accessible to program.";
+    private static final String WRITE_ERROR = "I am unable to write file. Things may not work as expected. "
+            + "Please ensure db folder is accessible to program.";
 
     /**
      * Vacancy error message.
      */
-    private static final String VACANCY_ERROR = "No more vacancy to put student! Things may not work as expected. " +
-            "Please ensure enough vacancy is assigned to course.";
+    private static final String VACANCY_ERROR = "No more vacancy to put student! Things may not work as expected. "
+            + "Please ensure enough vacancy is assigned to course.";
 
     /**
      * Invalid AUs error message.
