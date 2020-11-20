@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class IndexNumberValidCheckerTest {
-    
+
     @Test
     void isValid_shortIndexNo_returnsFalse() {
         assertFalse(new IndexNumberValidChecker().isValid("1234"));
