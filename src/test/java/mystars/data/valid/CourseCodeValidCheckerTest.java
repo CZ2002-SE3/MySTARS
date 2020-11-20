@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class CourseCodeValidCheckerTest {
 
     @Test
-    void isValid_validCourseCode_returnsFalse() {
+    void isValid_invalidCourseCode_returnsFalse() {
         assertFalse(new CourseCodeValidChecker().isValid("CZ2002A"));
     }
 
