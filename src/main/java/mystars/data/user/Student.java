@@ -177,24 +177,6 @@ public class Student extends User {
     }
 
     /**
-     * Returns course of study.
-     *
-     * @return Course of study.
-     */
-    public String getCourseOfStudy() {
-        return courseOfStudy;
-    }
-
-    /**
-     * Returns year of study.
-     *
-     * @return Year of study.
-     */
-    public int getYearOfStudy() {
-        return yearOfStudy;
-    }
-
-    /**
      * Returns email address.
      *
      * @return Email address of student.
@@ -318,8 +300,8 @@ public class Student extends User {
         matricNo = ((Student) user).getMatricNo();
         setGender(user.getGender());
         setNationality(user.getNationality());
-        courseOfStudy = ((Student) user).getCourseOfStudy();
-        yearOfStudy = ((Student) user).getYearOfStudy();
+        courseOfStudy = ((Student) user).courseOfStudy;
+        yearOfStudy = ((Student) user).yearOfStudy;
         email = ((Student) user).getEmail();
         registeredCourses = ((Student) user).getRegisteredCourses();
         waitlistedCourses = ((Student) user).getWaitlistedCourses();
