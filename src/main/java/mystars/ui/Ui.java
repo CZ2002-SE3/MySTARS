@@ -230,6 +230,21 @@ public abstract class Ui {
     }
 
     /**
+     * Prints closed message.
+     */
+    public void showClosed() {
+        showLine();
+        showToUser("MyStars is closed for students...");
+    }
+
+    /**
+     * Prints logout message.
+     */
+    public void showLogout() {
+        showToUser("You have successfully logged out!");
+    }
+
+    /**
      * Returns user input.
      *
      * @param message      Message to show.
@@ -284,19 +299,4 @@ public abstract class Ui {
      * Greets user.
      */
     public abstract void greetUser();
-
-    /**
-     * Prints closed message.
-     */
-    public void showClosed() {
-        showLine();
-        showToUser("MyStars is closed for students...");
-    }
-
-    /**
-     * Prints logout message.
-     */
-    public void showLogout() {
-        showToUser("You have successfully logged out!");
-    }
 }
