@@ -167,6 +167,17 @@ public class AdminUi extends Ui {
     }
 
     /**
+     * Prints existing course.
+     *
+     * @param course Course to show.
+     */
+    public void showExistingCourse(Course course) {
+        printNicely();
+        printNicely("Here is the course to be updated:");
+        showCourse(course);
+    }
+
+    /**
      * Updates course details with input from user.
      *
      * @param indexNumber Index number of course.
@@ -311,16 +322,5 @@ public class AdminUi extends Ui {
      */
     public boolean askUpdate() {
         return parser.isYes(getUserInput("Do you want to update course? (Y/N)", new OptionValidChecker()));
-    }
-
-    /**
-     * Prints existing course.
-     *
-     * @param course Course to show.
-     */
-    public void showExistingCourse(Course course) {
-        printNicely();
-        printNicely("Here is the course to be updated:");
-        showCourse(course);
     }
 }
