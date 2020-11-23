@@ -1,0 +1,57 @@
+Here are the list of accounts and their passwords:
+
+Students
+Username: IRVIN001
+Password: pass0001
+
+Username: JUNHONG002
+Password: pass0002
+
+Username: CHINYI001
+Password: pass0003
+
+Username: FERLITA001
+Password: pass0004
+
+Username: YOKEMIN002
+Password: pass0005
+
+Username: SOPHIA021
+Password: pass0006
+
+Username: JACKSON032
+Password: pass0007
+
+Username: OLIVIA033
+Password: pass0008
+
+Username: LIAM003
+Password: pass0009
+
+Username: EMMA041
+Password: pass0010
+
+Username: NOAH050
+Password: pass0011
+
+Username: AVA0023
+Password: pass0012
+
+Username: AIDEN098
+Password: pass0013
+
+Username: ARIA010
+Password: pass0014
+
+Username: JASON022
+Password: pass0015
+
+Admins
+Username: JESSICA001
+Password: pass0016
+
+Username: ADRIAN021
+Password: pass0017
+
+Username: JAMES098
+Password: pass0018

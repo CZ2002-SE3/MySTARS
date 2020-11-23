@@ -1,6 +1,6 @@
 # MySTARS
 
-This is the group assignment for CZ2002. Instructions on how to use it are given below.
+This is the group assignment for CZ2002, by Lab Group SE1 Group 1. Instructions on how to use it are given below.
 
 ## Setting Up Environment in Intellij
 
@@ -80,3 +80,7 @@ If the setup is correct, you should see something like this:
 ### JUnit tests
 
 * JUnit tests are included and can be located at `src/test/java/mystars`.
+
+### User accounts and passwords
+
+* Since the database's password is hashed, the login username and un-hashed password for both students and admins can be found at `accounts.txt`.
