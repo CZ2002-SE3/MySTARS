@@ -49,6 +49,7 @@ public class AddCourseCommand extends StudentCommand {
     public void execute() throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
         courses.checkIndexNoInList(indexNumber);
+
         Course course = courses.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
 

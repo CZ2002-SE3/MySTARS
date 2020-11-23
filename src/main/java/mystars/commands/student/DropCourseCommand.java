@@ -53,7 +53,7 @@ public class DropCourseCommand extends StudentCommand {
     @Override
     public void execute() throws MyStarsException {
         String indexNumber = ui.getIndexNumber();
-        courses.isIndexNoInList(indexNumber);
+        courses.checkIndexNoInList(indexNumber);
 
         Course course = courses.getCourseByIndex(indexNumber);
         Student student = (Student) getUser();
