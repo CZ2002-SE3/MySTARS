@@ -83,4 +83,6 @@ If the setup is correct, you should see something like this:
 
 ### User accounts and passwords
 
-* Since the database's password is hashed, the login username and un-hashed password for both students and admins can be found at `accounts.txt`.
+* The database's password is hashed.
+* As such, the login username and un-hashed password for both students and admins can be found at `accounts.txt`.
+* Please use command line instead of IDE to run the program, or else the password will not be masked.
