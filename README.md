@@ -81,8 +81,11 @@ If the setup is correct, you should see something like this:
 
 * JUnit tests are included and can be located at `src/test/java/mystars`.
 
-### User accounts and passwords
+### User accounts and passwords for testing
 
 * The database's password is hashed.
 * As such, the login username and un-hashed password for both students and admins can be found at `accounts.txt`.
+  
+### Other things to take note
 * Please use command line instead of IDE to run the program, or else the password will not be masked.
+* Alternatively, run the jar file on the other folder (stated in the report) to ensure the password is masked.

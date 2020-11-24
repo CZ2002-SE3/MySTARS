@@ -344,7 +344,7 @@ public class Parser {
             String[] dateTime = line.split(ESCAPED_LINE_SEPARATOR);
             LocalDateTime start = LocalDateTime.parse(dateTime[0].trim());
             LocalDateTime end = LocalDateTime.parse(dateTime[1].trim());
-            
+
             return new LocalDateTime[]{start, end};
         } catch (DateTimeParseException dateTimeParseException) {
             throw new MyStarsException(DATETIME_PARSE_ERROR);
