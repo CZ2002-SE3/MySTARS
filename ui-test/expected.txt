@@ -629,6 +629,10 @@ Please select an item:
 Enter original index number:
 Enter desired index number:
 
+------------------------------------------------------------
+
+Added waitlisted student to course and sent email.
+
 Successfully changed!
 Old course:
 Course Code     School     Index No.  AU   

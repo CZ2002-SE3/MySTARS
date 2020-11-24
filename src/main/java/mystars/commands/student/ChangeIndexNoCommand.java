@@ -79,7 +79,7 @@ public class ChangeIndexNoCommand extends StudentCommand {
             MyStars.logger.log(Level.INFO, Sender.SEND_MESSAGE);
             ui.showEmailSent();
         }
-        
+
         storage.saveCourses(courses);
         ui.showIndexNoChanged(desiredCourse, currentCourse);
     }
