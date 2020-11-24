@@ -88,4 +88,6 @@ If the setup is correct, you should see something like this:
   
 ### Other things to take note
 * Please use command line instead of IDE to run the program, or else the password will not be masked.
-* Alternatively, run the jar file on the other folder (stated in the report) to ensure the password is masked.
+* Alternatively, run the jar file on the other folder (with an extra `_jar` in the folder name).
+    * This will ensure the password is masked.
+    * A `start.bat` and `start.sh` file has been included for starting the jar file.
