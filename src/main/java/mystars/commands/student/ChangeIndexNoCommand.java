@@ -1,11 +1,15 @@
 package mystars.commands.student;
 
+import mystars.MyStars;
 import mystars.data.course.Course;
 import mystars.data.course.CourseList;
 import mystars.data.exception.MyStarsException;
+import mystars.data.sender.Sender;
 import mystars.data.user.Student;
 import mystars.storage.Storage;
 import mystars.ui.StudentUi;
+
+import java.util.logging.Level;
 
 /**
  * Changes index no for student.
@@ -71,6 +75,11 @@ public class ChangeIndexNoCommand extends StudentCommand {
         student.addCourseToRegistered(desiredCourse);
         desiredCourse.addRegisteredStudent(student);
 
+        if (currentCourse.checkWaitlist()) {
+            MyStars.logger.log(Level.INFO, Sender.SEND_MESSAGE);
+            ui.showEmailSent();
+        }
+        
         storage.saveCourses(courses);
         ui.showIndexNoChanged(desiredCourse, currentCourse);
     }
