@@ -188,7 +188,6 @@ public class AdminUi extends Ui {
     public Course updateCourseDetails(String indexNumber, Course course) throws MyStarsException {
         Course newCourse = getCourseDetails(indexNumber);
         course.checkEnoughVacancies(newCourse.getInitialVacancies());
-        newCourse.setLessonList(getLessonList());
 
         return newCourse;
     }
