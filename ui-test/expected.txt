@@ -234,6 +234,7 @@ Please select an item:
 
 Enter index number:
 The number of vacancy is 1.
+The waitlist size is 0.
 
 ------------------------------------------------------------
 
@@ -981,6 +982,7 @@ Please select an item:
 
 Enter index number:
 The number of vacancy is 0.
+The waitlist size is 0.
 
 ------------------------------------------------------------
 
