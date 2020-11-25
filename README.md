@@ -51,7 +51,7 @@ version.
     1. Locate the _project root directory,_ whose path ends with `MySTARS`.
     1. Type `javac -cp ./lib/*:./src/main/java -Xlint:none -d ./bin ./src/main/java/mystars/MyStars.java` and press
        enter to compile the code.
-    1. Now, type `java -classpath .\lib\*:.\bin mystars.MyStars` and press enter to run the program.
+    1. Now, type `java -classpath ./lib/*:./bin mystars.MyStars` and press enter to run the program.
 
 If the setup is correct, you should see something like this:
 
