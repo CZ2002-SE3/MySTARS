@@ -11,7 +11,7 @@ version.
     1. Open IntelliJ (if you are not in the welcome screen, click File → Close Project to close the existing project
        dialog first).
     1. Click `Open`.
-    1. Select the project directory, and click `OK`.
+    1. Select the project directory `SE3-grp1_MySTARS`, and click `OK`.
     1. Accept the defaults if there are any further prompts.
 1. Set up the correct JDK version, as follows:
     1. Click `File` > `Project Structure` > `Project`.
