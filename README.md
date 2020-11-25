@@ -91,3 +91,4 @@ If the setup is correct, you should see something like this:
 * Alternatively, run the jar file on the other folder (with an extra `_jar` in the folder name).
     * This will ensure the password is masked.
     * A `start.bat` and `start.sh` file has been included for starting the jar file.
+    * The database for the jar will be separate from the source code i.e. changing one will not affect the other.
