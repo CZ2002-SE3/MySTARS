@@ -127,7 +127,7 @@ public class Course {
      *
      * @return Number of waitlisted students.
      */
-    private int getWaitlistedSize() {
+    public int getWaitlistedSize() {
         return getWaitlistedStudents().size();
     }
 

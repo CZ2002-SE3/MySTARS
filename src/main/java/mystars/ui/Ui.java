@@ -215,6 +215,7 @@ public abstract class Ui {
         for (Course course : courses.getCourses()) {
             if (course.getIndexNumber().equals(indexNumber)) {
                 printNicely("The number of vacancy is " + course.getVacancies() + ".");
+                printNicely("The waitlist size is " + course.getWaitlistedSize() + ".");
                 return;
             }
         }
